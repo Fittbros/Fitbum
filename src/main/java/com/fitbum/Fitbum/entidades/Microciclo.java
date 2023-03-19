@@ -9,6 +9,7 @@ public class Microciclo {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int idMicrociclo;
 
+    private int idMesociclo;
     private float volumen_estandar;
 
     private float intensidad_estandar;
