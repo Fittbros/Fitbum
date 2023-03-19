@@ -15,4 +15,6 @@ public class Estadisticas {
     private String	descripcion;
     private Integer	idUsuario;
     private Integer	InformesIdInformes;
+
+
 }
