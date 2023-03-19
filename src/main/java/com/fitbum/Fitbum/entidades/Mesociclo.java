@@ -1,27 +1,12 @@
 package com.fitbum.Fitbum.entidades;
 
-
-
-import jakarta.persistence.*;
-
-
-
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="Mesociclo")
 
-@Table(name="Usuarios")
+public class Mesociclo {
 
-public class EntidadUsuario {
-
-    @Id
-
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
-    private Integer id;
-
-    private String name;
-
-    private String email;
 
 }
