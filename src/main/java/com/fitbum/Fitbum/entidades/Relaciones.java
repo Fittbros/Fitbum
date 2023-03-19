@@ -1,7 +1,6 @@
 package com.fitbum.Fitbum.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.sql.Date;
 
@@ -9,7 +8,8 @@ import java.sql.Date;
 @Table(name="Relaciones")
 
 public class Relaciones {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idRelacion;
     private int idEntrenador;
     private int idUser;
