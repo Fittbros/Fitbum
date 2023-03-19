@@ -1,8 +1,13 @@
 package com.fitbum.Fitbum.entidades;
 
+import jakarta.persistence.Id;
+
 public class Content_tutorial {
 
-private String nombre, descripcion, url;
+    @Id
+    private int idrol;
+
+    private String nombre, descripcion, url;
 
 
 
