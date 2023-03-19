@@ -1,27 +1,34 @@
 package com.fitbum.Fitbum.entidades;
 
-
-
 import jakarta.persistence.*;
 
-
-
-
+import java.sql.Date;
 
 @Entity
+@Table(name="Mesociclo")
 
-@Table(name="Usuarios")
-
-public class EntidadUsuario {
+public class Mesociclo {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private int idMesociclo;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int idUsuario;
 
-    private Integer id;
+    private int num_microciclos;
 
-    private String name;
+    private int fr_entr_sem;
 
-    private String email;
+    private int long_microciclo;
+
+    private String descanso_basi;
+
+    private String descanso_acces;
+
+    private String descripcion;
+
+    private Date fecha_inicio;
+
+    private Date fecha_fin;
 
 }
