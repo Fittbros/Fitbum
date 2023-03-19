@@ -1,3 +1,4 @@
+
 package com.fitbum.Fitbum.entidades;
 import jakarta.persistence.*;
 
