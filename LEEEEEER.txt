@@ -1,2 +1,7 @@
-Antes de iniciar, ir a la terminal de comandos del inelli y ejecutar el siguiente comando:
-docker compose up -d
+INSTRUCCIONES ANTES DE INICIAR
+
+1. INICIAR DOCKER DESKTOP
+2. COPIAR EL SIGUIENTE COMANDO EN LA TERMINAL DE COMANDOS DE INTELLIJ
+    docker compose up -d
+
+
