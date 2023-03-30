@@ -1,0 +1,23 @@
+<form action="#" th:action="@{/usuarios/signup}" th:object="${usuario}" method="post">
+
+    <label for="nombre">nombre</label>
+
+    <input type="text" th:field="*{nombre}" id="nombre" placeholder="nombre">
+
+    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+
+    <label for="apellido1">apellido1</label>
+
+    <input type="text" th:field="*{apellido1}" id="apellido1" placeholder="apellido1">
+
+    <span th:if="${#fields.hasErrors('apellido1')}" th:errors="*{apellido1}"></span>
+
+    <label for="email">Email</label>
+
+    <input type="text" th:field="*{email}" id="email" placeholder="Email">
+
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
+    <input type="submit" value="Add customer">
+
+</form>

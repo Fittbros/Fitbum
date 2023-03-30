@@ -1,0 +1,2 @@
+Antes de iniciar, ir a la terminal de comandos del inelli y ejecutar el siguiente comando:
+docker compose up -d
