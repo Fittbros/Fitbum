@@ -1,0 +1,55 @@
+spring:
+
+ jackson:
+
+  serialization:
+
+   indent-output: true
+
+ datasource:
+
+  url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/doggo
+
+  username: root
+
+  password: eneas2805
+
+  initialization-mode: always
+
+ thymeleaf:
+
+  cache: false
+
+  mode: HTML
+
+  encoding: UTF-8
+
+  prefix: file:src/main/resources/templates/
+
+ resources:
+
+  static-locations: file:src/main/resources/static/
+
+  cache:
+
+   period: 0
+
+ jpa:
+
+  show-sql: true
+
+  hibernate:
+
+   ddl-auto: update
+
+  defer-datasource-initialization: true
+
+ sql:
+
+   init:
+
+    mode: always
+
+server:
+
+ port: 8080
