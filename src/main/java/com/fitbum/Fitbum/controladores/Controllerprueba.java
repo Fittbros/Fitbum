@@ -16,8 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
-@RequestMapping("/prueba")
+//@RequestMapping("/prueba")
 public class Controllerprueba {
+
+    @GetMapping("/prueba")
+    public String prueba(){
+        return "pruebadocker";
+
+    }/*
     @Autowired
     private  final DetalllesRepositorio detalllesRepositorio;
 
@@ -29,11 +35,7 @@ public class Controllerprueba {
         customerRepository.save(customer);
         return "redirect:/customer/index";
     }
-        @GetMapping("/prueba")
-        public String prueba(){
-            return "pruebadocker";
 
-        }
     @GetMapping("/signup")
     public String showSignUpForm(DetalleUsuario usuario) {
         return "adduser";
@@ -75,7 +77,7 @@ public class Controllerprueba {
     @GetMapping("/signup")
     public String showSignUpForm(Customer customer) {
         return "add-customer";
-    }
+    }*/
     }
 
 
