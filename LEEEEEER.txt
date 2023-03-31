@@ -4,4 +4,14 @@ INSTRUCCIONES ANTES DE INICIAR
 2. COPIAR EL SIGUIENTE COMANDO EN LA TERMINAL DE COMANDOS DE INTELLIJ
     docker compose up -d
 
+SI ERES TEO
 
+docker run --name fitbum -e MYSQL_ROOT_PASSWORD=pass -d mysql
+
+PROBAR
+
+docker run --name fitbum -p 3306 -e MYSQL_ROOT_PASSWORD=pass -d mysql
+
+luego ejecutar
+
+mysql -h localhost -P 3306 --protocol=tcp -u root -p
