@@ -3,17 +3,18 @@ package com.fitbum.Fitbum.entidades;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
-@Table(name="Suscripción")
+@Table(name="Suscripcion")
 
 public class Suscripcion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idSuscripcion;
     private int idUsuario;
-    private Date fechaPago;
-    private Date fechaFin;
+    private LocalDate fechaPago;
+    private LocalDate fechaFin;
     private float precio;
     private String codigoDesc;
 }
