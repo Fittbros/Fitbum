@@ -1,8 +1,8 @@
-package com.fitbum.Fitbum.entidades;
+package com.fitbum.Fitbum.rrhh.controllers;
 
 import jakarta.persistence.Id;
 
-public class Rol {
+public class RolController {
 
     @Id
     private int idRol;
