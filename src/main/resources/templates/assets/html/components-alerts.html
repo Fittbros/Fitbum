@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Components / Accordion - NiceAdmin Bootstrap Template</title>
+  <title>Components / Alerts - NiceAdmin Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -287,12 +287,12 @@
         </a>
         <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="components-alerts.html" class="active">
               <i class="bi bi-circle"></i><span>Alerts</span>
             </a>
           </li>
           <li>
-            <a href="components-accordion.html" class="active">
+            <a href="components-accordion.html">
               <i class="bi bi-circle"></i><span>Accordion</span>
             </a>
           </li>
@@ -509,12 +509,12 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Accordion</h1>
+      <h1>Alerts</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <li class="breadcrumb-item">Components</li>
-          <li class="breadcrumb-item active">Accordion</li>
+          <li class="breadcrumb-item active">Alerts</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -525,47 +525,144 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Default Accordion</h5>
 
-              <!-- Default Accordion -->
-              <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Accordion Item #1
-                    </button>
-                  </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Accordion Item #2
-                    </button>
-                  </h2>
-                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Accordion Item #3
-                    </button>
-                  </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                    </div>
-                  </div>
-                </div>
-              </div><!-- End Default Accordion Example -->
+              <h5 class="card-title">Default</h5>
+
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                A simple primary alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                A simple secondary alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                A simple success alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                A simple danger alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                A simple warning alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-info alert-dismissible fade show" role="alert">
+                A simple info alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-light border-light alert-dismissible fade show" role="alert">
+                A simple light alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                A simple dark alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">With Icon</h5>
+
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <i class="bi bi-star me-1"></i>
+                A simple primary alert with icon—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                <i class="bi bi-collection me-1"></i>
+                A simple secondary alert with icon—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="bi bi-check-circle me-1"></i>
+                A simple success alert with icon—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-octagon me-1"></i>
+                A simple danger alert with icon—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-triangle me-1"></i>
+                A simple warning alert with icon—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <i class="bi bi-info-circle me-1"></i>
+                A simple info alert with icon—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                <i class="bi bi-folder me-1"></i>
+                A simple dark alert with icon—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Outlined</h5>
+
+              <div class="alert border-primary alert-dismissible fade show" role="alert">
+                A simple primary outlined alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert border-secondary alert-dismissible fade show" role="alert">
+                A simple secondary outlined alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert border-success alert-dismissible fade show" role="alert">
+                A simple success outlined alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert border-danger alert-dismissible fade show" role="alert">
+                A simple danger outlined alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert border-warning alert-dismissible fade show" role="alert">
+                A simple warning outlined alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert border-info alert-dismissible fade show" role="alert">
+                A simple info outlined alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert border-light alert-dismissible fade show" role="alert">
+                A simple light outlined alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert border-dark alert-dismissible fade show" role="alert">
+                A simple dark outlined alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
 
             </div>
           </div>
@@ -576,45 +673,121 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Accordion without outline borders</h5>
+              <h5 class="card-title">Default Solid Color</h5>
 
-              <!-- Accordion without outline borders -->
-              <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                      Accordion Item #1
-                    </button>
-                  </h2>
-                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                      Accordion Item #2
-                    </button>
-                  </h2>
-                  <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                      Accordion Item #3
-                    </button>
-                  </h2>
-                  <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                  </div>
-                </div>
-              </div><!-- End Accordion without outline borders -->
+              <div class="alert alert-primary bg-primary text-light border-0 alert-dismissible fade show" role="alert">
+                A simple primary alert with solid color—check it out!
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-secondary bg-secondary text-light border-0 alert-dismissible fade show" role="alert">
+                A simple secondary alert with solid color—check it out!
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
+                A simple success alert with solid color—check it out!
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-danger bg-danger text-light border-0 alert-dismissible fade show" role="alert">
+                A simple danger alert with solid color—check it out!
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-warning bg-warning border-0 alert-dismissible fade show" role="alert">
+                A simple warning alert with solid color—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-info bg-info border-0 alert-dismissible fade show" role="alert">
+                A simple info alert with solid color—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-light bg-light border-0 alert-dismissible fade show" role="alert">
+                A simple light alert with solid color—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-dark bg-dark text-light border-0 alert-dismissible fade show" role="alert">
+                A simple dark alert with solid color—check it out!
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
 
             </div>
           </div>
 
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">With Heading &amp Separator</h5>
+
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Primary Heading</h4>
+                <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
+                <hr>
+                <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Secondary Heading</h4>
+                <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
+                <hr>
+                <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Success Heading</h4>
+                <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
+                <hr>
+                <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Danger Heading</h4>
+                <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
+                <hr>
+                <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-warning  alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Warning Heading</h4>
+                <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
+                <hr>
+                <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-info  alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Info Heading</h4>
+                <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
+                <hr>
+                <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-light border-light alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Lignt Heading</h4>
+                <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
+                <hr>
+                <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-dark  alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Dark Heading</h4>
+                <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
+                <hr>
+                <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </section>

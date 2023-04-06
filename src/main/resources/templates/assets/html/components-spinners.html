@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Components / Badges - NiceAdmin Bootstrap Template</title>
+  <title>Components / Spinners - NiceAdmin Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -297,7 +297,7 @@
             </a>
           </li>
           <li>
-            <a href="components-badges.html" class="active">
+            <a href="components-badges.html">
               <i class="bi bi-circle"></i><span>Badges</span>
             </a>
           </li>
@@ -347,7 +347,7 @@
             </a>
           </li>
           <li>
-            <a href="components-spinners.html">
+            <a href="components-spinners.html" class="active">
               <i class="bi bi-circle"></i><span>Spinners</span>
             </a>
           </li>
@@ -509,63 +509,108 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Badges</h1>
+      <h1>Spinners</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <li class="breadcrumb-item">Components</li>
-          <li class="breadcrumb-item active">Badges</li>
+          <li class="breadcrumb-item active">Spinners</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
       <div class="row">
-
         <div class="col-lg-6">
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Default Badges</h5>
+              <h5 class="card-title">Border spinner</h5>
+              <p>Use the border spinners for a lightweight loading indicator.</p>
 
-              <span class="badge bg-primary">Primary</span>
-              <span class="badge bg-secondary">Secondary</span>
-              <span class="badge bg-success">Success</span>
-              <span class="badge bg-danger">Danger</span>
-              <span class="badge bg-warning text-dark">Warning</span>
-              <span class="badge bg-info text-dark">Info</span>
-              <span class="badge bg-light text-dark">Light</span>
-              <span class="badge bg-dark">Dark</span>
+              <!-- Border spinner -->
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div><!-- End Border spinner -->
+
             </div>
-          </div><!-- End Default Badges -->
+          </div>
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Pill Badges</h5>
-              <span class="badge rounded-pill bg-primary">Primary</span>
-              <span class="badge rounded-pill bg-secondary">Secondary</span>
-              <span class="badge rounded-pill bg-success">Success</span>
-              <span class="badge rounded-pill bg-danger">Danger</span>
-              <span class="badge rounded-pill bg-warning text-dark">Warning</span>
-              <span class="badge rounded-pill bg-info text-dark">Info</span>
-              <span class="badge rounded-pill bg-light text-dark">Light</span>
-              <span class="badge rounded-pill bg-dark">Dark</span>
+              <h5 class="card-title">Colors</h5>
+
+              <!-- Color spinners -->
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-warning" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-info" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div><!-- End Color spinners -->
+
             </div>
-          </div><!-- End Pill Badges -->
+          </div>
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Icon Badges</h5>
-              <span class="badge bg-primary"><i class="bi bi-star me-1"></i> Primary</span>
-              <span class="badge bg-secondary"><i class="bi bi-collection me-1"></i> Secondary</span>
-              <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Success</span>
-              <span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i> Danger</span>
-              <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> Warning</span>
-              <span class="badge bg-info text-dark"><i class="bi bi-info-circle me-1"></i> Info</span>
-              <span class="badge bg-light text-dark"><i class="bi bi-star me-1"></i> Light</span>
-              <span class="badge bg-dark"><i class="bi bi-folder me-1"></i> Dark</span>
+              <h5 class="card-title">Alignment</h5>
+              <p>Use flexbox utilities, float utilities, or text alignment utilities to place spinners exactly where you need them in any situation.</p>
+
+              <!-- Center aligned spinner -->
+              <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div><!-- End Center aligned spinner -->
+
             </div>
-          </div><!-- End Icon Badges -->
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Buttons</h5>
+              <p>Use spinners within buttons to indicate an action is currently processing or taking place. You may also swap the text out of the spinner element and utilize button text as needed.</p>
+
+              <!-- Button spinners -->
+              <button class="btn btn-primary" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span class="visually-hidden">Loading...</span>
+              </button>
+              <button class="btn btn-primary" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
+
+              <button class="btn btn-primary" type="button" disabled>
+                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                <span class="visually-hidden">Loading...</span>
+              </button>
+              <button class="btn btn-primary" type="button" disabled>
+                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
+              <!-- End Button spinners -->
+
+            </div>
+          </div>
 
         </div>
 
@@ -573,64 +618,93 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Border Badges</h5>
-              <span class="badge border-primary border-1 text-primary">Primary</span>
-              <span class="badge border-secondary border-1 text-secondary">Secondary</span>
-              <span class="badge border-success border-1 text-success">Success</span>
-              <span class="badge border-danger border-1 text-danger">Danger</span>
-              <span class="badge border-warning border-1 text-warning">Warning</span>
-              <span class="badge border-info border-1 text-info">Info</span>
-              <span class="badge border-light border-1 text-black-50">Light</span>
-              <span class="badge border-dark border-1 text-dark">Dark</span>
+              <h5 class="card-title">Growing spinner</h5>
+              <p>If you don’t fancy a border spinner, switch to the grow spinner. While it doesn’t technically spin, it does repeatedly grow!</p>
+
+              <!-- Growing spinner -->
+              <div class="spinner-grow" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div><!-- End Growing spinner -->
+
             </div>
-          </div><!-- End Border Badges -->
+          </div>
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Button Badges</h5>
+              <h5 class="card-title">Growing Color spinners</h5>
 
-              <button type="button" class="btn btn-primary mb-2">
-                Primary <span class="badge bg-white text-primary">4</span>
-              </button>
-              <button type="button" class="btn btn-secondary mb-2">
-                Secondary <span class="badge bg-white text-secondary">4</span>
-              </button>
-              <button type="button" class="btn btn-success mb-2">
-                Success <span class="badge bg-white text-success">4</span>
-              </button>
-              <button type="button" class="btn btn-danger mb-2">
-                Danger <span class="badge bg-white text-danger">4</span>
-              </button>
-              <button type="button" class="btn btn-warning mb-2">
-                Warning <span class="badge bg-white text-warning">4</span>
-              </button>
-              <button type="button" class="btn btn-info mb-2">
-                Info <span class="badge bg-white text-info">4</span>
-              </button>
-              <button type="button" class="btn btn-light mb-2">
-                Light <span class="badge bg-secondary text-light">4</span>
-              </button>
-              <button type="button" class="btn btn-dark mb-2">
-                Dark <span class="badge bg-white text-dark">4</span>
-              </button>
+              <!-- Growing Color spinnersr -->
+              <div class="spinner-grow text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-warning" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-info" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div><!-- End Growing Color spinners -->
+
             </div>
-          </div><!-- End Button Badges -->
+          </div>
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Heading Badges</h5>
+              <h5 class="card-title">Sizes</h5>
+              <p>Add <code>.spinner-border-sm</code> and <code>.spinner-grow-sm</code> to make a smaller spinner that can quickly be used within other components. Or, use custom CSS or inline styles to change the dimensions as needed.</p>
 
-              <h1>Example h1 heading <span class="badge bg-primary">Primary</span></h1>
-              <h2>Example h2 heading <span class="badge bg-secondary">Secondary</span></h2>
-              <h3>Example h3 heading <span class="badge bg-success">Success</span></h3>
-              <h4>Example h4 heading <span class="badge bg-danger">Danger</span></h4>
-              <h5>Example h5 heading <span class="badge bg-warning">Warning</span></h5>
-              <h6>Example h6 heading <span class="badge bg-info">Info</span></h6>
+              <!-- Sized spinners -->
+              <div class="spinner-border spinner-border-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+
+              <div class="spinner-border" style="width: 30px; height: 30px;" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+
+              <div class="spinner-border" style="width: 40px; height: 40px;" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+
+              <div class="spinner-border" style="width: 50px; height: 50px;" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+
+              <div class="spinner-grow spinner-grow-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+
+              <div class="spinner-grow" style="width: 30px; height: 30px;" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+
+              <div class="spinner-grow" style="width: 40px; height: 40px;" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+
+              <div class="spinner-grow" style="width: 50px; height: 50px;" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <!-- End Sized spinners -->
+
             </div>
-          </div><!-- End Heading Badges -->
+          </div>
 
         </div>
-
       </div>
     </section>
 
