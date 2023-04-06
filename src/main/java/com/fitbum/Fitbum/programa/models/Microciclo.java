@@ -1,5 +1,5 @@
 
-package com.fitbum.Fitbum.entidades;
+package com.fitbum.Fitbum.programa.models;
 import jakarta.persistence.*;
 
 @Entity

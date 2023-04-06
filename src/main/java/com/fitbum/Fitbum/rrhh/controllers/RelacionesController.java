@@ -1,4 +1,4 @@
-package com.fitbum.Fitbum.controladores;
+package com.fitbum.Fitbum.rrhh.controllers;
 
 import jakarta.persistence.*;
 

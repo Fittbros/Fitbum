@@ -1,4 +1,4 @@
-package com.fitbum.Fitbum.entidades;
+package com.fitbum.Fitbum.rrhh.controllers;
 
 import jakarta.persistence.*;
 
@@ -7,7 +7,7 @@ import java.sql.Date;
 @Entity
 @Table(name="Suscripción")
 
-public class Suscripcion {
+public class SuscripcionController {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idSuscripcion;

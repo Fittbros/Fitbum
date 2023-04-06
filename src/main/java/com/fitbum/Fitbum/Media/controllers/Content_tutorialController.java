@@ -1,6 +1,6 @@
+package com.fitbum.Fitbum.Media.controllers;
 
-package com.fitbum.Fitbum.controladores;
-import jakarta.persistence.*;
+import jakarta.persistence.Id;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
-@RequestMapping("/microciclo")
+@RequestMapping("/tutorial")
+public class Content_tutorialController {
 
-public class MicrocicloController {
 
 
 

@@ -1,4 +1,6 @@
-package com.fitbum.Fitbum.controladores;
+package com.fitbum.Fitbum.parametros.controllers;
+
+
 import jakarta.persistence.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -8,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
-@RequestMapping("/ejercicioForm")
+@RequestMapping("/estadisticas")
 
-public class Ejercicio_formController {
+public class EstadisticasController {
+
 
 
 }
-

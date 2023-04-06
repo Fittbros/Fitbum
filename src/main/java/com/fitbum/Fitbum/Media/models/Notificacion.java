@@ -1,4 +1,4 @@
-package com.fitbum.Fitbum.entidades;
+package com.fitbum.Fitbum.Media.models;
 import jakarta.persistence.Id;
 
 import java.time.LocalDate;

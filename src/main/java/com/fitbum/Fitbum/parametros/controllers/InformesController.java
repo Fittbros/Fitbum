@@ -1,4 +1,4 @@
-package com.fitbum.Fitbum.controladores;
+package com.fitbum.Fitbum.parametros.controllers;
 
 import jakarta.persistence.*;
 import lombok.RequiredArgsConstructor;

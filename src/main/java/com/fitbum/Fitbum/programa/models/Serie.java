@@ -1,10 +1,10 @@
-package com.fitbum.Fitbum.controladores;
+package com.fitbum.Fitbum.programa.models;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name="Serie")
-public class SerieController {
+public class Serie {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int idSerie;
