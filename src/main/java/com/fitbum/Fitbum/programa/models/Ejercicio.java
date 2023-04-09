@@ -1,4 +1,4 @@
-package com.fitbum.Fitbum.programa.models;
+package com.fitbum.Fitbum.entidades;
 
 import jakarta.persistence.Id;
 

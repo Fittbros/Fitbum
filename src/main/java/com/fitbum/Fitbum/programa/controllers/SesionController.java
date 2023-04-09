@@ -1,4 +1,4 @@
-package com.fitbum.Fitbum.programa.controllers;
+package com.fitbum.Fitbum.controladores;
 import jakarta.persistence.*;
 
 @Entity

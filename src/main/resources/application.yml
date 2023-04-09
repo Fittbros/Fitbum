@@ -1,6 +1,10 @@
 spring:
   main.banner-mode: off
   profiles:
+<<<<<<< Updated upstream
     active: dev
+=======
+    active: dev2
+>>>>>>> Stashed changes
   main:
     allow-bean-definition-overriding: false
