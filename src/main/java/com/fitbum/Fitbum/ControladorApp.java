@@ -11,8 +11,12 @@ public class ControladorApp {
         return "home";
     }
 
-    @GetMapping("/layout")
+    @GetMapping("/_layout")
     public String layout() {
-        return "/layout";
+        return "_layout";
+    }
+    @GetMapping("/layout-login")
+    public String layoutLogin() {
+        return "layout-login";
     }
 }
