@@ -1,6 +1,6 @@
 spring:
   main.banner-mode: off
   profiles:
-    active: dev
+    active: dev2
   main:
     allow-bean-definition-overriding: false

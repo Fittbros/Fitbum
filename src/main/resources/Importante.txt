@@ -1,2 +1,11 @@
 mysql -h localhost -P 3306 --protocol=tcp -u root -p
 
+
+sql detalles?
+
+INSERT INTO detalle_usuario
+(  nombre, apellido1, apellido2, email, password, peso, altura, sexo, fechaNacim)
+
+VALUES ( 'Pepe','Manzana','Madrid','arde@g.es','1234', 80, 1, 1, '1990-01-01'),
+       ('Juan','Perez','Garcia','yu@ys.com','1234', 70, 1, 1, '1990-01-01'),
+       ('Maria','Garcia','Perez','tar@ya.jk','1234', 60, 2, 0, '1990-01-01');

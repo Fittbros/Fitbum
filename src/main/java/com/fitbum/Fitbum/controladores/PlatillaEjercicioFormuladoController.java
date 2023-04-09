@@ -1,2 +1,3 @@
-package com.fitbum.Fitbum.controladores;public class PlatillaEjercicioFormuladoController {
+package com.fitbum.Fitbum.controladores;
+public class PlatillaEjercicioFormuladoController {
 }

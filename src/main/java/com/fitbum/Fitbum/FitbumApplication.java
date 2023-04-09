@@ -11,7 +11,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @SpringBootApplication
-public class FitbumApplication implements CommandLineRunner {
+public class FitbumApplication {
+
 	@Autowired
 	DetalllesRepositorio detalllesRepositorio;
 
@@ -22,12 +23,6 @@ public class FitbumApplication implements CommandLineRunner {
 	}
 
 
-	public void run(String... args) throws Exception {
-		//DetalleUsuario usuario = new DetalleUsuario("Pepe","Lopez");
-		DetalleUsuario usuario2 = new DetalleUsuario("Jose","Wright","mari","jos1@gmail.com","1234",80.0f,1.80f,1, LocalDate.of(1982,5,13));
 
-		//detalllesRepositorio.save(usuario);
-		detalllesRepositorio.save(usuario2);
-	}
 
 }
