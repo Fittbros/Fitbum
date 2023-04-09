@@ -1,2 +1,3 @@
-package com.fitbum.Fitbum.controladores;public class PlantillaSerieController {
+package com.fitbum.Fitbum.controladores;
+public class PlantillaSerieController {
 }

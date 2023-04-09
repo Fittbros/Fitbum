@@ -1,2 +1,3 @@
-package com.fitbum.Fitbum.controladores;public class PlantillaMicrocicloController {
+package com.fitbum.Fitbum.controladores;
+public class PlantillaMicrocicloController {
 }

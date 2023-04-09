@@ -7,10 +7,10 @@ import jakarta.persistence.*;
 
 @Entity
 
-@Table(name="PlatillaEjercicioFormulado")
+@Table(name="PlantillaEjercicioFormulado")
 
 
-public class PlatillaEjercicioFormulado {
+public class PlantillaEjercicioFormulado {
     @Id
 
     @GeneratedValue(strategy = GenerationType.AUTO)
