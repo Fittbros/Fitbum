@@ -19,4 +19,8 @@ public class ControladorApp {
     public String layoutLogin() {
         return "layout-login";
     }
+    @GetMapping("/login")
+    public String Login() {
+        return "login";
+    }
 }
