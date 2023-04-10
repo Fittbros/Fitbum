@@ -22,7 +22,38 @@ public class Controllerprueba {
     public String prueba(){
         return "pruebadocker";
 
-    }/*
+    }
+
+    @GetMapping("/home")
+    public String home() {
+        return "_home";
+    }
+
+    @GetMapping("/_layout")
+    public String layout() {
+        return "_layout";
+    }
+
+    @GetMapping("/layout_login")
+    public String layoutLogin() {
+        return "layout_login";
+    }
+
+    @GetMapping("/login")
+    public String Login() {
+        return "login";
+    }
+
+    @GetMapping("/index")
+    public String inicio() {return "index";
+    }
+
+    @GetMapping("/blank")
+    public String inicio2() {
+        return "_layout";
+    }
+
+    /*
     @Autowired
     private  final DetalllesRepositorio detalllesRepositorio;
 
