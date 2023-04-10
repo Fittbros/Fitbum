@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @RepositoryRestResource(collectionResourceRel = "usuario",path = "usuario")
-public interface DetalllesRepositorio extends CrudRepository <DetalleUsuario,Integer>{
+public interface DetallesRepositorio extends CrudRepository <DetalleUsuario,Integer>{
     List<DetalleUsuario> findByNombre(@Param("nombre") String nombre);
     List<DetalleUsuario> findByApellido1(@Param("apellido1") String apellido1);
 }
