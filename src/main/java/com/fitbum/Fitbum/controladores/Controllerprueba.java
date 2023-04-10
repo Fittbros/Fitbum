@@ -1,17 +1,10 @@
 package com.fitbum.Fitbum.controladores;
 
-import com.fitbum.Fitbum.entidades.DetalleUsuario;
-import com.fitbum.Fitbum.repositories.DetalllesRepositorio;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 //import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Log4j2
@@ -23,7 +16,13 @@ public class Controllerprueba {
     public String prueba(){
         return "pruebadocker";
 
-    }/*
+
+
+    }
+    @GetMapping("/prueba2")
+    public String prueba2(){
+        return "index";}
+    /*
     @Autowired
     private  final DetalllesRepositorio detalllesRepositorio;
 
