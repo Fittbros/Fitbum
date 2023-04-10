@@ -1,28 +1,17 @@
-<div th:switch="${detalleusuarios}">
-    <h2 th:case="null">No users yet!</h2>
-       <div th:case="*">
-        <h2>CLIENTES</h2>
-        <table>
-            <caption>Lista de Clientes</caption>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="detalleUsuaio : ${usuarios}">
-                <td th:text="${usuarios.nombre}"></td>
-                <td th:text="${usuarios.email}"></td>
-                <td th:text="${usuarios.apellido1}"></td>
-               <!-- <td><a th:href="@{/customer/edit/{id}(id=${customer.id})}">Edit</a></td>
-                <td><a th:href="@{/customer/delete/{id}(id=${customer.id})}">Delete</a></td>
-            -->
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <p><a href="/usuario/signup">Add a new customer</a></p>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="pagetitle">
+        <h1>Inicio</h1>
+    </div><!-- End Page Title -->
+
 </div>
+
+</body>
+</html>
