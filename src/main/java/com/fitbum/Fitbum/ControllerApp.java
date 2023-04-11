@@ -1,4 +1,4 @@
-package com.fitbum.Fitbum.controladores;
+package com.fitbum.Fitbum;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Log4j2
 @RequiredArgsConstructor
 //@RequestMapping("/prueba")
-public class Controllerprueba {
+public class ControllerApp {
 
-    @GetMapping("/prueba")
-    public String prueba(){
-        return "pruebadocker";
-
-
-
-    }
     @GetMapping("/index")
-    public String prueba2(){
+    public String inicio(){
         return "index";}
+    @GetMapping("/publico")
+    public String publico(){
+        return "publico";}
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";}
     /*
     @Autowired
     private  final DetalllesRepositorio detalllesRepositorio;
