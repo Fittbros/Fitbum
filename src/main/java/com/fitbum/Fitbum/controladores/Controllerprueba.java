@@ -19,7 +19,7 @@ public class Controllerprueba {
 
 
     }
-    @GetMapping("/prueba2")
+    @GetMapping("/index")
     public String prueba2(){
         return "index";}
     /*
