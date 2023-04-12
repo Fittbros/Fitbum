@@ -22,6 +22,9 @@ public class ControllerApp {
     @GetMapping("/login")
     public String login(){
         return "login";}
+    @GetMapping("/programa/index")
+    public String indexentreno(){
+        return "/programa/index";}
     /*
     @Autowired
     private  final DetalllesRepositorio detalllesRepositorio;
