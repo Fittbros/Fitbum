@@ -39,7 +39,14 @@ public class ControllerApp {
     public String perfil(){
         return "/rrhh/perfil";}
 
+    @GetMapping("/atletas")
+    public String indexatletas(){
+        return "/atletas/index";}
 
+    @GetMapping("/entrenadores")
+    public String indexentrenadores(){
+        return "/entrenadores/index";}
+    
 
     /*
     @Autowired
