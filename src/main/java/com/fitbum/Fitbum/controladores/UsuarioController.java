@@ -19,4 +19,11 @@ public class UsuarioController {
     public String registro(){
         return "/formularios/nuevoUsuario";}
 
+    @GetMapping("/olvideContrasena")
+    public String formularioOlvideContrasena(){
+        return "/formularios/olvideContrasena";}
+
+    @GetMapping("/perfil")
+    public String perfil(){
+        return "/rrhh/perfil";}
 }

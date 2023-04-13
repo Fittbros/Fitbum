@@ -46,6 +46,8 @@ public class ControllerApp {
         return "/entrenadores/index";}
 
 
+
+
     /*
     @Autowired
     private  final DetalllesRepositorio detalllesRepositorio;
