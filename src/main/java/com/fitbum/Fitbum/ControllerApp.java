@@ -21,7 +21,7 @@ public class ControllerApp {
 
     @GetMapping("/login")
     public String login(){
-        return "login";}
+        return "formularios/login";}
 
     @GetMapping("/programa")
     public String indexentreno(){
@@ -35,9 +35,7 @@ public class ControllerApp {
     public String indexchat(){
         return "/chat/index";}
 
-    @GetMapping("/perfil")
-    public String perfil(){
-        return "/rrhh/perfil";}
+
 
     @GetMapping("/atletas")
     public String indexatletas(){
@@ -46,7 +44,7 @@ public class ControllerApp {
     @GetMapping("/entrenadores")
     public String indexentrenadores(){
         return "/entrenadores/index";}
-    
+
 
     /*
     @Autowired
