@@ -21,7 +21,33 @@ public class ControllerApp {
 
     @GetMapping("/login")
     public String login(){
-        return "login";}
+        return "formularios/login";}
+
+    @GetMapping("/programa")
+    public String indexentreno(){
+        return "/programa/index";}
+
+    @GetMapping("/misrutinas")
+    public String indexrutinas(){
+        return "/mis_rutinas/index";}
+
+    @GetMapping("/chat")
+    public String indexchat(){
+        return "/chat/index";}
+
+
+
+    @GetMapping("/atletas")
+    public String indexatletas(){
+        return "/atletas/index";}
+
+    @GetMapping("/entrenadores")
+    public String indexentrenadores(){
+        return "/entrenadores/index";}
+
+
+
+
     /*
     @Autowired
     private  final DetalllesRepositorio detalllesRepositorio;
@@ -77,6 +103,6 @@ public class ControllerApp {
     public String showSignUpForm(Customer customer) {
         return "add-customer";
     }*/
-    }
+}
 
 
