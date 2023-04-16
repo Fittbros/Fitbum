@@ -1,4 +1,4 @@
-package com.fitbum.servicios.usuarios;
+package com.fitbum.repositorios.usuarios;
 
 import com.fitbum.entidades.usuarios.DetalleUsuario;
 import com.fitbum.repositorios.UsuarioRepositorio;

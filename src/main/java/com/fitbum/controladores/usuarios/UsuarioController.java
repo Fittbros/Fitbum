@@ -2,7 +2,7 @@ package com.fitbum.controladores.usuarios;
 
 
 import com.fitbum.entidades.usuarios.DetalleUsuario;
-import com.fitbum.servicios.usuarios.UsuarioServicio;
+import com.fitbum.repositorios.usuarios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 
