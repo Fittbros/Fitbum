@@ -1,4 +1,4 @@
-package com.fitbum.servicios.programas;
+package com.fitbum.servicios;
 
 import java.util.List;
 
