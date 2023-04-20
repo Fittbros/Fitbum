@@ -1,16 +1,28 @@
 package com.fitbum.entidades;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fitbum.entidades.usuarios.Usuario;
+import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 public class Notificacion {
 
     @Id
-    private int idnotificacion;
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
+    private Integer idNotificacion;
 
-    private LocalDate fecha_envio;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate fechaEnvio;
     private String texto;
-    private boolean leido, eliminar;
+    private Boolean leido;
+    private Boolean eliminar;
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
 
 
 
