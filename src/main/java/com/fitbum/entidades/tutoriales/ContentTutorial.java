@@ -1,6 +1,8 @@
 package com.fitbum.entidades.tutoriales;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fitbum.entidades.usuarios.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,10 +27,11 @@ public class ContentTutorial {
     private String descripcion;
     private String url;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ejercicio")
-    private Ejercicios ejercicios;
+    @JsonManagedReference
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "idEjercicio")
+    private Ejercicios ejercicio;
 
 
 

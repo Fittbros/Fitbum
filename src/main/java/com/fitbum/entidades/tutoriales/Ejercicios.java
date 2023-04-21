@@ -2,6 +2,7 @@ package com.fitbum.entidades.tutoriales;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fitbum.entidades.Notificacion;
+import com.fitbum.entidades.usuarios.DetalleUsuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,8 +31,9 @@ public class Ejercicios {
    private String mascara_gen_progresion;
 
    @JsonManagedReference
-   @OneToMany(mappedBy = "ejercicio", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-   private Set<ContentTutorial> contentTutorial;
+   @OneToOne (mappedBy = "ejercicio")
+   @PrimaryKeyJoinColumn
+   private ContentTutorial contentTutorial;
 
 
 

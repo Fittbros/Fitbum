@@ -10,11 +10,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
 @Table(name="DetalleUsuario")
 public class DetalleUsuario {
     @Id
-
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer	idDetalleUsuario;
     private String	nombre;

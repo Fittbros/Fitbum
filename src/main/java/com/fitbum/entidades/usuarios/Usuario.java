@@ -64,8 +64,8 @@ public class Usuario {
 
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "relaUsuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Relaciones> relaUsuario;
+    @OneToMany(mappedBy = "relaEntrenador", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Relaciones> relaEntrenador;
     @JsonManagedReference
     @OneToMany(mappedBy = "relaCliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Relaciones> relaCliente;

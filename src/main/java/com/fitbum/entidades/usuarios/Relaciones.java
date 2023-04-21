@@ -33,8 +33,8 @@ public class Relaciones {
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "relaUsuario",nullable = false)
-    private Usuario relaUsuario;
+    @JoinColumn(name = "relaEntrenador",nullable = false)
+    private Usuario relaEntrenador;
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "relaCliente",nullable = false)

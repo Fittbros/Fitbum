@@ -5,11 +5,18 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fitbum.entidades.usuarios.Usuario;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.util.List;
 
+import java.util.Set;
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-
 @Table(name="Estadisticas")
 public class Estadisticas {
 
@@ -24,6 +31,6 @@ public class Estadisticas {
     private Usuario usuario;
     @JsonManagedReference
     @OneToMany(mappedBy = "estadisticas", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Informes> informes;
+    private Set<Informes> informes;
 
 }
