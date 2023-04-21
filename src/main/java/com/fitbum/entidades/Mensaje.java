@@ -1,7 +1,7 @@
-package com.fitbum.entidades.usuarios;
-
+package com.fitbum.entidades;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fitbum.entidades.usuarios.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 @Getter
@@ -17,28 +16,35 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="Relaciones")
+@Table(name = "Mensaje")
+public class Mensaje {
 
-public class Relaciones {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idRelacion;
+
+    private Integer idMensaje;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd")
-    private LocalDate fechainit;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private LocalDate fechafin;
+    private LocalDate fechaEnvio;
+    private String texto;
+    private Boolean leido;
+    private Boolean eliminar;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "relaEntrenador",nullable = false)
-    private Usuario relaEntrenador;
+    @JoinColumn(name = "emisor",nullable = false)
+    private Usuario emisor;
+
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "relaCliente",nullable = false)
-    private Usuario relaCliente;
+    @JoinColumn(name = "receptor",nullable = false)
+    private Usuario receptor;
+
+
+
+
+
 
 
 }
