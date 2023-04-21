@@ -1,4 +1,5 @@
 package com.fitbum.entidades.usuarios;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,6 +26,13 @@ public class DetalleUsuario {
     private Float	altura;
     private Integer	sexo;
     private LocalDate fechaNacim;
+
+    @JsonManagedReference
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
+
 
     public DetalleUsuario(String nombre, String apellido1) {
         this.nombre = nombre;

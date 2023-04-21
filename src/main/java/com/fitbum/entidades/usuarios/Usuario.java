@@ -3,6 +3,7 @@ package com.fitbum.entidades.usuarios;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fitbum.entidades.Mensaje;
 import com.fitbum.entidades.Notificacion;
 import com.fitbum.entidades.estadisticas.Estadisticas;
 import com.fitbum.entidades.plantillas.PlantillaMesociclo;
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -27,25 +29,24 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idUsuario;
 
-    private Integer detalle_usuario_idDetalle_usuario;
-    private Integer roles_idRoles;
     private Integer admin;
-    //Falta relacion mensajes, relaciones,
-    @JsonManagedReference
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<PlantillaMesociclo> plantillaMesociclo;
+//    @JsonManagedReference
+//    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private Set<PlantillaMesociclo> plantillaMesociclo;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Suscripcion> suscripcion;
+    private Set<Suscripcion> suscripcion;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Estadisticas> estadisticas;
 
     @JsonManagedReference
-    @OneToOne @MapsId
-    DetalleUsuario detalleUsuario;
+    @OneToOne (mappedBy = "usuario")
+    @PrimaryKeyJoinColumn
+    private DetalleUsuario detalleUsuario;
+
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
@@ -54,11 +55,26 @@ public class Usuario {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Notificacion> notificacion;
+    private Set<Notificacion> notificacion;
+
+//    @JsonManagedReference
+//    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private Set<Mesociclo> mesociclo;
+
+
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Mesociclo> mesociclo;
+    @OneToMany(mappedBy = "relaUsuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Relaciones> relaUsuario;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "relaCliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Relaciones> relaCliente;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "emisor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Mensaje> emisor;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "receptor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Mensaje> receptor;
 
 
 }
