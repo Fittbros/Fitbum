@@ -1,20 +1,40 @@
 package com.fitbum.entidades.programa;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
+import java.util.Set;
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
+@Getter
+@Setter
+@DynamicUpdate
 @Table(name="Serie")
 public class Serie {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private int idSerie;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Integer idSerie;
 
-    private int idEjercicio_form;
-    private float carga;
-    private int repes;
+    @Column
+    private Integer idEjercicio_form;
+    @Column
+    private Float carga;
+    @Column
+    private Integer repes;
+    @Column
+    private String modif_tecnicos;
+    @Column
+    private String modif_programacion;
 
-    private String modif_visibles;
+    @ManyToOne
+    @JoinColumn (name="EjerForm",nullable=false)
+    private Mesociclo ejer_Serie;
 
-    private String modif_interna;
 
 }

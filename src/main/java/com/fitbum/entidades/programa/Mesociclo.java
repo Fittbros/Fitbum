@@ -1,34 +1,55 @@
 package com.fitbum.entidades.programa;
 
+import com.fitbum.entidades.usuarios.Usuario;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.sql.Date;
+import java.util.Set;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
+@Getter
+@Setter
+@DynamicUpdate
 @Table(name="Mesociclo")
 
 public class Mesociclo {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private int idMesociclo;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Integer id;
 
-    private int idUsuario;
-
-    private int num_microciclos;
-
-    private int fr_entr_sem;
-
-    private int long_microciclo;
-
-    private String descanso_basi;
-
-    private String descanso_acces;
-
+    @Column
+    private Integer idUsuario;
+    @Column
+    private Integer num_micro ;
+    @Column
+    private Integer fr_entreno ;
+    @Column
+    private Integer long_micro;
+    @Column
+    private Integer desc_bas ;
+    @Column
+    private Integer desc_acc ;
+    @Column
     private String descripcion;
-
-    private Date fecha_inicio;
-
+    @Column
+    private Date fecha_inicio ;
+    @Column
     private Date fecha_fin;
+
+    @ManyToOne
+    @JoinColumn (name="Usuario",nullable=false)
+    private Usuario usuariomesociclo;
+
+    @OneToMany(mappedBy = "Mesociclo", cascade = CascadeType.ALL)
+    private Set<Microciclo> meso_microciclo;
+
 
 }
