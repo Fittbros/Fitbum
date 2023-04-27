@@ -21,8 +21,8 @@ import java.time.LocalDate;
 
 public class Suscripcion {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idSuscripcion;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idSuscripcion;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate fechaPago;

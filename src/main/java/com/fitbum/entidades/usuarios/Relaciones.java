@@ -21,8 +21,8 @@ import java.time.LocalDate;
 
 public class Relaciones {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idRelacion;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idRelacion;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd")
