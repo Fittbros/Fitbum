@@ -1,7 +1,6 @@
 insert into rol values (1, 'ADMIN'), (2,'ENTRENADOR' ), (3,'CLIENTE' );
-insert into usuario values ( 1, 1, 1), (2, 2, 2), (3, 1,  3),(4,1,3);
-delete from usuario_seq;
-insert into usuario_seq values (5);
+insert into usuario values ( 1, 1, 1), (2, 1, 2), (3, 1,  3),(4,1,3);
+
 insert into detalle_usuario values (1, 1.65,'Pere','Manzana','Mad@rid','1990-01-01','pepe','1234', 80,  1 ),
                                    (2, 1.8,'Jorqueran','Perez','Mad@rid','1990-01-07','juan','1234', 120,  1 ),
                                    (3, 1.73,'Martosa','Perez','Mad@rid','1990-11-01','maria','1234', 75,  0),
