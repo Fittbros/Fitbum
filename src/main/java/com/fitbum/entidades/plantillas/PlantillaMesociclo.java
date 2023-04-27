@@ -1,12 +1,20 @@
 package com.fitbum.entidades.plantillas;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fitbum.entidades.programa.Mesociclo;
+import com.fitbum.entidades.usuarios.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Set;
 
 
 @AllArgsConstructor
@@ -20,12 +28,22 @@ import java.sql.Date;
 public class PlantillaMesociclo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idPlantillaMesociclo;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;//entrenador (usuario con idRol = 2)
+
+
+ @JsonManagedReference
+@OneToMany(mappedBy = "plantillaMesociclo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+private Set<PlantillaMicrociclo> plantillaMicrociclo;
+
+
     @Column
     private Integer idMesociclos;
 
-    @Column
-    private Integer idEntrenador;
 
     @Column
     private Integer numMicrociclos;
@@ -46,96 +64,13 @@ public class PlantillaMesociclo {
     private String 	descripcion;
 
     @Column
-    private Date fechaInicio;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate fechaInicio;
 
     @Column
-    private Date fechaFin;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate fechaFin;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getIdMesociclos() {
-        return idMesociclos;
-    }
-
-    public void setIdMesociclos(Integer idMesociclos) {
-        this.idMesociclos = idMesociclos;
-    }
-
-    public Integer getIdEntrenador() {
-        return idEntrenador;
-    }
-
-    public void setIdEntrenador(Integer idEntrenador) {
-        this.idEntrenador = idEntrenador;
-    }
-
-    public Integer getNumMicrociclos() {
-        return numMicrociclos;
-    }
-
-    public void setNumMicrociclos(Integer numMicrociclos) {
-        this.numMicrociclos = numMicrociclos;
-    }
-
-    public Integer getFrEntreSemana() {
-        return frEntreSemana;
-    }
-
-    public void setFrEntreSemana(Integer frEntreSemana) {
-        this.frEntreSemana = frEntreSemana;
-    }
-
-    public Integer getLongMicrociclo() {
-        return longMicrociclo;
-    }
-
-    public void setLongMicrociclo(Integer longMicrociclo) {
-        this.longMicrociclo = longMicrociclo;
-    }
-
-    public String getDescansoAcces() {
-        return descansoAcces;
-    }
-
-    public void setDescansoAcces(String descansoAcces) {
-        this.descansoAcces = descansoAcces;
-    }
-
-    public String getDescansoBas() {
-        return descansoBas;
-    }
-
-    public void setDescansoBas(String descansoBas) {
-        this.descansoBas = descansoBas;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Date getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
-    public Date getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
 }

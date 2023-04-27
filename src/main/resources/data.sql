@@ -1,4 +1,4 @@
-insert into rol values (1, 'ADMIN'), (2,'ENTRENADOR' ), (3,'CLIENTE' );
+insert into role values (1, 'ADMIN'), (2,'ENTRENADOR' ), (3,'ATLETA' );
 insert into usuario values ( 1, 1, 1), (2, 1, 2), (3, 1,  3),(4,1,3);
 
 insert into detalle_usuario values (1, 1.65,'Pere','Manzana','Mad@rid','1990-01-01','pepe','1234', 80,  1 ),

@@ -1,7 +1,6 @@
 package com.fitbum.entidades.usuarios;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fitbum.entidades.Notificacion;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,17 +14,17 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="Rol")
-public class Rol {
+@Table(name="Role")
+public class Role {
 
     @Id
-    private Long idRol;
+    private Integer idRole;
 
 
-    private String nombreRol;
+    private String nombreRole;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "rol", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Usuario> usuario;
 
 }

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fitbum.entidades.Mensaje;
 import com.fitbum.entidades.Notificacion;
 import com.fitbum.entidades.estadisticas.Estadisticas;
+import com.fitbum.entidades.plantillas.PlantillaMesociclo;
+import com.fitbum.entidades.programa.Mesociclo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,9 +28,9 @@ public class Usuario {
 
 
     private Integer admin;
-//    @JsonManagedReference
-//    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private Set<PlantillaMesociclo> plantillaMesociclo;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Mesociclo> mesociclo;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -46,16 +48,16 @@ public class Usuario {
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idRol")
-    private Rol rol;
+    @JoinColumn(name = "idRole")
+    private Role role;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Notificacion> notificacion;
 
-//    @JsonManagedReference
-//    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private Set<Mesociclo> mesociclo;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<PlantillaMesociclo> plantMesociclo;
 
 
 

@@ -1,4 +1,6 @@
 package com.fitbum.entidades.programa;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,51 +21,22 @@ public class Sesion {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
-    @Column
-    private Integer idMicrociclo;
+    private Integer idSesion;
+
 
     @Column
-    private String nombre_variante;
+    private String nombreVariante;
     @Column
     private String descripcion;
 
+    @JsonBackReference
     @ManyToOne
-    @JoinColumn (name="Microciclo",nullable=false)
-    private Mesociclo micro_sesion;
+    @JoinColumn (name="idMicrociclo",nullable=false)
+    private Microciclo microciclo;
 
-    @OneToMany(mappedBy = "Sesion", cascade = CascadeType.ALL)
-    private Set<Microciclo> sesion_ejer;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "sesion", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<EjercicioForm> ejercicioForm;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getIdMicrociclo() {
-        return idMicrociclo;
-    }
-
-    public void setIdMicrociclo(Integer idMicrociclo) {
-        this.idMicrociclo = idMicrociclo;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getNombre_variante() {
-        return nombre_variante;
-    }
-
-    public void setNombre_variante(String nombre_variante) {
-        this.nombre_variante = nombre_variante;
-    }
 }

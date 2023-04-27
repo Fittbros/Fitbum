@@ -1,7 +1,6 @@
 package com.fitbum.dto;
 
-import com.fitbum.entidades.usuarios.Rol;
-import jakarta.persistence.Column;
+import com.fitbum.entidades.usuarios.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,5 +21,5 @@ public class UsuarioDto {
 
     private String nombreEmail;
 
-    private Set<Rol> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 }

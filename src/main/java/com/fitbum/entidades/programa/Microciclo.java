@@ -1,5 +1,8 @@
 
 package com.fitbum.entidades.programa;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fitbum.entidades.usuarios.Suscripcion;
 import com.fitbum.entidades.usuarios.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,47 +25,24 @@ public class Microciclo {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idMicrociclo;
 
     @Column
-    private Float volumen_estandar ;
+    private Float volumenEstandar ;
     @Column
-    private Float intensidad_estandar ;
+    private Float intensidadEstandar ;
    @Column
     private Integer orden;
 
+
+    @JsonBackReference
     @ManyToOne
     @JoinColumn (name="Mesociclo",nullable=false)
-    private Mesociclo meso_microciclo;
+    private Mesociclo mesociclo;
 
-    @OneToMany(mappedBy = "Microciclo", cascade = CascadeType.ALL)
-    private Set<Microciclo> micro_sesion;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "microciclo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Sesion> sesion;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Float getVolumen_estandar() {
-        return volumen_estandar;
-    }
-
-    public void setVolumen_estandar(Float volumen_estandar) {
-        this.volumen_estandar = volumen_estandar;
-    }
-
-    public void setIntensidad_estandar(Float intensidad_estandar) {
-        this.intensidad_estandar = intensidad_estandar;
-    }
-
-    public Integer getOrden() {
-        return orden;
-    }
-
-    public void setOrden(Integer orden) {
-        this.orden = orden;
-    }
 }

@@ -16,9 +16,9 @@ import java.sql.Date;
 
 public class SesionController {
 
-    @GetMapping("/programa")
-    public String mesociclo(){
-        return "programa/mesociclo";}
+//    @GetMapping("/programa")
+//    public String mesociclo(){
+//        return "programa/mesociclo";}
 
 
 

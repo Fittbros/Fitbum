@@ -1,5 +1,8 @@
 package com.fitbum.entidades.programa;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fitbum.entidades.usuarios.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,8 +10,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -23,94 +28,37 @@ public class Mesociclo {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idMesociclo;
+
 
     @Column
-    private Integer idUsuario;
+    private Integer numMicro ;
     @Column
-    private Integer num_micro ;
+    private Integer frEntreno ;
     @Column
-    private Integer fr_entreno ;
+    private Integer longMicro;
     @Column
-    private Integer long_micro;
+    private Integer descBas ;
     @Column
-    private Integer desc_bas ;
-    @Column
-    private Integer desc_acc ;
+    private Integer descAcc ;
     @Column
     private String descripcion;
     @Column
-    private Date fecha_inicio ;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate fechaInicio ;
     @Column
-    private Date fecha_fin;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate fechaFin;
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
 
-    @ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumn (name="Usuario",nullable=false)
-    private Usuario usuariomesociclo;
-
-    @OneToMany(mappedBy = "Mesociclo", cascade = CascadeType.ALL)
-    private Set<Microciclo> meso_microciclo;
-
-
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
-
-    public Integer getNum_micro() {return num_micro;}
-
-    public void setNum_micro(Integer num_micro) {
-        this.num_micro = num_micro;
-    }
-
-    public Integer getFr_entreno() {return fr_entreno;}
-
-    public void setFr_entreno(Integer fr_entreno) {
-        this.fr_entreno = fr_entreno;
-    }
-
-    public Integer getLong_micro() {return long_micro;}
-
-    public void setLong_micro(Integer long_micro) {
-        this.long_micro = long_micro;
-    }
-
-    public Integer getDesc_acc() {
-        return desc_acc;
-    }
-
-    public void setDesc_acc(Integer desc_acc) {
-        this.desc_acc = desc_acc;
-    }
-
-    public Integer getDesc_bas() {
-        return desc_bas;
-    }
-
-    public void setDesc_bas(Integer desc_bas) {
-        this.desc_bas = desc_bas;
-    }
+    @JsonManagedReference
+    @OneToMany(mappedBy = "mesociclo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Microciclo> microciclo;
 
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Date getFecha_fin() {
-        return fecha_fin;
-    }
-
-    public void setFecha_fin(Date fecha_fin) {
-        this.fecha_fin = fecha_fin;
-    }
-
-    public Date getFecha_inicio() {
-        return fecha_inicio;
-    }
-
-    public void setFecha_inicio(Date fecha_inicio) {
-        this.fecha_inicio = fecha_inicio;
-    }
 }

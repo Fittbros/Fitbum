@@ -2,6 +2,7 @@ package com.fitbum.entidades.tutoriales;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fitbum.entidades.Notificacion;
+import com.fitbum.entidades.programa.EjercicioForm;
 import com.fitbum.entidades.usuarios.DetalleUsuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ import java.util.Set;
 public class Ejercicios {
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
    private Integer idEjercicio;
 
@@ -34,6 +35,12 @@ public class Ejercicios {
    @OneToOne (mappedBy = "ejercicio")
    @PrimaryKeyJoinColumn
    private ContentTutorial contentTutorial;
+
+   @JsonManagedReference
+   @OneToMany(mappedBy = "ejercicios", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+   private Set<EjercicioForm> ejercicioForm;
+
+
 
 
 

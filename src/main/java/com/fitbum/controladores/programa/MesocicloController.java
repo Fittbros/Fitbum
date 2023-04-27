@@ -16,14 +16,14 @@ import java.sql.Date;
 
 public class MesocicloController {
 
-    @GetMapping("/programa")
-    public String mesociclo(){
-        return "programa/mesociclo";}
-
-
-    @GetMapping("/programa/mesociclo")
-    public String entrenarSesion(){
-        return "programa/mesociclo/entrenarSesion";}
+//    @GetMapping("/programa")
+//    public String mesociclo(){
+//        return "programa/mesociclo";}
+//
+//
+//    @GetMapping("/programa/mesociclo")
+//    public String entrenarSesion(){
+//        return "programa/mesociclo/entrenarSesion";}
 
 
 }
