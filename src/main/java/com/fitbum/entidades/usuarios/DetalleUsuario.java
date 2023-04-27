@@ -1,4 +1,5 @@
 package com.fitbum.entidades.usuarios;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,13 +10,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
 @Table(name="DetalleUsuario")
 public class DetalleUsuario {
     @Id
-
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer	idDetalleUsuario;
+    private Long	idDetalleUsuario;
     private String	nombre;
     private String	apellido1;
     private String	apellido2;
@@ -25,6 +23,13 @@ public class DetalleUsuario {
     private Float	altura;
     private Integer	sexo;
     private LocalDate fechaNacim;
+
+    @JsonManagedReference
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
+
 
     public DetalleUsuario(String nombre, String apellido1) {
         this.nombre = nombre;

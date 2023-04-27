@@ -1,8 +1,4 @@
-package com.fitbum.entidades.estadisticas;
-
-import java.sql.Date;
-import java.time.LocalDate;
-
+package com.fitbum.entidades;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fitbum.entidades.usuarios.Usuario;
@@ -13,25 +9,42 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="Informes")
-public class Informes {
-    @Id
+@Table(name = "Mensaje")
+public class Mensaje {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer	idInformes;
+
+    private Integer idMensaje;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd")
-    private LocalDate fecha;
-    private String	descripcion;
-    private String	nombre;
-    private Boolean	visibleUsuario;
+    private LocalDate fechaEnvio;
+    private String texto;
+    private Boolean leido;
+    private Boolean eliminar;
+
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idEstadisticas")
-    private Estadisticas estadisticas;
+    @JoinColumn(name = "emisor",nullable = false)
+    private Usuario emisor;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "receptor",nullable = false)
+    private Usuario receptor;
+
+
+
+
+
+
+
 }
