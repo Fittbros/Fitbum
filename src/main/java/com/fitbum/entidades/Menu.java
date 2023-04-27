@@ -14,7 +14,7 @@ import lombok.Setter;
 @Table(name="Menu")
 public class Menu {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMenu;
     private String nombre;
     private Integer idOrden;
