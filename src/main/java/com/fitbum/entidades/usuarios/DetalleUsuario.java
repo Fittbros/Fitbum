@@ -13,8 +13,7 @@ import java.time.LocalDate;
 @Table(name="DetalleUsuario")
 public class DetalleUsuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer	idDetalleUsuario;
+    private Long	idDetalleUsuario;
     private String	nombre;
     private String	apellido1;
     private String	apellido2;
