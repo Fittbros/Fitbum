@@ -22,7 +22,8 @@ import java.util.Set;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    private Integer idUsuario;
+
 
     private Integer admin;
 //    @JsonManagedReference

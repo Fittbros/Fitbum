@@ -13,7 +13,9 @@ import java.time.LocalDate;
 @Table(name="DetalleUsuario")
 public class DetalleUsuario {
     @Id
-    private Long	idDetalleUsuario;
+
+    private Integer	idDetalleUsuario;
+
     private String	nombre;
     private String	apellido1;
     private String	apellido2;

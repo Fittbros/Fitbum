@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Informes {
     @Id
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer	idInformes;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd")
