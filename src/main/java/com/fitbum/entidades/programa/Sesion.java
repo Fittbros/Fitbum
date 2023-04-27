@@ -18,8 +18,8 @@ import java.util.Set;
 public class Sesion {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer idSesion;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Integer id;
     @Column
     private Integer idMicrociclo;
 
@@ -34,4 +34,36 @@ public class Sesion {
 
     @OneToMany(mappedBy = "Sesion", cascade = CascadeType.ALL)
     private Set<Microciclo> sesion_ejer;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getIdMicrociclo() {
+        return idMicrociclo;
+    }
+
+    public void setIdMicrociclo(Integer idMicrociclo) {
+        this.idMicrociclo = idMicrociclo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getNombre_variante() {
+        return nombre_variante;
+    }
+
+    public void setNombre_variante(String nombre_variante) {
+        this.nombre_variante = nombre_variante;
+    }
 }

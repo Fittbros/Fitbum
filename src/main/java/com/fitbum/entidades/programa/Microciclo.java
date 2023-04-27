@@ -37,4 +37,32 @@ public class Microciclo {
 
     @OneToMany(mappedBy = "Microciclo", cascade = CascadeType.ALL)
     private Set<Microciclo> micro_sesion;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Float getVolumen_estandar() {
+        return volumen_estandar;
+    }
+
+    public void setVolumen_estandar(Float volumen_estandar) {
+        this.volumen_estandar = volumen_estandar;
+    }
+
+    public void setIntensidad_estandar(Float intensidad_estandar) {
+        this.intensidad_estandar = intensidad_estandar;
+    }
+
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
+    }
 }

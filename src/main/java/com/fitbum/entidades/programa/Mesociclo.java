@@ -53,31 +53,64 @@ public class Mesociclo {
 
 
     public Integer getId() {return id;}
-
+    public void setId(Integer id) {this.id = id;}
 
     public Integer getNum_micro() {return num_micro;}
 
+    public void setNum_micro(Integer num_micro) {
+        this.num_micro = num_micro;
+    }
+
     public Integer getFr_entreno() {return fr_entreno;}
+
+    public void setFr_entreno(Integer fr_entreno) {
+        this.fr_entreno = fr_entreno;
+    }
 
     public Integer getLong_micro() {return long_micro;}
 
+    public void setLong_micro(Integer long_micro) {
+        this.long_micro = long_micro;
+    }
+
     public Integer getDesc_acc() {
         return desc_acc;
+    }
+
+    public void setDesc_acc(Integer desc_acc) {
+        this.desc_acc = desc_acc;
+    }
+
+    public Integer getDesc_bas() {
+        return desc_bas;
     }
 
     public void setDesc_bas(Integer desc_bas) {
         this.desc_bas = desc_bas;
     }
 
+
     public String getDescripcion() {
         return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Date getFecha_fin() {
         return fecha_fin;
     }
 
+    public void setFecha_fin(Date fecha_fin) {
+        this.fecha_fin = fecha_fin;
+    }
+
     public Date getFecha_inicio() {
         return fecha_inicio;
+    }
+
+    public void setFecha_inicio(Date fecha_inicio) {
+        this.fecha_inicio = fecha_inicio;
     }
 }
