@@ -11,16 +11,35 @@ import java.sql.Date;
 
 public class PlantillaMesociclo {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer 	idMesociclos;
-    private Integer 	idEntrenador;
-    private Integer 	numMicrociclos;
-    private Integer 	frEntreSemana;
-    private Integer 	longMicrociclo;
+    @Column
+    private Integer idMesociclos;
+
+    @Column
+    private Integer idEntrenador;
+
+    @Column
+    private Integer numMicrociclos;
+
+    @Column
+    private Integer frEntreSemana;
+
+    @Column
+    private Integer longMicrociclo;
+
+    @Column
     private String 	descansoBas;
+
+    @Column
     private String 	descansoAcces;
+
+    @Column
     private String 	descripcion;
+
+    @Column
     private Date fechaInicio;
+
+    @Column
     private Date 	fechaFin;
 }

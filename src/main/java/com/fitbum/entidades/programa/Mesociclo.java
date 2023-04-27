@@ -44,7 +44,7 @@ public class Mesociclo {
     @Column
     private Date fecha_fin;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn (name="Usuario",nullable=false)
     private Usuario usuariomesociclo;
 
@@ -52,4 +52,32 @@ public class Mesociclo {
     private Set<Microciclo> meso_microciclo;
 
 
+    public Integer getId() {return id;}
+
+
+    public Integer getNum_micro() {return num_micro;}
+
+    public Integer getFr_entreno() {return fr_entreno;}
+
+    public Integer getLong_micro() {return long_micro;}
+
+    public Integer getDesc_acc() {
+        return desc_acc;
+    }
+
+    public void setDesc_bas(Integer desc_bas) {
+        this.desc_bas = desc_bas;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public Date getFecha_fin() {
+        return fecha_fin;
+    }
+
+    public Date getFecha_inicio() {
+        return fecha_inicio;
+    }
 }
