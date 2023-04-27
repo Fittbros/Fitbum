@@ -1,19 +1,14 @@
 package com.fitbum.entidades.usuarios;
-
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fitbum.entidades.Mensaje;
 import com.fitbum.entidades.Notificacion;
 import com.fitbum.entidades.estadisticas.Estadisticas;
-import com.fitbum.entidades.plantillas.PlantillaMesociclo;
-import com.fitbum.entidades.programa.Mesociclo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.List;
 import java.util.Set;
 
@@ -28,6 +23,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
+
 
     private Integer admin;
 //    @JsonManagedReference

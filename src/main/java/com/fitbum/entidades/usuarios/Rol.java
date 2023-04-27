@@ -19,7 +19,7 @@ import java.util.Set;
 public class Rol {
 
     @Id
-    private Integer idRol;
+    private Long idRol;
 
 
     private String nombreRol;
