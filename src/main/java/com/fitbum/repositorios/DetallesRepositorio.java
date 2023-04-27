@@ -1,14 +1,20 @@
 package com.fitbum.repositorios;
 import com.fitbum.entidades.usuarios.DetalleUsuario;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 
-@RepositoryRestResource(collectionResourceRel = "usuario",path = "usuario")
-public interface DetallesRepositorio extends CrudRepository <DetalleUsuario,Integer>{
+
+@Repository
+public interface DetallesRepositorio extends JpaRepository<DetalleUsuario,Integer> {
     List<DetalleUsuario> findByNombre(@Param("nombre") String nombre);
     List<DetalleUsuario> findByApellido1(@Param("apellido1") String apellido1);
+
+    DetalleUsuario findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
+
+
+
 }

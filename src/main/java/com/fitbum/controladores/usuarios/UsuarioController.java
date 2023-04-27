@@ -2,8 +2,10 @@ package com.fitbum.controladores.usuarios;
 
 
 import com.fitbum.entidades.usuarios.DetalleUsuario;
-import com.fitbum.repositorios.usuarios.UsuarioServicio;
+import com.fitbum.servicios.usuarios.DetallesServicio;
+import com.fitbum.servicios.usuarios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,8 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
+    @Autowired
+    private DetallesServicio detallesServicio;
 
     @GetMapping("/usuarios")
     @ResponseBody
@@ -31,8 +35,15 @@ public class UsuarioController {
     }
 
     @GetMapping("/nuevoUsuario")
-    public String registro(){
+    public String registro(Model model){
+        model.addAttribute("detalleUsuario", new DetalleUsuario());
         return "/formularios/nuevoUsuario";}
+
+    @GetMapping("/crearUsuario")
+    public String crearUsuario(DetalleUsuario detalleUsuario){
+        detallesServicio.crearUsuario(detalleUsuario);
+        return "/formularios/login";
+    }
 
     @GetMapping("/olvideContrasena")
     public String formularioOlvideContrasena(){

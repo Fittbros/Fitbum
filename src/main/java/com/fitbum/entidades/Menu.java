@@ -1,4 +1,4 @@
-package com.fitbum.entidades.tutoriales;
+package com.fitbum.entidades;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,20 +11,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
-@Table(name="Content_tutorial")
-public class Content_tutorial {
-
+@Table(name="Menu")
+public class Menu {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
-    private Integer idContent_tutorial;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idMenu;
     private String nombre;
-    private String descripcion;
+    private Integer idOrden;
+    private Integer idPadre;
     private String url;
-
-
-
-
 }
