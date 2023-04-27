@@ -1,4 +1,4 @@
-package com.fitbum.repositorios.programas;
+package com.fitbum.repositorios.programa;
 
 public interface MesocicloRepositorio {
 }
