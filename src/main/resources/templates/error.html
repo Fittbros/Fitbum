@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+<head>
+    <title>Error404</title>
+
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="pagetitle">
+
+    </div><!-- End Page Title -->
+    <div class="container-fluid">
+        <div class="text-center mt-5">
+            <div class="error mx-auto" data-text="404">
+                <p class="m-0">404</p>
+            </div>
+
+            <p class="text-dark mb-5 lead" th:text="#{errorMessage}">Page Not Found</p>
+            <img src="/assets/img/cat.gif">
+
+            <p class="text-black-50 mb-0" th:text="#{errorMessage2}">It looks like you found a glitch in the matrix...</p>
+
+
+
+            <a  href='/' th:text="#{errorMessage3}">
+            ← Back to Dashboard</a>
+
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
