@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="pagetitle">
+        <h1>Prueba menu</h1>
+    </div><!-- End Page Title -->
+    <!--div class="container" th:insert="${fragmentName} :: ${fragmentName}(dataObject==${dataObject})">
+    </div-->
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>url</th>
+            <th>idOrden</th>
+            <th>idPadre</th>
+            <th>Eliminar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dataObject : ${dataObject}">
+            <td th:text="${dataObject.idMenu}"></td>
+            <td th:text="${dataObject.nombre}"></td>
+            <td th:text="${dataObject.url}"></td>
+            <td th:text="${dataObject.idOrden}"></td>
+            <td th:text="${dataObject.idPadre}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <div> fin de tabla </div>
+    <div>
+        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-4 py-lg-0"  >
+                <li class="nav-item"
+                    th:if="${dataObject.idPadre == 0 } "
+                    th:each="dataObject : ${dataObject}" >
+                    <a
+                            th:href="${dataObject.url}"
+                            th:text="${dataObject.nombre}"
+                            class="nav-link ">
+                    </a>
+                </li>
+            </div>
+        </div>
+        </nav>
+    </div>
+</div>
+
+
+</body>
+</html>

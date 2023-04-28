@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+
+<body>
+<div layout:fragment="content">
+
+  <div class="container" th:insert="${fragmentName} :: ${fragmentName}(dataObject==${dataObject})">
+  <h1 >Welcome to my app!</h1>
+  </div>
+</div>
+</body>
+</html>

@@ -10,24 +10,22 @@
     <div class="pagetitle">
         <h1>Inicio tutoriales</h1>
     </div><!-- End Page Title -->
+    <div><a  href='/menu' >
+        index2</a></div>
    Prueba navbar 1
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
-        <a href="../index.html" class="navbar-brand d-flex align-items-center">
-            <h2 class="m-0 text-primary" th:text="#{principal.nombreapp}"></h2>
-        </a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <li class="treeview" th:each="menu: ${menuList}">
+    </li>
 
-        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-4 py-lg-0"  >
-                <!--li class="treeview" th:each="menuItem : ${menuList}">
+                <li class="treeview" th:each="menuItem : ${menuList}">
                     <a th:if="${menuItem.parent.id == 999999 }"
                        class="nav-link"
                        aria-current="page"
                        th:href="${menuItem.url}" th:text="${menuItem.description}"></a>
-                </li-->
+                </li>
                 <li class="nav-item"
                     th:if="${menuItem.parent.id == 999999 } and  ${#lists.size(menuList.?[parent.id ==  __${menuItem.id}__ ]) == 0 } "
                     th:each="menuItem : ${menuList}" >
@@ -51,13 +49,7 @@
                     </div>
 
                 </li>
-            </div>
-            <div class="h-100 d-lg-inline-flex align-items-center d-none">
-                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href=""><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn btn-square rounded-circle bg-light text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
-            </div>
+
         </div>
     </nav>
     <!-- Navbar End -->

@@ -51,7 +51,9 @@ public class ControllerApp {
     @GetMapping("/tutoriales")
     public String indextutoriales(){
         return "/tutoriales/index";}
-
+//    @GetMapping("/menu")
+//    public String indexmenu(){
+//        return "/menu/index";}
     @GetMapping("/ajustes")
     public String indexerror(){
         return "/ajustes/index";}
