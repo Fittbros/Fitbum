@@ -14,7 +14,12 @@ insert into ejercicios values (1,'tocarse','Brazo','+1 rep +1 peso','Ejercicio 1
 
 insert into content_tutorial values (1,'tocarse fuerte','Ejercicio 1','https://www.youtube.com/watch?v=Jv4O_XeHPyA&pp=ygUjY2FiYWxsbyBob21vc2V4dWFsIGRlIGxhcyBtb250YcOxYXM%3D'),(2,'saltar muy alto','jump','https://www.youtube.com/watch?v=Jv4O_XeHPyA&pp=ygUjY2FiYWxsbyBob21vc2V4dWFsIGRlIGxhcyBtb250YcOxYXM%3D');
 delete from menu;
-insert into menu values (1, 1, 0, 'Inicio', '/index'),(2, 2, 0, 'Entrenar', '/programa'),(3, 3, 0, 'Mis rutinas', '/misrutinas'),(4, 4, 0, 'Chats', '/chat'),(5, 5, 4, 'Entrenador', '/chat/entrenador'),(6, 6, 4, 'Cliente', '/chat/cliente');
+insert into menu values (1, 1, 0, 'Inicio', '/index'),
+                        (2, 2, 0, 'Entrenar', '/programa'),
+                        (3, 3, 0, 'Mis rutinas', '/misrutinas'),
+                        (4, 4, 0, 'Chats', '/chat'),
+                        (5, 5, 4, 'Entrenador', '/chat/entrenador'),
+                        (6, 6, 4, 'Cliente', '/chat/cliente');
 
 
 
