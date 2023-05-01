@@ -1,4 +1,9 @@
 package com.fitbum.repositorios.tutoriales;
 
-public interface ContentTutorialRepositorio {
+import com.fitbum.entidades.tutoriales.ContentTutorial;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ContentTutorialRepositorio  extends JpaRepository<ContentTutorial,Long> {
 }
