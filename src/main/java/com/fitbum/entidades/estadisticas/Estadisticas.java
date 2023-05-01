@@ -22,8 +22,8 @@ public class Estadisticas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Integer	idEstadisticas;
+// Ale: He cambiado Integer por Long
+    private Long idEstadisticas;
     private String	descripcion;
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
