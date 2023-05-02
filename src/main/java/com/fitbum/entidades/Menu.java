@@ -1,10 +1,15 @@
 package com.fitbum.entidades;
 
+import com.fitbum.entidades.usuarios.Role;
+import com.fitbum.entidades.usuarios.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -17,7 +22,14 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMenu;
     private String nombre;
-    private Integer idOrden;
-    private Integer idPadre;
+    private Integer orden;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "padre",nullable = true)
+    private Menu padre;
     private String url;
+    private String icon;
+    private Integer activo;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Role> roles;
 }

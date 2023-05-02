@@ -19,8 +19,10 @@
             <th>Nombre</th>
             <th>url</th>
             <th>idOrden</th>
+            <th>icon</th>
+            <th>activo</th>
             <th>idPadre</th>
-            <th>Eliminar</th>
+
         </tr>
         </thead>
         <tbody>
@@ -28,28 +30,50 @@
             <td th:text="${dataObject.idMenu}"></td>
             <td th:text="${dataObject.nombre}"></td>
             <td th:text="${dataObject.url}"></td>
-            <td th:text="${dataObject.idOrden}"></td>
-            <td th:text="${dataObject.idPadre}"></td>
+            <td th:text="${dataObject.orden}"></td>
+            <td th:text="${dataObject.icon}"></td>
+            <td th:text="${dataObject.activo}"></td>
+            <td th:text="${dataObject.padre}"></td>
 
         </tr>
         </tbody>
     </table>
 
     <div> fin de tabla </div>
+    <div><a  href='/menu/indere' >
+        menu2</a></div>
     <div>
-        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
-
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto py-4 py-lg-0"  >
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+             style="background: linear-gradient(175deg, #035450 10%, #09beb5 55%);">
+            <div class="container-fluid d-flex flex-column p-0"><a
+                    class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="/index">
+                <div class="sidebar-brand-icon rotate-n-15"><img src="assets/img/logo.svg" width="68" height="188"
+                                                                 style="width: 21px;height: 73px;padding-right: 1px;margin-right: -8px;padding-left: 0px;margin-left: 0px;">
+                </div>
+                <div class="sidebar-brand-text mx-3">
+                    <h4 style="margin-right: 0px;padding-right: 0px;"><strong>Fitbum</strong></h4>
+                </div>
+            </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
                 <li class="nav-item"
-                    th:if="${dataObject.idPadre == 0 } "
+                    th:if="${dataObject.padre == null } "
                     th:each="dataObject : ${dataObject}" >
-                    <a
-                            th:href="${dataObject.url}"
-                            th:text="${dataObject.nombre}"
-                            class="nav-link ">
+                    <i th:class="${dataObject.icon}"> </i>
+                    <a class="nav-link "
+                       th:href="${dataObject.url}"
+                       th:text="${dataObject.nombre}">
+                        <i th:class="${dataObject.icon}"> </i>
+                        <i class=th:text=${dataObject.icon}> </i>
                     </a>
+                    <i th:class="${dataObject.icon}"> </i>
                 </li>
+                </ul>
+                <div class="text-center d-none d-md-inline">
+                    <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+                </div>
+            </div>
+        </nav>
             </div>
         </div>
         </nav>
@@ -58,4 +82,4 @@
 
 
 </body>
-</html>
+</--html>
