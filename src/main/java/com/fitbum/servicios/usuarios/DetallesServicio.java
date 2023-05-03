@@ -28,7 +28,7 @@ public class DetallesServicio {
     }
     public void crearUsuario(DetalleUsuario detalleUsuario){
         Usuario usuario = new Usuario();
-        Optional<Role> rol = rolRepositorio.findById(3L);
+        Optional<Role> rol = rolRepositorio.findById(3);
         Suscripcion suscripcion = new Suscripcion();
         usuario.setRole(rol.get());
         detalleUsuario.setUsuario(usuario);

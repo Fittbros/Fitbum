@@ -44,8 +44,19 @@ public class ControllerApp {
     @GetMapping("/entrenadores")
     public String indexentrenadores(){
         return "/entrenadores/index";}
+    @GetMapping("/logros")
+    public String indexlogros(){
+        return "/logros/index";}
 
-
+    @GetMapping("/tutoriales")
+    public String indextutoriales(){
+        return "/tutoriales/index";}
+//    @GetMapping("/menu")
+//    public String indexmenu(){
+//        return "/menu/index";}
+    @GetMapping("/ajustes")
+    public String indexerror(){
+        return "/ajustes/index";}
 
 
     /*

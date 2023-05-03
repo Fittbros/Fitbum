@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dar de alta cliente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-3">
+    <h2>Formulario menu</h2>
+    <form th:action="@{/menu/save}" th:object="${menu}" method="post">
+        <input type="hidden" th:field="*{idMenu}">
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input type="text" class="form-control" id="name" name="name" th:field="*{nombre}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="apellido">url:</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" th:field="*{url}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="activo">activo:</label>
+            <input type="number" class="form-control" id="activo" name="activo" th:field="*{activo}" required>
+        </div>
+        <div class="form-group">
+            <label for="padre">padre:</label>
+            <input type="number" class="form-control" id="padre" name="padre" th:field="*{padre}" required>
+        </div>
+        <div class="form-group">
+            <label for="orden">orden:</label>
+            <input type="number" class="form-control" id="orden" name="orden" th:field="*{orden}" required>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+
+    </form>
+
+
+
+
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

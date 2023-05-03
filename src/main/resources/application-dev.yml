@@ -53,3 +53,9 @@ logging:
       zaxxer: INFO
 
     root: INFO
+
+  server:
+    error:
+      whitelabel:
+
+        enabled = true
