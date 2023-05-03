@@ -14,6 +14,7 @@ public interface DetallesRepositorio extends JpaRepository<DetalleUsuario,Intege
     List<DetalleUsuario> findByApellido1(@Param("apellido1") String apellido1);
 
     DetalleUsuario findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
+    DetalleUsuario findByEmail(@Param("email") String email);
 
 
 

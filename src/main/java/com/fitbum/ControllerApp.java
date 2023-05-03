@@ -19,9 +19,7 @@ public class ControllerApp {
     public String publico(){
         return "publico";}
 
-    @GetMapping("/login")
-    public String login(){
-        return "formularios/login";}
+
 
     @GetMapping("/programa")
     public String indexentreno(){

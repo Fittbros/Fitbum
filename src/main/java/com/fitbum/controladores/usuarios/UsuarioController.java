@@ -42,7 +42,7 @@ public class UsuarioController {
     @GetMapping("/crearUsuario")
     public String crearUsuario(DetalleUsuario detalleUsuario){
         detallesServicio.crearUsuario(detalleUsuario);
-        return "/formularios/login";
+        return "/formularios/login";//Este manda a login
     }
 
     @GetMapping("/olvideContrasena")
