@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>FitBum</title>
+  <link href="assets/img/logo.svg" rel="shortcut icon" type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+  <link rel="stylesheet" th:href="@{/assets/fonts/fontawesome-all.min.css}">
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+       style="background: linear-gradient(175deg, #035450 10%, #09beb5 55%);">
+    <div class="container-fluid d-flex flex-column p-0"><a
+            class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="/index">
+      <div class="sidebar-brand-icon rotate-n-15"><img src="assets/img/logo.svg" width="68" height="188"
+                                                       style="width: 21px;height: 73px;padding-right: 1px;margin-right: -8px;padding-left: 0px;margin-left: 0px;">
+      </div>
+      <div class="sidebar-brand-text mx-3">
+        <h4 style="margin-right: 0px;padding-right: 0px;"><strong>Fitbum</strong></h4>
+      </div>
+    </a>
+      <hr class="sidebar-divider my-0">
+      <ul class="navbar-nav text-light" id="accordionSidebar">
+        <li class="nav-item"
+            th:if="${dataObject.padre == 9999 } "
+            th:each="dataObject : ${dataObject}" >
+
+          <a class="nav-link "
+             th:href="${dataObject.url}">
+            <i th:class="${dataObject.icon}"></i>
+            <span th:text="${dataObject.nombre}"> </span>
+          </a>
+
+        </li>
+
+
+
+        <!--li th:if="${dataObject.padre == 9999
+        and #lists.size(dataObject.?
+        [padre == dataObject.idMenu]) > 0
+
+        }" class="nav-item dropdown" th:each="dataObject : ${dataObject}">
+          jnfasdilvnlksvbnd
+        </li  este es el de chtgpt -->
+
+        <!--li th:if="${dataObject.padre == 999999 } and  ${#lists.size (dataObject.?[padre ==  __${dataObject.idMenu}__ ]) > 0 } "
+            class="nav-item dropdown"
+            th:each="dataobject : ${dataObject}" >
+          <a th:href="${dataobject.url}" th:text="${dataobject.nombre}"
+             class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item"
+               th:each="menuItemHijo : ${dataObject.?[padre ==  __${dataobject.idMenu}__ ]}"
+               th:href="${menuItemHijo.url}"
+               th:text="${menuItemHijo.nombre}"></a>
+          </div-->
+
+
+
+      </ul>
+      <div class="text-center d-none d-md-inline">
+        <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+      </div>
+    </div>
+  </nav>
+</div>
+</div>
+</nav>
+</div>
+
+<script th:src="@{/assets/js/theme.js}"></script>
+<script th:src="@{/assets/js/bs-init.js}"></script>
+<script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
