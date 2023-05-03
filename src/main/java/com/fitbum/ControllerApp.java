@@ -31,10 +31,6 @@ public class ControllerApp {
     public String indexrutinas(){
         return "/mis_rutinas/index";}
 
-    @GetMapping("/chat")
-    public String indexchat(){
-        return "/chat/index";}
-
 
 
     @GetMapping("/atletas")
@@ -51,9 +47,7 @@ public class ControllerApp {
     @GetMapping("/tutoriales")
     public String indextutoriales(){
         return "/tutoriales/index";}
-//    @GetMapping("/menu")
-//    public String indexmenu(){
-//        return "/menu/index";}
+
     @GetMapping("/ajustes")
     public String indexerror(){
         return "/ajustes/index";}
