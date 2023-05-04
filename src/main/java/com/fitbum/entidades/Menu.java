@@ -20,7 +20,7 @@ import java.util.Set;
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idMenu;
+    private Integer id;
     private String nombre;
     private Integer orden;
     @ManyToOne(fetch = FetchType.LAZY)

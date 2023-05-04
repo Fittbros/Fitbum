@@ -24,14 +24,15 @@ public class UsuarioSecurityImpl implements IUsuarioServicio, UserDetailsService
     private UsuarioRepositorio usuarioRepositorio;
 
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private BCryptPasswordEncoder passwordEncoder1;
+
 
 
     @Override
     public String getEncodedPassword(Usuario usuario) {
         String passwd = usuario.getPassword();
-        String encodedPasswod = passwordEncoder.encode(passwd);
-        return encodedPasswod;
+        String encodedPassword = passwordEncoder1.encode(passwd);
+        return encodedPassword;
     }
 
     @Override

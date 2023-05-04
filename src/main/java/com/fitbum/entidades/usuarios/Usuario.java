@@ -26,7 +26,7 @@ import java.util.Set;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idUsuario;
+    private Integer id;
     private String	nombre;
     private String	apellido1;
     private String	apellido2;
@@ -36,7 +36,8 @@ public class Usuario {
     private Float	altura;
     private Integer	sexo;
     private LocalDate fechaNacim;
-    private Integer activo;
+    @Basic(optional = false)
+    private boolean active;
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Mesociclo> mesociclo;
@@ -55,7 +56,7 @@ public class Usuario {
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idRole")
+    @JoinColumn(name = "idrole")
     private Role role;
 
     @JsonManagedReference

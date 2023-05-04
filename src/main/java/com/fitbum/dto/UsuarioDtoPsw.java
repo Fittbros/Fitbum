@@ -25,7 +25,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class UsuarioDtoPsw {
 
-    private Integer idUsuario;
+    private Integer id;
     private String	NombreUsuario;
     private String	nombre;
     private String	apellido1;

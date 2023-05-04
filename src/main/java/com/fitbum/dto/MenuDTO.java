@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 public class MenuDTO implements Serializable {
-    private Integer idMenu;
+    private Integer id;
     private String nombre;
     private MenuDTO padre;
     private Integer orden;
@@ -24,12 +24,12 @@ public class MenuDTO implements Serializable {
         this.icon = icon;
     }
 
-    public Integer getIdMenu() {
-        return idMenu;
+    public Integer getid() {
+        return id;
     }
 
-    public void setIdMenu(Integer idMenu) {
-        this.idMenu = idMenu;
+    public void setid(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {

@@ -13,8 +13,8 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario,Long> {
     @Query("Select count(id) from Usuario where email= ?1 and password = ?2")
     Integer repValidarPassword(String email, String password);
 
-    Usuario findById(@Param("IdUsuario") Integer idUsuario);
-    Usuario findByRole(@Param("Role") Integer idRole);
+    Usuario findByid(@Param("id") Integer id);
+    Usuario findByRole(@Param("Role") Integer id);
 
     Usuario findUsuarioByEmail(String email);
 

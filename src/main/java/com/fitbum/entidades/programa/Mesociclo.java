@@ -28,7 +28,7 @@ public class Mesociclo {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer idMesociclo;
+    private Integer id;
 
 
     @Column

@@ -9,7 +9,7 @@
 <div class="container mt-3">
     <h2>Formulario menu</h2>
     <form th:action="@{/menu/save}" th:object="${menu}" method="post">
-        <input type="hidden" th:field="*{idMenu}">
+        <input type="hidden" th:field="*{id}">
         <div class="form-group">
             <label for="name">Nombre:</label>
             <input type="text" class="form-control" id="name" name="name" th:field="*{nombre}" required>

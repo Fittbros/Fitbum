@@ -21,7 +21,7 @@ import java.util.Set;
 public class PlantillaEjercicioFormulado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idEjercicioFormulado;
+    private Integer id;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)

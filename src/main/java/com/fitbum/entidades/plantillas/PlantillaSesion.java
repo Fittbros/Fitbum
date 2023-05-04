@@ -24,7 +24,7 @@ public class PlantillaSesion {
     @Id
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer	idSesion;
+    private Integer	id;
 
 
     private String descripcion;

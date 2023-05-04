@@ -19,7 +19,7 @@ import org.hibernate.annotations.DynamicUpdate;
 public class PlantillaSerie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idSerie;
+    private Integer id;
 
     @Column
     private Float carga;

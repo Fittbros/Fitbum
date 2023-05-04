@@ -77,7 +77,7 @@ public class UsuarioController {
             //Guardo la password
             UsuarioDto usuario1 = this.service.guardar(usuarioDtoPsw);
             //return "usuarios/detallesusuario";
-            return String.format("redirect:/usuarios/%s", usuario1.getIdUsuario());
+            return String.format("redirect:/usuarios/%s", usuario1.getId());
         }
         else
         {
@@ -87,13 +87,13 @@ public class UsuarioController {
     }
 
 
-    @GetMapping("/olvideContrasena")
+    @GetMapping("/usuarios/olvideContrasena")
     public String formularioOlvideContrasena(){
-        return "/formularios/olvideContrasena";}
+        return "formularios/olvideContrasena";}
 
     @GetMapping("/perfil")
     public String perfil(){
-        return "/rrhh/perfil";}
+        return "rrhh/perfil";}
 
 
 }

@@ -28,7 +28,7 @@ import java.util.Set;
 public class PlantillaMesociclo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idPlantillaMesociclo;
+    private Integer id;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)

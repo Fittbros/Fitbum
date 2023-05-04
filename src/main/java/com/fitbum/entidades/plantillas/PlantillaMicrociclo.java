@@ -23,7 +23,7 @@ import java.util.Set;
 public class PlantillaMicrociclo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idPlantillaMicrociclo;
+    private Integer id;
 
 
     @Column

@@ -22,7 +22,7 @@ public class Ejercicios {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-   private Integer idEjercicio;
+   private Integer id;
 
    private String nombre;
    private String descripcion;

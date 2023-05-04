@@ -23,7 +23,7 @@ public class EjercicioForm {
 
     @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idEjercicioForm;
+    private Integer id;
 
 
     @Column

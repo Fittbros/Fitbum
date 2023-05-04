@@ -12,22 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoleDTO implements Serializable {
-    private Integer idRole;
+    private Integer id;
     private String nombreRole;
 
-    public Integer getIdRole() {
-        return idRole;
-    }
-
-    public void setIdRole(Integer idRole) {
-        this.idRole = idRole;
-    }
-
-    public String getNombreRole() {
-        return nombreRole;
-    }
-
-    public void setNombreRole(String nombreRole) {
-        this.nombreRole = nombreRole;
-    }
 }

@@ -22,7 +22,7 @@ public class Mensaje {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Integer idMensaje;
+    private Integer id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd")

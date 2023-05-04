@@ -21,7 +21,7 @@ public class Sesion {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer idSesion;
+    private Integer id;
 
 
     @Column

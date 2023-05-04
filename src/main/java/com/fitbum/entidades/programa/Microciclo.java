@@ -25,7 +25,7 @@ public class Microciclo {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer idMicrociclo;
+    private Integer id;
 
     @Column
     private Float volumenEstandar ;

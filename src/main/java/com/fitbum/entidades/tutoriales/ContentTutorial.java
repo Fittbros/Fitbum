@@ -21,7 +21,7 @@ public class ContentTutorial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Integer idContentTutorial;
+    private Integer id;
 
     private String nombre;
     private String descripcion;

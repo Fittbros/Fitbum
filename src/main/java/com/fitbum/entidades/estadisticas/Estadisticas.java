@@ -23,7 +23,7 @@ public class Estadisticas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Integer	idEstadisticas;
+    private Integer	id;
     private String	descripcion;
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)

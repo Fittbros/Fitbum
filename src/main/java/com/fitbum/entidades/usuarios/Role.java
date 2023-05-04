@@ -21,7 +21,7 @@ import java.util.stream.DoubleStream;
 public class Role {
 
     @Id
-    private Integer idRole;
+    private Integer id;
 
 
     private String nombreRole;
