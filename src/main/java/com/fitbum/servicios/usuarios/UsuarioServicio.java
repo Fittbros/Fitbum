@@ -4,13 +4,14 @@ import com.fitbum.dto.UsuarioDto;
 import com.fitbum.dto.UsuarioDtoPsw;
 import com.fitbum.entidades.usuarios.Usuario;
 import com.fitbum.repositorios.usuarios.UsuarioRepositorio;
+import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Getter
 @Service
 public class UsuarioServicio {
     @Autowired

@@ -38,15 +38,20 @@ public class SecurityConfig {
         // Configuración del formulario de inicio de sesión
         http.formLogin(form -> form
                 // Establece la página de inicio de sesión y permite que cualquier persona la visite sin necesidad de autenticación
-                .loginPage("/login").permitAll()
+                .loginPage("/usuarios/login")
+                .failureUrl("/usuarios/login-error")
                 // Establece la ruta para procesar el formulario de inicio de sesión cuando se envía
-                .loginProcessingUrl("/procesarLogin")
+                //https://stackoverflow.com/questions/53140629/spring-security-loginpage-vs-loginprocessingurl
+                //.loginProcessingUrl("/procesarLogin")
                 // Establece la ruta a la que se redirige al usuario después de iniciar sesión correctamente
                 .defaultSuccessUrl("/")
+                .permitAll()
         );
 
         // Configuración del cierre de sesión
         http.logout(logout -> logout
+                .logoutUrl("/usuarios/logout")
+                .logoutSuccessUrl("/")
                 // Establece la ruta para procesar la petición de cierre de sesión
                 //AntPathRequestMatcher es una clase de Spring Framework que se utiliza para mapear patrones de URL y
                 // determinar si una URL coincide con un patrón determinado.
@@ -54,9 +59,9 @@ public class SecurityConfig {
                 // utiliza para mapear la URL "/logout". Esto se utiliza en la configuración de la sesión para determinar
                 // la ruta de la petición de cierre de sesión. En otras palabras, esta línea de código le dice a Spring
                 // que cuando reciba una solicitud para "/logout", debe procesarla como una solicitud de cierre de sesión.
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                //.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 // Permite que cualquier persona cierre sesión
-                .permitAll()
+                //.permitAll()
         );
 
         /**

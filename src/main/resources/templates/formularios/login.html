@@ -27,7 +27,8 @@
                                 <div class="text-center">
                                     <h4 class="text-dark mb-4">Bienvenido</h4>
                                 </div>
-                                <form class="user">
+                                <form class="user" role="form" th:action="@{/usuarios/login}"
+                                      th:object="${loginForm}" method="post">
                                     <div class="mb-3"><input class="form-control form-control-user" type="email"
                                                              id="exampleInputEmail" aria-describedby="emailHelp"
                                                              placeholder="Email" name="username"></div>
@@ -42,6 +43,7 @@
                                         </div>
                                     </div>
                                     <button class="btn btn-primary d-block btn-user w-100" type="submit">Iniciar sesión</button>
+                                    <div class="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
                                     <hr>
                                     <a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i
                                             class="fab fa-google"></i>&nbsp; Iniciar sesión con Google</a><a
@@ -49,10 +51,11 @@
                                         class="fab fa-facebook-f"></i>&nbsp; Iniciar sesión con Facebook</a>
                                     <hr>
                                 </form>
-                                <div class="text-center"><a class="small" href="/olvideContrasena">Olvidé la contraseña</a></div>
+                                <div class="text-center"><a class="small" th:href="/olvideContrasena">Olvidé la contraseña</a></div>
                                 <div class="text-center"><a class="small" href="/nuevoUsuario">Crear nueva cuenta</a>
                                 </div>
                             </div>
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         </div>
                     </div>
                 </div>
