@@ -1,9 +1,7 @@
 package com.fitbum.entidades.tutoriales;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fitbum.entidades.Notificacion;
 import com.fitbum.entidades.programa.EjercicioForm;
-import com.fitbum.entidades.usuarios.DetalleUsuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -11,6 +11,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -25,7 +27,15 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
-
+    private String	nombre;
+    private String	apellido1;
+    private String	apellido2;
+    private String	email;
+    private String	password;
+    private Float	peso;
+    private Float	altura;
+    private Integer	sexo;
+    private LocalDate fechaNacim;
 
     private Integer admin;
     @JsonManagedReference
@@ -40,10 +50,8 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Estadisticas> estadisticas;
 
-    @JsonManagedReference
-    @OneToOne (mappedBy = "usuario")
-    @PrimaryKeyJoinColumn
-    private DetalleUsuario detalleUsuario;
+
+
 
 
     @JsonBackReference

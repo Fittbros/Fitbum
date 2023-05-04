@@ -2,10 +2,9 @@ package com.fitbum.servicios.usuarios;
 
 import com.fitbum.dto.UsuarioDto;
 import com.fitbum.dto.UsuarioDtoPsw;
-import com.fitbum.entidades.usuarios.DetalleUsuario;
 import com.fitbum.entidades.usuarios.Usuario;
-import com.fitbum.repositorios.usuarios.DetallesRepositorio;
 import com.fitbum.repositorios.usuarios.UsuarioRepositorio;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,30 +14,73 @@ import java.util.List;
 @Service
 public class UsuarioServicio {
     @Autowired
-    private DetallesRepositorio detallesRepositorio;
-    @Autowired
     private UsuarioRepositorio usuarioRepositorio;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
 
-    public List<DetalleUsuario> getAll(){return detallesRepositorio.findAll();}
 
-    public UsuarioDto mapToUserDto(Usuario user,DetalleUsuario det){
+    public List<Usuario> listartodos(){
+        List<Usuario> usuarioList = usuarioRepositorio.findAll();
+        return usuarioRepositorio.findAll();
+
+    }
+    public Usuario buscarporemail(String email){
+        Usuario usuario = usuarioRepositorio.findUsuarioByEmail(email);
+        return usuario;
+
+    }
+    public UsuarioDto mapToUserDto(Usuario user){
         UsuarioDto userDto = new UsuarioDto();
-        userDto.setNombreUsuario(det.getNombre()+" "+det.getApellido1()+" "+det.getApellido2());
-        userDto.setEmail(det.getEmail());
-        userDto.setRole(user.getRole().getIdRole());
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.map(user,userDto);
+        userDto.setNombreUsuario(user.getNombre()+" "+user.getApellido1()+" "+user.getApellido2());
         return userDto;
     }
-    public UsuarioDtoPsw mapToUserDtoPsw(Usuario user,DetalleUsuario det){
+    public UsuarioDtoPsw mapToUserDtoPsw(Usuario user){
         UsuarioDtoPsw userDto = new UsuarioDtoPsw();
-        userDto.setNombreUsuario(det.getNombre()+" "+det.getApellido1()+" "+det.getApellido2());
-        userDto.setEmail(det.getEmail());
-        userDto.setRole(user.getRole().getIdRole());
-        userDto.setPassword(det.getPassword());
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.map(user,userDto);
+        userDto.setNombreUsuario(user.getNombre()+" "+user.getApellido1()+" "+user.getApellido2());
         return userDto;
     }
+
+    public Usuario mapToUserPsw(UsuarioDtoPsw usuarioDtoPsw){
+        Usuario user = new Usuario();
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.map(usuarioDtoPsw,user);
+        return user;
+    }
+
+    public Usuario mapToUser(UsuarioDto usuarioDto){
+        Usuario user = new Usuario();
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.map(usuarioDto,user);
+        return user;
+    }
+    public UsuarioDto guardar(UsuarioDto usuarioDto, String password){
+        System.out.println("usuarioDto:" +usuarioDto.getNombreUsuario() );
+        //Traduzco del dto con datos de entrada a la entidad
+        final Usuario entidad = this.mapToUser(usuarioDto);
+        System.out.println("Entidad:" +entidad.getNombre() );
+        entidad.setPassword(password);
+        System.out.println("Entidad:" +entidad.getPassword() );
+        //Guardo el la base de datos
+        Usuario entidadGuardada =  usuarioRepositorio.save(entidad);
+        //Traducir la entidad a DTO para devolver el DTO
+        return this.mapToUserDto(entidadGuardada);
+    }
+    public UsuarioDto guardar(UsuarioDtoPsw usuarioDtoPsw){
+        System.out.println("usuarioDto:" +usuarioDtoPsw.getNombreUsuario() );
+        //Traduzco del dto con datos de entrada a la entidad
+        final Usuario entidad = this.mapToUserPsw(usuarioDtoPsw);
+        System.out.println("Entidad:" +entidad.getNombre() );
+        //Guardo el la base de datos
+        Usuario entidadGuardada =  usuarioRepositorio.save(entidad);
+        //Traducir la entidad a DTO para devolver el DTO
+        return this.mapToUserDto(entidadGuardada);
+    }
+
 //    public Usuario guardarUsuarioDTO(UserDto userDto) {
 //        // Crear un nuevo objeto Usuario
 //        Usuario usuario = new Usuario();
