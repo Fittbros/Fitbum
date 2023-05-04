@@ -28,7 +28,9 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests( authorize -> authorize
-
+                .requestMatchers("/assets/**").permitAll()
+                .requestMatchers("/assetsPublico/**").permitAll()
+                .requestMatchers("/forms/**").permitAll()
                 //Permitimos todas las visitas a la pagina principal
                 .requestMatchers("","/").permitAll()
                 //Permitimos todas las visitas a la pagina principal
