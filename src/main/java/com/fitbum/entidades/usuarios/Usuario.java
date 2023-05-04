@@ -36,7 +36,7 @@ public class Usuario {
     private Float	altura;
     private Integer	sexo;
     private LocalDate fechaNacim;
-
+    private Integer activo;
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Mesociclo> mesociclo;

@@ -23,10 +23,9 @@ public class Menu {
     private Integer idMenu;
     private String nombre;
     private Integer orden;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "padre",nullable = true)
-//    private Menu padre;
-    private Integer padre;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "padre",nullable = true)
+    private Menu padre;
     private String url;
     private String icon;
     private Integer activo;
