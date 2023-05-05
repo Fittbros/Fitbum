@@ -6,10 +6,11 @@ import com.fitbum.repositorios.usuarios.RoleRepositorio;
 import com.fitbum.repositorios.usuarios.UsuarioRepositorio;
 import com.fitbum.servicios.ServiciosAbstractos;
 import com.fitbum.servicios.mapper.RoleServicioMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class RoleServicio extends ServiciosAbstractos<Role, Integer, RoleDTO, RoleRepositorio, RoleServicioMapper> {
-
-    private final UsuarioRepositorio usuarioRepositorio;
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
 
     protected RoleService(RoleRepositorio roleRepositorio, RoleServicioMapper roleServicioMapper, UsuarioRepositorio usuarioRepositorio) {
         super(repository, serviceMapper);
