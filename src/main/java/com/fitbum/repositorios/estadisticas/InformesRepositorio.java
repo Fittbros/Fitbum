@@ -11,5 +11,5 @@ import java.util.List;
 
 public interface InformesRepositorio extends JpaRepository<Informes,Integer> {
 
-    List<Usuario> findAllByUsuario(Usuario usuario);
+    //List<Usuario> findAllByUsuario(Usuario usuario);
 }
