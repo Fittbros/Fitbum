@@ -1,4 +1,9 @@
 package com.fitbum.repositorios.programa;
 
-public interface SerieRepositorio {
+import com.fitbum.entidades.programa.Serie;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface SerieRepositorio extends JpaRepository<Serie,Long> {
 }
