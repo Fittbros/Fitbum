@@ -27,7 +27,7 @@ public class Role {
     private String nombreRole;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Usuario> usuario;
 
 

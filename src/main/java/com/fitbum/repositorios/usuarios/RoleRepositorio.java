@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface RoleRepositorio extends JpaRepository<Role, Long>{
+public interface RoleRepositorio extends JpaRepository<Role, Integer>{
 
     Page<Role> findAll(Pageable pageable);
 

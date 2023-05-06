@@ -55,7 +55,7 @@ public class Usuario {
 
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idrole")
     private Role role;
 

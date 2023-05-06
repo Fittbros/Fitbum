@@ -1,10 +1,10 @@
 insert into role values (1, 'ADMIN'), (2,'ENTRENADOR' ), (3,'ATLETA' );
 insert into usuario (id,altura,apellido1,apellido2,email,fecha_nacim,
-                     nombre,password,peso,sexo,active)
-values (1, 1.65,'Pere','Manzana','Mad@rid','1990-01-01','pepe','1234', 80,  1 ,true),
-                                   (2, 1.8,'Jorqueran','Perez','pepe@1','1990-01-07','juan','1234', 120,  1 , true),
-                                   (3, 1.73,'Martosa','Perez','pepe@2','1990-11-01','maria','1234', 75,  0, true),
-                                   (4, 1.73,'Maresca','Perez','pepe@3','1995-01-01','marco','1234', 55,  1, true);
+                     nombre,password,peso,sexo,active, idrole)
+values (1, 1.65,'Pere','Manzana','admin@admin','1990-01-01','pepe','admin', 80,  1 ,true,1),
+       (2, 1.8,'Jorqueran','Perez','entrenador@entrenador','1990-01-07','juan','entrenador', 120,  1 , true,2),
+       (3, 1.73,'Martosa','Perez','atleta@1','1990-11-01','maria','pass', 75,  0, true,3),
+       (4, 1.73,'Maresca','Perez','atleta@2','1995-01-01','marco','pass2', 55,  1, true,3);
 
 insert into suscripcion values (1,'aa','1990-01-01','1990-01-01',50,1),(2,'bb','1990-01-01','1990-01-01',60,1),(3,'cc','1990-01-01','1990-01-01',45,2);
 
