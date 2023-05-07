@@ -40,7 +40,7 @@ public class LoginController {
         //¿es correcta la password?
         if (service.getUsuarioRepositorio().repValidarPassword(usr, passwordEncoder.encode(password) ) > 0)
         {
-            return "index";
+            return "home";
         }else {
             return "formularios/login";
         }

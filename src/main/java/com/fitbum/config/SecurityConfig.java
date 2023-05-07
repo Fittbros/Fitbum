@@ -45,12 +45,13 @@ public class SecurityConfig {
                 //Permitimos todas las visitas a la pagina principal
                 .requestMatchers("/registro","/registrarusuario").permitAll()
                 //Permitimos todas las visitas a /public
-                .requestMatchers("/index").permitAll()
+                .requestMatchers("/home").authenticated()
                 //Solo permitimos a usuarios registrados visitar "/private"
                 .requestMatchers("/private").authenticated()
                 .requestMatchers("/perfil").authenticated()
                 .requestMatchers("/usuarios").authenticated()
                 .requestMatchers("/usuarios/**").authenticated()
+                .requestMatchers("/atletas").authenticated()
                 //Permitimos únicamente las visitas de usuarios registrados a  /private
                 // Todas las request no filtradas hasta ahora, se rechazarán
                 .anyRequest().denyAll()
@@ -60,12 +61,13 @@ public class SecurityConfig {
         http.formLogin(form -> form
                 // Establece la página de inicio de sesión y permite que cualquier persona la visite sin necesidad de autenticación
                 .loginPage("/usuarios/login")
+
                 .failureUrl("/usuarios/login-error")
                 // Establece la ruta para procesar el formulario de inicio de sesión cuando se envía
                 //https://stackoverflow.com/questions/53140629/spring-security-loginpage-vs-loginprocessingurl
-                .loginProcessingUrl("/procesarLogin")
+//                .loginProcessingUrl("/procesarLogin")
                 // Establece la ruta a la que se redirige al usuario después de iniciar sesión correctamente
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/home")
                 .permitAll()
         );
 

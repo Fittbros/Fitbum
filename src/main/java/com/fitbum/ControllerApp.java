@@ -15,6 +15,9 @@ public class ControllerApp {
     @GetMapping("/index")
     public String inicio(){
         return "index";}
+    @GetMapping("/home")
+    public String home(){
+        return "home";}
     @GetMapping("/publico")
     public String publico(){
         return "publico";}

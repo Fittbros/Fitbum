@@ -32,14 +32,14 @@ public class MenuController {
 
         return "/menu/index";
     }
-    @GetMapping(value = {"/indere"})
+    @GetMapping(value = {"/menu/indere"})
     public String showMenu2(
             Model model
     ) {
         model.addAttribute("dataObject", menuServicio.findAll());
 //        model.addAttribute("fragmentName", "fragment-customer-list");
 
-        return "/menu/indere";
+        return "menu/indere";
     }
     @GetMapping("/edit/{id}")
     public String showMenuEdit(@PathVariable("id") Integer id, Model model) {

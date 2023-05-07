@@ -16,15 +16,16 @@
 <div id="wrapper">
   <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
        style="background: linear-gradient(175deg, #035450 10%, #09beb5 55%);">
-    <div class="container-fluid d-flex flex-column p-0"><a
-            class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="/index">
-      <div class="sidebar-brand-icon rotate-n-15"><img src="assets/img/logo.svg" width="68" height="188"
-                                                       style="width: 21px;height: 73px;padding-right: 1px;margin-right: -8px;padding-left: 0px;margin-left: 0px;">
-      </div>
-      <div class="sidebar-brand-text mx-3">
-        <h4 style="margin-right: 0px;padding-right: 0px;"><strong>Fitbum</strong></h4>
-      </div>
-    </a>
+
+    <div class="container-fluid d-flex flex-column p-0">
+      <a
+              class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="/index">
+                                                         style="width: 21px;height: 73px;padding-right: 1px;margin-right: -8px;padding-left: 0px;margin-left: 0px;">
+
+        <div class="sidebar-brand-text mx-3">
+          <h4 style="margin-right: 0px;padding-right: 0px;"><strong>Fitbum</strong></h4>
+        </div>
+      </a>
       <hr class="sidebar-divider my-0">
       <ul class="navbar-nav text-light" id="accordionSidebar">
         <li class="nav-item"
@@ -48,13 +49,21 @@
         }" class="nav-item dropdown" th:each="dataObject : ${dataObject}">
           jnfasdilvnlksvbnd
         </li  este es el de chtgpt -->
-        <span>
 
-          menu dooos
 
-        </span>
 
-        <li th:if="${dataObject.padre == 9999 } and  ${#lists.size (dataObject.?[padre ==  __${dataObject.id}__ ]) > 0 } "
+
+
+
+
+      </ul>
+
+      <div>
+
+        menu dooos
+
+      </div>
+      <!--li th:if="${dataObject.padre == 9999 } and  ${#lists.size (dataObject.?[padre ==  __${dataObject.id}__ ]) > 0 } "
             class="nav-item dropdown"
             th:each="dataobject : ${dataObject}" >
           <a th:href="${dataobject.url}" th:text="${dataobject.nombre}"
@@ -66,19 +75,15 @@
                th:href="${menuItemHijo.url}"
                th:text="${menuItemHijo.nombre}"></a>
           </div>
+        </li-->
 
 
-
-      </ul>
       <div class="text-center d-none d-md-inline">
         <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
       </div>
     </div>
   </nav>
-</div>
-</div>
-</nav>
-</div>
+
 
 <script th:src="@{/assets/js/theme.js}"></script>
 <script th:src="@{/assets/js/bs-init.js}"></script>

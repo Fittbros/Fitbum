@@ -5,17 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Home - FitBum</title>
-    <link rel="stylesheet" href="../assetsPublico/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/assetsPublico/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
-    <link rel="stylesheet" href="../assetsPublico/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="../assetsPublico/css/accordion-faq-list.css">
-    <link rel="stylesheet" href="../assetsPublico/css/pikaday.min.css">
+    <link rel="stylesheet" th:href="@{/assetsPublico/fonts/ionicons.min.css}">
+    <link rel="stylesheet" th:href="@{/assetsPublico/css/accordion-faq-list.css}">
+    <link rel="stylesheet" th:href="@{/assetsPublico/css/pikaday.min.css}">
 </head>
 
 <body>
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient"
      style="padding: 0;margin-top: 0;padding-top: 10px;padding-bottom: 10px;background: linear-gradient(168deg, #035450 1%, #09beb5 100%), linear-gradient(168deg, #035450 1%, #09beb5 100%);">
-    <div class="container"><img src="../assetsPublico/img/logo.svg" width="27" height="30"><a class="navbar-brand logo"
+    <div class="container"><img th:src="@{/assetsPublico/img/logo.svg}" width="27" height="30"><a class="navbar-brand logo"
                                                                                               href="#"><strong>FITBUM</strong>&nbsp;
         &nbsp;</a>
         <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span
@@ -25,7 +25,7 @@
                 <li class="nav-item"><a class="nav-link" href="">Conócenos</a></li>
                 <li class="nav-item"><a class="nav-link" href="">Contacto</a></li>
                 <li class="nav-item"><a class="nav-link" href="">Preguntas Frecuentes</a></li>
-                <li class="nav-item"><a href="/login">
+                <li class="nav-item"><a th:href="@{/usuarios/login}">
                     <button class="btn" type="button"
                             style="background: rgb(5,71,67);border-style: none;color: var(--bs-navbar-color);"><strong>Iniciar
                         sesión</strong></button>
@@ -219,9 +219,9 @@
                 class="icon ion-social-twitter"></i></a></div>
     </div>
 </footer>
-<script src="../assetsPublico/bootstrap/js/bootstrap.min.js"></script>
-<script src="../assetsPublico/js/pikaday.min.js"></script>
-<script src="../assetsPublico/js/theme.js"></script>
+<script th:src="@{/assetsPublico/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/assetsPublico/js/pikaday.min.js}"></script>
+<script th:src="@{/assetsPublico/js/theme.js}"></script>
 </body>
 
 </html>
