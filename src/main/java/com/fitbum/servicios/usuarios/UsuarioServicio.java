@@ -35,14 +35,14 @@ public class UsuarioServicio {
         UsuarioDto userDto = new UsuarioDto();
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.map(user,userDto);
-        userDto.setNombreUsuario(user.getNombre()+" "+user.getApellido1()+" "+user.getApellido2());
+        userDto.setUsername(user.getUsername());
         return userDto;
     }
     public UsuarioDtoPsw mapToUserDtoPsw(Usuario user){
         UsuarioDtoPsw userDto = new UsuarioDtoPsw();
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.map(user,userDto);
-        userDto.setNombreUsuario(user.getNombre()+" "+user.getApellido1()+" "+user.getApellido2());
+        userDto.setUsername(user.getUsername());
         return userDto;
     }
 
@@ -60,10 +60,10 @@ public class UsuarioServicio {
         return user;
     }
     public UsuarioDto guardar(UsuarioDto usuarioDto, String password){
-        System.out.println("usuarioDto:" +usuarioDto.getNombreUsuario() );
+        System.out.println("usuarioDto:" +usuarioDto.getUsername() );
         //Traduzco del dto con datos de entrada a la entidad
         final Usuario entidad = this.mapToUser(usuarioDto);
-        System.out.println("Entidad:" +entidad.getNombre() );
+        System.out.println("Entidad:" +entidad.getUsername() );
         entidad.setPassword(password);
         System.out.println("Entidad:" +entidad.getPassword() );
         //Guardo el la base de datos
@@ -72,10 +72,10 @@ public class UsuarioServicio {
         return this.mapToUserDto(entidadGuardada);
     }
     public UsuarioDto guardar(UsuarioDtoPsw usuarioDtoPsw){
-        System.out.println("usuarioDto:" +usuarioDtoPsw.getNombreUsuario() );
+        System.out.println("usuarioDto:" +usuarioDtoPsw.getUsername() );
         //Traduzco del dto con datos de entrada a la entidad
         final Usuario entidad = this.mapToUserPsw(usuarioDtoPsw);
-        System.out.println("Entidad:" +entidad.getNombre() );
+        System.out.println("Entidad:" +entidad.getUsername() );
         //Guardo el la base de datos
         Usuario entidadGuardada =  usuarioRepositorio.save(entidad);
         //Traducir la entidad a DTO para devolver el DTO

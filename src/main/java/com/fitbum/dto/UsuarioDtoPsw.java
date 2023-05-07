@@ -26,7 +26,7 @@ import java.util.Set;
 public class UsuarioDtoPsw {
 
     private Integer id;
-    private String	NombreUsuario;
+    private String username;
     private String	nombre;
     private String	apellido1;
     private String	apellido2;

@@ -2,7 +2,6 @@ package com.fitbum.servicios.usuarios;
 
 
 
-import com.fitbum.entidades.usuarios.Role;
 import com.fitbum.entidades.usuarios.Usuario;
 import com.fitbum.repositorios.usuarios.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +35,10 @@ public class UsuarioSecurityImpl implements IUsuarioServicio, UserDetailsService
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        System.out.println("loadUserByUsername email : " + email);
-        Usuario  usuario= usuarioRepositorio.findUsuarioByEmailAndActiveTrue(email);
-        System.out.println("loadUserByUsername usuario : " + usuario.getNombre());
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println("loadUserByUsername username : " + username);
+        Usuario  usuario= usuarioRepositorio.findUsuarioByUsernameAndActiveTrue(username);
+        System.out.println("loadUserByUsername usuario : " + usuario.getUsername());
 
         org.springframework.security.core.userdetails.User springUser=null;
 
@@ -47,7 +46,7 @@ public class UsuarioSecurityImpl implements IUsuarioServicio, UserDetailsService
         ga.add(new SimpleGrantedAuthority(usuario.getRole().getNombreRole()));
 
         springUser = new org.springframework.security.core.userdetails.User(
-                email,
+                username,
                 usuario.getPassword(),
                 ga );
         return springUser;

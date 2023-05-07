@@ -65,7 +65,7 @@ public class UsuarioController {
     public String guardarUsuario( @ModelAttribute(name ="datosUsuario") UsuarioDtoPsw usuarioDtoPsw) throws Exception {
         //Comprobamos el patron
         System.out.println("Guardando usuario antes ");
-        System.out.println("Usuario :" + usuarioDtoPsw.getNombreUsuario() + ", password : " + usuarioDtoPsw.getPassword() );
+        System.out.println("Usuario :" + usuarioDtoPsw.getUsername() + ", password : " + usuarioDtoPsw.getPassword() );
         if (ValidarFormato(usuarioDtoPsw.getPassword())){
             Usuario usuario = service.mapToUserPsw(usuarioDtoPsw);
             System.out.println("Guardando usuario");
