@@ -10,13 +10,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UsuarioRepositorio extends JpaRepository<Usuario,Long> {
 
-    @Query("Select count(id) from Usuario where email= ?1 and password = ?2")
-    Integer repValidarPassword(String email, String password);
+    @Query("Select count(id) from Usuario where username= ?1 and password = ?2")
+    Integer repValidarPassword(String username, String password);
 
     Usuario findByid(@Param("id") Integer id);
     Usuario findByRole(@Param("Role") Integer id);
 
     Usuario findUsuarioByEmail(String email);
+    Usuario findUsuarioByUsername(String username);
 
     Usuario findUsuarioByEmailAndActiveTrue(String email);
     Usuario findUsuarioByUsernameAndActiveTrue(String username);

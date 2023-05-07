@@ -26,8 +26,8 @@ public class UsuarioServicio {
         return usuarioRepositorio.findAll();
 
     }
-    public Usuario buscarporemail(String email){
-        Usuario usuario = usuarioRepositorio.findUsuarioByEmail(email);
+    public Usuario buscarporemail(String username){
+        Usuario usuario = usuarioRepositorio.findUsuarioByUsername(username);
         return usuario;
 
     }
