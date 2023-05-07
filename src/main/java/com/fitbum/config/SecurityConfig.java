@@ -31,8 +31,13 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests( authorize -> authorize
                 .requestMatchers("/assets/**").permitAll()
+                .requestMatchers("/templates/**").permitAll()
                 .requestMatchers("/index").permitAll()
-                .requestMatchers("/menu/**").permitAll()
+                .requestMatchers("/ajustes").permitAll()
+                .requestMatchers("/menu/**","/crearUsuario","/nuevoUsuario").permitAll()
+                .requestMatchers("/menu").permitAll()
+                .requestMatchers("/tutoriales").permitAll()
+                .requestMatchers("/error").permitAll()
                 .requestMatchers("/assetsPublico/**").permitAll()
                 .requestMatchers("/forms/**").permitAll()
                 //Permitimos todas las visitas a la pagina principal
@@ -58,7 +63,7 @@ public class SecurityConfig {
                 .failureUrl("/usuarios/login-error")
                 // Establece la ruta para procesar el formulario de inicio de sesión cuando se envía
                 //https://stackoverflow.com/questions/53140629/spring-security-loginpage-vs-loginprocessingurl
-                //.loginProcessingUrl("/procesarLogin")
+                .loginProcessingUrl("/procesarLogin")
                 // Establece la ruta a la que se redirige al usuario después de iniciar sesión correctamente
                 .defaultSuccessUrl("/")
                 .permitAll()

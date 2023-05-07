@@ -48,8 +48,13 @@
         }" class="nav-item dropdown" th:each="dataObject : ${dataObject}">
           jnfasdilvnlksvbnd
         </li  este es el de chtgpt -->
+        <span>
 
-        <!--li th:if="${dataObject.padre == 999999 } and  ${#lists.size (dataObject.?[padre ==  __${dataObject.id}__ ]) > 0 } "
+          menu dooos
+
+        </span>
+
+        <li th:if="${dataObject.padre == 9999 } and  ${#lists.size (dataObject.?[padre ==  __${dataObject.id}__ ]) > 0 } "
             class="nav-item dropdown"
             th:each="dataobject : ${dataObject}" >
           <a th:href="${dataobject.url}" th:text="${dataobject.nombre}"
@@ -60,7 +65,7 @@
                th:each="menuItemHijo : ${dataObject.?[padre ==  __${dataobject.id}__ ]}"
                th:href="${menuItemHijo.url}"
                th:text="${menuItemHijo.nombre}"></a>
-          </div-->
+          </div>
 
 
 
