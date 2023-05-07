@@ -44,6 +44,8 @@ public class SecurityConfig {
                 //Solo permitimos a usuarios registrados visitar "/private"
                 .requestMatchers("/private").authenticated()
                 .requestMatchers("/perfil").authenticated()
+                .requestMatchers("/usuarios").authenticated()
+                .requestMatchers("/usuarios/**").authenticated()
                 //Permitimos únicamente las visitas de usuarios registrados a  /private
                 // Todas las request no filtradas hasta ahora, se rechazarán
                 .anyRequest().denyAll()
@@ -73,9 +75,9 @@ public class SecurityConfig {
                 // utiliza para mapear la URL "/logout". Esto se utiliza en la configuración de la sesión para determinar
                 // la ruta de la petición de cierre de sesión. En otras palabras, esta línea de código le dice a Spring
                 // que cuando reciba una solicitud para "/logout", debe procesarla como una solicitud de cierre de sesión.
-                //.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 // Permite que cualquier persona cierre sesión
-                //.permitAll()
+                .permitAll()
         );
 
         /**
