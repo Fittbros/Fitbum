@@ -36,7 +36,7 @@ public class SecurityConfig {
                 //Permitimos todas las visitas a la pagina principal
                 .requestMatchers("/registro","/registrarusuario").permitAll()
                 //Permitimos todas las visitas a /public
-                .requestMatchers("/public").permitAll()
+                .requestMatchers("/index").permitAll()
                 //Solo permitimos a usuarios registrados visitar "/private"
                 .requestMatchers("/private").authenticated() //Permitimos únicamente las visitas de usuarios registrados a  /private
                 // Todas las request no filtradas hasta ahora, se rechazarán
