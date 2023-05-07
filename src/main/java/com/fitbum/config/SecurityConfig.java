@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -23,12 +24,15 @@ public class SecurityConfig {
     @Autowired
     private UserDetailsService userDetailsService;
     @Autowired
-    private BCryptPasswordEncoder encoder;
+    //private BCryptPasswordEncoder encoder;
+    private PasswordEncoder encoder;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests( authorize -> authorize
                 .requestMatchers("/assets/**").permitAll()
+                .requestMatchers("/index").permitAll()
+                .requestMatchers("/menu/**").permitAll()
                 .requestMatchers("/assetsPublico/**").permitAll()
                 .requestMatchers("/forms/**").permitAll()
                 //Permitimos todas las visitas a la pagina principal
@@ -38,7 +42,9 @@ public class SecurityConfig {
                 //Permitimos todas las visitas a /public
                 .requestMatchers("/public").permitAll()
                 //Solo permitimos a usuarios registrados visitar "/private"
-                .requestMatchers("/private").authenticated() //Permitimos únicamente las visitas de usuarios registrados a  /private
+                .requestMatchers("/private").authenticated()
+                .requestMatchers("/perfil").authenticated()
+                //Permitimos únicamente las visitas de usuarios registrados a  /private
                 // Todas las request no filtradas hasta ahora, se rechazarán
                 .anyRequest().denyAll()
         );

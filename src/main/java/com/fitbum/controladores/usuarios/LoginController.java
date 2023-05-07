@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,8 @@ public class LoginController {
     //Controlador de Login
     private final UsuarioServicio service;
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+//    private BCryptPasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
     public LoginController(UsuarioServicio service) {
         this.service = service;
     }
