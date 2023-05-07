@@ -21,6 +21,7 @@ public class MenuServicio extends AbstractBusinessService<Menu, Integer, MenuDTO
 
 
 
+
     protected MenuServicio(MenuRepositorio menuRepositorio, MenuServiceMapper mapper) {
         super(menuRepositorio, mapper);
     }

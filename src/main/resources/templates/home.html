@@ -2,7 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}">
+<head>
+    <title>Home</title>
 
+</head>
 <body>
 
 <div layout:fragment="content">
@@ -12,6 +15,9 @@
     </div><!-- End Page Title -->
     <div><a  href='/menu' >
         menu</a></div>
+    <div><a  th:href="@{/menu/3}" >
+        menu3 </a></div>
+
     <div><a  href='/login' >
         login</a></div>
     <div><a  href='/crearUsuario' >

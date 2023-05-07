@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Blank Page - FitBum</title>
+    <title>FitBum</title>
     <link rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
@@ -18,9 +18,9 @@
     <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
          style="background: linear-gradient(175deg, #035450 10%, #09beb5 55%);">
         <div class="container-fluid d-flex flex-column p-0"><a
-                class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" th:href="@{/home}">
             <div class="sidebar-brand-icon rotate-n-15"><img  th:src="@{/assets/img/logo.svg}" width="68" height="188"
-                                                             style="width: 21px;height: 73px;padding-right: 1px;margin-right: -8px;padding-left: 0px;margin-left: 0px;">
+                                                             style="width: 21px;height: 73px;padding-right: 1px;margin-right: -8px;padding-left: 0px;margin-left: 0px;" alt="logo">
             </div>
             <div class="sidebar-brand-text mx-3">
                 <h4 style="margin-right: 0px;padding-right: 0px;"><strong>Fitbum</strong></h4>
@@ -56,6 +56,9 @@
             </div>
         </div>
     </nav>
+
+
+
     <div class="d-flex flex-column" id="content-wrapper">
         <div id="content">
             <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">

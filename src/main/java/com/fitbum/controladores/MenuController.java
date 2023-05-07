@@ -32,6 +32,11 @@ public class MenuController {
 
         return "/menu/index";
     }
+
+    @GetMapping("/3")
+    public String menu3(){
+
+        return "/menu/3";}
     @GetMapping(value = {"/menu/indere"})
     public String showMenu2(
             Model model
