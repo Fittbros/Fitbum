@@ -4,6 +4,7 @@ import com.fitbum.dto.UsuarioDto;
 import com.fitbum.dto.UsuarioDtoPsw;
 import com.fitbum.entidades.usuarios.Usuario;
 import com.fitbum.repositorios.usuarios.UsuarioRepositorio;
+import com.fitbum.servicios.mapper.UsuarioMapper;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Getter
 @Service
-public class UsuarioServicio {
+public class UsuarioServicio extends UsuarioMapper {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
     @Autowired
@@ -31,34 +32,7 @@ public class UsuarioServicio {
         return usuario;
 
     }
-    public UsuarioDto mapToUserDto(Usuario user){
-        UsuarioDto userDto = new UsuarioDto();
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.map(user,userDto);
-        userDto.setUsername(user.getUsername());
-        return userDto;
-    }
-    public UsuarioDtoPsw mapToUserDtoPsw(Usuario user){
-        UsuarioDtoPsw userDto = new UsuarioDtoPsw();
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.map(user,userDto);
-        userDto.setUsername(user.getUsername());
-        return userDto;
-    }
 
-    public Usuario mapToUserPsw(UsuarioDtoPsw usuarioDtoPsw){
-        Usuario user = new Usuario();
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.map(usuarioDtoPsw,user);
-        return user;
-    }
-
-    public Usuario mapToUser(UsuarioDto usuarioDto){
-        Usuario user = new Usuario();
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.map(usuarioDto,user);
-        return user;
-    }
     public UsuarioDto guardar(UsuarioDto usuarioDto, String password){
         System.out.println("usuarioDto:" +usuarioDto.getUsername() );
         //Traduzco del dto con datos de entrada a la entidad
