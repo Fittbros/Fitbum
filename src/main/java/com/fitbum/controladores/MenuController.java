@@ -3,6 +3,7 @@ import com.fitbum.dto.UsuarioDto;
 import com.fitbum.entidades.Menu;
 import com.fitbum.repositorios.MenuRepositorio;
 import com.fitbum.servicios.MenuServicio;
+import com.fitbum.servicios.usuarios.UsuarioServicio;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class MenuController //extends  AbstractController<UsuarioDto>
 {
     @Autowired
     private MenuServicio menuServicio;
+    @Autowired
+    private UsuarioServicio usuarioServicio;
 //    protected MenuController (MenuServicio menuService) {
 //        super(menuService);
 //    }
@@ -38,7 +41,10 @@ public class MenuController //extends  AbstractController<UsuarioDto>
         return "/menu/index";
     }
 @GetMapping("2")
-public String menu2(){
+public String menu2(Model model
+) {
+    model.addAttribute("menu", menuServicio.findAll());
+        model.addAttribute("usuario", usuarioServicio);
         return "/menu/2";
 }
     @GetMapping("/3")

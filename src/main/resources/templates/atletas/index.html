@@ -24,66 +24,40 @@
             <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
         </div>
     </div>
-    <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-        <table class="table my-0" id="dataTable">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-            </thead>
-            <tbody>
 
-            <tr>
-                <td><img class="rounded-circle me-2" width="30" height="30"th:src="@{/assets/img/avatars/avatar3.jpeg}">Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-                <td>2009/01/12<br></td>
-                <td>$86,000</td>
-            </tr>
-            <tr>
-                <td><img class="rounded-circle me-2" width="30" height="30"th:src="@{/assets/img/avatars/avatar4.jpeg}">Bradley Greer</td>
-                <td>Software Engineer</td>
-                <td>London</td>
-                <td>41</td>
-                <td>2012/10/13<br></td>
-                <td>$132,000</td>
-            </tr>
-            <tr>
-                <td><img class="rounded-circle me-2" width="30" height="30"th:src="@{/assets/img/avatars/avatar5.jpeg}">Brenden Wagner</td>
-                <td>Software Engineer</td>
-                <td>San Francisco</td>
-                <td>28</td>
-                <td>2011/06/07<br></td>
-                <td>$206,850</td>
-            </tr>
-            <tr>
-                <td><img class="rounded-circle me-2" width="30" height="30"th:src="@{/assets/img/avatars/avatar1.jpeg}">Brielle Williamson</td>
-                <td>Integration Specialist</td>
-                <td>New York</td>
-                <td>61</td>
-                <td>2012/12/02<br></td>
-                <td>$372,000</td>
-            </tr>
+    <div class="table-responsive table mt-2" id="dataTable2" role="grid" aria-describedby="dataTable_info">
 
-            </tbody>
-            <tfoot>
-            <tr>
-                <td><strong>Name</strong></td>
-                <td><strong>Position</strong></td>
-                <td><strong>Office</strong></td>
-                <td><strong>Age</strong></td>
-                <td><strong>Start date</strong></td>
-                <td><strong>Salary</strong></td>
-            </tr>
-            </tfoot>
-        </table>
+    <table class="table my-0" id="dataTable1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>avatar</th>
+            <th>nombre</th>
+            <th>ap1</th>
+            <th>ap2</th>
+            <th>activo</th>
+            <th>pass</th>
+            <th>avatar</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usuario : ${usuario.listartodos()}">
+            <td th:text="${usuario.id}"></td>
+            <td ><img class="rounded-circle me-2" width="30" height="30" th:src="${usuario.avatar}"></td>
+            <td th:text="${usuario.nombre}"></td>
+            <td th:text="${usuario.apellido1}"></td>
+            <td th:text="${usuario.apellido2}"></td>
+            <td th:text="${usuario.active}"></td>
+            <td th:text="${usuario.password}"></td>
+            <td th:text="${usuario.avatar}"></td>
+
+
+        </tr>
+        </tbody>
+    </table>
     </div>
+
     <div class="row">
         <div class="col-md-6">
             <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">

@@ -1,9 +1,12 @@
 package com.fitbum;
 
+import com.fitbum.servicios.usuarios.UsuarioServicio;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 //import org.springframework.validation.BindingResult;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -11,7 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 //@RequestMapping("/prueba")
 public class ControllerApp {
-
+    @Autowired
+    private UsuarioServicio usuarioServicio;
     @GetMapping("/index")
     public String inicio(){
         return "index";}
@@ -35,7 +39,11 @@ public class ControllerApp {
 
 
     @GetMapping("/atletas")
-    public String indexatletas(){
+    public String indexatletas(Model model
+    ) {
+
+        model.addAttribute("usuario", usuarioServicio);
+
         return "/atletas/index";}
 
     @GetMapping("/entrenadores")

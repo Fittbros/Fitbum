@@ -32,6 +32,7 @@ public class Usuario {
     private String	apellido1;
     private String	apellido2;
     private String	email;
+    private String	avatar;
     private String	password;
     private Float	peso;
     private Float	altura;

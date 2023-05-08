@@ -1,10 +1,10 @@
 insert into role values (1, 'ADMIN'), (2,'ENTRENADOR' ), (3,'ATLETA' );
 insert into usuario (id,altura,apellido1,apellido2,email,fecha_nacim,
-                     nombre,password,peso,sexo,active, idrole, username)
-values (1, 1.65,'Pere','Manzana','admin@admin','1990-01-01','pepe','admin', 80,  1 ,true,1,'admin'),
-       (2, 1.8,'Jorqueran','Perez','entrenador@entrenador','1990-01-07','juan','entrenador', 120,  1 , true,2,'entrenador'),
-       (3, 1.73,'Martosa','Perez','atleta@1','1990-11-01','maria','pass', 75,  0, true,3,'atleta1'),
-       (4, 1.73,'Maresca','Perez','atleta@2','1995-01-01','marco','pass2', 55,  1, true,3,'atleta2');
+                     nombre,password,peso,sexo,active, idrole, username, avatar)
+values (1, 1.65,'Pere','Manzana','admin@admin','1990-01-01','pepe','admin', 80,  1 ,true,1,'admin','/assets/img/avatars/avatar4.jpeg'),
+       (2, 1.8,'Jorqueran','Perez','entrenador@entrenador','1990-01-07','juan','entrenador', 120,  1 , true,2,'entrenador','/assets/img/avatars/avatar2.jpeg'),
+       (3, 1.73,'Martosa','Perez','atleta@1','1990-11-01','maria','pass', 75,  0, true,3,'atleta1','/assets/img/avatars/avatar3.jpeg'),
+       (4, 1.73,'Maresca','Perez','atleta@2','1995-01-01','marco','pass2', 55,  1, true,3,'atleta2','/assets/img/avatars/avatar5.jpeg');
 
 insert into suscripcion values (1,'aa','1990-01-01','1990-01-01',50,1),(2,'bb','1990-01-01','1990-01-01',60,1),(3,'cc','1990-01-01','1990-01-01',45,2);
 

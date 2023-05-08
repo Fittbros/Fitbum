@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>menu2</title>
-</head>
-<body>
-menu2 XD
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
 
+<body>
+
+<div layout:fragment="content">
+
+    <div class="pagetitle">
+        <h1>menu2</h1>
+    </div><!-- End Page Title -->
+
+
+    contenido aqui
+
+    <span  th:text="${usuario.usuarioRepositorio.findUsuarioByUsername('admin').getRole().getId()}"></span>
+    <span  th:if="${usuario.usuarioRepositorio.findUsuarioByUsername('admin').getRole().getId()==1} " th:text="${usuario.usuarioRepositorio.findByid(1).getNombre()}">
+
+    </span>
+
+
+</div>
 </body>
 </html>
