@@ -18,7 +18,6 @@ import java.util.List;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
-@RequestMapping("/microciclo")
 
 public class MicrocicloController {
     @Autowired

@@ -54,7 +54,7 @@ public String menu2(Model model
 //        model.addAttribute("fragmentName", "fragment-customer-list");
         return "/menu/3";
     }
-    @GetMapping(value = {"/menu/indere"})
+    @GetMapping(value = {"/indere"})
     public String showMenu2(
             Model model
     ) {
