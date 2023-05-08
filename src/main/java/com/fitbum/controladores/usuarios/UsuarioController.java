@@ -87,9 +87,9 @@ public class UsuarioController {
     }
 
 
-    @GetMapping("/usuarios/olvideContrasena")
+    @GetMapping("/usuarios/olvidecontrasena")
     public String formularioOlvideContrasena(){
-        return "formularios/olvideContrasena";}
+        return "formularios/olvidecontrasena";}
 
     @GetMapping("/perfil")
     public String perfil(){

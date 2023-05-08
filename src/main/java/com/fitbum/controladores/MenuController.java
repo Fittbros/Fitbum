@@ -1,4 +1,5 @@
 package com.fitbum.controladores;
+import com.fitbum.dto.UsuarioDto;
 import com.fitbum.entidades.Menu;
 import com.fitbum.repositorios.MenuRepositorio;
 import com.fitbum.servicios.MenuServicio;
@@ -20,9 +21,13 @@ import java.util.Optional;
 @RequestMapping("/menu")
 
 
-public class MenuController {
+public class MenuController //extends  AbstractController<UsuarioDto>
+{
     @Autowired
     private MenuServicio menuServicio;
+//    protected MenuController (MenuServicio menuService) {
+//        super(menuService);
+//    }
     @GetMapping(value = {"/",""})
     public String showMenu(
             Model model
@@ -32,11 +37,17 @@ public class MenuController {
 
         return "/menu/index";
     }
-
+@GetMapping("2")
+public String menu2(){
+        return "/menu/2";
+}
     @GetMapping("/3")
-    public String menu3(){
-
-        return "/menu/3";}
+    public String menu3( Model model
+    ) {
+        model.addAttribute("dataObject", menuServicio.findAll());
+//        model.addAttribute("fragmentName", "fragment-customer-list");
+        return "/menu/3";
+    }
     @GetMapping(value = {"/menu/indere"})
     public String showMenu2(
             Model model

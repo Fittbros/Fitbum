@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Register - FitBum</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <title>Registro - FitBum</title>
+    <link rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" th:href="@{/assets/fonts/fontawesome-all.min.css}">
 </head>
 
 <body class="bg-gradient-primary">
@@ -16,7 +16,7 @@
             <div class="card-body p-0">
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-flex">
-                        <div class="flex-grow-1 bg-register-image" style="background-image: url(&quot;assets/img/dogs/image2.jpeg&quot;);"></div>
+                        <div class="flex-grow-1 bg-register-image" style="background-image: url(/assets/img/dogs/image2.jpeg);"></div>
                     </div>
                     <div class="col-lg-7">
                         <div class="p-5">
@@ -24,12 +24,13 @@
                                 <h4 class="text-dark mb-4">Únete al mejor equipo</h4>
                             </div>
 
-                            <form class="user" th:object="${detalleUsuario}" th:action="@{/crearUsuario}">
+                            <form class="user" role="form" th:object="${datosUsuario}" th:action="@{/usuarios/registro}">
                                 <div class="row mb-3">
                                     <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName" th:field="*{nombre}" placeholder="Nombre" name="first_name"></div>
                                     <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleLastName1" placeholder="Apellidos2" th:field="*{apellido1}" name="last_name"></div>
                                     <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleLastName2" placeholder="Apellidos2" th:field="*{apellido2}" name="last_name"></div>
                                 </div>
+                                <div class="mb-3"><input class="form-control form-control-user" type="text" id="exampleInputUsername"  th:field="*{username}" placeholder="Username" name="username"></div>
                                 <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" th:field="*{email}" placeholder="Email" name="email"></div>
                                 <div class="row mb-3">
                                     <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="examplePasswordInput" th:field="*{password}" placeholder="Contraseña" name="password"></div>
@@ -37,7 +38,7 @@
                                 <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Register with Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Register with Facebook</a>
                                 <hr>
                             </form>
-                            <div class="text-center"><a class="small" href="/login">¿Ya tienes una cuenta? Inicia sesión</a></div>
+                            <div class="text-center"><a class="small" th:href="@{/login}">¿Ya tienes una cuenta? Inicia sesión</a></div>
                         </div>
                     </div>
                 </div>

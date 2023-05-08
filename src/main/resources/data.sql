@@ -21,7 +21,12 @@ values (9999,9999,'base','/',0,'fas fa-tachometer-alt',null),
        (3, 30, 'Mis rutinas', '/misrutinas',1,'fas fa-table',9999),
        (4, 40, 'Chats', '/chat',1,'far fa-comment-alt',9999),
        (5, 35, 'Entrenador', '/chat/entrenador',1,'far fa-comment-alt',4),
-       (6, 48, 'Cliente', '/chat/cliente',1,'far fa-comment-alt',4);
+       (6, 48, 'Cliente', '/chat/cliente',1,'far fa-comment-alt',4),
+       (7,50,'Entrenadores','/entrenadores',1,'fas fa-users',9999),
+       (8,55,'Atletas','/atletas',1,'fas fa-users',9999),
+       (9,60,'Logros','/logros',1,'fas fa-trophy',9999),
+       (10,70,'Tutoriales','/tutoriales',1,'fas fa-window-maximize',9999),
+       (11,80,'Ajustes de Página','/ajustes',1,'fas fa-wrench',9999);
 
 
 
