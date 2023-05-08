@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UsuarioRepositorio extends JpaRepository<Usuario,Long> {
+public interface UsuarioRepositorio extends JpaRepository<Usuario,Integer> {
 
     @Query("Select count(id) from Usuario where email= ?1 and password = ?2")
     Integer repValidarPassword(String email, String password);

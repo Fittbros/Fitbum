@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PlantMesoRepositorio extends JpaRepository<PlantillaMesociclo,Long> {
+public interface PlantMesoRepositorio extends JpaRepository<PlantillaMesociclo,Integer> {
 }
