@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface SuscripcionRepositorio extends JpaRepository<Suscripcion, Long> {
+public interface SuscripcionRepositorio extends JpaRepository<Suscripcion, Integer> {
 
     List<Usuario> findAllByUsuario(Usuario usuario);
 }

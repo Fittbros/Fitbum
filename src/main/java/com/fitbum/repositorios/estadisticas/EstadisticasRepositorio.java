@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 
-public interface EstadisticasRepositorio extends JpaRepository<Estadisticas,Long> {
+public interface EstadisticasRepositorio extends JpaRepository<Estadisticas,Integer> {
 
     Page<Estadisticas> findAll(Pageable pageable);
 }

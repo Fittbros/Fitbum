@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PlantSerieRepositorio extends JpaRepository<PlantillaSerie,Long> {
+public interface PlantSerieRepositorio extends JpaRepository<PlantillaSerie,Integer> {
 }
