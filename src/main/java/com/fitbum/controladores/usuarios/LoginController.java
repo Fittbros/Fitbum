@@ -38,7 +38,7 @@ public class LoginController {
         String password = loginDto.getPassword();
         System.out.println("pass :" + password);
         //¿es correcta la password?
-        if (service.getUsuarioRepositorio().repValidarPassword(usr, passwordEncoder.encode(password) ) > 0)
+        if (service.getRepo().repValidarPassword(usr, passwordEncoder.encode(password) ) > 0)
         {
             return "home";
         }else {

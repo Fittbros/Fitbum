@@ -32,19 +32,69 @@
         </a>
             <hr class="sidebar-divider my-0">
 
-            <ul class="navbar-nav text-light" id="accordionSidebar">
-                <li class="nav-item"  th:each="dataObject : ${dataObject}">
-                    <!--  eso iria arriba  th:if="${dataObject.padre.getPadre() == 9999 } "-->
+            <div class="navbar-nav ms-auto py-4 py-lg-0"  >
 
+                <!--li class="treeview" th:each="menuItem : ${menuList}">
 
-                    <a class="nav-link "
-                       th:href="${dataObject.url}">
-                        <i th:class="${dataObject.icon}"></i>
-                        <span th:text="${dataObject.nombre}"> </span>
+                    <a th:if="${menuItem.parent.id == 999999 }"
+
+                       class="nav-link"
+
+                       aria-current="page"
+
+                       th:href="${menuItem.url}" th:text="${menuItem.description}"></a>
+
+                </li-->
+
+                <li class="nav-item"
+
+                    th:if="${menuItem.parent.id == 999999 } and  ${#lists.size(menuList.?[parent.id ==  __${menuItem.id}__ ]) == 0 } "
+
+                    th:each="menuItem : ${menuList}" >
+
+                    <a
+
+                            th:href="${menuItem.url}"
+
+                            th:text="${menuItem.description}"
+
+                            class="nav-link ">
+
                     </a>
 
                 </li>
-            </ul>
+
+                <li th:if="${menuItem.parent.id == 999999 } and  ${#lists.size(menuList.?[parent.id ==  __${menuItem.id}__ ]) > 0 } "
+
+                    class="nav-item dropdown"
+
+                    th:each="menuItem : ${menuList}" >
+
+                    <a th:href="${menuItem.url}" th:text="${menuItem.description}"
+
+                       class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+
+                    </a>
+
+                    <div class="dropdown-menu">
+
+                        <a class="dropdown-item"
+
+                           th:each="menuItemHijo : ${menuList.?[parent.id ==  __${menuItem.id}__ ]}"
+
+                           th:href="${menuItemHijo.url}"
+
+                           th:text="${menuItemHijo.description}"></a>
+
+                    </div>
+
+
+
+                </li>
+
+            </div>
+
+
             <div class="text-center d-none d-md-inline">
                 <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
             </div>

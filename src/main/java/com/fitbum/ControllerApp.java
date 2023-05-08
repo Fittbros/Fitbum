@@ -1,5 +1,8 @@
 package com.fitbum;
 
+import com.fitbum.controladores.AbstractController;
+import com.fitbum.entidades.usuarios.Usuario;
+import com.fitbum.servicios.MenuServicio;
 import com.fitbum.servicios.usuarios.UsuarioServicio;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -11,11 +14,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @Log4j2
-@RequiredArgsConstructor
 //@RequestMapping("/prueba")
-public class ControllerApp {
+public class ControllerApp extends AbstractController<Usuario> {
     @Autowired
     private UsuarioServicio usuarioServicio;
+
+    protected ControllerApp(MenuServicio menuService) {
+        super(menuService);
+    }
+
     @GetMapping("/index")
     public String inicio(){
         return "index";}

@@ -37,6 +37,13 @@ public class UsuarioSecurityImpl implements IUsuarioServicio, UserDetailsService
         String encodedPassword = passwordEncoder1.encode(passwd);
         return encodedPassword;
     }
+
+
+
+
+
+
+
 //    @Override
 //    public UserDetails loadUserByUsername(String username)
 //                                      throws UsernameNotFoundException {

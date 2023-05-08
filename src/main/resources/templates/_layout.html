@@ -12,7 +12,6 @@
           href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" th:href="@{/assets/fonts/fontawesome-all.min.css}">
     <link rel="icon" th:href="@{/assets/img/logo.svg}">
-
 </head>
 
 <body id="page-top">
@@ -21,45 +20,37 @@
     <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
          style="background: linear-gradient(175deg, #035450 10%, #09beb5 55%);">
         <div class="container-fluid d-flex flex-column p-0"><a
-                class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" th:href="@{/home}">
-            <div class="sidebar-brand-icon rotate-n-15"><img  th:src="@{/assets/img/logo.svg}" width="68" height="188"
-                                                             style="width: 21px;height: 73px;padding-right: 1px;margin-right: -8px;padding-left: 0px;margin-left: 0px;" alt="logo">
+                class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
+                th:href="@{/home}">
+            <div class="sidebar-brand-icon rotate-n-15"><img th:src="@{/assets/img/logo.svg}" width="68" height="188"
+                                                             style="width: 21px;height: 73px;padding-right: 1px;margin-right: -8px;padding-left: 0px;margin-left: 0px;"
+                                                             alt="logo">
             </div>
             <div class="sidebar-brand-text mx-3">
                 <h4 style="margin-right: 0px;padding-right: 0px;"><strong>Fitbum</strong></h4>
             </div>
         </a>
             <hr class="sidebar-divider my-0">
+
             <ul class="navbar-nav text-light" id="accordionSidebar">
-                <li class="nav-item"><a class="nav-link active" href="/home"><i
-                        class="fas fa-tachometer-alt"></i><span>Panel de Inicio</span></a>
+                <li class="nav-item"  th:each="dataObject : ${dataObject}">
+                    <!--  eso iria arriba  th:if="${dataObject.padre.getPadre() == 9999 } "-->
+
+
+                    <a class="nav-link "
+                       th:href="${dataObject.url}">
+                        <i th:class="${dataObject.icon}"></i>
+                        <span th:text="${dataObject.nombre}"> </span>
+                    </a>
+
                 </li>
-                <li class="nav-item"><a class="nav-link" href="/programa"><i
-                        class="fas fas fa-dumbbell"></i><span>Entrenar</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="/misrutinas"><i
-                        class="fas fa-table"></i><span>Mis Rutinas</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="/chat"><i
-                        class="far fa-comment-alt"></i><span>Chat (Entrenador)</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="/chat"><i class="far fa-comment-alt"></i><span>Chat (Atleta)</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="/entrenadores"><i
-                        class="fas fa-users"></i><span>Entrenadores</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="/atletas"><i class="fas fa-users"></i><span>Atletas</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="/logros"><i
-                        class="fas fa-trophy"></i><span>Logros</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="/tutoriales"><i
-                        class="fas fa-window-maximize"></i><span>Tutoriales</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="/ajustes"><i
-                        class="fas fa-wrench"></i><span>Ajustes de página</span></a></li>
             </ul>
+
             <div class="text-center d-none d-md-inline">
                 <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
             </div>
         </div>
     </nav>
-
 
 
     <div class="d-flex flex-column" id="content-wrapper">
@@ -69,6 +60,8 @@
                     <button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i
                             class="fas fa-bars"></i></button>
                     <ul class="navbar-nav flex-nowrap ms-auto">
+                        <!-- busqueda??-->
+
                         <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link"
                                                                             aria-expanded="false"
                                                                             data-bs-toggle="dropdown" href="#"></a>
@@ -85,11 +78,17 @@
                                 </form>
                             </div>
                         </li>
+                        <!-- inicio notif-->
+
                         <li class="nav-item dropdown no-arrow mx-1">
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                                                        aria-expanded="false" data-bs-toggle="dropdown"
                                                                        href="#"><span
-                                    class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
+                                    class="badge bg-danger badge-counter">XXX
+                                <!-- alerta notif-->
+                            </span>
+                                <i class="fas fa-bell fa-fw"></i>
+                            </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                     <h6 class="dropdown-header">alerts center</h6><a
                                         class="dropdown-item d-flex align-items-center" href="#">
@@ -100,92 +99,64 @@
                                     <div><span class="small text-gray-500">December 12, 2019</span>
                                         <p>A new monthly report is ready to download!</p>
                                     </div>
-                                </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="me-3">
-                                        <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div><span class="small text-gray-500">December 7, 2019</span>
-                                        <p>$290.29 has been deposited into your account!</p>
-                                    </div>
-                                </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="me-3">
-                                        <div class="bg-warning icon-circle"><i
-                                                class="fas fa-exclamation-triangle text-white"></i></div>
-                                    </div>
-                                    <div><span class="small text-gray-500">December 2, 2019</span>
-                                        <p>Spending Alert: We've noticed unusually high spending for your account.</p>
-                                    </div>
-                                </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All
-                                    Alerts</a>
+                                </a>
+
+
+                                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All
+                                        Alerts</a>
                                 </div>
                             </div>
                         </li>
+
+
+                        <!-- inicio mensajes-->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                                                        aria-expanded="false" data-bs-toggle="dropdown"
                                                                        href="#"><span
-                                    class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
+                                    class="badge bg-danger badge-counter">13
+                                <!-- alerta mensajes-->
+
+                            </span><i class="fas fa-envelope fa-fw"></i></a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                    <h6 class="dropdown-header">alerts center</h6><a
-                                        class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image me-3"><img class="rounded-circle"
-                                                                              th:src="@{/assets/img/avatars/avatar4.jpeg}">
-                                        <div class="bg-success status-indicator"></div>
-                                    </div>
-                                    <div class="fw-bold">
-                                        <div class="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I've been having.</span>
+                                    <h6 class="dropdown-header">alerts center</h6>
+                                    <a
+                                            class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="dropdown-list-image me-3"><img class="rounded-circle"
+                                                                                   th:src="@{/assets/img/avatars/avatar4.jpeg}">
+                                            <div class="bg-success status-indicator"></div>
                                         </div>
-                                        <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
-                                    </div>
-                                </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image me-3"><img class="rounded-circle"
-                                                                              th:src="@{/assets/img/avatars/avatar2.jpeg}">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div class="fw-bold">
-                                        <div class="text-truncate">
-                                            <span>I have the photos that you ordered last month!</span></div>
-                                        <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
-                                    </div>
-                                </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image me-3"><img class="rounded-circle"
-                                                                              th:src="@{/assets/img/avatars/avatar3.jpeg}">
-                                        <div class="bg-warning status-indicator"></div>
-                                    </div>
-                                    <div class="fw-bold">
-                                        <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span>
+                                        <div class="fw-bold">
+                                            <div class="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I've been having.</span>
+                                            </div>
+                                            <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
                                         </div>
-                                        <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
-                                    </div>
-                                </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image me-3"><img class="rounded-circle"
-                                                                              th:src="@{/assets/img/avatars/avatar5.jpeg}">
-                                        <div class="bg-success status-indicator"></div>
-                                    </div>
-                                    <div class="fw-bold">
-                                        <div class="text-truncate"><span>Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</span>
-                                        </div>
-                                        <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
-                                    </div>
-                                </a><a class="dropdown-item text-center small text-gray-500" href="/chat">Show All
-                                    Alerts</a>
+                                    </a>
+
+                                    <a class="dropdown-item text-center small text-gray-500" href="/chat">Show All
+                                        Alerts</a>
                                 </div>
                             </div>
                             <div class="shadow dropdown-list dropdown-menu dropdown-menu-end"
                                  aria-labelledby="alertsDropdown"></div>
                         </li>
                         <div class="d-none d-sm-block topbar-divider"></div>
-                        <li class="nav-item dropdown no-arrow">
-                            <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
-                                                                       aria-expanded="false" data-bs-toggle="dropdown"
-                                                                       href="#"><span
-                                    class="d-none d-lg-inline me-2 text-gray-600 small" sec:authentication="name"></span><img
-                                    class="border rounded-circle img-profile" th:src="@{/assets/img/avatars/avatar1.jpg}"></a>
-                                <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
-                                    <a class="dropdown-item" th:href="@{/perfil}"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Perfil</a>
 
-                                    <a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Ayuda</a>
+                        <!-- inicio desplegable perfil-->
+
+                        <li class="nav-item dropdown no-arrow">
+                            <div class="nav-item dropdown no-arrow">
+                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
+                                    <span class="d-none d-lg-inline me-2 text-gray-600 small" sec:authentication="name">
+
+                                    </span>
+                                    <img class="border rounded-circle img-profile" th:src="@{/assets/img/avatars/avatar1.jpg}"></a>
+                                <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+                                    <a class="dropdown-item" th:href="@{/perfil}"><i
+                                            class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Perfil</a>
+
+                                    <a class="dropdown-item" th:href="@{/ayuda}"><i
+                                            class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Ayuda</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" th:href="@{/logout}"><i
                                             class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Cerrar

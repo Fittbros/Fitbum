@@ -1,11 +1,13 @@
 package com.fitbum.controladores.usuarios;
 
 
+import com.fitbum.controladores.AbstractController;
 import com.fitbum.dto.LoginDto;
 import com.fitbum.dto.RoleDTO;
 import com.fitbum.dto.UsuarioDtoPsw;
 import com.fitbum.dto.UsuarioDto;
 import com.fitbum.entidades.usuarios.Usuario;
+import com.fitbum.servicios.MenuServicio;
 import com.fitbum.servicios.usuarios.IUsuarioServicio;
 import com.fitbum.servicios.usuarios.RoleService;
 import com.fitbum.servicios.usuarios.UsuarioServicio;
@@ -28,9 +30,9 @@ import static com.fitbum.util.ValidarFormatoPassword.ValidarFormato;
 
 @Controller
 @Log4j2
-@RequiredArgsConstructor
 
-public class UsuarioController {
+
+public class UsuarioController extends AbstractController<Usuario> {
 
     @Autowired
     private UsuarioServicio service;
@@ -40,6 +42,14 @@ public class UsuarioController {
 
     @Autowired
     private IUsuarioServicio userService;
+
+
+
+
+    protected UsuarioController(MenuServicio menuService) {
+        super(menuService);
+    }
+
     @GetMapping("/usuarios")
     @ResponseBody
     public List<Usuario> listar(){
@@ -50,17 +60,18 @@ public class UsuarioController {
     //El que genera la pantalla para pedir los datos de tipo GetMapping
     //Cuando pasamos informacion a la pantalla hay que usar ModelMap
     @GetMapping("/usuarios/registro")
-    public String vistaRegistro(Model interfazConPantalla){
+    public String vistaRegistro(Model interfazConPantalla) {
         //Instancia en memoria del dto a informar en la pantalla
-        final UsuarioDtoPsw usuarioDtoPsw = new UsuarioDtoPsw();
+        final UsuarioDto usuarioDto = new UsuarioDto();
         //Obtengo la lista de roles
         final List<RoleDTO> roleDTOList = roleService.buscarTodos();
-        //Mediante "addAttribute" comparto con la pantalla
-        interfazConPantalla.addAttribute("datosUsuario",usuarioDtoPsw);
-        interfazConPantalla.addAttribute("listaRoles",roleDTOList);
-        System.out.println("Preparando pantalla registro");
         return "formularios/nuevoUsuario";
     }
+        //Mediante "addAttribute" comparto con la pantalla
+
+
+
+
     //El que con los datos de la pantalla guarda la informacion de tipo PostMapping
     @PostMapping("/usuarios/registro")
     public String guardarUsuario( @ModelAttribute(name ="datosUsuario") UsuarioDtoPsw usuarioDtoPsw) throws Exception {
@@ -68,7 +79,7 @@ public class UsuarioController {
         System.out.println("Guardando usuario antes ");
         System.out.println("Usuario :" + usuarioDtoPsw.getUsername() + ", password : " + usuarioDtoPsw.getPassword() );
         if (ValidarFormato(usuarioDtoPsw.getPassword())){
-            Usuario usuario = service.mapToUserPsw(usuarioDtoPsw);
+            Usuario usuario = service.getMapper().mapToUserPsw(usuarioDtoPsw);
             System.out.println("Guardando usuario");
             System.out.println("Usuario :" + usuario.getNombre() + ", password : " + usuario.getPassword() );
             //Codifico la password

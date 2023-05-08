@@ -6,11 +6,11 @@ import com.fitbum.entidades.usuarios.Role;
 import com.fitbum.entidades.usuarios.Usuario;
 import com.fitbum.repositorios.usuarios.RoleRepositorio;
 import com.fitbum.repositorios.usuarios.UsuarioRepositorio;
+import com.fitbum.servicios.AbstractBusinessService;
+import com.fitbum.servicios.AbstractBusinessServiceSoloEnt;
 import com.fitbum.servicios.mapper.UsuarioMapper;
 import lombok.Getter;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.BeanDefinitionDsl;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,23 +19,33 @@ import java.util.Optional;
 
 @Getter
 @Service
-public class UsuarioServicio extends UsuarioMapper {
-    @Autowired
-    private UsuarioRepositorio usuarioRepositorio;
+public class UsuarioServicio extends AbstractBusinessService<Usuario,Integer,UsuarioDto,UsuarioRepositorio,UsuarioMapper> {
+
+
+
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
     private RoleRepositorio roleRepositorio;
+//Acceso a los datos de la bbdd
+
+    public UsuarioServicio (UsuarioRepositorio repo,UsuarioMapper serviceMapper) {
+
+
+
+        super(repo, serviceMapper);
+
+    }
 
 
 
     public List<Usuario> listartodos(){
-        List<Usuario> usuarioList = usuarioRepositorio.findAll();
-        return usuarioRepositorio.findAll();
+        List<Usuario> usuarioList = getRepo().findAll();
+        return getRepo().findAll();
 
     }
     public Usuario buscarporemail(String username){
-        Usuario usuario = usuarioRepositorio.findUsuarioByUsername(username);
+        Usuario usuario = getRepo().findUsuarioByUsername(username);
         return usuario;
 
     }
@@ -43,24 +53,24 @@ public class UsuarioServicio extends UsuarioMapper {
     public UsuarioDto guardar(UsuarioDto usuarioDto, String password){
         System.out.println("usuarioDto:" +usuarioDto.getUsername() );
         //Traduzco del dto con datos de entrada a la entidad
-        final Usuario entidad = this.mapToUser(usuarioDto);
+        final Usuario entidad = this.getMapper().mapToUser(usuarioDto);
         System.out.println("Entidad:" +entidad.getUsername() );
         entidad.setPassword(password);
         System.out.println("Entidad:" +entidad.getPassword() );
         //Guardo el la base de datos
-        Usuario entidadGuardada =  usuarioRepositorio.save(entidad);
+        Usuario entidadGuardada =  getRepo().save(entidad);
         //Traducir la entidad a DTO para devolver el DTO
-        return this.mapToUserDto(entidadGuardada);
+        return this.getMapper().mapToUserDto(entidadGuardada);
     }
     public UsuarioDto guardar(UsuarioDtoPsw usuarioDtoPsw){
         System.out.println("usuarioDto:" +usuarioDtoPsw.getUsername() );
         //Traduzco del dto con datos de entrada a la entidad
-        final Usuario entidad = this.mapToUserPsw(usuarioDtoPsw);
+        final Usuario entidad = this.getMapper().mapToUserPsw(usuarioDtoPsw);
         System.out.println("Entidad:" +entidad.getUsername() );
         //Guardo el la base de datos
-        Usuario entidadGuardada =  usuarioRepositorio.save(entidad);
+        Usuario entidadGuardada =  getRepo().save(entidad);
         //Traducir la entidad a DTO para devolver el DTO
-        return this.mapToUserDto(entidadGuardada);
+        return this.getMapper().mapToUserDto(entidadGuardada);
     }
 
     public void crearUsuario(Usuario usuario){
@@ -69,7 +79,7 @@ public class UsuarioServicio extends UsuarioMapper {
 
         usuario.setRole(rol.get());
 
-        usuarioRepositorio.save(usuario) ;
+        getRepo().save(usuario) ;
     }
 
 //    public Usuario guardarUsuarioDTO(UserDto userDto) {
