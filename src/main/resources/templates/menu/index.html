@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
+
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}">
 
@@ -42,6 +43,29 @@
     <div> fin de tabla </div>
     <div><a  th:href="@{/menu/indere}" >
         menu2</a></div>
+    sec:authentication="name"
+    <div sec:authentication="name"></div>
+    th:text="${#authentication.principal.username}
+    <div th:text="${#authentication.principal.username}"></div>
+    th:text="${#authentication.principal.password}
+    <div th:text="${#authentication.principal.username}"></div>
+    th:if="${#authentication.principal.username}!=null"
+    <div th:if="${#authentication.principal.username}!=null">
+        holi
+    </div>
+    sec:authorize="isAuthenticated()"
+    <div sec:authorize="isAuthenticated()"></div>
+    th:text="${#authentication.authorities.toArray()}"
+    <div th:text="${#authentication.authorities.toArray()}"></div>
+    ${#authentication.getPrincipal()}
+    <div th:text="${#authentication.getPrincipal()}"></div>
+    ${#authentication}
+    <div th:text="${#authentication}"></div>
+
+    <!--div sec:authentication="principal.avatar"></div-->
+    <img class="border rounded-circle img-profile" th:src="@{/assets/img/avatars/avatar1.jpg}">
+
+    <img class="border rounded-circle img-profile" src="/assets/img/cat.gif" >
     <div>
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
              style="background: linear-gradient(175deg, #035450 10%, #09beb5 55%);">

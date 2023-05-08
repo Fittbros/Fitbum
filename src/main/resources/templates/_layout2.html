@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
@@ -145,8 +146,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <div class="nav-item dropdown no-arrow">
                                 <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
-                                    <span class="d-none d-lg-inline me-2 text-gray-600 small">
-                                        DART
+                                    <span class="d-none d-lg-inline me-2 text-gray-600 small" sec:authentication="name">
+
                                     </span>
                                     <img class="border rounded-circle img-profile" th:src="@{/assets/img/avatars/avatar1.jpg}"></a>
                                 <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">

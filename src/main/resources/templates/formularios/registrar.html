@@ -24,7 +24,7 @@
                                 <h4 class="text-dark mb-4">Únete al mejor equipo</h4>
                             </div>
 
-                            <form class="user" role="form" th:object="${datosUsuario}" th:action="@{/usuarios/registro}">
+                            <form class="user" role="form" th:object="${datosUsuario}" th:action="@{/registrar2}" method="post">
                                 <div class="row mb-3">
                                     <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName" th:field="*{nombre}" placeholder="Nombre" name="first_name"></div>
                                     <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleLastName1" placeholder="Apellidos2" th:field="*{apellido1}" name="last_name"></div>

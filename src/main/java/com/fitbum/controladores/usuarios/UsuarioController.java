@@ -1,6 +1,7 @@
 package com.fitbum.controladores.usuarios;
 
 
+import com.fitbum.dto.LoginDto;
 import com.fitbum.dto.RoleDTO;
 import com.fitbum.dto.UsuarioDtoPsw;
 import com.fitbum.dto.UsuarioDto;
@@ -85,6 +86,35 @@ public class UsuarioController {
         }
 
     }
+    @GetMapping("/registrar")
+    public String crearUsuario(Usuario usuario){
+        service.crearUsuario(usuario);
+        return "/formularios/registrar";
+    }
+    @GetMapping("/registrar2")
+    public String vistaReg(){
+        return "/formularios/registrar";
+    }
+    @PostMapping("/registrar2")
+    public String registrar(@ModelAttribute(name = "datosUsuario" ) Usuario loginDto) {
+        String usr = loginDto.getUsername();
+        System.out.println("usr :" + usr);
+        String password = loginDto.getPassword();
+        System.out.println("pass :" + password);
+        //¿es correcta la password?
+//        if (service.getUsuarioRepositorio().repValidarPassword(usr, passwordEncoder.encode(password) ) > 0)
+//        {
+            return "home";
+//        }else {
+//            return "formularios/registrar";
+//        }
+    }
+//    @GetMapping("/registrar2")
+//
+//    public String registro(Model model){
+//        model.addAttribute("datosUsuario", new Usuario() usuario);
+//        service.crearUsuario(usuario);
+//        return "/formularios/registrar";}
 
 
     @GetMapping("/usuarios/olvidecontrasena")

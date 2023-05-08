@@ -2,16 +2,21 @@ package com.fitbum.servicios.usuarios;
 
 import com.fitbum.dto.UsuarioDto;
 import com.fitbum.dto.UsuarioDtoPsw;
+import com.fitbum.entidades.usuarios.Role;
 import com.fitbum.entidades.usuarios.Usuario;
+import com.fitbum.repositorios.usuarios.RoleRepositorio;
 import com.fitbum.repositorios.usuarios.UsuarioRepositorio;
 import com.fitbum.servicios.mapper.UsuarioMapper;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.BeanDefinitionDsl;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Getter
 @Service
 public class UsuarioServicio extends UsuarioMapper {
@@ -19,6 +24,8 @@ public class UsuarioServicio extends UsuarioMapper {
     private UsuarioRepositorio usuarioRepositorio;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private RoleRepositorio roleRepositorio;
 
 
 
@@ -54,6 +61,15 @@ public class UsuarioServicio extends UsuarioMapper {
         Usuario entidadGuardada =  usuarioRepositorio.save(entidad);
         //Traducir la entidad a DTO para devolver el DTO
         return this.mapToUserDto(entidadGuardada);
+    }
+
+    public void crearUsuario(Usuario usuario){
+        Usuario user = new Usuario();
+        Optional<Role> rol = roleRepositorio.findById(3);
+
+        usuario.setRole(rol.get());
+
+        usuarioRepositorio.save(usuario) ;
     }
 
 //    public Usuario guardarUsuarioDTO(UserDto userDto) {

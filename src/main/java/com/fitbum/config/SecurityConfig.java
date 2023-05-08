@@ -43,10 +43,13 @@ public class SecurityConfig {
                 .requestMatchers("/error").permitAll()
                 .requestMatchers("/assetsPublico/**").permitAll()
                 .requestMatchers("/forms/**").permitAll()
+                .requestMatchers("/registrar/**").permitAll()
+                .requestMatchers("/registrar2/**").permitAll()
                 //Permitimos todas las visitas a la pagina principal
                 .requestMatchers("","/").permitAll()
                 //Permitimos todas las visitas a la pagina principal
-                .requestMatchers("/registro","/registrarusuario").permitAll()
+                .requestMatchers("/registro").permitAll()
+                .requestMatchers("/registrarusuario").permitAll()
                 //Permitimos todas las visitas a /public
                 .requestMatchers("/home").authenticated()
                 //Solo permitimos a usuarios registrados visitar "/private"
