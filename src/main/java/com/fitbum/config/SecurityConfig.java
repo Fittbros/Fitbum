@@ -38,7 +38,6 @@ public class SecurityConfig {
                 .requestMatchers("/usuarios/registro").permitAll()
                 .requestMatchers("/usuarios/olvidecontrasena").permitAll()
                 .requestMatchers("/forms/olvidecontrasena").permitAll()
-                .requestMatchers("/menu").permitAll()
                 .requestMatchers("/tutoriales").permitAll()
                 .requestMatchers("/error").permitAll()
                 .requestMatchers("/assetsPublico/**").permitAll()

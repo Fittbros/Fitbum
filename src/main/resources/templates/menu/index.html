@@ -3,6 +3,9 @@
 
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}">
+<head>
+    <title>Menu</title>
+</head>
 
 <body>
 
@@ -43,77 +46,39 @@
     <div> fin de tabla </div>
     <div><a  th:href="@{/menu/indere}" >
         menu2</a></div>
-    sec:authentication="name"
-    <div sec:authentication="name"></div>
-    th:text="${#authentication.principal.username}
-    <div th:text="${#authentication.principal.username}"></div>
+    <div><a  th:href="@{/menu/3}" >
+        menu3 este ees</a></div>
 
-    th:if="${usuario.role.id}==3" th:each="usuario : ${usuario.listartodos()}"
-    <div th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}" th:text="${usuario.avatar}"></div>
-
-    <img th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}" th:src="${usuario.avatar}" class="rounded-circle me-2" width="30" height="30" >
-    <!--div th:text="${#authentication.getPrincipal()}">
-    th:each="usuario : ${usuario.listartodos()}"
-    </div>
-    th:if="${#authentication.principal.username}!=null"
-    <div th:if="${#authentication.principal.name}!=null">
-        holi
-    </div>
-    sec:authorize="isAuthenticated()"
-    <div sec:authorize="isAuthenticated()"></div>
-    th:text="${#authentication.authorities.toArray()}"
-    <div th:text="${#authentication.authorities.toArray()}"></div>
-    ${#authentication.getPrincipal()}
-    <div th:text="${#authentication.getPrincipal()}"></div>
-    ${#authentication}
-    <div th:text="${#authentication}"></div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Padre</th>
+            <th>Padre.id</th>
+            <th>Padre.id.type</th>
+            <th>Padre.getid</th>
+            <th>Padre.getid.type</th>
 
 
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dataObject : ${dataObject}" th:if="${dataObject.padre.id==4}">
+            <td th:text="${dataObject.id}"></td>
+            <td th:text="${dataObject.nombre}"></td>
+            <td th:text="${dataObject.padre}"></td>
+            <td th:text="${dataObject.padre.id}"></td>
+            <td th:text="${dataObject.padre.id.TYPE}"></td>
+            <td th:text="${dataObject.padre.getId()}"></td>
+            <td th:text="${dataObject.padre.getId().TYPE}"></td>
+        </tr>
+        </tbody>
+    </table>
 
-    ${#avatar}
-    <div th:text="${#authentication.principal}"></div-->
 
-    <!--div sec:authentication="principal.avatar"></div-->
-    <img class="border rounded-circle img-profile" th:src="@{/assets/img/avatars/avatar1.jpg}">
 
-    <img class="border rounded-circle img-profile" src="/assets/img/cat.gif" >
-    <div>
-        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
-             style="background: linear-gradient(175deg, #035450 10%, #09beb5 55%);">
-            <div class="container-fluid d-flex flex-column p-0"><a
-                    class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="/index">
-                <div class="sidebar-brand-icon rotate-n-15"><img th:src="@{/assets/img/logo.svg}" width="68" height="188"
-                                                                 style="width: 21px;height: 73px;padding-right: 1px;margin-right: -8px;padding-left: 0px;margin-left: 0px;">
-                </div>
-                <div class="sidebar-brand-text mx-3">
-                    <h4 style="margin-right: 0px;padding-right: 0px;"><strong>Fitbum</strong></h4>
-                </div>
-            </a>
-                <hr class="sidebar-divider my-0">
-                <ul class="navbar-nav text-light" id="accordionSidebar">
-                <li class="nav-item"
-                    th:if="${dataObject.padre == null } "
-                    th:each="dataObject : ${dataObject}" >
-                    <i th:class="${dataObject.icon}"> </i>
-                    <a class="nav-link "
-                       th:href="${dataObject.url}"
-                       th:text="${dataObject.nombre}">
-                        <i th:class="${dataObject.icon}"> </i>
-                        <i class=th:text=${dataObject.icon}> </i>
-                    </a>
-                    <i th:class="${dataObject.icon}"> </i>
-                </li>
-                </ul>
-                <div class="text-center d-none d-md-inline">
-                    <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
-                </div>
-            </div>
-        </nav>
-            </div>
         </div>
-        </nav>
-    </div>
-</div>
 
 
 </body>

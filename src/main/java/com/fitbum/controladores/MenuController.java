@@ -37,11 +37,10 @@ public class MenuController //extends  AbstractController<UsuarioDto>
 //    }
     @GetMapping(value = {"/",""})
     public String showMenu(
-            Model model, CustomUserDetails cu
+            Model model
     ) {
 
         model.addAttribute("dataObject", menuServicio.findAll());
-        model.addAttribute("cu", cu);
         model.addAttribute("usuario", usuarioServicio);
 
 
@@ -49,7 +48,7 @@ public class MenuController //extends  AbstractController<UsuarioDto>
 
         return "/menu/index";
     }
-@GetMapping("2")
+@GetMapping("/2")
 public String menu2(Model model
 ) {
     model.addAttribute("menu", menuServicio.findAll());
@@ -60,6 +59,8 @@ public String menu2(Model model
     public String menu3( Model model
     ) {
         model.addAttribute("dataObject", menuServicio.findAll());
+        model.addAttribute("usuario", usuarioServicio);
+
 //        model.addAttribute("fragmentName", "fragment-customer-list");
         return "/menu/3";
     }
@@ -68,6 +69,8 @@ public String menu2(Model model
             Model model
     ) {
         model.addAttribute("dataObject", menuServicio.findAll());
+        model.addAttribute("usuario", usuarioServicio);
+
 //        model.addAttribute("fragmentName", "fragment-customer-list");
 
         return "menu/indere";

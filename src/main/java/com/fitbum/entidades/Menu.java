@@ -29,6 +29,7 @@ public class Menu {
     private String url;
     private String icon;
     private Integer activo;
+    private Integer hijos;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;

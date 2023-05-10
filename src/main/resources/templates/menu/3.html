@@ -32,7 +32,7 @@
             <hr class="sidebar-divider my-0">
 
             <ul class="navbar-nav text-light" id="accordionSidebar">
-                <li class="nav-item"  th:each="dataObject : ${dataObject}">
+                <li class="nav-item"  th:each="dataObject : ${dataObject}" th:if="${dataObject.padre.id==4 }">
                     <!--  eso iria arriba  th:if="${dataObject.padre.getPadre() == 9999 } "-->
 
 

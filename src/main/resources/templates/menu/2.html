@@ -2,22 +2,46 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}">
+<head>
+    <title>Menu2</title>
 
+</head>
 <body>
 
 <div layout:fragment="content">
 
     <div class="pagetitle">
-        <h1>menu2</h1>
-    </div><!-- End Page Title -->
+        <h1>Menu2</h1>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Padre</th>
+            <th>Padre.id</th>
+            <th>Padre.id.type</th>
+            <th>Padre.getid</th>
+            <th>Padre.getid.type</th>
 
 
-    contenido aqui
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dataObject : ${dataObject}" th:if="${dataObject.padre.id==9999} and ${dataObject.padre!=null} "> <!--th:if="${dataObject.padre.id==4}"-->
+            <td th:text="${dataObject.id}"></td>
+            <td th:text="${dataObject.nombre}"></td>
+            <td th:text="${dataObject.padre}"></td>
 
-    <span  th:text="${usuario.usuarioRepositorio.findUsuarioByUsername('admin').getRole().getId()}"></span>
-    <span  th:if="${usuario.usuarioRepositorio.findUsuarioByUsername('admin').getRole().getId()==1} " th:text="${usuario.usuarioRepositorio.findByid(1).getNombre()}">
 
-    </span>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+
 
 
 </div>
