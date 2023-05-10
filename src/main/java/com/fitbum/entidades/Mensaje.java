@@ -2,6 +2,7 @@ package com.fitbum.entidades;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fitbum.entidades.usuarios.Usuario;
+import com.fitbum.servicios.MensajeServicio;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,11 +41,5 @@ public class Mensaje {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "receptor",nullable = false)
     private Usuario receptor;
-
-
-
-
-
-
 
 }
