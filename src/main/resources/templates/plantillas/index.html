@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>plantillas</title>
+
 </head>
 <body>
+
+<div layout:fragment="content">
+
+    <div class="pagetitle">
+        <h1>plantillas</h1>
+    </div><!-- End Page Title -->
+    <!--div><a  th:href="@{/menu}" >
+        menu</a></div>
+    <div><a  th:href="@{/menu/2}" >
+        menu2 </a></div>
+    <div><a  th:href="@{/menu/3}" >
+        menu3 </a></div>
+
+    <div><a  href='/login' >
+        login</a></div>
+    <div><a  href='/crearUsuario' >
+        crear usuario</a></div>
+    <div><a  href='/nuevoUsuario' >
+        nuevo usuario</a></div>
+    <div><a  href='/tutoriales' >
+        tutoriales</a></div-->
+    <div><a  th:href="@{/ejercicios/2}" >
+        ejercicios </a></div>
+    <div><a  th:href="@{/plantillas/meso}" >
+        plant meso </a></div>
+    <div><a  th:href="@{/plantillas/micro}" >
+        plant micro </a></div>
+
+    <div><a  th:href="@{/plantillas/sesion}" >
+        plant sesion </a></div>
+    <div><a  th:href="@{/plantillas/ejercicio}" >
+        plant ejerc </a></div>
+    <div><a  th:href="@{/plantillas/serie}" >
+        plant serie </a></div>
+</div>
 
 </body>
 </html>
