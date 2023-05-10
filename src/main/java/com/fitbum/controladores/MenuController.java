@@ -4,9 +4,12 @@ import com.fitbum.entidades.Menu;
 import com.fitbum.repositorios.MenuRepositorio;
 import com.fitbum.servicios.MenuServicio;
 import com.fitbum.servicios.usuarios.UsuarioServicio;
+import com.fitbum.util.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.util.Optional;
 
 
@@ -33,9 +37,14 @@ public class MenuController //extends  AbstractController<UsuarioDto>
 //    }
     @GetMapping(value = {"/",""})
     public String showMenu(
-            Model model
+            Model model, CustomUserDetails cu
     ) {
+
         model.addAttribute("dataObject", menuServicio.findAll());
+        model.addAttribute("cu", cu);
+        model.addAttribute("usuario", usuarioServicio);
+
+
 //        model.addAttribute("fragmentName", "fragment-customer-list");
 
         return "/menu/index";

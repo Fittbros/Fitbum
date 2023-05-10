@@ -13,14 +13,11 @@ import com.fitbum.servicios.usuarios.RoleService;
 import com.fitbum.servicios.usuarios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -30,9 +27,10 @@ import static com.fitbum.util.ValidarFormatoPassword.ValidarFormato;
 
 @Controller
 @Log4j2
+@RequestMapping("usuarios")
 
-
-public class UsuarioController extends AbstractController<Usuario> {
+public class UsuarioController //extends AbstractController<Usuario>
+{
 
     @Autowired
     private UsuarioServicio service;
@@ -42,24 +40,36 @@ public class UsuarioController extends AbstractController<Usuario> {
 
     @Autowired
     private IUsuarioServicio userService;
+    @Autowired
+    private MenuServicio menuServicio;
 
+    @GetMapping(value = {"/",""})
+    public String index(Model model
+    ) {
 
-
-
-    protected UsuarioController(MenuServicio menuService) {
-        super(menuService);
+        model.addAttribute("usuario", service);
+        model.addAttribute("dataObject", menuServicio.findAll());
+        return "usuarios/index";
     }
 
-    @GetMapping("/usuarios")
-    @ResponseBody
-    public List<Usuario> listar(){
-        return service.listartodos();
-    }
+//    protected UsuarioController(MenuServicio menuService) {
+//        super(menuService);
+//    }
+
+
+
+//    @GetMapping("/usuarios")
+//    @ResponseBody
+//    public List<Usuario> listar(Model model
+//    ) {
+//        model.addAttribute("dataObject", menuServicio.findAll());
+//        return service.listartodos();
+//    }
 
     //Para crear un usuario hay dos bloques
     //El que genera la pantalla para pedir los datos de tipo GetMapping
     //Cuando pasamos informacion a la pantalla hay que usar ModelMap
-    @GetMapping("/usuarios/registro")
+    @GetMapping("registro")
     public String vistaRegistro(Model interfazConPantalla) {
         //Instancia en memoria del dto a informar en la pantalla
         final UsuarioDto usuarioDto = new UsuarioDto();
@@ -73,7 +83,7 @@ public class UsuarioController extends AbstractController<Usuario> {
 
 
     //El que con los datos de la pantalla guarda la informacion de tipo PostMapping
-    @PostMapping("/usuarios/registro")
+    @PostMapping("registro")
     public String guardarUsuario( @ModelAttribute(name ="datosUsuario") UsuarioDtoPsw usuarioDtoPsw) throws Exception {
         //Comprobamos el patron
         System.out.println("Guardando usuario antes ");
@@ -128,12 +138,16 @@ public class UsuarioController extends AbstractController<Usuario> {
 //        return "/formularios/registrar";}
 
 
-    @GetMapping("/usuarios/olvidecontrasena")
+    @GetMapping("olvidecontrasena")
     public String formularioOlvideContrasena(){
         return "formularios/olvidecontrasena";}
 
     @GetMapping("/perfil")
-    public String perfil(){
+    public String perfil(Model model
+    ) {
+
+        model.addAttribute("usuario", service);
+        model.addAttribute("dataObject", menuServicio.findAll());
         return "rrhh/perfil";}
 
 

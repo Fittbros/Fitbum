@@ -47,10 +47,16 @@
     <div sec:authentication="name"></div>
     th:text="${#authentication.principal.username}
     <div th:text="${#authentication.principal.username}"></div>
-    th:text="${#authentication.principal.password}
-    <div th:text="${#authentication.principal.username}"></div>
+
+    th:if="${usuario.role.id}==3" th:each="usuario : ${usuario.listartodos()}"
+    <div th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}" th:text="${usuario.avatar}"></div>
+
+    <img th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}" th:src="${usuario.avatar}" class="rounded-circle me-2" width="30" height="30" >
+    <!--div th:text="${#authentication.getPrincipal()}">
+    th:each="usuario : ${usuario.listartodos()}"
+    </div>
     th:if="${#authentication.principal.username}!=null"
-    <div th:if="${#authentication.principal.username}!=null">
+    <div th:if="${#authentication.principal.name}!=null">
         holi
     </div>
     sec:authorize="isAuthenticated()"
@@ -65,7 +71,7 @@
 
 
     ${#avatar}
-    <div th:text="${#authentication.details}"></div>
+    <div th:text="${#authentication.principal}"></div-->
 
     <!--div sec:authentication="principal.avatar"></div-->
     <img class="border rounded-circle img-profile" th:src="@{/assets/img/avatars/avatar1.jpg}">

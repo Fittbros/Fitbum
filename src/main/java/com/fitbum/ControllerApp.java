@@ -15,19 +15,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 @Log4j2
 //@RequestMapping("/prueba")
-public class ControllerApp extends AbstractController<Usuario> {
+public class ControllerApp //extends AbstractController<Usuario>
+         {
     @Autowired
     private UsuarioServicio usuarioServicio;
+    @Autowired
+    private MenuServicio menuServicio;
 
-    protected ControllerApp(MenuServicio menuService) {
-        super(menuService);
-    }
+//    protected ControllerApp(MenuServicio menuService) {
+//        super(menuService);
+//    }
 
     @GetMapping("/index")
     public String inicio(){
         return "index";}
     @GetMapping("/home")
-    public String home(){
+    public String home(Model model
+    ) {
+        model.addAttribute("usuario", usuarioServicio);
+        model.addAttribute("dataObject", menuServicio.findAll());
         return "home";}
     @GetMapping("/publico")
     public String publico(){
@@ -36,36 +42,44 @@ public class ControllerApp extends AbstractController<Usuario> {
 
 
     @GetMapping("/programa")
-    public String indexentreno(){
+    public String indexentreno(Model model
+    ) {
+        model.addAttribute("usuario", usuarioServicio);
+
+        model.addAttribute("dataObject", menuServicio.findAll());
         return "/programa/index";}
 
     @GetMapping("/misrutinas")
-    public String indexrutinas(){
+    public String indexrutinas(Model model
+    ) {
+        model.addAttribute("usuario", usuarioServicio);
+
+        model.addAttribute("dataObject", menuServicio.findAll());
         return "/mis_rutinas/index";}
 
 
-
-    @GetMapping("/atletas")
-    public String indexatletas(Model model
+    @GetMapping("/logros")
+    public String indexlogros(Model model
     ) {
-
         model.addAttribute("usuario", usuarioServicio);
 
-        return "/atletas/index";}
-
-    @GetMapping("/entrenadores")
-    public String indexentrenadores(){
-        return "/entrenadores/index";}
-    @GetMapping("/logros")
-    public String indexlogros(){
+        model.addAttribute("dataObject", menuServicio.findAll());
         return "/logros/index";}
 
     @GetMapping("/tutoriales")
-    public String indextutoriales(){
+    public String indextutoriales(Model model
+    ) {
+        model.addAttribute("usuario", usuarioServicio);
+
+        model.addAttribute("dataObject", menuServicio.findAll());
         return "/tutoriales/index";}
 
     @GetMapping("/ajustes")
-    public String indexerror(){
+    public String indexerror(Model model
+    ) {
+        model.addAttribute("usuario", usuarioServicio);
+
+        model.addAttribute("dataObject", menuServicio.findAll());
         return "/ajustes/index";}
 
 

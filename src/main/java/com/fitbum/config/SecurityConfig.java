@@ -58,6 +58,9 @@ public class SecurityConfig {
                 .requestMatchers("/usuarios").authenticated()
                 .requestMatchers("/usuarios/**").authenticated()
                 .requestMatchers("/atletas").authenticated()
+                .requestMatchers("/entrenadores/**").authenticated()
+                .requestMatchers("/chat/**").authenticated()
+                .requestMatchers("/logros").authenticated()
                 //Permitimos únicamente las visitas de usuarios registrados a  /private
                 // Todas las request no filtradas hasta ahora, se rechazarán
                 .anyRequest().denyAll()

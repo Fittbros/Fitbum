@@ -2,7 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}">
+<head>
+    <title>Atletas</title>
 
+</head>
 <body>
 
 <div layout:fragment="content">
@@ -38,11 +41,12 @@
             <th>activo</th>
             <th>pass</th>
             <th>avatar</th>
+            <th>Rol</th>
 
         </tr>
         </thead>
         <tbody>
-        <tr th:each="usuario : ${usuario.listartodos()}">
+        <tr th:if="${usuario.role.id}==3" th:each="usuario : ${usuario.listartodos()}">
             <td th:text="${usuario.id}"></td>
             <td ><img class="rounded-circle me-2" width="30" height="30" th:src="${usuario.avatar}"></td>
             <td th:text="${usuario.nombre}"></td>
@@ -51,6 +55,8 @@
             <td th:text="${usuario.active}"></td>
             <td th:text="${usuario.password}"></td>
             <td th:text="${usuario.avatar}"></td>
+            <td th:text="${usuario.role.nombreRole}"></td>
+
 
 
         </tr>

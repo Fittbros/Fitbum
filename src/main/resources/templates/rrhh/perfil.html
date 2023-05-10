@@ -13,7 +13,7 @@
             <div class="col-lg-4">
                 <div class="card mb-3">
                     <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4"
-                                                                  th:src="@{/assets/img/avatars/avatar1.jpg}" width="160"
+                                                                   th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}" th:src="${usuario.avatar}" width="160"
                                                                    height="160">
                         <div class="mb-3">
                             <button class="btn btn-primary btn-sm" type="button">Cambiar foto</button>

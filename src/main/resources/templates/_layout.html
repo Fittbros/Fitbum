@@ -46,6 +46,7 @@
                 </li>
             </ul>
 
+
             <div class="text-center d-none d-md-inline">
                 <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
             </div>
@@ -150,9 +151,9 @@
                                     <span class="d-none d-lg-inline me-2 text-gray-600 small" sec:authentication="name">
 
                                     </span>
-                                    <img class="border rounded-circle img-profile" th:src="@{/assets/img/avatars/avatar1.jpg}"></a>
+                                    <img class="border rounded-circle img-profile" th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}" th:src="${usuario.avatar}"></a>
                                 <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
-                                    <a class="dropdown-item" th:href="@{/perfil}"><i
+                                    <a class="dropdown-item" th:href="@{/usuarios/perfil}"><i
                                             class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Perfil</a>
 
                                     <a class="dropdown-item" th:href="@{/ayuda}"><i
