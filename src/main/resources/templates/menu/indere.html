@@ -45,6 +45,13 @@
 nav2
     <nav>
         <ul >
+            <li class="nav-item" th:each="Menu : ${dataObject}" th:if="${Menu.padre!=null} and ${Menu.hijos!=1} and ${Menu.eshijo==0} " >
+                <a class="nav-link "
+                   th:href="${Menu.url}">
+                    <i th:class="${Menu.icon}"></i>
+                    <span th:text="${Menu.nombre}"> </span>
+                </a>
+            </li>
             <li class="nav-item" th:each="Menu : ${dataObject}" th:if="${Menu.padre!=null} and ${Menu.hijos==1} " >
                 <a class="nav-link "
                    th:href="${Menu.url}">
@@ -61,13 +68,7 @@ nav2
                     </li>
                 </ul>
             </li>
-            <li class="nav-item" th:each="Menu : ${dataObject}" th:if="${Menu.padre!=null} and ${Menu.hijos!=1} " >
-                <a class="nav-link "
-                   th:href="${Menu.url}">
-                    <i th:class="${Menu.icon}"></i>
-                    <span th:text="${Menu.nombre}"> </span>
-                </a>
-            </li>
+
         </ul>
     </nav>
 

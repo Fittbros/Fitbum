@@ -36,19 +36,19 @@ insert into ejercicios values (1,'tocarse','Brazo','+1 rep +1 peso','Ejercicio 1
 
 insert into content_tutorial values (1,'tocarse fuerte','Ejercicio 1','https://www.youtube.com/watch?v=Jv4O_XeHPyA&pp=ygUjY2FiYWxsbyBob21vc2V4dWFsIGRlIGxhcyBtb250YcOxYXM%3D'),(2,'saltar muy alto','jump','https://www.youtube.com/watch?v=Jv4O_XeHPyA&pp=ygUjY2FiYWxsbyBob21vc2V4dWFsIGRlIGxhcyBtb250YcOxYXM%3D');
 delete from menu;
-insert into menu (id,orden,nombre,url,activo,icon,padre,hijos)
-values (9999,9999,'base','/',0,'fas fa-tachometer-alt', null,0),
-       ( 1, 1, 'Inicio', '/home',1,'fas fa-tachometer-alt',9999,0),
-       (2, 20, 'Entrenar', '/programa',1,'fas fas fa-dumbbell',9999,0),
-       (3, 30, 'Mis rutinas', '/misrutinas',1,'fas fa-table',9999,0),
-       (4, 40, 'Chats', '/chat',1,'far fa-comment-alt',9999,1),
-       (5, 35, 'Entrenador', '/chat/entrenador',1,'far fa-comment-alt',4,0),
-       (6, 48, 'Cliente', '/chat/cliente',1,'far fa-comment-alt',4,0),
-       (7,50,'Entrenadores','/entrenadores',1,'fas fa-users',9999,0),
-       (8,55,'Atletas','/atletas',1,'fas fa-users',9999,0),
-       (9,60,'Logros','/logros',1,'fas fa-trophy',9999,0),
-       (10,70,'Tutoriales','/tutoriales',1,'fas fa-window-maximize',9999,0),
-       (11,80,'Ajustes de Página','/ajustes',1,'fas fa-wrench',9999,0);
+insert into menu (id,orden,nombre,url,activo,icon,padre,hijos,eshijo)
+values (9999,9999,'base','/',0,'fas fa-tachometer-alt', null,0,0),
+       ( 1, 1, 'Inicio', '/home',1,'fas fa-tachometer-alt',9999,0,0),
+       (2, 20, 'Entrenar', '/programa',1,'fas fas fa-dumbbell',9999,0,0),
+       (3, 30, 'Mis rutinas', '/misrutinas',1,'fas fa-table',9999,0,0),
+       (4, 40, 'Chats', '/chat',1,'far fa-comment-alt',9999,1,0),
+       (5, 35, 'Entrenador', '/chat/entrenador',1,'far fa-comment-alt',4,0,1),
+       (6, 48, 'Cliente', '/chat/cliente',1,'far fa-comment-alt',4,0,1),
+       (7,50,'Entrenadores','/entrenadores',1,'fas fa-users',9999,0,0),
+       (8,55,'Atletas','/atletas',1,'fas fa-users',9999,0,0),
+       (9,60,'Logros','/logros',1,'fas fa-trophy',9999,0,0),
+       (10,70,'Tutoriales','/tutoriales',1,'fas fa-window-maximize',9999,0,0),
+       (11,80,'Ajustes de Página','/ajustes',1,'fas fa-wrench',9999,0,0);
 
 
 

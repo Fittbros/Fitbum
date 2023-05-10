@@ -33,7 +33,7 @@
             <hr class="sidebar-divider my-0">
 
             <ul class="navbar-nav text-light " id="accordionSidebar">
-                <li class="nav-item" th:each="Menu : ${dataObject}" th:if="${Menu.padre!=null} and ${Menu.hijos!=1} " >
+                <li class="nav-item" th:each="Menu : ${dataObject}" th:if="${Menu.padre!=null} and ${Menu.hijos!=1} and ${Menu.eshijo==0}" >
                     <a class="nav-link "
                        th:href="${Menu.url}">
                         <i th:class="${Menu.icon}"></i>

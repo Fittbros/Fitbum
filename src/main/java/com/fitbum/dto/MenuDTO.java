@@ -10,11 +10,20 @@ public class MenuDTO implements Serializable {
     private Integer orden;
     private Integer activo;
     private Integer hijos;
+    private Integer eshijo;
     private String url;
     private String icon;
     private Set<RoleDTO> roles;
 
     public MenuDTO() {
+    }
+
+    public Integer getEshijo() {
+        return eshijo;
+    }
+
+    public void setEshijo(Integer eshijo) {
+        this.eshijo = eshijo;
     }
 
     public String getIcon() {
