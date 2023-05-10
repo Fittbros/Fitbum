@@ -31,18 +31,37 @@
         </a>
             <hr class="sidebar-divider my-0">
 
-            <ul class="navbar-nav text-light" id="accordionSidebar">
-                <li class="nav-item"  th:each="dataObject : ${dataObject}" th:if="${dataObject.padre.id==4 }">
-                    <!--  eso iria arriba  th:if="${dataObject.padre.getPadre() == 9999 } "-->
 
-
+            <ul class="navbar-nav text-light " id="accordionSidebar">
+                <li class="nav-item" th:each="Menu : ${dataObject}" th:if="${Menu.padre!=null} and ${Menu.hijos!=1} " >
                     <a class="nav-link "
-                       th:href="${dataObject.url}">
-                        <i th:class="${dataObject.icon}"></i>
-                        <span th:text="${dataObject.nombre}"> </span>
+                       th:href="${Menu.url}">
+                        <i th:class="${Menu.icon}"></i>
+                        <span th:text="${Menu.nombre}"> </span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown" th:each="Menu : ${dataObject}" th:if="${Menu.padre!=null} and ${Menu.hijos==1} " >
+                    <a class="nav-link dropdown-toggle"
+                       th:href="${Menu.url}"
+                       id="navbarDarkDropdownMenuLink" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <i th:class="${Menu.icon}"></i>
+                        <span th:text="${Menu.nombre}"> </span>
                     </a>
 
+                    <ul class="dropdown-menu dropdown-menu-dark text-light " aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li class="dropdown-item " th:each="menuhijo : ${dataObject}" th:if="${menuhijo.padre!=null} and ${menuhijo.padre.id==Menu.id} " >
+                            <a class="nav-link "
+                               th:href="${menuhijo.url}">
+                                <i th:class="${menuhijo.icon}"></i>
+                                <span th:text="${menuhijo.nombre}"> </span>
+                            </a>
+                        </li>
+                    </ul>
+
+
                 </li>
+
             </ul>
             <div class="text-center d-none d-md-inline">
                 <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>

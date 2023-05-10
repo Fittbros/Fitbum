@@ -14,50 +14,62 @@
     <div class="pagetitle">
         <h1>MenuIndere</h1>
     </div>
-
-    <nav>
-        <ul>
-            <li th:each="dataObject : ${dataObject}" th:if="${dataObject.padre!=null} and ${dataObject.padre.id==9999}" th:text="${dataObject.nombre}"></li>
-
-             </ul>
-
-
-    </nav>
-nav2
+    nav1
     <nav>
         <ul>
             <li th:each="Menu : ${dataObject}" th:if="${Menu.padre!=null} and ${Menu.hijos==1} " >
-                <span th:text="${Menu.nombre}"></span>
-
-                    <ul>
-                        <li th:each="menuhijo : ${dataObject}" th:if="${menuhijo.padre!=null} and ${menuhijo.padre.id==Menu.id} " >
-                        <span th:text="${menuhijo.nombre}"></span>
-                        </li>
-                    </ul>
-            </li>
-            <li th:each="Menu : ${dataObject}" th:if="${Menu.padre!=null} and ${Menu.hijos!=1} " >
-                <span th:text="${Menu.nombre}"></span>
-
-            </li>
-        </ul>
-
-
-    </nav>
-nav3
-    <nav>
-        <ul>
-            <li th:each="dataObject : ${dataObject}" th:if="${dataObject.padre!=null} and ${dataObject.padre.id==9999}" > Dogs
+                <a class="nav-link "
+                   th:href="${Menu.url}">
+                    <i th:class="${Menu.icon}"></i>
+                    <span th:text="${Menu.nombre}"> </span>
+                </a>
                 <ul>
-                    <li> Siberian Husky </li>
-                    <li> German Shepherd </li>
+                    <li th:each="menuhijo : ${dataObject}" th:if="${menuhijo.padre!=null} and ${menuhijo.padre.id==Menu.id} " >
+                        <a class="nav-link "
+                           th:href="${menuhijo.url}">
+                            <i th:class="${menuhijo.icon}"></i>
+                            <span th:text="${menuhijo.nombre}"> </span>
+                        </a>
+                    </li>
                 </ul>
             </li>
-
-            <li> Cats </li>
-            <li> Hamster </li>
+            <li th:each="Menu : ${dataObject}" th:if="${Menu.padre!=null} and ${Menu.hijos!=1} " >
+                <a class="nav-link "
+                   th:href="${Menu.url}">
+                    <i th:class="${Menu.icon}"></i>
+                    <span th:text="${Menu.nombre}"> </span>
+                </a>
+            </li>
         </ul>
     </nav>
-
+nav2
+    <nav>
+        <ul >
+            <li class="nav-item" th:each="Menu : ${dataObject}" th:if="${Menu.padre!=null} and ${Menu.hijos==1} " >
+                <a class="nav-link "
+                   th:href="${Menu.url}">
+                    <i th:class="${Menu.icon}"></i>
+                    <span th:text="${Menu.nombre}"> </span>
+                </a>
+                <ul>
+                    <li class="nav-item" th:each="menuhijo : ${dataObject}" th:if="${menuhijo.padre!=null} and ${menuhijo.padre.id==Menu.id} " >
+                        <a class="nav-link "
+                           th:href="${menuhijo.url}">
+                            <i th:class="${menuhijo.icon}"></i>
+                            <span th:text="${menuhijo.nombre}"> </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" th:each="Menu : ${dataObject}" th:if="${Menu.padre!=null} and ${Menu.hijos!=1} " >
+                <a class="nav-link "
+                   th:href="${Menu.url}">
+                    <i th:class="${Menu.icon}"></i>
+                    <span th:text="${Menu.nombre}"> </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
 
 
