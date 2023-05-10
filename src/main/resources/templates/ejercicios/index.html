@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+<head>
+    <title>ejercicios</title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="pagetitle">
+        <h1>ejercicios</h1>
+    </div>
+    <div>
+        <span th:text="holi"></span>
+        <span th:text="${ej.findbyId(1).get().getNombre()}"></span>
+        <span th:text="1"></span>
+    </div>
+    <!-- End Page Title -->
+
+
+    <!--div class="container" th:insert="${fragmentName} :: ${fragmentName}(dataObject==${dataObject})">
+    </div-->
+    <!--table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>url</th>
+            <th>idOrden</th>
+            <th>icon</th>
+            <th>activo</th>
+            <th>idPadre</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ej : ${ej.findAll()}">
+            <td th:text="${ej.id}"></td>
+            <td th:text="${ej.nombre}"></td>
+            <td th:text="${ej.descripcion}"></td>
+
+
+
+        </tr>
+        </tbody>
+    </table-->
+
+
+
+
+        </div>
+
+
+</body>
+</html>
