@@ -13,7 +13,24 @@
     </div>
 
 <!--  CONTENIDO AQUI -->
-
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>usuario</th>
+            <th>nummicro</th>
+            <th>longmicro</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="entidad : ${meso}">
+            <td th:text="${entidad.id}"></td>
+            <td th:text="${entidad.usuario}"></td>
+            <td th:text="${entidad.getNumMicrociclos()}"></td>
+            <td th:text="${entidad.getLongMicrociclo()}"></td>
+        </tr>
+        </tbody>
+    </table>
 
 
 </div>

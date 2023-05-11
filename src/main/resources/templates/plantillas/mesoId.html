@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>mesocicloId</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-3">
+
+    <div class="pagetitle">
+        <h1>mesocicloId</h1>
+    </div>
+    <span>prueba1</span>
+    <span th:text="${id}">prueba1</span>
+    <span th:text="${meso.get().getNumMicrociclos()}">prueba1</span>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>idMeso</th>
+            <th>Fecha inic</th>
+            <th>Fecha fin</th>
+            <th>num microc</th>
+            <th>long microc</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${meso.get().getId()}"></td>
+            <td th:text="${meso.get().getIdMesociclos()}"></td>
+            <td th:text="${meso.get().getFechaInicio()}"></td>
+            <td th:text="${meso.get().getFechaFin()}"></td>
+            <td th:text="${meso.get().getNumMicrociclos()}"></td>
+            <td th:text="${meso.get().getLongMicrociclo()}"></td>
+        </tr>
+        </tbody>
+    </table>
+    th:if="${micro.get().getIdPlantillaMesociclo}==${meso.get().getId()}"
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>volu</th>
+                <th>plantilla meso</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="micro : ${micro}" th:if="${micro.getPlantillaMesociclo().id}==${meso.get().getId()}">
+                <td th:text="${micro.id}"></td>
+                <td th:text="${micro.getVolumenEstandar()}"></td>
+                <td th:text="${micro.getPlantillaMesociclo().id}"></td>
+                <td >
+                    <div th:each="sesion: ${sesion}" >
+                        <span th:text="sesion"></span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>volu</th>
+                <th>plantilla meso</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="sesion : ${sesion}" >
+                <td th:text="${sesion}"></td>
+                <td th:text="s"></td>
+                <td th:text="c"></td>
+                <td >
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <span th:each="micro : ${micro}" th:if="${micro.getPlantillaMesociclo().id}==${meso.get().getId()}">holi</span>
+    </div>
+
+<!--  CONTENIDO AQUI -->
+    <!--table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>usuario</th>
+            <th>nummicro</th>
+            <th>longmicro</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="entidad : ${meso}">
+            <td th:text="${entidad.id}"></td>
+            <td th:text="${entidad.usuario}"></td>
+            <td th:text="${entidad.getNumMicrociclos()}"></td>
+            <td th:text="${entidad.getLongMicrociclo()}"></td>
+        </tr>
+        </tbody>
+    </table-->
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
