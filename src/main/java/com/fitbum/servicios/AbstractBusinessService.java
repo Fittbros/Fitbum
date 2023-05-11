@@ -41,6 +41,9 @@ public abstract class AbstractBusinessService<E, ID, DTO,  REPO extends JpaRepos
     public Page<DTO> buscarTodos(Pageable pageable){
         return  repo.findAll(pageable).map(this.serviceMapper::toDto);
     }
+    public Page<E> buscarTodosEnt(Pageable pageable){
+        return  repo.findAll(pageable);
+    }
 
     //Buscar por id
     public Optional<DTO> encuentraPorId(ID id){

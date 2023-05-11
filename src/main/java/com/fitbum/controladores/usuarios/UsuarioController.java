@@ -6,6 +6,7 @@ import com.fitbum.dto.LoginDto;
 import com.fitbum.dto.RoleDTO;
 import com.fitbum.dto.UsuarioDtoPsw;
 import com.fitbum.dto.UsuarioDto;
+import com.fitbum.entidades.usuarios.Role;
 import com.fitbum.entidades.usuarios.Usuario;
 import com.fitbum.servicios.MenuServicio;
 import com.fitbum.servicios.usuarios.IUsuarioServicio;
@@ -20,6 +21,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.fitbum.util.ValidarFormatoPassword.ValidarFormato;
 //import org.springframework.validation.BindingResult;
@@ -72,9 +74,14 @@ public class UsuarioController //extends AbstractController<Usuario>
     @GetMapping("registro")
     public String vistaRegistro(Model interfazConPantalla) {
         //Instancia en memoria del dto a informar en la pantalla
-        final UsuarioDto usuarioDto = new UsuarioDto();
+        final UsuarioDtoPsw usuarioDtoPsw = new UsuarioDtoPsw();
         //Obtengo la lista de roles
         final List<RoleDTO> roleDTOList = roleService.buscarTodos();
+        //Mediante "addAttribute" comparto con la pantalla
+
+        interfazConPantalla.addAttribute("datosUsuario",usuarioDtoPsw);
+
+        interfazConPantalla.addAttribute("listaRoles",roleDTOList);
         return "formularios/nuevoUsuario";
     }
         //Mediante "addAttribute" comparto con la pantalla
@@ -95,47 +102,53 @@ public class UsuarioController //extends AbstractController<Usuario>
             //Codifico la password
             String encodedPasswod = userService.getEncodedPassword(usuario);
             usuarioDtoPsw.setPassword(encodedPasswod);
+            System.out.println("la pssw codif es "+usuarioDtoPsw.getPassword());
             //El usuario se guarda como no autorizado
             //Guardo la password
+            Optional<Role> role= roleService.buscar(3);
+            if(role.isPresent())
+            {
+                usuarioDtoPsw.setRole(role.get());
+            }
+            usuarioDtoPsw.setActive(true);
             UsuarioDto usuario1 = this.service.guardar(usuarioDtoPsw);
             //return "usuarios/detallesusuario";
-            return String.format("redirect:/usuarios/%s", usuario1.getId());
+            return "redirect:/usuarios/login";
         }
         else
         {
             return "formularios/nuevoUsuario";
         }
-
     }
-    @GetMapping("/registrar")
-    public String crearUsuario(Usuario usuario){
-        service.crearUsuario(usuario);
-        return "/formularios/registrar";
-    }
-    @GetMapping("/registrar2")
-    public String vistaReg(){
-        return "/formularios/registrar";
-    }
-    @PostMapping("/registrar2")
-    public String registrar(@ModelAttribute(name = "datosUsuario" ) Usuario loginDto) {
-        String usr = loginDto.getUsername();
-        System.out.println("usr :" + usr);
-        String password = loginDto.getPassword();
-        System.out.println("pass :" + password);
-        //¿es correcta la password?
-//        if (service.getUsuarioRepositorio().repValidarPassword(usr, passwordEncoder.encode(password) ) > 0)
-//        {
-            return "home";
-//        }else {
-//            return "formularios/registrar";
-//        }
-    }
-//    @GetMapping("/registrar2")
-//
-//    public String registro(Model model){
-//        model.addAttribute("datosUsuario", new Usuario() usuario);
+//    @GetMapping("/registrar")
+//    public String crearUsuario(Usuario usuario){
 //        service.crearUsuario(usuario);
-//        return "/formularios/registrar";}
+//        return "/formularios/registrar";
+//    }
+//    @GetMapping("/registrar2")
+//    public String vistaReg(){
+//        return "/formularios/registrar";
+//    }
+//    @PostMapping("/registrar2")
+//    public String registrar(@ModelAttribute(name = "datosUsuario" ) Usuario loginDto) {
+//        String usr = loginDto.getUsername();
+//        System.out.println("usr :" + usr);
+//        String password = loginDto.getPassword();
+//        System.out.println("pass :" + password);
+//        //¿es correcta la password?
+////        if (service.getUsuarioRepositorio().repValidarPassword(usr, passwordEncoder.encode(password) ) > 0)
+////        {
+//            return "home";
+////        }else {
+////            return "formularios/registrar";
+////        }
+//    }
+////    @GetMapping("/registrar2")
+////
+////    public String registro(Model model){
+////        model.addAttribute("datosUsuario", new Usuario() usuario);
+////        service.crearUsuario(usuario);
+////        return "/formularios/registrar";}
 
 
     @GetMapping("olvidecontrasena")

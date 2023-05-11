@@ -32,6 +32,7 @@ public class UsuarioDtoPsw {
     private String	apellido2;
     private String	email;
     private String	avatar;
+    private boolean active;
 
     private String  password;
     private Float	peso;
