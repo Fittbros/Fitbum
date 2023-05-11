@@ -41,4 +41,11 @@ public class MensajeController {
         model.addAttribute("dataObject", menuServicio.findAll());
         return "/chat/chatAtletas";}
 
+    @GetMapping(value = {"/chatprueba"})
+    public String chatprueba(Model model
+    ) {
+        model.addAttribute("usuario", usuarioServicio);
+        model.addAttribute("dataObject", menuServicio.findAll());
+        return "/chat/chatprueba";}
+
 }

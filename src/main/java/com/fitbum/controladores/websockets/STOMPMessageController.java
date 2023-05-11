@@ -50,12 +50,8 @@ public class STOMPMessageController {
     @MessageMapping("/private")
     public void sendToSpecificUser(@Payload PrivateMessage message) {
 
-
         //Creo mi notificación en la base de datos para poder controlar el estado de los mensajes
         Notificacion notificacion = messagingService.crearNotificacion(message);
-
-
-
 
         simpMessagingTemplate.convertAndSendToUser(
                 message.getTo(),
@@ -65,8 +61,6 @@ public class STOMPMessageController {
         );
 
     }
-
-
 
     private MessageHeaders createHeaders(String recipient, String notificationID) {
         SimpMessageHeaderAccessor headerAccessor = SimpMessageHeaderAccessor.create(SimpMessageType.MESSAGE);
@@ -84,6 +78,7 @@ public class STOMPMessageController {
         if(notificacion.isPresent())
         {
             notificacion.get().setEstado("READ");
+            log.info("MARCANDO NOTIFICACION COMO RECIBIDA");
             notificacionRepositorio.save(notificacion.get());
         }
     }

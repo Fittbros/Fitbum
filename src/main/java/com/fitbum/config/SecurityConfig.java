@@ -31,6 +31,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests( authorize -> authorize
                 .requestMatchers("/assets/**").permitAll()
+                .requestMatchers("/chat/chatprueba").permitAll()
                 .requestMatchers("/templates/**").permitAll()
                 .requestMatchers("/index").permitAll()
                 .requestMatchers("/ajustes").permitAll()
