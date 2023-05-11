@@ -32,28 +32,30 @@ insert into suscripcion values (1,'aa','1990-01-01','1990-01-01',50,1),(2,'bb','
 
 insert into relaciones values (1,'2025-01-01','1990-12-01',3,2),(2,'2023-01-01','2001-06-01',4,2);
 
-insert into ejercicios values (1,'tocarse','Brazo','+1 R +1 P','Ejercicio 1'),
-                              (2,'saltar','pierna','+2 R','Jump'),
-                              (3, 'flexiones', 'Pecho', '+2R +3P', 'Ejercicio 3'),
-                              (4, 'correr', 'Pierna', '+5R +1P', 'Running'),
-                              (5, 'levantamiento de pesas', 'Espalda', '+4R +5P', 'Ejercicio 5'),
-                              (6, 'abdominales', 'Abdomen', '+2R +0P', 'Abs workout'),
-                              (7, 'sentadillas', 'Pierna', '+3R +2P', 'Squats'),
-                              (8, 'burpees', 'Cuerpo completo', '+5R +4P', 'Burpees workout'),
-                              (9, 'curl de bíceps', 'Brazo', '+1R +3P', 'Bicep curls'),
-                              (10, 'zancadas', 'Pierna', '+4R +2P', 'Lunges'),
-                              (11, 'plancha', 'Abdomen', '+3R +1P', 'Plank'),
-                              (12, 'press de banca', 'Pecho', '+2R +4P', 'Bench press'),
-                              (13, 'remo', 'Espalda', '+1R +2P', 'Rowing'),
-                              (14, 'sentadillas con salto', 'Pierna', '+4R +3P', 'Jumping squats'),
-                              (15, 'dominadas', 'Espalda', '+3R +5P', 'Pull-ups'),
-                              (16, 'escalador', 'Cuerpo completo', '+5R +0P', 'Mountain climbers'),
-                              (17, 'curl de tríceps', 'Brazo', '+2R +1P', 'Tricep curls'),
-                              (18, 'step-ups', 'Pierna', '+1R +5P', 'Step-ups'),
-                              (19, 'superman', 'Espalda', '+3R +3P', 'Superman exercise'),
-                              (20, 'giros rusos', 'Abdomen', '+0R +4P', 'Russian twists');
+insert into ejercicios values (1,'tocarse','Brazo','+1 R +1 P','Ejercicio 1','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (2,'saltar','pierna','+2 R','Jump','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (3, 'flexiones', 'Pecho', '+2R +3P', 'Ejercicio 3','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (4, 'correr', 'Pierna', '+5R +1P', 'Running','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (5, 'levantamiento de pesas', 'Espalda', '+4R +5P', 'Ejercicio 5','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (6, 'abdominales', 'Abdomen', '+2R +0P', 'Abs workout','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (7, 'sentadillas', 'Pierna', '+3R +2P', 'Squats','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (8, 'burpees', 'Cuerpo completo', '+5R +4P', 'Burpees workout','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (9, 'curl de bíceps', 'Brazo', '+1R +3P', 'Bicep curls','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (10, 'zancadas', 'Pierna', '+4R +2P', 'Lunges','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (11, 'plancha', 'Abdomen', '+3R +1P', 'Plank','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (12, 'press de banca', 'Pecho', '+2R +4P', 'Bench press','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (13, 'remo', 'Espalda', '+1R +2P', 'Rowing','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (14, 'sentadillas con salto', 'Pierna', '+4R +3P', 'Jumping squats','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (15, 'dominadas', 'Espalda', '+3R +5P', 'Pull-ups','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (16, 'escalador', 'Cuerpo completo', '+5R +0P', 'Mountain climbers','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (17, 'curl de tríceps', 'Brazo', '+2R +1P', 'Tricep curls','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (18, 'step-ups', 'Pierna', '+1R +5P', 'Step-ups','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (19, 'superman', 'Espalda', '+3R +3P', 'Superman exercise','https://www.youtube.com/watch?v=dQw4w9WgXcQ'),
+                              (20, 'giros rusos', 'Abdomen', '+0R +4P', 'Russian twists','https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
-insert into content_tutorial values (1,'tocarse fuerte','Ejercicio 1','https://www.youtube.com/watch?v=Jv4O_XeHPyA&pp=ygUjY2FiYWxsbyBob21vc2V4dWFsIGRlIGxhcyBtb250YcOxYXM%3D'),(2,'saltar muy alto','jump','https://www.youtube.com/watch?v=Jv4O_XeHPyA&pp=ygUjY2FiYWxsbyBob21vc2V4dWFsIGRlIGxhcyBtb250YcOxYXM%3D');
+insert into content_tutorial
+values (1,'tocarse fuerte','Ejercicio 1','https://www.youtube.com/watch?v=Jv4O_XeHPyA&pp=ygUjY2FiYWxsbyBob21vc2V4dWFsIGRlIGxhcyBtb250YcOxYXM%3D'),
+       (2,'saltar muy alto','jump','https://www.youtube.com/watch?v=Jv4O_XeHPyA&pp=ygUjY2FiYWxsbyBob21vc2V4dWFsIGRlIGxhcyBtb250YcOxYXM%3D');
 delete from menu;
 insert into menu (id,orden,nombre,url,activo,icon,padre,hijos,eshijo)
 values (9999,9999,'base','/',0,'fas fa-tachometer-alt', null,0,0),

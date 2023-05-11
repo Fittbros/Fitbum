@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Dar de alta ej</title>
+    <title>Editar ej</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 </head>
 <body>
 <div class="container mt-3">
-    <h2>Formulario menu</h2>
-    <form th:action="@{/ejercicios/save}" th:object="${ej}" method="post">
+    <h2 th:text="'Ejercicio '+${ej.id} ">Formulario ej</h2>
+    <div><a  th:href="@{/ejercicios}" >
+        Volver </a></div>
+
+
+    <form th:action="@{/ejercicios/save}" th:object="${ej}" th:method="post">
         <input type="hidden" th:field="*{id}">
         <div class="form-group">
             <label for="name">Nombre:</label>
@@ -16,9 +20,23 @@
         </div>
 
         <div class="form-group">
-            <label for="apellido">url:</label>
+            <label for="apellido">Descripcion:</label>
             <input type="text" class="form-control" id="apellido" name="apellido" th:field="*{descripcion}" required>
         </div>
+        <div class="form-group">
+            <label for="apellido">Grupo Muscular:</label>
+            <input type="text" class="form-control" id="grupomuscular" name="apellido" th:field="*{grupo_muscular}" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Mascara Generacion:</label>
+            <input type="text" class="form-control" id="mascara" name="apellido" th:field="*{mascara_gen_progresion}" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Mascara Generacion:</label>
+            <input type="text" class="form-control" id="url" name="apellido" th:field="*{url}" required>
+        </div>
+
+
 
 
         <button type="submit" class="btn btn-primary">Guardar</button>

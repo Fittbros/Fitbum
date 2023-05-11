@@ -77,6 +77,8 @@ public String menu2(Model model
     }
     @GetMapping("/edit/{id}")
     public String showMenuEdit(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("dataObject", menuServicio.findAll());
+        model.addAttribute("usuario", usuarioServicio);
 
         Optional<Menu> menu = menuServicio.findById(id);
         if(menu.isPresent()){
@@ -85,7 +87,7 @@ public String menu2(Model model
         else{
             // Si el cliente no existe, redirigir a una página de error o mostrar un mensaje de error
 
-            return "error-page";
+            return "error";
         }
 
         return "menu/menu-form";

@@ -1,6 +1,8 @@
 package com.fitbum.servicios.tutoriales;
 
+import com.fitbum.entidades.Menu;
 import com.fitbum.entidades.tutoriales.Ejercicios;
+import com.fitbum.repositorios.plantillas.PlantMesoRepositorio;
 import com.fitbum.repositorios.programa.EjerciciosRepositorio;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,9 @@ import java.util.Optional;
 public class EjerciciosServicio {
 
     EjerciciosRepositorio ejerciciosRepositorio;
+    protected EjerciciosServicio(EjerciciosRepositorio ejerciciosRepositorio){
+        this.ejerciciosRepositorio = ejerciciosRepositorio;}
+
 
 
     public List<Ejercicios> findAll() {
@@ -19,5 +24,8 @@ public class EjerciciosServicio {
     }
     public Optional<Ejercicios> findById(Integer id){
         return ejerciciosRepositorio.findById(Long.valueOf(id));
+    }
+    public Ejercicios save(Ejercicios ejercicio) {
+        return ejerciciosRepositorio.save(ejercicio);
     }
 }

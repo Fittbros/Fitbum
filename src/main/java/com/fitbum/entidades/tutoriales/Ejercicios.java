@@ -28,9 +28,10 @@ public class Ejercicios {
    private String descripcion;
    private String grupo_muscular;
    private String mascara_gen_progresion;
+   private String url;
 
    @JsonManagedReference
-   @OneToOne (mappedBy = "ejercicio")
+   @OneToOne (mappedBy = "ejercicio", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
    @PrimaryKeyJoinColumn
    private ContentTutorial contentTutorial;
 

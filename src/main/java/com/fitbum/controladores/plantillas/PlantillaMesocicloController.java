@@ -84,7 +84,7 @@ public class PlantillaMesocicloController {
 
 
             // Si el cliente no existe, redirigir a una página de error o mostrar un mensaje de error
-            return "error-page";
+            return "error";
         }
 
         return "plantillas/mesoId";

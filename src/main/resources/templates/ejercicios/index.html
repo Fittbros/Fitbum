@@ -4,56 +4,47 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}">
 <head>
-    <title>ejercicios</title>
+    <title>Ejercicios</title>
 </head>
-
 <body>
-
 <div layout:fragment="content">
-
     <div class="pagetitle">
-        <h1>ejercicios</h1>
+        <h1>Ejercicios</h1>
     </div>
-    <div>
-        <span th:text="holi"></span>
-        <span th:text="${ej.findbyId(1).get().getNombre()}"></span>
-        <span th:text="1"></span>
-    </div>
-    <!-- End Page Title -->
 
-
-    <!--div class="container" th:insert="${fragmentName} :: ${fragmentName}(dataObject==${dataObject})">
-    </div-->
-    <!--table class="table table-bordered">
+    <!--  CONTENIDO AQUI -->
+    <table>
         <thead>
         <tr>
-            <th>Id</th>
+            <th>ID</th>
             <th>Nombre</th>
-            <th>url</th>
-            <th>idOrden</th>
-            <th>icon</th>
-            <th>activo</th>
-            <th>idPadre</th>
-
+            <th>Descripcion</th>
+            <th>Grupo</th>
+            <th>Mascara generacion</th>
+            <th>video</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="ej : ${ej.findAll()}">
-            <td th:text="${ej.id}"></td>
-            <td th:text="${ej.nombre}"></td>
-            <td th:text="${ej.descripcion}"></td>
-
-
-
+        <tr th:each="entidad : ${ejercicios}">
+            <td th:text="${entidad.id}"></td>
+            <td th:text="${entidad.nombre}"></td>
+            <td th:text="${entidad.descripcion}"></td>
+            <td th:text="${entidad.grupo_muscular}"></td>
+            <td th:text="${entidad.mascara_gen_progresion}"></td>
+            <td >
+                <a  th:href="${entidad.url}" >
+                    VIDEO       </a>
+            </td>
+            <td>
+                <a  th:href="@{/ejercicios/{id}(id=${entidad.id})}" >
+                    IR </a>
+            </td>
         </tr>
         </tbody>
-    </table-->
+    </table>
 
 
-
-
-        </div>
-
-
+</div>
 </body>
 </html>
