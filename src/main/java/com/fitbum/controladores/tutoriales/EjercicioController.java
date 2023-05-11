@@ -75,8 +75,6 @@ public class EjercicioController {
         Integer id =ejerciciosRepositorio.findAll().size()+1;
         ejercicionuevo.setId(id);
         ejerciciosServicio.save(ejercicionuevo);
-
-//        model.addAttribute("ej", ejerciciosRepositorio.findById(id));
         Optional<Ejercicios> ej = ejerciciosServicio.findById(id);
         if(ej.isPresent()){
             model.addAttribute("ej", ej.get());
@@ -91,13 +89,6 @@ public class EjercicioController {
     public String saveEj(Ejercicios ejercicio, Model model) {
         model.addAttribute("dataObject", menuServicio.findAll());
         model.addAttribute("usuario", usuarioServicio);
-//        if(ejercicio.getContentTutorial().getId()==null){
-//            ContentTutorial contentTutorial = new ContentTutorial();
-////            contentTutorial.setEjercicio(ejercicio);
-//           contentTutorialRepositorio.save(contentTutorial);
-//            ejercicio.setContentTutorial(contentTutorial);
-//        }
-
         ejerciciosServicio.save(ejercicio);
 
         return "redirect:/ejercicios";

@@ -93,10 +93,12 @@ public String menu2(Model model
         return "menu/menu-form";
 
     }
-//    @PostMapping("/save")
-//    public String saveMenu(Menu menu) {
-//        MenuServicio.save(menu);
-//        return "redirect:/menu/";
-//    }
+    @PostMapping("/save")
+    public String saveMenu(Menu menu, Model model) {
+        model.addAttribute("dataObject", menuServicio.findAll());
+        model.addAttribute("usuario", usuarioServicio);
+        menuServicio.save(menu);
+        return "redirect:/menu";
+    }
 
 }
