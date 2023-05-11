@@ -11,9 +11,27 @@
     <div class="pagetitle">
         <h1>microciclo</h1>
     </div>
-
-<!--  CONTENIDO AQUI -->
-
+    <div>
+        sesion
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>INt Est</th>
+                <th>V Est</th>
+                <th>P meso id</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="entidad : ${micro}">
+                <td th:text="${entidad.id}"></td>
+                <td th:text="${entidad.intensidadEstandar}"></td>
+                <td th:text="${entidad.volumenEstandar}"></td>
+                <td th:text="${entidad.plantillaMesociclo.id}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
 
 </div>

@@ -94,6 +94,8 @@ public class PlantillaMesocicloController {
     public String plantMicro(
             Model model
     ) {
+        model.addAttribute("micro", microService.findAll());
+
         model.addAttribute("dataObject", menuServicio.findAll());
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/microciclo";
@@ -102,6 +104,8 @@ public class PlantillaMesocicloController {
     public String plantejercicio(
             Model model
     ) {
+        model.addAttribute("ej", ejFService.findAll());
+
         model.addAttribute("dataObject", menuServicio.findAll());
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/ejercicio";
@@ -110,6 +114,7 @@ public class PlantillaMesocicloController {
     public String plantsesion(
             Model model
     ) {
+        model.addAttribute("sesion", sesionService.findAll());
         model.addAttribute("dataObject", menuServicio.findAll());
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/sesion";
@@ -118,6 +123,8 @@ public class PlantillaMesocicloController {
     public String plantserie(
             Model model
     ) {
+        model.addAttribute("serie", serieService.findAll());
+
         model.addAttribute("dataObject", menuServicio.findAll());
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/serie";

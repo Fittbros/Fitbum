@@ -13,7 +13,7 @@
     </div>
 
 <!--  CONTENIDO AQUI -->
-    <table>
+    <table class="table table-bordered">
         <thead>
         <tr>
             <th>ID</th>
@@ -28,6 +28,10 @@
             <td th:text="${entidad.usuario}"></td>
             <td th:text="${entidad.getNumMicrociclos()}"></td>
             <td th:text="${entidad.getLongMicrociclo()}"></td>
+            <td>
+                <a  th:href="@{/plantillas/meso/{id}(id=${entidad.id})}" >
+                    IR </a>
+            </td>
         </tr>
         </tbody>
     </table>

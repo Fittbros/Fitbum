@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
 <head>
-    <title>mesocicloId</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <title th:text="'Plantilla '+${meso.get().getId()}">mesoId</title>
 </head>
 <body>
-<div class="container mt-3">
-
+<div layout:fragment="content">
     <div class="pagetitle">
-        <h1>mesocicloId</h1>
+        <h1 th:text="'Plantilla '+${meso.get().getId()}">MesoID</h1>
     </div>
-    <span>prueba1</span>
-    <span th:text="${id}">prueba1</span>
-    <span th:text="${meso.get().getNumMicrociclos()}">prueba1</span>
-    <table>
+    <div><a  th:href="@{/plantillas/meso}" >
+        Volver </a></div>
+<!--  CONTENIDO AQUI -->
+    <table class="table table-bordered">
         <thead>
         <tr>
             <th>ID</th>
@@ -23,6 +23,11 @@
             <th>Fecha fin</th>
             <th>num microc</th>
             <th>long microc</th>
+            <th>descanso aces</th>
+            <th>descanso Bas</th>
+            <th>descripc</th>
+            <th>Usuario ID</th>
+            <th>Id Mesociclo</th>
 
         </tr>
         </thead>
@@ -34,80 +39,122 @@
             <td th:text="${meso.get().getFechaFin()}"></td>
             <td th:text="${meso.get().getNumMicrociclos()}"></td>
             <td th:text="${meso.get().getLongMicrociclo()}"></td>
+            <td th:text="${meso.get().getDescansoAcces()}"></td>
+            <td th:text="${meso.get().getDescansoBas()}"></td>
+            <td th:text="${meso.get().getDescripcion()}"></td>
+            <td th:text="${meso.get().usuario.id}"></td>
+            <td th:text="${meso.get().idMesociclos}"></td>
+        </tr>
+        <tr>
+            <td colspan="100%">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID Micro</th>
+                        <th>volu</th>
+                        <th>intens</th>
+                        <th>plantilla meso</th>
+                    </tr>
+                    </thead>
+                </table>
+                <table class="table table-bordered" th:each="micro : ${micro}" th:if="${micro.getPlantillaMesociclo().id}==${meso.get().getId()}">
+
+                    <tbody>
+                    <tr  >
+                        <td th:text="${micro.id}"></td>
+                        <td th:text="${micro.getVolumenEstandar()}"></td>
+                        <td th:text="${micro.getIntensidadEstandar()}"></td>
+                        <td th:text="${micro.getPlantillaMesociclo().id}"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="100%">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>ID Sesion</th>
+                                    <th>descripc</th>
+                                    <th>n plant Micro</th>
+                                </tr>
+                                </thead>
+                            </table>
+                            <table class="table table-bordered" th:each="sesion : ${sesion}" th:if="${sesion.getPlantillaMicrociclo().id}==${micro.id}">
+
+                                <tbody>
+                                <tr >
+                                    <td th:text="${sesion.id}"></td>
+                                    <td th:text="${sesion.descripcion}"></td>
+                                    <td th:text="${sesion.getPlantillaMicrociclo().id}"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="100%">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>ID EJErcicio</th>
+                                                <th>descripc</th>
+                                                <th>nombre</th>
+                                                <th>modif</th>
+                                                <th>n plant sesion</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                        <table class="table table-bordered" th:each="ejercicio : ${ej}" th:if="${ejercicio.getPlantillaSesion().id}==${sesion.id}">
+                                            <tbody>
+                                            <tr >
+                                                <td th:text="${ejercicio.id}"></td>
+                                                <td th:text="${ejercicio.descripcion}"></td>
+                                                <td th:text="${ejercicio.nombre_ej}"></td>
+                                                <td th:text="${ejercicio.getModific_periodizacion()}"></td>
+                                                <td th:text="${ejercicio.getPlantillaSesion().id}"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="100%">
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>ID serie</th>
+                                                            <th>carga</th>
+                                                            <th>mod INT</th>
+                                                            <th>mod vis</th>
+                                                            <th>repes</th>
+                                                            <th>n plant EJF</th>
+                                                        </tr>
+                                                        </thead>
+                                                    </table>
+                                                    <table class="table table-bordered" th:each="serie : ${serie}" th:if="${ejercicio.id}==${serie.plantillaEjercicioFormulado.id}">
+                                                        <tbody>
+                                                        <tr >
+                                                            <td th:text="${serie.id}"></td>
+                                                            <td th:text="${serie.carga}"></td>
+                                                            <td th:text="${serie.modifInterna}"></td>
+                                                            <td th:text="${serie.modifVis}"></td>
+                                                            <td th:text="${serie.repes}"></td>
+                                                            <td th:text="${serie.plantillaEjercicioFormulado.id}"></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+            </td>
         </tr>
         </tbody>
     </table>
-    th:if="${micro.get().getIdPlantillaMesociclo}==${meso.get().getId()}"
-    <div>
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>volu</th>
-                <th>plantilla meso</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="micro : ${micro}" th:if="${micro.getPlantillaMesociclo().id}==${meso.get().getId()}">
-                <td th:text="${micro.id}"></td>
-                <td th:text="${micro.getVolumenEstandar()}"></td>
-                <td th:text="${micro.getPlantillaMesociclo().id}"></td>
-                <td >
-                    <div th:each="sesion: ${sesion}" >
-                        <span th:text="sesion"></span>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div>
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>volu</th>
-                <th>plantilla meso</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="sesion : ${sesion}" >
-                <td th:text="${sesion}"></td>
-                <td th:text="s"></td>
-                <td th:text="c"></td>
-                <td >
-
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div>
-        <span th:each="micro : ${micro}" th:if="${micro.getPlantillaMesociclo().id}==${meso.get().getId()}">holi</span>
-    </div>
-
-<!--  CONTENIDO AQUI -->
-    <!--table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>usuario</th>
-            <th>nummicro</th>
-            <th>longmicro</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="entidad : ${meso}">
-            <td th:text="${entidad.id}"></td>
-            <td th:text="${entidad.usuario}"></td>
-            <td th:text="${entidad.getNumMicrociclos()}"></td>
-            <td th:text="${entidad.getLongMicrociclo()}"></td>
-        </tr>
-        </tbody>
-    </table-->
 
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

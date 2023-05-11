@@ -11,10 +11,29 @@
     <div class="pagetitle">
         <h1>ejercicio</h1>
     </div>
-
-<!--  CONTENIDO AQUI -->
-
-
+    <div>
+        EJForm
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>descripc</th>
+                <th>nombre</th>
+                <th>modif</th>
+                <th>n plant sesion</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="entidad : ${ej}">
+                <td th:text="${entidad.id}"></td>
+                <td th:text="${entidad.descripcion}"></td>
+                <td th:text="${entidad.nombre_ej}"></td>
+                <td th:text="${entidad.getModific_periodizacion()}"></td>
+                <td th:text="${entidad.getPlantillaSesion().id}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
 </div>
 </body>

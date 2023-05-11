@@ -9,11 +9,26 @@
 <body>
 <div layout:fragment="content">
     <div class="pagetitle">
-        <h1>sesion</h1>
+        <h1>sesiom</h1>
     </div>
 
-<!--  CONTENIDO AQUI -->
-
+    <!--  CONTENIDO AQUI -->
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>descripc</th>
+            <th>n plant Micro</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="entidad : ${sesion}">
+            <td th:text="${entidad.id}"></td>
+            <td th:text="${entidad.descripcion}"></td>
+            <td th:text="${entidad.getPlantillaMicrociclo().id}"></td>
+        </tr>
+        </tbody>
+    </table>
 
 
 </div>
