@@ -43,43 +43,7 @@
         </tbody>
     </table>
 
-    <div> fin de tabla </div>
-    <div><a  th:href="@{/menu/indere}" >
-        menu2</a></div>
-    <div><a  th:href="@{/menu/3}" >
-        menu3 este ees</a></div>
 
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Padre</th>
-            <th>Padre.id</th>
-            <th>Padre.id.type</th>
-            <th>Padre.getid</th>
-            <th>Padre.getid.type</th>
-
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="dataObject : ${dataObject}" th:if="${dataObject.padre.id==4}">
-            <td th:text="${dataObject.id}"></td>
-            <td th:text="${dataObject.nombre}"></td>
-            <td th:text="${dataObject.padre}"></td>
-            <td th:text="${dataObject.padre.id}"></td>
-            <td th:text="${dataObject.padre.id.TYPE}"></td>
-            <td th:text="${dataObject.padre.getId()}"></td>
-            <td th:text="${dataObject.padre.getId().TYPE}"></td>
-        </tr>
-        </tbody>
-    </table>
-
-
-
-        </div>
-
-
+</div>
 </body>
 </html>
