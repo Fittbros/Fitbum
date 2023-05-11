@@ -67,6 +67,25 @@ public class EjercicioController {
         return "ejercicios/ej-form";
 
     }
+    @GetMapping("/nuevo")
+    public String showEjNew(Model model) {
+        model.addAttribute("dataObject", menuServicio.findAll());
+        model.addAttribute("usuario", usuarioServicio);
+        Ejercicios ejercicionuevo = new Ejercicios();
+        Integer id =ejerciciosRepositorio.findAll().size()+1;
+        ejercicionuevo.setId(id);
+        ejerciciosServicio.save(ejercicionuevo);
+
+//        model.addAttribute("ej", ejerciciosRepositorio.findById(id));
+        Optional<Ejercicios> ej = ejerciciosServicio.findById(id);
+        if(ej.isPresent()){
+            model.addAttribute("ej", ej.get());
+        }
+        else{
+            return "error";
+        }
+        return "ejercicios/ej-formnuevo";
+    }
 
     @PostMapping("/save")
     public String saveEj(Ejercicios ejercicio, Model model) {

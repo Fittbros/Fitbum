@@ -7,9 +7,12 @@
 </head>
 <body>
 <div class="container mt-3">
-    <h2 th:text="'Ejercicio '+${ej.id} ">Formulario ej</h2>
+    <h2 th:text="Ejercicio  ">Formulario ej</h2>
     <div><a  th:href="@{/ejercicios}" >
         Volver </a></div>
+    <div>
+        <span th:text="${ej.id}"></span>
+    </div>
 
 
     <form th:action="@{/ejercicios/save}" th:object="${ej}" th:method="post">
