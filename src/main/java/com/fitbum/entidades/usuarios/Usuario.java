@@ -2,7 +2,7 @@ package com.fitbum.entidades.usuarios;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fitbum.entidades.Mensaje;
-import com.fitbum.entidades.Notificacion;
+import com.fitbum.entidades.NotificacionVieja;
 import com.fitbum.entidades.estadisticas.Estadisticas;
 import com.fitbum.entidades.plantillas.PlantillaMesociclo;
 import com.fitbum.entidades.programa.Mesociclo;
@@ -63,7 +63,7 @@ public class Usuario {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Notificacion> notificacion;
+    private Set<NotificacionVieja> notificacion;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

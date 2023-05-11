@@ -1,4 +1,4 @@
-package com.fitbum.controladores;
+package com.fitbum.controladores.websockets;
 import jakarta.persistence.Id;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

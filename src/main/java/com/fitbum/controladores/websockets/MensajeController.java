@@ -1,4 +1,4 @@
-package com.fitbum.controladores;
+package com.fitbum.controladores.websockets;
 import com.fitbum.servicios.MenuServicio;
 import com.fitbum.servicios.usuarios.UsuarioServicio;
 import lombok.RequiredArgsConstructor;
