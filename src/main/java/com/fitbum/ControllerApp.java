@@ -7,6 +7,7 @@ import com.fitbum.servicios.usuarios.UsuarioServicio;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 //import org.springframework.validation.BindingResult;
 import org.springframework.ui.Model;
@@ -26,18 +27,28 @@ public class ControllerApp //extends AbstractController<Usuario>
 //        super(menuService);
 //    }
 
-    @GetMapping("/index")
-    public String inicio(){
-        return "index";}
+    @GetMapping(value = {"/","","/index"})
+    public String inicio(Model model
+    ) {
+        model.addAttribute("usuario", usuarioServicio);
+        model.addAttribute("dataObject", menuServicio.findAll());
+
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()!= "anonymousUser"){
+            return "redirect:/home";
+        }
+        else
+            return "index";
+    }
     @GetMapping("/home")
     public String home(Model model
     ) {
         model.addAttribute("usuario", usuarioServicio);
         model.addAttribute("dataObject", menuServicio.findAll());
+        model.addAttribute("prueba", SecurityContextHolder.getContext());
         return "home";}
-    @GetMapping("/publico")
-    public String publico(){
-        return "publico";}
+//    @GetMapping("/publico")
+//    public String publico(){
+//        return "publico";}
 
 
 

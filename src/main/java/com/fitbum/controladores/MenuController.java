@@ -44,6 +44,7 @@ public class MenuController //extends  AbstractController<UsuarioDto>
         model.addAttribute("usuario", usuarioServicio);
 
 
+
 //        model.addAttribute("fragmentName", "fragment-customer-list");
 
         return "/menu/index";
@@ -60,6 +61,8 @@ public String menu2(Model model
     ) {
         model.addAttribute("dataObject", menuServicio.findAll());
         model.addAttribute("usuario", usuarioServicio);
+//        model.addAttribute("prueba", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+
 
 //        model.addAttribute("fragmentName", "fragment-customer-list");
         return "/menu/3";
