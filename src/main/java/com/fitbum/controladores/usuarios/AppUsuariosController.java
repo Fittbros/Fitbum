@@ -94,6 +94,55 @@ public class AppUsuariosController //extends AbstractController <UsuarioDto>
         interfazConPantalla.addAttribute("listausuarios", usuarioPage);
         return "usuarios/index";
     }
+     @GetMapping("/usuarios/buscar")
+     public String buscarUsuarios(@RequestParam("query") String query,@RequestParam("page") Optional<Integer> page,
+                                  @RequestParam("size") Optional<Integer> size,
+                                  ModelMap interfazConPantalla,Model  model){
+         model.addAttribute("dataObject", menuServicio.findAll());
+         model.addAttribute("usuario", service);
+
+         Integer pagina = 0;
+         if (page.isPresent()) {
+             pagina = page.get() -1;
+         }
+         Integer maxelementos = 10;
+         if (size.isPresent()) {
+             maxelementos = size.get();
+         }
+         model.addAttribute("pag", pagina);
+         Page<Usuario> usuarioPage =
+                 this.buscarTodos(PageRequest.of(pagina,maxelementos));
+         interfazConPantalla.addAttribute(pageNumbersAttributeKey,dameNumPaginas(usuarioPage));
+         interfazConPantalla.addAttribute("listausuarios", usuarioPage);
+         // Lógica para buscar usuarios según la consulta "query"
+         List<Usuario> usuariosEncontrados = buscarUsuarios(query);
+
+         model.addAttribute("usuarios", usuariosEncontrados);
+         return "/usuarios/resbusqueda";
+     }
+     public List<Usuario> buscarUsuarios(String query) {
+         // Lógica para buscar usuarios según la consulta "query"
+         // Aquí puedes realizar consultas en tu base de datos o buscar en la lista de usuarios existente
+
+         // Ejemplo de búsqueda en una lista de usuarios existente
+         List<Usuario> todosLosUsuarios = usuarioRepositorio.findAll();
+         List<Usuario> usuariosEncontrados = new ArrayList<>();
+
+         for (Usuario usuario : todosLosUsuarios) {
+             // Verifica si la consulta coincide con algún campo del usuario
+             if (usuario.getNombre().contains(query) ||
+                     usuario.getApellido1().contains(query) ||
+                     usuario.getApellido2().contains(query) ||
+                     usuario.getUsername().contains(query) ||
+                     usuario.getEmail().contains(query)) {
+                 usuariosEncontrados.add(usuario);
+             }
+         }
+
+         return usuariosEncontrados;
+     }
+
+
      @GetMapping("/atletas")
      public String vistaAtletas(@RequestParam("page") Optional<Integer> page,
                                  @RequestParam("size") Optional<Integer> size,
