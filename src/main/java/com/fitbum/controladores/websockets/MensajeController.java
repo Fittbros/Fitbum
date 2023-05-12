@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
 
 @Controller
 @Log4j2
@@ -42,10 +44,21 @@ public class MensajeController {
         return "/chat/chatAtletas";}
 
     @GetMapping(value = {"/chatprueba"})
-    public String chatprueba(Model model
+    public String chatprueba(Principal principal, Model model
     ) {
+        String userID = principal.getName();
+        model.addAttribute("userID", userID);
         model.addAttribute("usuario", usuarioServicio);
         model.addAttribute("dataObject", menuServicio.findAll());
         return "/chat/chatprueba";}
+
+    @GetMapping(value = {"/chatprueba3"})
+    public String chatprueba3 (Principal principal, Model model
+    ) {
+        String userID = principal.getName();
+        model.addAttribute("userID", userID);
+        model.addAttribute("usuario", usuarioServicio);
+        model.addAttribute("dataObject", menuServicio.findAll());
+        return "/chat/chatprueba3";}
 
 }

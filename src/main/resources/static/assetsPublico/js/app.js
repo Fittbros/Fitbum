@@ -9,7 +9,7 @@ console.log("Clickers");
    $("#disconnect").on( "click",disconnect);
    $("#sendPrivate").on( "click",sendPrivate);
 
-
+   connect();
 });
 
 
