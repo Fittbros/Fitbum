@@ -16,8 +16,20 @@
             Nuevo </a>
     </div>
 
-    <!--  CONTENIDO AQUI -->
-    <table>
+    <div class="box-body">
+
+
+        <div class="row">
+            <div class="col-md-6 text-nowrap">
+                Mostrar <span sd:page-size-selector="javascript"></span> entradas
+            </div>
+            <div class="col-md-6">
+                <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+            </div>
+        </div>
+
+        <div class="table-responsive table mt-2" id="dataTable2" role="grid" aria-describedby="dataTable_info">
+    <table class="table my-0" id="dataTable1">
         <thead>
         <tr>
             <th>ID</th>
@@ -30,23 +42,51 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="entidad : ${ejercicios}">
-            <td th:text="${entidad.id}"></td>
-            <td th:text="${entidad.nombre}"></td>
-            <td th:text="${entidad.descripcion}"></td>
-            <td th:text="${entidad.grupo_muscular}"></td>
-            <td th:text="${entidad.mascara_gen_progresion}"></td>
+        <tr th:each="elemento,posicion : ${listausuarios}">
+            <td th:text="${elemento.id}"></td>
+            <td th:text="${elemento.nombre}"></td>
+            <td th:text="${elemento.descripcion}"></td>
+            <td th:text="${elemento.grupo_muscular}"></td>
+            <td th:text="${elemento.mascara_gen_progresion}"></td>
             <td >
-                <a  th:href="${entidad.url}" >
+                <a  th:href="${elemento.url}" >
                     VIDEO       </a>
             </td>
             <td>
-                <a  th:href="@{/ejercicios/{id}(id=${entidad.id})}" >
+                <a  th:href="@{/ejercicios/{id}(id=${elemento.id})}" >
                     IR </a>
             </td>
         </tr>
         </tbody>
     </table>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                <ul class="pagination" >
+                    <li th:class="${pag==0} ? disabled">
+                        <a class="page-link " aria-label="Previous" href="#"
+                           th:href="@{/ejercicios(size=${listausuarios.size}, page=${pag})}">
+                            <span aria-hidden="true">«</span>
+                        </a>
+                    </li>
+                    <li th:class="${pageNumber==listausuarios.number + 1} ? active" th:each="pageNumber : ${pageNumbers}">
+                        <a class="page-link" href="#"
+                           th:href="@{/ejercicios(size=${listausuarios.size}, page=${pageNumber})}">
+                            <span th:text="${pageNumber}"></span>
+                        </a>
+                    </li>
+                    <li th:class="${pag==pageNumbers.size() - 1} ? disabled">
+                        <a class="page-link" aria-label="Next" href="#"
+                           th:href="@{/ejercicios(size=${listausuarios.size}, page=${pag + 2})}">
+                            <span aria-hidden="true">»</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
 
 </div>

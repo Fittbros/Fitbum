@@ -3,6 +3,7 @@ package com.fitbum.controladores.tutoriales;
 import com.fitbum.entidades.Menu;
 import com.fitbum.entidades.tutoriales.ContentTutorial;
 import com.fitbum.entidades.tutoriales.Ejercicios;
+import com.fitbum.entidades.usuarios.Usuario;
 import com.fitbum.repositorios.programa.EjerciciosRepositorio;
 import com.fitbum.repositorios.tutoriales.ContentTutorialRepositorio;
 import com.fitbum.servicios.MenuServicio;
@@ -12,14 +13,19 @@ import jakarta.persistence.Id;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 @Controller
@@ -37,17 +43,54 @@ public class EjercicioController {
     private EjerciciosRepositorio  ejerciciosRepositorio;
     @Autowired
     private ContentTutorialRepositorio contentTutorialRepositorio;
+    protected final String pageNumbersAttributeKey = "pageNumbers";
+
 
     @GetMapping(value = {"/",""})
     public String showindex(
-    Model model
-    ) {
-        model.addAttribute("ejercicios", ejerciciosRepositorio.findAll());
-
-        model.addAttribute("usuario", usuarioServicio);
+            @RequestParam("page") Optional<Integer> page,
+            @RequestParam("size") Optional<Integer> size,
+            ModelMap interfazConPantalla, Model  model){
         model.addAttribute("dataObject", menuServicio.findAll());
+        model.addAttribute("usuario", usuarioServicio);
+
+        Integer pagina = 0;
+        if (page.isPresent()) {
+            pagina = page.get() -1;
+        }
+        Integer maxelementos = 10;
+        if (size.isPresent()) {
+            maxelementos = size.get();
+        }
+        model.addAttribute("pag", pagina);
+        Page<Ejercicios> usuarioPage =
+                this.buscarTodos(PageRequest.of(pagina,maxelementos));
+        interfazConPantalla.addAttribute(pageNumbersAttributeKey,dameNumPaginas(usuarioPage));
+        interfazConPantalla.addAttribute("listausuarios", usuarioPage);
         return "ejercicios/index";
     }
+    protected List<Integer> dameNumPaginas(Page<Ejercicios>  obj){
+        List<Integer> pageNumbers = new ArrayList<>();
+        int totalPages = obj.getTotalPages();
+        if (totalPages > 0) {
+            pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+        }
+        return pageNumbers;
+    }
+    public Page<Ejercicios> buscarTodos(Pageable pageable){
+        return  ejerciciosRepositorio.findAll(pageable);
+    }
+//
+//    Model model
+//    ) {
+//        model.addAttribute("ejercicios", ejerciciosRepositorio.findAll());
+//
+//        model.addAttribute("usuario", usuarioServicio);
+//        model.addAttribute("dataObject", menuServicio.findAll());
+//        return "ejercicios/index";
+//    }
 
     @GetMapping("/{id}")
     public String showEjEdit(@PathVariable("id") Integer id, Model model) {
