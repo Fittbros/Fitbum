@@ -72,7 +72,7 @@ public class AppUsuariosController //extends AbstractController <UsuarioDto>
 //        interfazConPantalla.addAttribute("menuList", this.menuService.getMenuForEmail(userName));
 //        return "index";
 //    }
-    @GetMapping("/usuarios/lista")
+    @GetMapping("/usuarios")
     public String vistaUsuarios(@RequestParam("page") Optional<Integer> page,
                                 @RequestParam("size") Optional<Integer> size,
                                     ModelMap interfazConPantalla,Model  model){
@@ -94,11 +94,12 @@ public class AppUsuariosController //extends AbstractController <UsuarioDto>
         if (size.isPresent()) {
             maxelementos = size.get();
         }
+        model.addAttribute("pag", pagina);
         Page<Usuario> usuarioPage =
                 this.buscarTodos(PageRequest.of(pagina,maxelementos));
         interfazConPantalla.addAttribute(pageNumbersAttributeKey,dameNumPaginas(usuarioPage));
         interfazConPantalla.addAttribute("listausuarios", usuarioPage);
-        return "usuarios/listausuariospagina";
+        return "usuarios/index";
     }
      protected List<Integer> dameNumPaginas(Page<Usuario>  obj){
          List<Integer> pageNumbers = new ArrayList<>();

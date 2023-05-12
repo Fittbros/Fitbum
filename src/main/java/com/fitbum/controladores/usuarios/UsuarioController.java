@@ -45,14 +45,14 @@ public class UsuarioController //extends AbstractController<Usuario>
     @Autowired
     private MenuServicio menuServicio;
 
-    @GetMapping(value = {"/",""})
-    public String index(Model model
-    ) {
-
-        model.addAttribute("usuario", service);
-        model.addAttribute("dataObject", menuServicio.findAll());
-        return "usuarios/index";
-    }
+//    @GetMapping(value = {"/",""})
+//    public String index(Model model
+//    ) {
+//
+//        model.addAttribute("usuario", service);
+//        model.addAttribute("dataObject", menuServicio.findAll());
+//        return "usuarios/index";
+//    } movido a APPusuarioscontroles
 
 //    protected UsuarioController(MenuServicio menuService) {
 //        super(menuService);

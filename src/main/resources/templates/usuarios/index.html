@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sd="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}">
 <head>
@@ -13,73 +14,86 @@
     <div class="pagetitle">
         <h1>Usuarios</h1>
     </div>
+    <div class="box-body">
 
-    <div class="row">
-        <div class="col-md-6 text-nowrap">
-            <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Show&nbsp;<select class="d-inline-block form-select form-select-sm">
-                <option value="10" selected="">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-            </select>&nbsp;</label></div>
+
+        <div class="row">
+            <div class="col-md-6 text-nowrap">
+                Mostrar <span sd:page-size-selector="javascript"></span> entradas
+            </div>
+            <div class="col-md-6">
+                <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+            </div>
         </div>
-        <div class="col-md-6">
-            <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
-        </div>
+
+     <div class="table-responsive table mt-2" id="dataTable2" role="grid" aria-describedby="dataTable_info">
+
+        <table class="table my-0" id="dataTable1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>avatar</th>
+                <th>nombre</th>
+                <th>ap1</th>
+                <th>ap2</th>
+                <th>activo</th>
+                <th>pass</th>
+                <th>avatar</th>
+                <th>role</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="elemento,posicion : ${listausuarios}">
+                <td  th:text="${elemento.id}"></td>
+                <td ><img class="rounded-circle me-2" width="30" height="30" th:src="${elemento.avatar}"></td>
+                <td th:text="${elemento.nombre}"></td>
+                <td th:text="${elemento.apellido1}"></td>
+                <td th:text="${elemento.apellido2}"></td>
+                <td th:text="${elemento.active}"></td>
+                <td th:text="${elemento.password}"></td>
+                <td th:text="${elemento.avatar}"></td>
+                <td th:text="${elemento.role.nombreRole}"></td>
+
+
+            </tr>
+            </tbody>
+        </table>
+     </div>
     </div>
-
-    <div class="table-responsive table mt-2" id="dataTable2" role="grid" aria-describedby="dataTable_info">
-
-    <table class="table my-0" id="dataTable1">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>avatar</th>
-            <th>nombre</th>
-            <th>ap1</th>
-            <th>ap2</th>
-            <th>activo</th>
-            <th>pass</th>
-            <th>avatar</th>
-            <th>role</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="usuario : ${usuario.listartodos()}">
-            <td  th:text="${usuario.id}"></td>
-            <td ><img class="rounded-circle me-2" width="30" height="30" th:src="${usuario.avatar}"></td>
-            <td th:text="${usuario.nombre}"></td>
-            <td th:text="${usuario.apellido1}"></td>
-            <td th:text="${usuario.apellido2}"></td>
-            <td th:text="${usuario.active}"></td>
-            <td th:text="${usuario.password}"></td>
-            <td th:text="${usuario.avatar}"></td>
-            <td th:text="${usuario.role.nombreRole}"></td>
-
-
-        </tr>
-        </tbody>
-    </table>
+    <div>
+        pruebas
+        <span th:text="${pag+1}"></span>
     </div>
 
     <div class="row">
         <div class="col-md-6">
             <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                <ul class="pagination">
-                    <li class="page-item disabled"><a class="page-link" aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+                <ul class="pagination" >
+                    <li th:class="${pag==0} ? disabled">
+                        <a class="page-link " aria-label="Previous" href="#"
+                           th:href="@{/usuarios(size=${listausuarios.size}, page=${pag})}">
+                            <span aria-hidden="true">«</span>
+                        </a>
+                    </li>
+                    <li th:class="${pageNumber==listausuarios.number + 1} ? active" th:each="pageNumber : ${pageNumbers}">
+                        <a class="page-link" href="#"
+                           th:href="@{/usuarios(size=${listausuarios.size}, page=${pageNumber})}">
+                            <span th:text="${pageNumber}"></span>
+                        </a>
+                    </li>
+                    <li th:class="${pag==pageNumbers.size() - 1} ? disabled">
+                        <a class="page-link" aria-label="Next" href="#"
+                           th:href="@{/usuarios(size=${listausuarios.size}, page=${pag + 2})}">
+                            <span aria-hidden="true">»</span></a></li>
                 </ul>
             </nav>
         </div>
     </div>
-</div>
+
+
 
 
 </div>
-
 </body>
 </html>
