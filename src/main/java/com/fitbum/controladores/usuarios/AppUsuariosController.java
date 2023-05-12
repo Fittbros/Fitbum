@@ -86,7 +86,7 @@ public class AppUsuariosController //extends AbstractController <UsuarioDto>
         //List<UsuarioDto>  lusrdto = this.service.listaUsrTodos();
         //interfazConPantalla.addAttribute("listausuarios", lusrdto);
         //Obetenemos el objeto Page del servicio
-        Integer pagina = 1;
+        Integer pagina = 0;
         if (page.isPresent()) {
             pagina = page.get() -1;
         }
