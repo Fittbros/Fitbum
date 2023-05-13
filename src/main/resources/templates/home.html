@@ -9,8 +9,14 @@
 <body>
 
 <div layout:fragment="content">
-    <div><a  th:href="@{/ejercicios}" >
-        ejercicios </a></div>
+    <div><a  th:href="@{/files}" >
+        files </a></div>
+    <span th:text="${#authentication.principal.username}">
+    </span> </br>
+    <span th:text="${#authentication.principal.class.name}">
+        </span></br>
+    <span th:text="${#authentication.name}">
+        </span>
     <!-- End Page Title -->
     <!--div><a  th:href="@{/menu}" >
         menu</a></div>

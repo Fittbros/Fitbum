@@ -1,6 +1,7 @@
-package com.eoi.springwebsecurity.filemanagement.exception;
+package com.fitbum.filemanagement.exception;
 
-import com.eoi.springwebsecurity.filemanagement.models.ResponseMessage;
+
+import com.fitbum.filemanagement.models.ResponseMessage;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.http.HttpStatus;

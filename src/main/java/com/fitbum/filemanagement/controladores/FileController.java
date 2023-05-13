@@ -4,6 +4,7 @@ import com.fitbum.filemanagement.entidades.FileDB;
 import com.fitbum.filemanagement.models.FileInfo;
 import com.fitbum.filemanagement.servicios.DBFileStorageService;
 import com.fitbum.filemanagement.servicios.FileSystemStorageService;
+import com.fitbum.servicios.MenuServicio;
 import com.fitbum.servicios.usuarios.UsuarioServicio;
 import lombok.extern.log4j.Log4j2;
 
@@ -45,6 +46,8 @@ public class FileController {
      * Servicio de almacenamiento de archivos en la base de datos utilizado por el controlador.
      */
     @Autowired
+    private MenuServicio menuServicio;
+    @Autowired
     private DBFileStorageService dbFileStorageService;
 
     /**
@@ -74,12 +77,14 @@ public class FileController {
      */
     @GetMapping("/files")
     public  String listAllUploadedFiles(Model model,Authentication authentication) throws IOException {
+        model.addAttribute("usuario", usuarioServicio);
+        model.addAttribute("dataObject", menuServicio.findAll());
 
 
         //Obtenemos el nombre de usuario del objeto de autenticacion
-        String username = authentication.getName();
+        String username = authentication.getPrincipal().getClass().getName();
         // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
-        Usuario usuario = usuarioServicio.getRepo().findUsuarioByEmail(username);
+        Usuario usuario = usuarioServicio.getRepo().findUsuarioByUsername(username);
 
 
         // Obtenemos todos los archivos almacenados en el servicio de almacenamiento predeterminado.
@@ -106,9 +111,11 @@ public class FileController {
         model.addAttribute("dbUserFiles", dbUserFiles);
 
 
+
         // Devolvemos el nombre de la vista a la que se va a redirigir.
         return "listFicheros";
     }
+
 
 
     /**

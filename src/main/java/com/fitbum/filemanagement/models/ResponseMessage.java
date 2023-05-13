@@ -1,4 +1,4 @@
-package com.eoi.springwebsecurity.filemanagement.models;
+package com.fitbum.filemanagement.models;
 
 /**
  * The type Response message.
