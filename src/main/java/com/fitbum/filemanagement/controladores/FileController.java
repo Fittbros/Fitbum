@@ -1,10 +1,15 @@
 package com.fitbum.filemanagement.controladores;
+import com.fitbum.dto.RoleDTO;
+import com.fitbum.dto.UsuarioDtoPsw;
+import com.fitbum.entidades.tutoriales.Ejercicios;
 import com.fitbum.entidades.usuarios.Usuario;
 import com.fitbum.filemanagement.entidades.FileDB;
 import com.fitbum.filemanagement.models.FileInfo;
 import com.fitbum.filemanagement.servicios.DBFileStorageService;
 import com.fitbum.filemanagement.servicios.FileSystemStorageService;
 import com.fitbum.servicios.MenuServicio;
+import com.fitbum.servicios.mapper.UsuarioMapper;
+import com.fitbum.servicios.usuarios.RoleService;
 import com.fitbum.servicios.usuarios.UsuarioServicio;
 import lombok.extern.log4j.Log4j2;
 
@@ -19,9 +24,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.beans.XMLDecoder;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -49,6 +56,10 @@ public class FileController {
     private MenuServicio menuServicio;
     @Autowired
     private DBFileStorageService dbFileStorageService;
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private UsuarioMapper usuarioMapper;
 
     /**
      * Servicio de usuario utilizado por el controlador.
@@ -354,12 +365,6 @@ public class FileController {
         return "redirect:/files";
     }
 
-
-
-
-
-
-
     /**
      * Controlador de excepción para la excepción FileNotFoundException.
      * Retorna una respuesta con un estado HTTP 404 (no encontrado).
@@ -372,40 +377,76 @@ public class FileController {
         return ResponseEntity.notFound().build();
     }
     @GetMapping("/prueba")
-    public String prueba(Model model,Authentication authentication
-    ) {
+    public String pruebaindex(Model model,Authentication authentication){
         model.addAttribute("usuario", usuarioServicio);
-
         model.addAttribute("dataObject", menuServicio.findAll());
-        //Obtenemos el nombre de usuario del objeto de autenticacion
         String username = authentication.getName();
-        // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
+        System.out.println(username);
         Usuario usuario = usuarioServicio.getRepo().findUsuarioByUsername(username);
+        System.out.println(usuario.getAvatar());
+        model.addAttribute("logeduser",usuario);
 
+        return "prueba";
+    }
+    @PostMapping("prueba/save")
+    public String saveEj(Usuario usuario, Model model) {
+        model.addAttribute("dataObject", menuServicio.findAll());
+        model.addAttribute("usuario", usuarioServicio);
+        usuarioServicio.getRepo().save(usuario);
 
-        // Obtenemos todos los archivos almacenados en el servicio de almacenamiento predeterminado.
-        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
-        List<FileInfo> files = fileSystemStorageService.loadAll();
+        return "redirect:/prueba";
+    }
+    @GetMapping("/prueba/{id}")
+    public String pruebaId(//@PathVariable("id") Integer id,
+                           Model model//,Authentication authentication
+    ){
+        model.addAttribute("usuario", usuarioServicio);
+        model.addAttribute("dataObject", menuServicio.findAll());
+//        String username = authentication.getName();
+//        System.out.println(username);
+//        Optional<Usuario> usuario = usuarioServicio.getRepo().findById(id);
+//        if(usuario.isPresent()){
+//        System.out.println(usuario.get());
+//        model.addAttribute("logeduser",usuario.get());}
+//        else{
+//            return "error";
+//        }
+        return "pruebaid";
+    }
+//    @GetMapping("/prueba/{id}")
+//    public String pruebaId(@PathVariable("id") Integer id,
+//                           Model model,Authentication authentication
+//
+//    ) {
+//        model.addAttribute("usuario", usuarioServicio);
+//        model.addAttribute("dataObject", menuServicio.findAll());
+//
+//        UsuarioDtoPsw usuarioDtoPsw = new UsuarioDtoPsw();
+//        Optional<Usuario> user = usuarioServicio.getRepo().findById(id);
+//
+//        if(user.isPresent()){
+//            usuarioDtoPsw= usuarioMapper.mapToUserDtoPsw(user.get());
+//            //interfazConPantalla
+//                    model.addAttribute("datosUsuario",usuarioDtoPsw);
+//        }
+//        else{
+//            return "error";
+//        }
+//
+//        String username = authentication.getName();
+//        Usuario usuario = usuarioServicio.getRepo().findUsuarioByUsername(username);
+//
+//        List<FileInfo> files = fileSystemStorageService.loadAll();
+//        List<FileInfo> dbFiles = dbFileStorageService.getAllFileInfos();
+//        List<FileInfo> userFiles = fileSystemStorageService.loadAllFromUser(usuario.getId());
+//        List<FileInfo> dbUserFiles = dbFileStorageService.getUserFileInfos(usuario);
+//
+//        model.addAttribute("files", files);
+//        model.addAttribute("DBfiles", dbFiles);
+//        model.addAttribute("userFiles", userFiles);
+//        model.addAttribute("dbUserFiles", dbUserFiles);
 
-        // Obtenemos todos los archivos almacenados en el servicio de almacenamiento de la base de datos.
-        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
-        List<FileInfo> dbFiles = dbFileStorageService.getAllFileInfos();
-
-        List<FileInfo> userFiles = fileSystemStorageService.loadAllFromUser(usuario.getId());
-
-
-        // Obtenemos todos los archivos asociados al usuario y almacenados en la base de datos
-        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
-        List<FileInfo> dbUserFiles = dbFileStorageService.getUserFileInfos(usuario);
-
-        // Agregamos las URLs de los archivos del servicio de almacenamiento predeterminado al modelo.
-        model.addAttribute("files", files);
-
-        // Agregamos los objetos FileInfo del servicio de almacenamiento de la base de datos al modelo.
-        model.addAttribute("DBfiles", dbFiles);
-        model.addAttribute("userFiles", userFiles);
-        model.addAttribute("dbUserFiles", dbUserFiles);
-        return "/prueba";}
+//        return "prueba";}
 
 
 }

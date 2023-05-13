@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+<head>
+    <title>Prueba</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="pagetitle">
+        <h1>Prueba</h1>
+    </div>
+    <div class="card mb-3">
+        <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" width="160"
+                                                       height="160"     th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}" th:src="${usuario.avatar}"   >
+
+            <!--form class="user" role="form" th:action="@{/usuarios/guardarperfil}" th:object="${user}" th:method="post" id="fotoperfil">
+                <input type="hidden" th:field="${user.id}">
+                <input type="hidden" th:field="${user.apellido1}">
+                <input type="hidden" th:field="${user.username}">
+                <input type="hidden" th:field="${user.password}">
+                <input type="hidden" th:field="${user.nombre}">
+                <input type="hidden" th:field="*{apellido1}">
+                <input type="hidden" th:field="*{email}">
+                <input type="hidden" th:field="*{nombre}">
+                <input type="hidden" th:field="*{apellido2}">
+                <input type="hidden" th:field="*{username}">
+                <input type="hidden" th:field="*{password}"-->
+
+
+            <div class="mb-3">
+
+                <button class="btn btn-primary btn-sm" type="submit" >Cambiar foto</button>
+
+            </div>
+            <label for="avatar">Elige foto:</label>
+            <select  name="avatar" id="avatar" class="form-control">
+                <option th:each="file : ${files}" th:value="${file.url}" th:text="${file.fileName}">Archivosubido</option>
+
+            </select>
+            </form>
+        </div>
+    </div>
+    <!-- Sección para mostrar la lista de archivos en la Base de Datos   form="fotoperfil" esto en el selct-->
+    <div class="container">
+        <div class="card mt-6">
+            <div class="card-header">
+                <h5 class="card-title">Archivos disponibles en el filesystem</h5>
+            </div>
+            <div class="card-body">
+                <div th:if="${not #lists.isEmpty(files)}">
+                    <ul class="list-group">
+                        <li th:each="file : ${files}" class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span th:text="${file.fileName}"></span>
+                                <span th:text="${file.size}"></span>
+                                <div>
+                                    <a th:href="@{/files/delete/{file}(file=${file.fileName})}" class="btn btn-danger mx-2" onclick="return confirm('¿Estás seguro de que quieres eliminar este archivo de la base de datos?')" role="button">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </a>
+                                    <a th:href="@{${file.url}}" class="btn btn-success" role="button">
+                                        <i class="bi bi-cloud-download"></i> Descargar
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-text">
+                                <small class="text-muted" th:text="'Tipo: ' + ${file.type}"></small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div th:if="${#lists.isEmpty(files)}" class="alert alert-info" role="alert">
+                    No hay archivos disponibles
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección para mostrar la lista de archivos en la Base de Datos -->
+    <div class="container">
+        <div class="card mt-6">
+            <div class="card-header">
+                <h5 class="card-title">Archivos disponibles en la base de datos</h5>
+            </div>
+            <div class="card-body">
+                <div th:if="${not #lists.isEmpty(DBfiles)}">
+                    <ul class="list-group">
+                        <li th:each="file : ${DBfiles}" class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span th:text="${file.fileName}"></span>
+                                <span th:text="${file.size}"></span>
+                                <div>
+
+                                    <a th:href="@{/databasefiles/delete/{file}(file=${file.id})}" class="btn btn-danger mx-2" onclick="return confirm('¿Estás seguro de que quieres eliminar este archivo de la base de datos?')" role="button">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </a>
+                                    <a th:href="@{/databasefiles/{file}(file=${file.fileName})}" class="btn btn-success" role="button">
+                                        <i class="bi bi-cloud-download"></i> Descargar
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-text">
+                                <small class="text-muted" th:text="'Tipo: ' + ${file.type}"></small>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+                <div th:if="${#lists.isEmpty(DBfiles)}" class="alert alert-info" role="alert">
+                    No hay archivos disponibles
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sección para mostrar los archivos personales del usuario -->
+
+
+    <!-- Sección para mostrar la lista de archivos personales en la Base de Datos -->
+    <div class="container">
+        <div class="card mt-6">
+            <div class="card-header">
+                <h5 class="card-title">Archivos Personales en la base de datos</h5>
+            </div>
+            <div class="card-body">
+                <div th:if="${not #lists.isEmpty(dbUserFiles)}">
+                    <ul class="list-group">
+                        <li th:each="file : ${dbUserFiles}" class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span th:text="${file.fileName}"></span>
+                                <span th:text="${file.size}"></span>
+                                <div>
+                                    <a th:href="@{/databasefiles/desasociarUserFile/{file}(file=${file.id})}" class="btn btn-danger mx-2" onclick="return confirm('¿Estás seguro de que quieres eliminar este archivo de la base de datos?')" role="button">
+                                        <i class="bi bi-trash"></i> Desasociar
+                                    </a>
+                                    <a th:href="@{/databasefiles/delete/{file}(file=${file.id})}" class="btn btn-danger mx-2" onclick="return confirm('¿Estás seguro de que quieres eliminar este archivo de la base de datos?')" role="button">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </a>
+                                    <a th:href="@{/databasefiles/{file}(file=${file.fileName})}" class="btn btn-success" role="button">
+                                        <i class="bi bi-cloud-download"></i> Descargar
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-text">
+                                <small class="text-muted" th:text="'Tipo: ' + ${file.type}"></small>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+                <div th:if="${#lists.isEmpty(dbUserFiles)}" class="alert alert-info" role="alert">
+                    No hay archivos disponibles
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Sección para mostrar la lista de Archivos de usuario en el filesystem -->
+    <div class="container">
+        <div class="card mt-6">
+            <div class="card-header">
+                <h5 class="card-title">Archivos de usuario en el filesystem</h5>
+            </div>
+            <div class="card-body">
+                <div th:if="${not #lists.isEmpty(userFiles)}">
+                    <ul class="list-group">
+                        <li th:each="file : ${userFiles}" class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span th:text="${file.fileName}"></span>
+                                <span th:text="${file.size}"></span>
+                                <div>
+                                    <a th:href="@{/databasefiles/delete/${file.fileName}(file=${file.fileName})}" class="btn btn-danger mx-2" onclick="return confirm('¿Estás seguro de que quieres eliminar este archivo de la base de datos?')" role="button">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </a>
+                                    <a th:href="@{${file.url}}" class="btn btn-success" role="button">
+                                        <i class="bi bi-cloud-download"></i> Descargar
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-text">
+                                <small class="text-muted" th:text="'Tipo: ' + ${file.type}"></small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div th:if="${#lists.isEmpty(USERfiles)}" class="alert alert-info" role="alert">
+                    No hay archivos disponibles
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+</div>
+</body>
+</html>

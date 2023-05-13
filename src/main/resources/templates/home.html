@@ -55,6 +55,11 @@
         usuarios </a></div>
     <div><a  th:href="@{/atletas}" >
         atletas </a></div>
+    <div><a  th:href="@{/prueba}" >
+        prueba </a></div>
+    <div><a  th:href="@{/prueba/{id}(id=${usuario.id})}" th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}">
+        prueba/id </a></div>
+
 </div>
 </body>
 </html>

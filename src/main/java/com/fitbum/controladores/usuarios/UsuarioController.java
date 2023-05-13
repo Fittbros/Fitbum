@@ -120,6 +120,35 @@ public class UsuarioController //extends AbstractController<Usuario>
             return "formularios/nuevoUsuario";
         }
     }
+    @PostMapping("guardarperfil")
+    public String guardarPerfil( @ModelAttribute(name ="datosUsuario") UsuarioDtoPsw usuarioDtoPsw) throws Exception {
+        //Comprobamos el patron
+        //estoy intentando implementar este metodo, que me fallabba, y es ll oque le he dicho a diego antes
+
+
+        System.out.println("Guardando usuario antes ");
+        System.out.println("Usuario :" + usuarioDtoPsw.getUsername() + ", password : " + usuarioDtoPsw.getPassword() );
+        if (usuarioDtoPsw.getPassword()!=null){
+            Usuario usuario = service.getMapper().mapToUserPsw(usuarioDtoPsw);
+            System.out.println("Guardando usuario");
+            System.out.println("Usuario :" + usuario.getNombre() + ", password : " + usuario.getPassword() );
+            //Codifico la password
+            String encodedPasswod = userService.getEncodedPassword(usuario);
+            usuarioDtoPsw.setPassword(encodedPasswod);
+            System.out.println("la pssw codif es "+usuarioDtoPsw.getPassword());
+            //El usuario se guarda como no autorizado
+            //Guardo la password
+            Optional<Role> role= roleService.buscar(3);
+
+            UsuarioDto usuario1 = this.service.guardar(usuarioDtoPsw);
+            //return "usuarios/detallesusuario";
+            return "redirect:/rrhh/perfil";
+        }
+        else
+        {
+            return "error";
+        }
+    }
 //    @GetMapping("/registrar")
 //    public String crearUsuario(Usuario usuario){
 //        service.crearUsuario(usuario);

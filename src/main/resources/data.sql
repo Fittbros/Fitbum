@@ -73,7 +73,7 @@ values (9999,9999,'base','/',0,'fas fa-tachometer-alt', null,0,0),
 delete from plantilla_mesociclo;
 INSERT INTO plantilla_mesociclo (descanso_acces, descanso_bas, descripcion, fecha_fin, fecha_inicio, fr_entre_semana, id_mesociclos, long_microciclo, num_microciclos, id_usuario)
 VALUES
-    ('Descanso Acces 1', 'Descanso Bas 1', 'Descripción 1', '2023-01-01', '2023-01-15', 5, 1, 7, 4, 1),
+    ('Descanso Acces 1', 'Descanso Bas 1', 'Musculacion', '2023-01-01', '2023-01-15', 5, 1, 7, 4, 1),
     ('Descanso Acces 2', 'Descanso Bas 2', 'Descripción 2', '2023-02-01', '2023-02-15', 6, 1, 8, 4, 1),
     ('Descanso Acces 3', 'Descanso Bas 3', 'Descripción 3', '2023-03-01', '2023-03-15', 7, 2, 9, 4, 2),
     ('Descanso Acces 4', 'Descanso Bas 4', 'Descripción 4', '2023-04-01', '2023-04-15', 8, 2, 10, 4, 2),
@@ -84,8 +84,8 @@ INSERT INTO plantilla_microciclo (intensidad_estandar, volumen_estandar, id_plan
 VALUES
     (1.5, 10.0, 1),
     (1.8, 12.0, 1),
-    (2.0, 8.5, 2),
-    (1.7, 9.0, 2),
+    (2.0, 8.5, 1),
+    (1.7, 9.0, 1),
     (1.9, 11.5, 3);
 
 DELETE FROM plantilla_sesion;
