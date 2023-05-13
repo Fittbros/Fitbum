@@ -82,7 +82,7 @@ public class FileController {
 
 
         //Obtenemos el nombre de usuario del objeto de autenticacion
-        String username = authentication.getPrincipal().getClass().getName();
+        String username = authentication.getName();
         // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
         Usuario usuario = usuarioServicio.getRepo().findUsuarioByUsername(username);
 
