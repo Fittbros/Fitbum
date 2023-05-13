@@ -394,24 +394,24 @@ public class FileController {
         model.addAttribute("usuario", usuarioServicio);
         usuarioServicio.getRepo().save(usuario);
 
-        return "redirect:/prueba";
+        return "redirect:/usuarios";
     }
     @GetMapping("/prueba/{id}")
-    public String pruebaId(//@PathVariable("id") Integer id,
-                           Model model//,Authentication authentication
+    public String pruebaId(@PathVariable("id") Integer id,
+                           Model model,Authentication authentication
     ){
         model.addAttribute("usuario", usuarioServicio);
         model.addAttribute("dataObject", menuServicio.findAll());
-//        String username = authentication.getName();
-//        System.out.println(username);
-//        Optional<Usuario> usuario = usuarioServicio.getRepo().findById(id);
-//        if(usuario.isPresent()){
-//        System.out.println(usuario.get());
-//        model.addAttribute("logeduser",usuario.get());}
-//        else{
-//            return "error";
-//        }
-        return "pruebaid";
+        String username = authentication.getName();
+        System.out.println(username);
+        Optional<Usuario> usuario = usuarioServicio.getRepo().findById(id);
+        if(usuario.isPresent()){
+        System.out.println(usuario.get());
+        model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        return "prueba";
     }
 //    @GetMapping("/prueba/{id}")
 //    public String pruebaId(@PathVariable("id") Integer id,

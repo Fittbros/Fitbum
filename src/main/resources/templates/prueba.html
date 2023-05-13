@@ -21,10 +21,17 @@
         <input type="hidden" th:field="*{email}">
         <input type="hidden" th:field="*{password}">
         <input type="hidden" th:field="*{username}">
+        <input type="hidden" th:field="*{apellido1}">
+        <input type="hidden" th:field="*{apellido2}">
         <input type="hidden" th:field="*{active}">
         <input type="hidden" th:field="*{role}">
+        <input type="hidden" th:field="*{altura}">
+        <input type="hidden" th:field="*{fechaNacim}">
+        <input type="hidden" th:field="*{nombre}">
+        <input type="hidden" th:field="*{peso}">
+        <input type="hidden" th:field="*{sexo}">
         <div class="form-group">
-            <label for="name">Nombre:</label>
+            <label for="name">Avatar:</label>
             <input type="text" class="form-control" id="name" name="name" th:field="*{avatar}" required>
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
