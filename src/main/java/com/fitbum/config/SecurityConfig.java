@@ -63,7 +63,8 @@ public class SecurityConfig {
                 .requestMatchers("/chat/**").authenticated()
                 .requestMatchers("/logros","/files/**","/uploadToFileSystem/**","/uploadToDatabase/**").authenticated()
                 .requestMatchers("/uploadUserFileToDatabaseStoreInFileSystem/**","/uploadUserFileToDatabase/**").authenticated()
-                .requestMatchers("/uploadUserFileToFileSystem/**","/databasefiles/**","/upload/**").authenticated()
+                .requestMatchers("/uploadUserFileToFileSystem/**","/databasefiles/**","/upload/**","/database/**").authenticated()
+                .requestMatchers("/prueba").authenticated()
 
                 //Permitimos únicamente las visitas de usuarios registrados a  /private
                 // Todas las request no filtradas hasta ahora, se rechazarán

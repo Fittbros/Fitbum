@@ -371,6 +371,41 @@ public class FileController {
     public ResponseEntity<?> handleStorageFileNotFound(FileNotFoundException exc) {
         return ResponseEntity.notFound().build();
     }
+    @GetMapping("/prueba")
+    public String prueba(Model model,Authentication authentication
+    ) {
+        model.addAttribute("usuario", usuarioServicio);
+
+        model.addAttribute("dataObject", menuServicio.findAll());
+        //Obtenemos el nombre de usuario del objeto de autenticacion
+        String username = authentication.getName();
+        // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
+        Usuario usuario = usuarioServicio.getRepo().findUsuarioByUsername(username);
+
+
+        // Obtenemos todos los archivos almacenados en el servicio de almacenamiento predeterminado.
+        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
+        List<FileInfo> files = fileSystemStorageService.loadAll();
+
+        // Obtenemos todos los archivos almacenados en el servicio de almacenamiento de la base de datos.
+        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
+        List<FileInfo> dbFiles = dbFileStorageService.getAllFileInfos();
+
+        List<FileInfo> userFiles = fileSystemStorageService.loadAllFromUser(usuario.getId());
+
+
+        // Obtenemos todos los archivos asociados al usuario y almacenados en la base de datos
+        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
+        List<FileInfo> dbUserFiles = dbFileStorageService.getUserFileInfos(usuario);
+
+        // Agregamos las URLs de los archivos del servicio de almacenamiento predeterminado al modelo.
+        model.addAttribute("files", files);
+
+        // Agregamos los objetos FileInfo del servicio de almacenamiento de la base de datos al modelo.
+        model.addAttribute("DBfiles", dbFiles);
+        model.addAttribute("userFiles", userFiles);
+        model.addAttribute("dbUserFiles", dbUserFiles);
+        return "/prueba";}
 
 
 }
