@@ -6,6 +6,8 @@ import com.fitbum.entidades.Notificacion;
 import com.fitbum.entidades.estadisticas.Estadisticas;
 import com.fitbum.entidades.plantillas.PlantillaMesociclo;
 import com.fitbum.entidades.programa.Mesociclo;
+
+import com.fitbum.filemanagement.entidades.FileDB;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -83,6 +86,14 @@ public class Usuario {
     @JsonManagedReference
     @OneToMany(mappedBy = "receptor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Mensaje> receptor;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @JoinTable(
+            name="users_files",
+            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
+            inverseJoinColumns={@JoinColumn(name="FILE_ID", referencedColumnName="ID")})
+    private List<FileDB> filesDB = new ArrayList<>();
+
 
 
 }
