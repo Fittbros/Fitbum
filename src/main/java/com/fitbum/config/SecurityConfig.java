@@ -32,7 +32,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests( authorize -> authorize
                 .requestMatchers("/assets/**").permitAll()
                 .requestMatchers("/templates/**").permitAll()
-                .requestMatchers("/index").permitAll()
+                .requestMatchers("/index","/ayuda").permitAll()
                 .requestMatchers("/ajustes").permitAll()
                 .requestMatchers("/menu/**").permitAll()
                 .requestMatchers("/usuarios/registro").permitAll()

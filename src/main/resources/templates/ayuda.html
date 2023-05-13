@@ -1,150 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - FitBum</title>
-    <link rel="stylesheet" th:href="@{/assetsPublico/bootstrap/css/bootstrap.min.css}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
-    <link rel="stylesheet" th:href="@{/assetsPublico/fonts/ionicons.min.css}">
-    <link rel="stylesheet" th:href="@{/assetsPublico/css/accordion-faq-list.css}">
-    <link rel="stylesheet" th:href="@{/assetsPublico/css/pikaday.min.css}">
+    <title>FAQ</title>
 </head>
-
 <body>
-<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient"
-     style="padding: 0;margin-top: 0;padding-top: 10px;padding-bottom: 10px;background: linear-gradient(168deg, #035450 1%, #09beb5 100%), linear-gradient(168deg, #035450 1%, #09beb5 100%);">
-    <div class="container"><img th:src="@{/assetsPublico/img/logo.svg}" width="27" height="30"><a class="navbar-brand logo"
-                                                                                              href="#"><strong>FITBUM</strong>&nbsp;
-        &nbsp;</a>
-        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span
-                class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="">Conócenos</a></li>
-                <li class="nav-item"><a class="nav-link" href="">Contacto</a></li>
-                <li class="nav-item"><a class="nav-link" href="">Preguntas Frecuentes</a></li>
-                <li class="nav-item"><a th:href="@{/usuarios/login}">
-                    <button class="btn" type="button"
-                            style="background: rgb(5,71,67);border-style: none;color: var(--bs-navbar-color);"><strong>Iniciar
-                        sesión</strong></button>
-                </a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<main class="page lanidng-page">
-    <section class="portfolio-block block-intro">
-        <div class="container">
-            <img src="../assetsPublico/img/avatars/logofitbumblanco.png" alt="FitBum Logo" class="img-fluid" style="width:40%;">
+<div layout:fragment="content">
 
 
-            <div class="about-me">
-                <p>¡Bienvenido a <strong>FitBum</strong>! Transforma tu cuerpo, alcanza tu máximo potencial con salud.
-                    Conecta con un entrenador especializado listo para guiarte, motivarte y
-                    ofrecerte los mejores entrenos en tu camino al éxito "</p><a class="btn btn-outline-primary"
-                                                                                 role="button" href="#">¡EMPIEZA AQUÍ!</a>
-            </div>
-        </div>
-    </section>
-    <section class="portfolio-block photography">
-        <div class="container">
-            <div class="row g-0">
-                <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image"
-                                                                                   src="../assetsPublico/img/fotos/bancaasist.png"></a>
-                </div>
-                <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image"
-                                                                                   src="../assetsPublico/img/fotos/trainerpapeles.png"></a>
-                </div>
-                <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image"
-                                                                                   src="../assetsPublico/img/fotos/chicapesomuero.png"></a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="portfolio-block call-to-action border-bottom">
-        <div class="container">
-            <div class="d-flex justify-content-center align-items-center content">
-                <h3>Like what you see?</h3>
-                <button class="btn btn-outline-primary btn-lg" type="button">Hire me</button>
-            </div>
-        </div>
-    </section>
-    <section class="portfolio-block testimonios">
-        <div class="container">
-            <div class="heading">
-                <h2>Testimonios</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card testimonios-item border-0">
-                        <div class="card-header bg-transparent border-0"><i class="icon ion-ios-lightbulb-outline"></i>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Manolito Gómez</h3>
-                            <p class="card-text">Gracias a FitBum ahora puedo correr detrás del bus sin romperme las rodillas</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card special-skill-item border-0">
-                        <div class="card-header bg-transparent border-0"><i class="icon ion-ios-lightbulb-outline"></i>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Josefina Montes</h3>
-                            <p class="card-text">Antes no podía ni hacer dos flexiones. Ahora, con 80 años recién cumplidos, tiro peso muerto con 180 kg a una mano</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card special-skill-item border-0">
-                        <div class="col-md-6 col-lg-4 item zoom-on-hover d-flex justify-content-center align-items-center rounded-circle">
-                            <a href="#">
-                                <img class="img-fluid image" src="../assetsPublico/img/fotos/maikelyaxon.png">
-                            </a>
-                        </div>
 
-                        <div class="card-body">
-                            <h3 class="card-title">Michael Jackson</h3>
-                            <p class="card-text">'Cause this is thriller, thriller night!
-                                And no one's gonna save you from the beast about to strike
-                                You know it's thriller, thriller night
-                                You're fighting for your life inside a killer, thriller tonight, yeah! Ooh-Oooh</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-<section class="portfolio-block website gradient">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-12 col-lg-5 offset-lg-1 text">
-                <h3>Website Project</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget velit ultricies, feugiat est
-                    sed, efr nunc, vivamus vel accumsan dui. Quisque ac dolor cursus, volutpat nisl vel, porttitor
-                    eros.</p>
-            </div>
-            <div class="col-md-12 col-lg-5">
-                <div class="portfolio-laptop-mockup">
-                    <div class="screen">
-                        <div class="screen-content"
-                             style="background-image: url(/assetsPublico/img/tech/image6.png);"></div>
-                    </div>
-                    <div class="keyboard"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="py-5 bg-light">
     <h1 class="text-center text-success" style="padding-top: 15px;padding-bottom: 15px;color: #1b6ce5!important;">
         FAQ</h1>
+    <div>
+        <p>
+            ¡Bienvenido a FitBum! Aquí encontrarás respuestas a algunas preguntas frecuentes sobre nuestros programas de entrenamiento y cómo funcionamos. Si no encuentras la información que necesitas, no dudes en ponerte en contacto con nuestro equipo de soporte.
+
+        </p>
+    </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 offset-md-3">
+            <div class="col-md-12 ">
                 <div id="faqlist" class="accordion accordion-flush">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
@@ -274,18 +151,14 @@
             </div>
         </div>
     </div>
-</section>
-<footer class="page-footer">
-    <div class="container">
-        <div class="links"><a href="#">About me</a><a href="#">Contact me</a><a href="#">Projects</a></div>
-        <div class="social-icons"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i
-                class="icon ion-social-instagram-outline"></i></a><a href="#"><i
-                class="icon ion-social-twitter"></i></a></div>
-    </div>
-</footer>
-<script th:src="@{/assetsPublico/bootstrap/js/bootstrap.min.js}"></script>
-<script th:src="@{/assetsPublico/js/pikaday.min.js}"></script>
-<script th:src="@{/assetsPublico/js/theme.js}"></script>
-</body>
 
+    <div>
+        <p>
+            Esperamos que estas preguntas frecuentes hayan aclarado tus dudas sobre FitBum y nuestros servicios. Si tienes alguna otra pregunta, no dudes en contactarnos. Estamos aquí para ayudarte en tu viaje hacia una vida más saludable y en forma. ¡Comienza hoy mismo y descubre los beneficios de entrenar con FitBum!
+        </p>
+    </div>
+
+
+</div>
+</body>
 </html>
