@@ -8,11 +8,14 @@ import com.fitbum.dto.UsuarioDtoPsw;
 import com.fitbum.dto.UsuarioDto;
 import com.fitbum.entidades.usuarios.Role;
 import com.fitbum.entidades.usuarios.Usuario;
+import com.fitbum.filemanagement.models.FileInfo;
+import com.fitbum.filemanagement.servicios.FileSystemStorageService;
 import com.fitbum.servicios.MenuServicio;
 import com.fitbum.servicios.usuarios.IUsuarioServicio;
 import com.fitbum.servicios.usuarios.RoleService;
 import com.fitbum.servicios.usuarios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,33 +47,9 @@ public class UsuarioController //extends AbstractController<Usuario>
     private IUsuarioServicio userService;
     @Autowired
     private MenuServicio menuServicio;
+    @Autowired
+    private FileSystemStorageService fileSystemStorageService;
 
-//    @GetMapping(value = {"/",""})
-//    public String index(Model model
-//    ) {
-//
-//        model.addAttribute("usuario", service);
-//        model.addAttribute("dataObject", menuServicio.findAll());
-//        return "usuarios/index";
-//    } movido a APPusuarioscontroles
-
-//    protected UsuarioController(MenuServicio menuService) {
-//        super(menuService);
-//    }
-
-
-
-//    @GetMapping("/usuarios")
-//    @ResponseBody
-//    public List<Usuario> listar(Model model
-//    ) {
-//        model.addAttribute("dataObject", menuServicio.findAll());
-//        return service.listartodos();
-//    }
-
-    //Para crear un usuario hay dos bloques
-    //El que genera la pantalla para pedir los datos de tipo GetMapping
-    //Cuando pasamos informacion a la pantalla hay que usar ModelMap
     @GetMapping("registro")
     public String vistaRegistro(Model interfazConPantalla) {
         //Instancia en memoria del dto a informar en la pantalla
@@ -120,6 +99,99 @@ public class UsuarioController //extends AbstractController<Usuario>
             return "formularios/nuevoUsuario";
         }
     }
+    @PostMapping("guardarperfil")
+    public String guardarPerfil( @ModelAttribute(name ="datosUsuario") UsuarioDtoPsw usuarioDtoPsw) throws Exception {
+        //Comprobamos el patron
+        //estoy intentando implementar este metodo, que me fallabba, y es ll oque le he dicho a diego antes
+
+
+        System.out.println("Guardando usuario antes ");
+        System.out.println("Usuario :" + usuarioDtoPsw.getUsername() + ", password : " + usuarioDtoPsw.getPassword() );
+        if (usuarioDtoPsw.getPassword()!=null){
+            Usuario usuario = service.getMapper().mapToUserPsw(usuarioDtoPsw);
+            System.out.println("Guardando usuario");
+            System.out.println("Usuario :" + usuario.getNombre() + ", password : " + usuario.getPassword() );
+            //Codifico la password
+            String encodedPasswod = userService.getEncodedPassword(usuario);
+            usuarioDtoPsw.setPassword(encodedPasswod);
+            System.out.println("la pssw codif es "+usuarioDtoPsw.getPassword());
+            //El usuario se guarda como no autorizado
+            //Guardo la password
+            Optional<Role> role= roleService.buscar(3);
+
+            UsuarioDto usuario1 = this.service.guardar(usuarioDtoPsw);
+            //return "usuarios/detallesusuario";
+            return "redirect:/rrhh/perfil";
+        }
+        else
+        {
+            return "error";
+        }
+    }
+
+
+    @GetMapping("olvidecontrasena")
+    public String formularioOlvideContrasena(){
+        return "formularios/olvidecontrasena";}
+
+    @GetMapping("/perfil/{id}")
+    public String perfil(@PathVariable("id") Integer id,
+                         Model model, Authentication authentication
+    ){
+        model.addAttribute("usuario", service);
+        model.addAttribute("dataObject", menuServicio.findAll());
+        String username = authentication.getName();
+        System.out.println(username);
+        Optional<Usuario> usuario = service.getRepo().findById(id);
+        if(usuario.isPresent()){
+            System.out.println(usuario.get());
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        List<FileInfo> files = fileSystemStorageService.loadAll();
+        model.addAttribute("files", files);
+
+
+
+        return "rrhh/perfil";}
+    @PostMapping("usuarios/save")
+    public String savePerfil(Usuario usuario, Model model) {
+        model.addAttribute("dataObject", menuServicio.findAll());
+        model.addAttribute("usuario", service);
+        service.getRepo().save(usuario);
+
+        return "redirect:/usuarios";
+    }
+
+}
+
+//    @GetMapping(value = {"/",""})
+//    public String index(Model model
+//    ) {
+//
+//        model.addAttribute("usuario", service);
+//        model.addAttribute("dataObject", menuServicio.findAll());
+//        return "usuarios/index";
+//    } movido a APPusuarioscontroles
+
+//    protected UsuarioController(MenuServicio menuService) {
+//        super(menuService);
+//    }
+
+
+
+//    @GetMapping("/usuarios")
+//    @ResponseBody
+//    public List<Usuario> listar(Model model
+//    ) {
+//        model.addAttribute("dataObject", menuServicio.findAll());
+//        return service.listartodos();
+//    }
+
+//Para crear un usuario hay dos bloques
+//El que genera la pantalla para pedir los datos de tipo GetMapping
+//Cuando pasamos informacion a la pantalla hay que usar ModelMap
 //    @GetMapping("/registrar")
 //    public String crearUsuario(Usuario usuario){
 //        service.crearUsuario(usuario);
@@ -149,19 +221,3 @@ public class UsuarioController //extends AbstractController<Usuario>
 ////        model.addAttribute("datosUsuario", new Usuario() usuario);
 ////        service.crearUsuario(usuario);
 ////        return "/formularios/registrar";}
-
-
-    @GetMapping("olvidecontrasena")
-    public String formularioOlvideContrasena(){
-        return "formularios/olvidecontrasena";}
-
-    @GetMapping("/perfil")
-    public String perfil(Model model
-    ) {
-
-        model.addAttribute("usuario", service);
-        model.addAttribute("dataObject", menuServicio.findAll());
-        return "rrhh/perfil";}
-
-
-}

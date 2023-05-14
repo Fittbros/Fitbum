@@ -61,7 +61,11 @@ public class SecurityConfig {
                 .requestMatchers("/entrenadores/**","/entrenar/**","/misrutinas/**","/programa/**").authenticated()
                 .requestMatchers("/ejercicios/**").authenticated()
                 .requestMatchers("/chat/**").authenticated()
-                .requestMatchers("/logros").authenticated()
+                .requestMatchers("/logros","/files/**","/uploadToFileSystem/**","/uploadToDatabase/**").authenticated()
+                .requestMatchers("/uploadUserFileToDatabaseStoreInFileSystem/**","/uploadUserFileToDatabase/**").authenticated()
+                .requestMatchers("/uploadUserFileToFileSystem/**","/databasefiles/**","/upload/**","/database/**").authenticated()
+                .requestMatchers("/prueba/**").authenticated()
+
                 //Permitimos únicamente las visitas de usuarios registrados a  /private
                 // Todas las request no filtradas hasta ahora, se rechazarán
                 .anyRequest().denyAll()

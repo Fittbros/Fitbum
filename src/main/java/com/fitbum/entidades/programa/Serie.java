@@ -31,6 +31,8 @@ public class Serie {
     private String modif_tecnicos;
     @Column
     private String modif_programacion;
+    @Column
+    private Boolean completado;
 
     @JsonBackReference
     @ManyToOne
