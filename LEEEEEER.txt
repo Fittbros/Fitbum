@@ -5,6 +5,6 @@ INSTRUCCIONES ANTES DE INICIAR
     docker compose up -d
 
 
-SERVER:
+SERVER: .
 conexion SSH con ubuntu
 docker run -p 3306 -e MYSQL_DATABASE=fitbum MYSQL_USER=user MYSQL_ROOT_PASSWORD=pass MYSQL_PASSWORD=pass MYSQL_PORT=3306 -d mysql
