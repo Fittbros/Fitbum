@@ -53,7 +53,7 @@ public class SecurityConfig {
                 //Permitimos todas las visitas a /public
                 .requestMatchers("/home").authenticated()
                 //Solo permitimos a usuarios registrados visitar "/private"
-                .requestMatchers("/private").authenticated()
+                .requestMatchers("/private","/notificaciones/**","/leerNotificacion/**","leerNotificaciones/**").authenticated()
                 .requestMatchers("/perfil").authenticated()
                 .requestMatchers("/usuarios").authenticated()
                 .requestMatchers("/usuarios/**").authenticated()
