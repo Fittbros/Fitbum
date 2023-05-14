@@ -15,7 +15,7 @@
                     <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" width="160" height="160" th:src="${logeduser.avatar}">
 
 
-                        <form th:action="@{/usuarios/save}" th:object="${logeduser}" th:method="post">
+                        <form th:action="@{/prueba/save}" th:object="${logeduser}" th:method="post">
 
 
                             <input type="hidden" th:field="*{id}">
@@ -226,7 +226,7 @@
                                 <p class="text-primary m-0 fw-bold">Detalles de usuario</p>
                             </div>
                             <div class="card-body">
-                                <form th:action="@{/usuarios/save}" th:object="${logeduser}" th:method="post">
+                                <form th:action="@{/prueba/save}" th:object="${logeduser}" th:method="post">
                                     <div>
                                         <input type="hidden" th:field="*{id}">
                                         <input type="hidden" th:field="*{email}">
