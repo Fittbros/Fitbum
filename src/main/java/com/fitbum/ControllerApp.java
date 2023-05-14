@@ -87,13 +87,22 @@ public class ControllerApp //extends AbstractController<Usuario>
         model.addAttribute("dataObject", menuServicio.findAll());
         return "/tutoriales/index";}
 
+
     @GetMapping("/ajustes")
     public String indexerror(Model model
     ) {
         model.addAttribute("usuario", usuarioServicio);
 
         model.addAttribute("dataObject", menuServicio.findAll());
-        return "/ajustes/index";}
+        return "/ajustes/index";
+    }
+    @GetMapping("/ayuda")
+    public String ayuda(Model model
+    ) {
+        model.addAttribute("usuario", usuarioServicio);
+
+        model.addAttribute("dataObject", menuServicio.findAll());
+        return "ayuda";}
 
 
     /*
