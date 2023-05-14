@@ -66,7 +66,9 @@ public class ControllerApp //extends AbstractController<Usuario>
         model.addAttribute("usuario", usuarioServicio);
 
         model.addAttribute("dataObject", menuServicio.findAll());
-        return "/mis_rutinas/index";}
+        return "/misRutinas/index";
+    }
+
 
 
     @GetMapping("/logros")

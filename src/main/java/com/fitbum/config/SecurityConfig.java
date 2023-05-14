@@ -58,7 +58,7 @@ public class SecurityConfig {
                 .requestMatchers("/usuarios/**").authenticated()
                 .requestMatchers("/plantillas/**").authenticated()
                 .requestMatchers("/atletas").authenticated()
-                .requestMatchers("/entrenadores/**").authenticated()
+                .requestMatchers("/entrenadores/**","/entrenar/**","/misrutinas/**","/programa/**").authenticated()
                 .requestMatchers("/ejercicios/**").authenticated()
                 .requestMatchers("/chat/**").authenticated()
                 .requestMatchers("/logros").authenticated()
