@@ -389,7 +389,7 @@ public class FileController {
         return "prueba";
     }
     @PostMapping("prueba/save")
-    public String saveEj(Usuario usuario, Model model) {
+    public String savePerfil(Usuario usuario, Model model) {
         model.addAttribute("dataObject", menuServicio.findAll());
         model.addAttribute("usuario", usuarioServicio);
         usuarioServicio.getRepo().save(usuario);
@@ -411,6 +411,10 @@ public class FileController {
         else{
             return "error";
         }
+        List<FileInfo> files = fileSystemStorageService.loadAll();
+        model.addAttribute("files", files);
+
+
         return "prueba";
     }
 //    @GetMapping("/prueba/{id}")

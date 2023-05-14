@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}"
       >
 <head>
-    <title>ejercicios2</title>
+    <title>prueba</title>
 </head>
 <body>
 <div layout:fragment="content">
     <div class="pagetitle">
-        <h1>ejercicios2</h1>
+        <h1>prueba</h1>
     </div>
 
     <span th:text="${logeduser.nombre}"></span>
@@ -17,6 +18,8 @@
     <span th:text="${logeduser.getId()}"></span>
 
     <form th:action="@{/prueba/save}" th:object="${logeduser}" th:method="post">
+
+
         <input type="hidden" th:field="*{id}">
         <input type="hidden" th:field="*{email}">
         <input type="hidden" th:field="*{password}">
@@ -31,8 +34,12 @@
         <input type="hidden" th:field="*{peso}">
         <input type="hidden" th:field="*{sexo}">
         <div class="form-group">
-            <label for="name">Avatar:</label>
-            <input type="text" class="form-control" id="name" name="name" th:field="*{avatar}" required>
+            <label for="avatar">Avatar:</label>
+<!--            <input type="text" class="form-control" id="avatar" name="avatar" th:field="*{avatar}" required>-->
+            <select name="avatar" >
+                <option th:each="files: ${files}" th:text="${files.fileName}" th:value="${files.url.toString().substring(21)}"></option>
+
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
 
