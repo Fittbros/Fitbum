@@ -171,7 +171,7 @@
                                     </span>
                                     <img class="border rounded-circle img-profile" th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}" th:src="${usuario.avatar}"></a>
                                 <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
-                                    <a class="dropdown-item" th:href="@{/usuarios/perfil}"><i
+                                    <a class="dropdown-item" th:href="@{/usuarios/perfil/{id}(id=${usuario.id})}" th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}"><i
                                             class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Perfil</a>
 
                                     <a class="dropdown-item" th:href="@{/ayuda}"><i

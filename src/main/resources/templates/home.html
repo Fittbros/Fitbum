@@ -19,6 +19,8 @@
         </span></br>
     <span th:text="${#authentication.name}">
         </span>
+    <div><a  th:href="@{/usuarios/perfil/{id}(id=${usuario.id})}" th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}">
+        prueba/id </a></div>
     <!-- End Page Title -->
     <!--div><a  th:href="@{/menu}" >
         menu</a></div>
@@ -57,8 +59,10 @@
         atletas </a></div>
     <div><a  th:href="@{/prueba}" >
         prueba </a></div>
+
     <div><a  th:href="@{/prueba/{id}(id=${usuario.id})}" th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}">
         prueba/id </a></div>
+
 
 </div>
 </body>

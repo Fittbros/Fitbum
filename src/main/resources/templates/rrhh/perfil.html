@@ -12,12 +12,39 @@
         <div class="row mb-3">
             <div class="col-lg-4">
                 <div class="card mb-3">
-                    <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4"
-                                                                   th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}" th:src="${usuario.avatar}" width="160"
-                                                                   height="160">
-                        <div class="mb-3">
-                            <button class="btn btn-primary btn-sm" type="button">Cambiar foto</button>
-                        </div>
+                    <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" width="160" height="160" th:src="${logeduser.avatar}">
+
+
+                        <form th:action="@{/usuarios/save}" th:object="${logeduser}" th:method="post">
+
+
+                            <input type="hidden" th:field="*{id}">
+                            <input type="hidden" th:field="*{email}">
+                            <input type="hidden" th:field="*{password}">
+                            <input type="hidden" th:field="*{username}">
+                            <input type="hidden" th:field="*{apellido1}">
+                            <input type="hidden" th:field="*{apellido2}">
+                            <input type="hidden" th:field="*{active}">
+                            <input type="hidden" th:field="*{role}">
+                            <input type="hidden" th:field="*{altura}">
+                            <input type="hidden" th:field="*{fechaNacim}">
+                            <input type="hidden" th:field="*{nombre}">
+                            <input type="hidden" th:field="*{peso}">
+                            <input type="hidden" th:field="*{sexo}">
+                            <div class="form-group">
+                                <label for="avatar">Avatar:</label>
+                                <select name="avatar" id="avatar">
+                                    <option th:each="files: ${files}" th:text="${files.fileName}" th:value="${files.url.toString().substring(21)}"></option>
+
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Cambiar foto</button>
+                            <a type="button" class="btn btn-primary" th:href="@{/files}" >
+                                Subir foto</a>
+
+                        </form>
+
                     </div>
                 </div>
                 <div class="card shadow mb-4">
@@ -94,18 +121,27 @@
                                 <p class="text-primary m-0 fw-bold">Ajustes de usuario</p>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form th:action="@{/prueba/save}" th:object="${logeduser}" th:method="post">
+                                    <div>
+                                        <input type="hidden" th:field="*{id}">
+                                        <input type="hidden" th:field="*{active}">
+                                        <input type="hidden" th:field="*{role}">
+                                        <input type="hidden" th:field="*{altura}">
+                                        <input type="hidden" th:field="*{fechaNacim}">
+                                        <input type="hidden" th:field="*{peso}">
+                                        <input type="hidden" th:field="*{sexo}">
+                                        <input type="hidden" th:field="*{avatar}">
+                                    </div>
                                     <div class="row">
                                         <div class="col">
-                                            <div class="mb-3"><label class="form-label"
-                                                                     for="username"><strong>Nombre de
-                                                usuario</strong></label><input
-                                                    class="form-control" type="text" id="username"
+                                            <div class="mb-3"><label class="form-label" for="username">
+                                                <strong>Nombre de usuario</strong></label><input
+                                                    class="form-control" type="text" id="username" th:field="*{username}"
                                                     placeholder="user.name" name="username"></div>
                                         </div>
                                         <div class="col">
                                             <div class="mb-3"><label class="form-label" for="email"><strong>Email
-                                            </strong></label><input class="form-control" type="email"
+                                            </strong></label><input class="form-control" type="email" th:field="*{email}"
                                                                     id="email" placeholder="user@example.com"
                                                                     name="email"></div>
                                         </div>
@@ -115,14 +151,39 @@
                                             <div class="mb-3"><label class="form-label"
                                                                      for="first_name"><strong>Nombre</strong></label><input
                                                     class="form-control" type="text"
-                                                    id="first_name" placeholder="John"
+                                                    id="first_name" placeholder="John" th:field="*{nombre}"
                                                     name="first_name"></div>
                                         </div>
                                         <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Apellidos</strong></label><input
+                                            <div class="mb-3">
+                                                <label class="form-label" for="apellido1">
+                                                <strong>1º Apellido</strong>
+                                                </label>
+                                                <input
                                                     class="form-control" type="text"
-                                                    id="last_name" placeholder="Doe"
-                                                    name="last_name"></div>
+                                                    id="apellido1" placeholder="Doe" th:field="*{apellido1}"
+                                                    name="last_name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3"><label class="form-label"
+                                                                     for="apellido2"><strong>2º Apellido</strong></label><input
+                                                    class="form-control" type="text"
+                                                    id="apellido2" placeholder="John" th:field="*{apellido2}"
+                                                    name="first_name"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="password">
+                                                    <strong>Contraseña</strong>
+                                                </label>
+                                                <input
+                                                        class="form-control" type="text"
+                                                        id="password" placeholder="Doe" th:field="*{password}"
+                                                        name="last_name">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -133,7 +194,7 @@
                         </div>
                         <div class="card shadow">
                             <div class="card-header py-3">
-                                <p class="text-primary m-0 fw-bold">Contact Settings</p>
+                                <p class="text-primary m-0 fw-bold">Detalles de contacto</p>
                             </div>
                             <div class="card-body">
                                 <form>
@@ -156,6 +217,57 @@
                                     </div>
                                     <div class="mb-3">
                                         <button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header py-3">
+                                <p class="text-primary m-0 fw-bold">Detalles de usuario</p>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/usuarios/save}" th:object="${logeduser}" th:method="post">
+                                    <div>
+                                        <input type="hidden" th:field="*{id}">
+                                        <input type="hidden" th:field="*{email}">
+                                        <input type="hidden" th:field="*{password}">
+                                        <input type="hidden" th:field="*{username}">
+                                        <input type="hidden" th:field="*{apellido1}">
+                                        <input type="hidden" th:field="*{apellido2}">
+                                        <input type="hidden" th:field="*{active}">
+                                        <input type="hidden" th:field="*{role}">
+                                        <input type="hidden" th:field="*{nombre}">
+                                        <input type="hidden" th:field="*{avatar}">
+                                        <input type="hidden" th:field="*{fechaNacim}">
+                                    </div>
+<!--                                    <div class="mb-3"><label class="form-label"-->
+<!--                                                             for="fecha"><strong>Fecha</strong></label><input-->
+<!--                                            th:field="*{fechaNacim}"-->
+<!--                                            class="form-control" type="datetime-local" id="fecha" placeholder="Sunset Blvd, 38"-->
+<!--                                            name="address"></div>-->
+                                    <div class="mb-3"><label class="form-label"
+                                                             for="peso"><strong>Peso</strong></label><input
+                                            class="form-control" type="number" id="peso" placeholder="Sunset Blvd, 38"
+                                            th:field="*{peso}"
+                                            name="peso"></div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3"><label class="form-label" for="sexo"><strong>Sexo</strong></label>
+                                                <select name="sexo" id="sexo">
+                                                    <option th:text="Hombre" th:field="*{sexo}" th:value="1"></option>
+                                                    <option th:text="Mujer" th:field="*{sexo}" th:value="0"></option>
+                                                </select>
+                                                </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3"><label class="form-label"
+                                                                     for="altura"><strong>Altura</strong></label><input
+                                                    class="form-control" type="number" id="altura" placeholder="USA" th:field="*{altura}"
+                                                    name="altura"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
                                     </div>
                                 </form>
                             </div>
