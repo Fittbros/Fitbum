@@ -1,160 +1,82 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}">
 <head>
     <title th:text="'Plantilla '+${meso.get().getId()}">mesoId</title>
 </head>
 <body>
-<div layout:fragment="content">
-    <div class="pagetitle">
-        <h1 th:text="'Plantilla '+${meso.get().getId()}">MesoID</h1>
+    <div layout:fragment="content">
+        <div class="pagetitle">
+            <h1 th:text="'Modifiamos la plantilla '+${meso.get().getId()}">MesoID</h1>
+        </div>
+        <div><a  th:href="@{/plantillas/meso}" >
+            Volver </a>
+        </div>
+        <form role="form" th:object="${meso}"  th:action="@{/plantillas/meso/1}"  method="post">
+        <!--  CONTENIDO AQUI -->
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input th:type="hidden"  id="id" class="form-control"  maxlength="30" th:field="${meso.id}"/>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input type="text" id="desc_acc" class="form-control"  maxlength="30" th:field="${meso.descansoAcces}"/>
+                    <label class="form-label" for="desc_acc">desc_acc</label>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input type="text" id="desc_bas" class="form-control"  maxlength="30" th:field="${meso.descansoBas}"/>
+                    <label class="form-label" for="desc_bas">desc_bas</label>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input type="text" id="descripcion" class="form-control"  maxlength="30" th:field="${meso.descripcion}"/>
+                    <label class="form-label" for="descripcion">descripcion</label>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input type="text" id="fecha_fin" class="form-control"  maxlength="30" th:field="${meso.fechaFin}"/>
+                    <label class="form-label" for="fecha_fin">fecha_fin</label>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input type="text" id="fecha_inicio" class="form-control"  maxlength="30" th:field="${meso.fechaInicio}"/>
+                    <label class="form-label" for="fecha_inicio">fecha_inicio</label>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input type="text" id="fr_entreno" class="form-control"  maxlength="30" th:field="${meso.frEntreSemana}"/>
+                    <label class="form-label" for="fr_entreno">fr_entreno</label>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input type="text" id="long_micro" class="form-control"  maxlength="30" th:field="${meso.longMicrociclo}"/>
+                    <label class="form-label" for="long_micro">long_micro</label>
+                </div>
+            </div>
+            <div>
+                <button type="submit"  title="Guardar">Guardar cambios </button>
+                <a th:href="@{/}" role="button" title="Volver a principal" th:text="Cancelar">
+
+                </a>
+            </div>
+        </form>
     </div>
-    <div><a  th:href="@{/plantillas/meso}" >
-        Volver </a></div>
-<!--  CONTENIDO AQUI -->
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>idMeso</th>
-            <th>Fecha inic</th>
-            <th>Fecha fin</th>
-            <th>num microc</th>
-            <th>long microc</th>
-            <th>descanso aces</th>
-            <th>descanso Bas</th>
-            <th>descripc</th>
-            <th>Usuario ID</th>
-            <th>Id Mesociclo</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td th:text="${meso.get().getId()}"></td>
-            <td th:text="${meso.get().getIdMesociclos()}"></td>
-            <td th:text="${meso.get().getFechaInicio()}"></td>
-            <td th:text="${meso.get().getFechaFin()}"></td>
-            <td th:text="${meso.get().getNumMicrociclos()}"></td>
-            <td th:text="${meso.get().getLongMicrociclo()}"></td>
-            <td th:text="${meso.get().getDescansoAcces()}"></td>
-            <td th:text="${meso.get().getDescansoBas()}"></td>
-            <td th:text="${meso.get().getDescripcion()}"></td>
-            <td th:text="${meso.get().usuario.id}"></td>
-            <td th:text="${meso.get().idMesociclos}"></td>
-        </tr>
-        <tr>
-            <td colspan="100%">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>ID Micro</th>
-                        <th>volu</th>
-                        <th>intens</th>
-                        <th>plantilla meso</th>
-                    </tr>
-                    </thead>
-                </table>
-                <table class="table table-bordered" th:each="micro : ${micro}" th:if="${micro.getPlantillaMesociclo().id}==${meso.get().getId()}">
-
-                    <tbody>
-                    <tr  >
-                        <td th:text="${micro.id}"></td>
-                        <td th:text="${micro.getVolumenEstandar()}"></td>
-                        <td th:text="${micro.getIntensidadEstandar()}"></td>
-                        <td th:text="${micro.getPlantillaMesociclo().id}"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="100%">
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>ID Sesion</th>
-                                    <th>descripc</th>
-                                    <th>n plant Micro</th>
-                                </tr>
-                                </thead>
-                            </table>
-                            <table class="table table-bordered" th:each="sesion : ${sesion}" th:if="${sesion.getPlantillaMicrociclo().id}==${micro.id}">
-
-                                <tbody>
-                                <tr >
-                                    <td th:text="${sesion.id}"></td>
-                                    <td th:text="${sesion.descripcion}"></td>
-                                    <td th:text="${sesion.getPlantillaMicrociclo().id}"></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="100%">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                            <tr>
-                                                <th>ID EJErcicio</th>
-                                                <th>descripc</th>
-                                                <th>nombre</th>
-                                                <th>modif</th>
-                                                <th>n plant sesion</th>
-                                            </tr>
-                                            </thead>
-                                        </table>
-                                        <table class="table table-bordered" th:each="ejercicio : ${ej}" th:if="${ejercicio.getPlantillaSesion().id}==${sesion.id}">
-                                            <tbody>
-                                            <tr >
-                                                <td th:text="${ejercicio.id}"></td>
-                                                <td th:text="${ejercicio.descripcion}"></td>
-                                                <td th:text="${ejercicio.nombre_ej}"></td>
-                                                <td th:text="${ejercicio.getModific_periodizacion()}"></td>
-                                                <td th:text="${ejercicio.getPlantillaSesion().id}"></td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="100%">
-                                                    <table class="table table-bordered">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>ID serie</th>
-                                                            <th>carga</th>
-                                                            <th>mod INT</th>
-                                                            <th>mod vis</th>
-                                                            <th>repes</th>
-                                                            <th>n plant EJF</th>
-                                                        </tr>
-                                                        </thead>
-                                                    </table>
-                                                    <table class="table table-bordered" th:each="serie : ${serie}" th:if="${ejercicio.id}==${serie.plantillaEjercicioFormulado.id}">
-                                                        <tbody>
-                                                        <tr >
-                                                            <td th:text="${serie.id}"></td>
-                                                            <td th:text="${serie.carga}"></td>
-                                                            <td th:text="${serie.modifInterna}"></td>
-                                                            <td th:text="${serie.modifVis}"></td>
-                                                            <td th:text="${serie.repes}"></td>
-                                                            <td th:text="${serie.plantillaEjercicioFormulado.id}"></td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-
-
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-
-</div>
 </body>
 </html>

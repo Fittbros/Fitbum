@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/fitbum
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3406/fitbum
     username: root
     password: pass
     driver-class-name: com.mysql.cj.jdbc.Driver

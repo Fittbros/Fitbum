@@ -9,34 +9,123 @@
 <body>
 <div layout:fragment="content">
     <div class="pagetitle">
-        <h1>mesociclo</h1>
+        <h1>Plantillas rutinas: Mesociclos</h1>
     </div>
-
+    <div th:each="mesociclo : ${meso}">
 <!--  CONTENIDO AQUI -->
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>usuario</th>
-            <th>nummicro</th>
-            <th>longmicro</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="entidad : ${meso}">
-            <td th:text="${entidad.id}"></td>
-            <td th:text="${entidad.usuario}"></td>
-            <td th:text="${entidad.getNumMicrociclos()}"></td>
-            <td th:text="${entidad.getLongMicrociclo()}"></td>
-            <td>
-                <a  th:href="@{/plantillas/meso/{id}(id=${entidad.id})}" >
-                    IR </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-
+        <h2>Mesociclo</h2>
+        <table class="table">
+            <thead class="table-primary">
+            <tr>
+                <th>ID</th>
+                <th>usuario</th>
+                <th>nummicro</th>
+                <th>longmicro</th>
+            </tr>
+            </thead>
+            <tbody class="table-primary">
+                <td th:text="${mesociclo.id}"></td>
+                <td th:text="${mesociclo.usuario}"></td>
+                <td th:text="${mesociclo.getNumMicrociclos()}"></td>
+                <td th:text="${mesociclo.getLongMicrociclo()}"></td>
+                <td>
+                    <a  th:href="@{/plantillas/meso/{id}(id=${mesociclo.id})}" >
+                        IR </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div th:each="micro : ${mesociclo.plantillaMicrociclo}">
+            <h2>Microciclo</h2>
+            <table class="table">
+                <thead class="table-secondary">
+                <tr>
+                    <th>ID</th>
+                    <th>volumenEstandar</th>
+                    <th>intensidadEstandar</th>
+                </tr>
+                </thead>
+                <tbody class="table-secondary">
+                <td th:text="${micro.id}"></td>
+                <td th:text="${micro.volumenEstandar}"></td>
+                <td th:text="${micro.intensidadEstandar}"></td>
+                <td>
+                    <a  th:href="@{/plantillas/micro/{id}(id=${micro.id})}" >
+                        IR </a>
+                </td>
+                </tr>
+                </tbody>
+            </table>
+            <div th:each="sesion : ${micro.plantillaSesion}">
+                <h2>Sesión</h2>
+                <table class="table">
+                    <thead class="table-success">
+                    <tr>
+                        <th>ID</th>
+                        <th>descripcion</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-success">
+                    <td th:text="${sesion.id}"></td>
+                    <td th:text="${sesion.descripcion}"></td>
+                    <td>
+                        <a  th:href="@{/plantillas/sesion/{id}(id=${sesion.id})}" >
+                            IR </a>
+                    </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div th:each="ejercicio : ${sesion.plantillaEjercicioFormulado}">
+                    <h2>Ejercicio</h2>
+                    <table class="table">
+                        <thead class="table-warning">
+                        <tr>
+                            <th>ID</th>
+                            <th>descanso_esp</th>
+                            <th>nombre_ej</th>
+                            <th>descripcion</th>
+                            <th>modific_periodizacion</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-warning">
+                        <td th:text="${ejercicio.id}"></td>
+                        <td th:text="${ejercicio.descanso_esp}"></td>
+                        <td th:text="${ejercicio.nombre_ej}"></td>
+                        <td th:text="${ejercicio.descripcion}">
+                        <td th:text="${ejercicio.modific_periodizacion}"></td>
+                        <td>
+                            <a  th:href="@{/plantillas/ejercicio/{id}(id=${ejercicio.id})}" >
+                                IR </a>
+                        </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div th:each="serie : ${ejercicio.plantillaSerie}">
+                        <h2>Serie</h2>
+                        <table class="table">
+                            <thead class="table-secondary">
+                            <tr>
+                                <th>ID</th>
+                                <th>carga</th>
+                                <th>repes</th>
+                            </tr>
+                            </thead>
+                            <tbody class="table-secondary">
+                            <td th:text="${serie.id}"></td>
+                            <td th:text="${serie.carga}"></td>
+                            <td th:text="${serie.repes}"></td>
+                            <td>
+                                <a  th:href="@{/plantillas/serie/{id}(id=${serie.id})}" >
+                                    IR </a>
+                            </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

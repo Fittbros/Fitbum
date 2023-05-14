@@ -25,4 +25,8 @@ public class SerieService {
     public Optional<PlantillaSerie> findById(Integer id){
         return ejerciciosRepositorio.findById(id);
     }
+
+    public PlantSerieRepositorio getEjerciciosRepositorio() {
+        return ejerciciosRepositorio;
+    }
 }
