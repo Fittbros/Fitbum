@@ -35,7 +35,7 @@ public class NotificacionController {
 
     @GetMapping("/numeroNotificaciones")
     @ResponseBody
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public String contarNotificacionesPendientes(Principal principal) {
         List<Notificacion> listaNotificaciones =
                 notificacionRepositorio.findByUserToAndEstado(
