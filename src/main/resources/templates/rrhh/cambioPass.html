@@ -8,48 +8,17 @@
 <div layout:fragment="content">
 
     <div class="container-fluid">
-        <h3 class="text-dark mb-4">cambiopass</h3>
+        <h3 class="text-dark mb-4">Ajustes de Seguridad</h3>
         <div class="row mb-3">
             <div class="col-lg-4">
 
             <div class="col-lg-8">
-                <div class="row mb-3 d-none">
-                    <div class="col">
-                        <div class="card text-white bg-primary shadow">
-                            <div class="card-body">
-                                <div class="row mb-2">
-                                    <div class="col">
-                                        <p class="m-0">Peformance</p>
-                                        <p class="m-0"><strong>65.2%</strong></p>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                </div>
-                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last
-                                    month</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card text-white bg-success shadow">
-                            <div class="card-body">
-                                <div class="row mb-2">
-                                    <div class="col">
-                                        <p class="m-0">Peformance</p>
-                                        <p class="m-0"><strong>65.2%</strong></p>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                </div>
-                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last
-                                    month</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="row">
                     <div class="col">
                         <div class="card shadow mb-3">
                             <div class="card-header py-3">
-                                <p class="text-primary m-0 fw-bold">Ajustes de usuario</p>
+                                <p class="text-primary m-0 fw-bold">Ajustes de Seguridad</p>
                             </div>
                             <div class="card-body">
                                 <form th:action="@{/usuarios/savepass}" th:object="${logeduser}" th:method="post">
@@ -57,6 +26,7 @@
                                         <input type="hidden" th:field="*{id}">
                                         <input type="hidden" th:field="*{active}">
                                         <input type="hidden" th:field="*{altura}">
+                                        <input type="hidden" th:field="*{apellido1}">
                                         <input type="hidden" th:field="*{apellido2}">
                                         <input type="hidden" th:field="*{avatar}">
                                         <input type="hidden" th:field="*{email}">
@@ -70,33 +40,23 @@
 
                                     <div class="row">
 
-                                        <div class="col">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="apellido1">
-                                                <strong>1º Apellido</strong>
-                                                </label>
-                                                <input
-                                                    class="form-control" type="text"
-                                                    id="apellido1" placeholder="Doe" th:field="*{apellido1}"
-                                                    name="last_name">
-                                            </div>
-                                        </div>
+
                                     </div>
 
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label class="form-label" for="password">
-                                                    <strong>Contraseña</strong>
+                                                    <strong>Nueva contraseña</strong>
                                                 </label>
                                                 <input
                                                         class="form-control" type="text"
-                                                        id="password" placeholder="Doe" th:field="*{password}"
-                                                        name="last_name">
+                                                        id="password" placeholder="Password" th:autocomplete="off" autocomplete="off" th:value="*{password}"
+                                                        name="password">
                                             </div>
                                         </div>
-                                    </div>
+
                                     <div class="mb-3">
-                                        <button class="btn btn-primary btn-sm" type="submit">Guardar datos</button>
+                                        <button class="btn btn-primary btn-sm" type="submit">Guardar Contraseña</button>
                                     </div>
                                 </form>
                             </div>

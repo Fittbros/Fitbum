@@ -121,6 +121,9 @@ public class UsuarioController //extends AbstractController<Usuario>
 public String savePass(Usuario usuario, Model model) {
     model.addAttribute("dataObject", menuServicio.findAll());
     model.addAttribute("usuario", service);
+    String encodedPasswod = userService.getEncodedPassword(usuario);
+    usuario.setPassword(encodedPasswod);
+
     service.getRepo().save(usuario);
 
     return "redirect:/usuarios";
