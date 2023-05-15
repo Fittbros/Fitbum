@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="utf-8">
@@ -23,9 +23,9 @@
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="">Conócenos</a></li>
-                <li class="nav-item"><a class="nav-link" href="">Contacto</a></li>
-                <li class="nav-item"><a class="nav-link" href="">Preguntas Frecuentes</a></li>
+                <li class="nav-item"><a class="nav-link" href="#conocenos">Conócenos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                <li class="nav-item"><a class="nav-link" href="#faq">Preguntas Frecuentes</a></li>
                 <li class="nav-item"><a th:href="@{/usuarios/login}">
                     <button class="btn" type="button"
                             style="background: rgb(5,71,67);border-style: none;color: var(--bs-navbar-color);"><strong>Iniciar
@@ -35,23 +35,23 @@
         </div>
     </div>
 </nav>
-<main class="page lanidng-page">
-    <section class="portfolio-block block-intro" style="padding: 0px; margin: 5%;">
+<main class="page landing-page">
+    <section class="portfolio-block block-intro">
+        <a id="conocenos"></a>
         <div class="container">
             <img src="../assetsPublico/img/avatars/logofitbumblanco.png" alt="FitBum Logo" class="img-fluid" style="width:40%;">
-
             <div class="about-me">
+
                 <p>¡Bienvenido a <strong>FitBum</strong>! Transforma tu cuerpo, alcanza tu máximo potencial con salud.
-                    Conecta con un entrenador especializado listo para guiarte, motivarte y ofrecerte los mejores entrenos en tu camino al éxito.</p>
-                <a class="btn btn-outline-primary" role="button" href="#">CONSIGUE TU ENTRENADOR</a>
-            <br>
+                    Conecta con un entrenador especializado listo para guiarte, motivarte y
+                    ofrecerte los mejores entrenamientos en tu camino al éxito "</p>
+                <a class="btn btn-outline-primary"
+                   role="button" th:href="@{/usuarios/login}">¡EMPIEZA AQUÍ!</a>
             </div>
         </div>
     </section>
-
     <section class="portfolio-block photography">
-        <div class="container" style="width:82%">
-            <br>
+        <div class="container">
             <div class="row g-0">
                 <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image"
                                                                                    src="../assetsPublico/img/fotos/bancaasist.png"></a>
@@ -65,14 +65,7 @@
             </div>
         </div>
     </section>
-    <section class="portfolio-block call-to-action border-bottom">
-        <div class="container">
-            <div class="d-flex justify-content-center align-items-center content">
-                <h3>Like what you see?</h3>
-                <button class="btn btn-outline-primary btn-lg" type="button">Hire me</button>
-            </div>
-        </div>
-    </section>
+
     <section class="portfolio-block testimonios">
         <div class="container">
             <div class="heading">
@@ -80,8 +73,9 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card testimonios-item border-0">
-                        <div class="card-header bg-transparent border-0"><i class="icon ion-ios-lightbulb-outline"></i>
+                    <div class="card special-skill-item border-0">
+                        <div class="col-md-6 offset-md-3 text-center">
+                            <img class="img-fluid border rounded-circle img-profile" th:src="@{/assetsPublico/img/fotos/test1.jpg}" alt="Manolito Gómez"  style="max-height: 200px;">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Manolito Gómez</h3>
@@ -91,7 +85,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card special-skill-item border-0">
-                        <div class="card-header bg-transparent border-0"><i class="icon ion-ios-lightbulb-outline"></i>
+                        <div class="col-md-6 offset-md-3 text-center">
+                            <img class="img-fluid border rounded-circle img-profile" th:src="@{/assetsPublico/img/fotos/test2.png}" alt="Josefina Montes"  style="min-height: 200px;">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Josefina Montes</h3>
@@ -101,10 +96,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card special-skill-item border-0">
-                        <div class="col-md-6 col-lg-4 item zoom-on-hover d-flex justify-content-center align-items-center rounded-circle">
-                            <a href="#">
-                                <img class="img-fluid image" src="../assetsPublico/img/fotos/maikelyaxon.png">
-                            </a>
+                        <div class="col-md-6 offset-md-3 text-center">
+                            <img class="img-fluid border rounded-circle img-profile" th:src="@{/assetsPublico/img/fotos/maikelyaxon.png}" alt="Mickael Jackson"  style="max-height: 200px;">
                         </div>
 
                         <div class="card-body">
@@ -119,21 +112,52 @@
             </div>
         </div>
     </section>
+    <section class="portfolio-block call-to-action border-bottom">
+        <div class="container">
+            <div class="d-flex justify-content-center align-items-center content">
+                <h3>¿Te gusta lo que ves?</h3>
+                <!--button class="btn btn-outline-primary btn-lg" type="button"--><a
+                    class="btn btn-outline-primary"
+                    role="button" th:href="@{/usuarios/login}">
+                ¡UNETE!
+            </a><!--/button-->
+            </div>
+        </div>
+    </section>
 </main>
-<section class="portfolio-block website gradient">
+<section class="portfolio-block website gradient" style="padding: 0;margin-top: 0;padding-top: 10px;padding-bottom: 10px;background: linear-gradient(168deg, #035450 1%, #09beb5 100%), linear-gradient(168deg, #035450 1%, #09beb5 100%);">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-12 col-lg-5 offset-lg-1 text">
-                <h3>Website Project</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget velit ultricies, feugiat est
-                    sed, efr nunc, vivamus vel accumsan dui. Quisque ac dolor cursus, volutpat nisl vel, porttitor
-                    eros.</p>
+                <h3>Nuestra misión</h3>
+                <p>¿Estás cansado de información confusa en Internet sobre entrenamiento y fitness?
+                    ¿Frustrado por contratar servicios que no cumplen tus expectativas ni ofrecen apenas resultados?
+                    En Fitbum te entendemos y por eso hemos creado una solución a medida para atletas exigentes como tú.
+                    Adiós a la incertidumbre, a sentirte solo en tu proceso de cambio, a rutinas ineficaces... y da la bienvenida a un
+                    servicio de calidad respaldado por entrenadores profesionales, entregados y ambiciosos por transformarte en tu mejor versión.
+                    <br>
+                    Somos un equipo de expertos en la ciencia del ejercicio dispuestos a brindarte el apoyo y la guía necesarios
+                    para alcanzar tus metas. Tenemos 4 grandes compromisos:
+                    <br>
+                    1- Ofrecerte las rutinas personalizadas idóneas para conseguir los mejores resultados. Tanto si eres un friki del gimnasio como si dispones de menos tiempo para entrenar, nosotros
+                    adaptamos cada detalle de la planificación para moldear tu cuerpo, perder grasa y avanzar a la máxima velocidad.
+                    <br>
+                    2- Queremos que aprendas y asimiles los principios del fitness. Un atleta bien informado es más disciplinado, consciente y responsable. Por ello, te ofrecemos continuamente nuevo
+                    contenido sobre selección de ejercicios y sus técnicas idóneas, metodologías de programación del entrenamiento, fundamentos científicos, y más.
+                    <br>
+                    3- Por último, queremos hacerte un atleta más feliz. Diseñamos cada sesión como artesanos para adaptarla a tus gustos, tus objetivos propios, tu disponibilidad temporal y cualquier imprevisto que pueda surgir.
+                    Queremos que entrenar no sea un quebradero de cabeza ni un conflicto diario por no saber qué hacer. Perseguimos que disfrutes y que vibres con el proceso.
+                    <br>
+                    4- Finalmente, te ofrecemos un servicio de nivel élite, pero al mejor precio. Gracias a nuestra metodología y a nuestra gestión ágil, manejamos altos volúmenes de atletas manteniendo la atención y el cariño con cada uno de vosotros.
+                    <br>
+
+                    ¡Así que no pierdas más tiempo y energía en servicios que no te brindan resultados! Únete a nuestra comunidad de usuarios que nos avalan y da el paso a una nueva era de excelencia.</p>
             </div>
             <div class="col-md-12 col-lg-5">
                 <div class="portfolio-laptop-mockup">
                     <div class="screen">
                         <div class="screen-content"
-                             style="background-image: url(&quot;../assetsPublico/img/tech/image6.png&quot;);"></div>
+                             style="background-image: url(/assetsPublico/img/tech/image6.png);"></div>
                     </div>
                     <div class="keyboard"></div>
                 </div>
@@ -141,9 +165,9 @@
         </div>
     </div>
 </section>
-<section class="py-5 bg-light">
+<section class="py-5 bg-light" id="faq">
     <h1 class="text-center text-success" style="padding-top: 15px;padding-bottom: 15px;color: #1b6ce5!important;">
-        FAQ</h1>
+        Preguntas Frecuentes</h1>
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -151,61 +175,125 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#content-accordion-1">What is Lorem Ipsum?
+                                    data-bs-target="#content-accordion-1">¿Qué es FitBum y qué servicios ofrece?
                             </button>
                         </h2>
                         <div id="content-accordion-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                            <p class="accordion-body"> Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-                                1500s.</p>
+                            <p class="accordion-body"> FitBum es una plataforma especializada en el control de entrenamientos. Ofrecemos programas de entrenamiento personalizados diseñados para ayudarte a alcanzar tus metas de acondicionamiento físico. Nuestros servicios incluyen planes de ejercicio, seguimiento de progreso, asesoramiento nutricional y apoyo constante.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#content-accordion-2">What is Lorem Ipsum?
+                                    data-bs-target="#content-accordion-2">¿Cómo funciona FitBum?
                             </button>
                         </h2>
                         <div id="content-accordion-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                            <p class="accordion-body"> Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-                                1500s.</p>
+                            <p class="accordion-body"> Una vez que te registres en FitBum, deberás completar un cuestionario detallado sobre tu nivel de condición física, objetivos y preferencias de entrenamiento. Con esta información, nuestros expertos crearán un programa de entrenamiento personalizado adaptado a tus necesidades. Tendrás acceso a tu plan de entrenamiento a través de nuestra plataforma en línea, donde podrás ver ejercicios, realizar seguimiento de tu progreso y recibir recomendaciones adicionales.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#content-accordion-3">What is Lorem Ipsum?
+                                    data-bs-target="#content-accordion-3">¿Necesito tener experiencia previa en el ejercicio para utilizar FitBum?
                             </button>
                         </h2>
                         <div id="content-accordion-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                            <p class="accordion-body"> Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-                                1500s.</p>
+                            <p class="accordion-body"> No, no es necesario tener experiencia previa en el ejercicio para utilizar FitBum. Nuestros programas de entrenamiento están diseñados para adaptarse a diferentes niveles de condición física, desde principiantes hasta atletas experimentados. Al completar el cuestionario inicial, nos aseguraremos de considerar tu nivel de experiencia y adaptar el programa a tus capacidades individuales.
+                            </p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#content-accordion-4">What is Lorem Ipsum?
+                                    data-bs-target="#content-accordion-4">¿Cómo se realiza el seguimiento de mi progreso?
                             </button>
                         </h2>
                         <div id="content-accordion-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                            <p class="accordion-body"> Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-                                1500s.</p>
+                            <p class="accordion-body"> FitBum te ofrece diversas herramientas para realizar un seguimiento de tu progreso. Puedes registrar tus entrenamientos, monitorear tu rendimiento, llevar un diario de alimentos y hacer un seguimiento de tu peso y medidas. Además, podrás visualizar gráficos y estadísticas que te ayudarán a evaluar tus avances y ajustar tu programa de entrenamiento según sea necesario.
+                            </p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#content-accordion-5">What is Lorem Ipsum?
+                                    data-bs-target="#content-accordion-5">¿Recibiré asesoramiento nutricional con FitBum?
                             </button>
                         </h2>
                         <div id="content-accordion-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                            <p class="accordion-body"> Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-                                1500s.</p>
+                            <p class="accordion-body"> Sí, en FitBum entendemos que la nutrición juega un papel crucial en el éxito de tus entrenamientos. Por ello, nuestros programas también incluyen asesoramiento nutricional. Te proporcionaremos recomendaciones generales y sugerencias personalizadas para ayudarte a mantener una alimentación saludable y equilibrada que complemente tu rutina de ejercicios.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#content-accordion-6">¿Puedo comunicarme con un entrenador en caso de tener dudas?
+                            </button>
+                        </h2>
+                        <div id="content-accordion-6" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                            <p class="accordion-body">
+                                Sí, en FitBum entendemos que la nutrición juega un papel crucial en el éxito de tus entrenamientos. Por ello, nuestros programas también incluyen asesoramiento nutricional. Te proporcionaremos recomendaciones generales y sugerencias personalizadas para ayudarte a mantener una alimentación saludable y equilibrada que complemente tu rutina de ejercicios.
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#content-accordion-7">
+                                ¿Cuáles son los métodos de pago aceptados?
+                            </button>
+                        </h2>
+                        <div id="content-accordion-7" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                            <p class="accordion-body">
+                                Sí, en FitBum entendemos que la nutrición juega un papel crucial en el éxito de tus entrenamientos. Por ello, nuestros programas también incluyen asesoramiento nutricional. Te proporcionaremos recomendaciones generales y sugerencias personalizadas para ayudarte a mantener una alimentación saludable y equilibrada que complemente tu rutina de ejercicios.
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#content-accordion-8">
+                                ¿Recibiré asesoramiento nutricional con FitBum?
+
+                            </button>
+                        </h2>
+                        <div id="content-accordion-8" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                            <p class="accordion-body">
+                                Sí, en FitBum entendemos que la nutrición juega un papel crucial en el éxito de tus entrenamientos. Por ello, nuestros programas también incluyen asesoramiento nutricional. Te proporcionaremos recomendaciones generales y sugerencias personalizadas para ayudarte a mantener una alimentación saludable y equilibrada que complemente tu rutina de ejercicios.
+                                flexibilidad de cancelar tu suscripción cuando lo desees. Simplemente ponte en contacto con nuestro equipo de soporte o visita la sección de configuración de tu cuenta para cancelar tu suscripción. Ten en cuenta que, dependiendo de los términos de tu suscripción, es posible que exista un período de aviso previo para la cancelación.
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#content-accordion-9">
+                                ¿Ofrecen garantía de resultados?
+                            </button>
+                        </h2>
+                        <div id="content-accordion-9" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                            <p class="accordion-body">
+                                Sí, en FitBum entendemos que la nutrición juega un papel crucial en el éxito de tus entrenamientos. Por ello, nuestros programas también incluyen asesoramiento nutricional. Te proporcionaremos recomendaciones generales y sugerencias personalizadas para ayudarte a mantener una alimentación saludable y equilibrada que complemente tu rutina de ejercicios.
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#content-accordion-10">
+                                ¿Qué medidas de privacidad y seguridad tienen implementadas?
+                            </button>
+                        </h2>
+                        <div id="content-accordion-10" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                            <p class="accordion-body">
+                                Sí, en FitBum entendemos que la nutrición juega un papel crucial en el éxito de tus entrenamientos. Por ello, nuestros programas también incluyen asesoramiento nutricional. Te proporcionaremos recomendaciones generales y sugerencias personalizadas para ayudarte a mantener una alimentación saludable y equilibrada que complemente tu rutina de ejercicios.
+
+                            </p>
                         </div>
                     </div>
                 </div>
