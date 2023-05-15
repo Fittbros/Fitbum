@@ -1,4 +1,4 @@
-package com.fitbum.controladores;
+package com.fitbum.controladores.websockets;
 import com.fitbum.servicios.MenuServicio;
 import com.fitbum.servicios.usuarios.UsuarioServicio;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.security.Principal;
 
 
 @Controller
@@ -40,5 +42,23 @@ public class MensajeController {
         model.addAttribute("usuario", usuarioServicio);
         model.addAttribute("dataObject", menuServicio.findAll());
         return "/chat/chatAtletas";}
+
+    @GetMapping(value = {"/chatprueba"})
+    public String chatprueba(Principal principal, Model model
+    ) {
+        String userID = principal.getName();
+        model.addAttribute("userID", userID);
+        model.addAttribute("usuario", usuarioServicio);
+        model.addAttribute("dataObject", menuServicio.findAll());
+        return "/chat/chatprueba";}
+
+    @GetMapping(value = {"/chatprueba3"})
+    public String chatprueba3 (Principal principal, Model model
+    ) {
+        String userID = principal.getName();
+        model.addAttribute("userID", userID);
+        model.addAttribute("usuario", usuarioServicio);
+        model.addAttribute("dataObject", menuServicio.findAll());
+        return "/chat/chatprueba3";}
 
 }
