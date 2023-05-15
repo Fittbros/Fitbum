@@ -24,8 +24,8 @@ public class SecurityConfig {
     @Autowired
     private UserDetailsService userDetailsService;
     @Autowired
-    //private BCryptPasswordEncoder encoder;
-    private PasswordEncoder encoder;
+    private BCryptPasswordEncoder encoder;
+//    private PasswordEncoder encoder;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
