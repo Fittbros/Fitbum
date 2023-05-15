@@ -65,8 +65,7 @@ public class PlantillaController {
     ) {
         PlantillaMesociclo plantillaMesociclo = new PlantillaMesociclo();
         //plantillaMesociclo.getPlantillaMicrociclo().iterator().next().getPlantillaSesion().iterator().next().getPlantillaEjercicioFormulado().iterator().next().getPlantillaSerie().iterator().next().;
-        model.addAttribute("meso", plantMesoRepositorio.findAll());
-
+        model.addAttribute("listaplmeso", plantMesoRepositorio.findAllByOrderByOrdenDesc());
         model.addAttribute("dataObject", menuServicio.findAll());
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/mesociclo";
@@ -74,7 +73,6 @@ public class PlantillaController {
     @GetMapping(value = {"/micro"})
     public String plantMicro( Model model ) {
         model.addAttribute("micro", microService.findAll());
-
         model.addAttribute("dataObject", menuServicio.findAll());
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/microciclo";
@@ -120,7 +118,7 @@ public class PlantillaController {
             model.addAttribute("meso", meso);
         }
         else{
-            return "error";
+            return "redirect:/error";
         }
 
         return "/plantillas/mesoId";
@@ -128,12 +126,10 @@ public class PlantillaController {
     }
     @PostMapping("/meso/{id}")
     public String guardarMesoId(@PathVariable("id") Integer id, PlantillaMesociclo mesoentrada) {
-        System.out.println( "@PostMapping:" + id + ":" + mesoentrada.getId() );
+
         Optional<PlantillaMesociclo> mesociclocontrol = mesoService.findById(mesoentrada.getId());
-        System.out.println( "@PostMapping:" + id + ":" + mesoentrada.getId() );
         //¿Debería comprobar si hay datos?
         if (mesociclocontrol.isPresent()){
-            System.out.println( "@PostMapping: isPresent" );
             PlantillaMesociclo mesociclo = mesociclocontrol.get();
             mesociclo.setNumMicrociclos(mesoentrada.getNumMicrociclos());
             mesociclo.setFrEntreSemana(mesoentrada.getFrEntreSemana());
@@ -145,7 +141,7 @@ public class PlantillaController {
             return String.format("redirect:/plantillas/meso/%s", mesociclo.getId());
         }
         else{
-            return "error";
+            return "redirect:/error";
         }
     }
     @GetMapping(value = {"/micro/{id}"})
@@ -159,14 +155,14 @@ public class PlantillaController {
             model.addAttribute("micro", micro);
         }
         else{
-            return "error";
+            return "redirect:/error";
         }
 
         return "plantillas/microId";
     }
     @PostMapping(value = {"/micro/{id}"})
     public String guardarMicroId(@PathVariable("id") Integer id, PlantillaMicrociclo microcicloentrada) {
-        Optional<PlantillaMicrociclo> microciclocontrol = microService.findById(id);
+        Optional<PlantillaMicrociclo> microciclocontrol = microService.findById(microcicloentrada.getId());
         //¿Debería comprobar si hay datos?
         if (microciclocontrol.isPresent()){
             PlantillaMicrociclo microciclo = microciclocontrol.get();
@@ -174,11 +170,12 @@ public class PlantillaController {
             microciclo.setVolumenEstandar(microcicloentrada.getVolumenEstandar());
 
             this.microService.getPlantMicroRepositorio().save(microciclo);
-            return String.format("redirect:/plantillas/micro/%s", id);
+            return String.format("redirect:/plantillas/micro/%s", microciclo.getId());
         }
         else{
             return "error";
         }
+
     }
     @GetMapping(value = {"/sesion/{id}"})
     public String showSesionId(@PathVariable("id") Integer id, ModelMap model) {
@@ -197,15 +194,16 @@ public class PlantillaController {
         return "plantillas/sesionId";
     }
     @PostMapping(value = {"/sesion/{id}"})
-    public String guardarSesionId(@PathVariable("id") Integer id, PlantillaSesion plantillaSesionentrada) {
-        Optional<PlantillaSesion> plantillaSesioncontrol = sesionService.findById(id);
+    public String guardarSesionId(@PathVariable("id") Integer id, PlantillaSesion sesionentrada) {
+        Optional<PlantillaSesion> sesioncontrol = sesionService.findById(sesionentrada.getId());
         //¿Debería comprobar si hay datos?
-        if (plantillaSesioncontrol.isPresent()){
-            PlantillaSesion sesion = plantillaSesioncontrol.get();
-            sesion.setDescripcion(plantillaSesionentrada.getDescripcion());
+        if (sesioncontrol.isPresent()){
+            PlantillaSesion sesion = sesioncontrol.get();
+            sesion.setVariante(sesionentrada.getVariante());
+            sesion.setNum_sesion(sesionentrada.getNum_sesion());
 
             this.sesionService.getPlantSesionRepositorio().save(sesion);
-            return String.format("redirect:/plantillas/sesion/%s", id);
+            return String.format("redirect:/plantillas/sesion/%s", sesion.getId());
         }
         else{
             return "error";

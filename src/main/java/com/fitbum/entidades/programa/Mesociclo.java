@@ -32,15 +32,15 @@ public class Mesociclo {
 
 
     @Column
-    private Integer numMicro ;
+    private Integer numMicrociclos ;
     @Column
-    private Integer frEntreno ;
+    private Integer frEntreSemana ;
     @Column
-    private Integer longMicro;
+    private Integer longMicrociclo;
     @Column
-    private Integer descBas ;
+    private String descansoBas ;
     @Column
-    private Integer descAcc ;
+    private String descansoAcces ;
     @Column
     private String descripcion;
     @Column

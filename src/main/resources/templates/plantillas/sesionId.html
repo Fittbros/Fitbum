@@ -3,36 +3,36 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}">
 <head>
-    <title th:text="'Plantilla Microciclo '+${micro.get().getId()}">microId</title>
+    <title th:text="'Plantilla Sesión '+${sesion.get().getId()}">sesionId</title>
 </head>
 <body>
 <div layout:fragment="content">
     <div class="pagetitle">
-        <h1 th:text="'Modificamos la plantilla microciclo '+${micro.get().getId()}">MicroID</h1>
+        <h1 th:text="'Modificamos la plantilla sesión'">SesionId</h1>
     </div>
     <div><a  th:href="@{/plantillas/meso}" >
         Volver </a>
     </div>
-    <form role="form" th:object="${micro}"  th:action="@{/plantillas/micro/{id}(id=${micro.get().getId()})}"  method="post">
+    <form role="form" th:object="${sesion}"  th:action="@{/plantillas/sesion/{id}(id=${sesion.get().getId()})}"  method="post">
         <!--  CONTENIDO AQUI -->
         <div class="d-flex flex-row align-items-center mb-4">
             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
             <div class="form-outline flex-fill mb-0">
-                <input th:type="hidden"  id="id" class="form-control"  maxlength="30" th:field="${micro.id}"/>
+                <input th:type="hidden"  id="id" class="form-control"  maxlength="30" th:field="${sesion.id}"/>
             </div>
         </div>
         <div class="d-flex flex-row align-items-center mb-4">
             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
             <div class="form-outline flex-fill mb-0">
-                <input type="text" id="int_est" class="form-control"  maxlength="30" th:field="${micro.intensidadEstandar}"/>
-                <label class="form-label" for="int_est">Intensidad Estándar</label>
+                <input type="text" id="numses" class="form-control"  maxlength="30" th:field="${sesion.num_sesion}"/>
+                <label class="form-label" for="numses">Número Sesión</label>
             </div>
         </div>
         <div class="d-flex flex-row align-items-center mb-4">
             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
             <div class="form-outline flex-fill mb-0">
-                <input type="text" id="vol_est" class="form-control"  maxlength="30" th:field="${micro.volumenEstandar}"/>
-                <label class="form-label" for="vol_est">Volumen Estándar</label>
+                <input type="text" id="var" class="form-control"  maxlength="30" th:field="${sesion.variante}"/>
+                <label class="form-label" for="var">Variante</label>
             </div>
         </div>
         <div>

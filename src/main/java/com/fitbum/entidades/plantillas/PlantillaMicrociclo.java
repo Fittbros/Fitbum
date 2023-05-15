@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -25,7 +26,8 @@ public class PlantillaMicrociclo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
+    @Column
+    private Integer orden;
     @Column
     private Float volumenEstandar;
     @Column
@@ -37,7 +39,8 @@ public class PlantillaMicrociclo {
     private PlantillaMesociclo plantillaMesociclo;
 
     @JsonManagedReference
-@OneToMany(mappedBy = "plantillaMicrociclo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-private Set<PlantillaSesion> plantillaSesion;
+    @OneToMany(mappedBy = "plantillaMicrociclo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OrderBy(value = "orden asc ")
+    private List<PlantillaSesion> plantillaSesion;
 
 }

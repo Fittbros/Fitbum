@@ -22,12 +22,15 @@ import java.util.Set;
 
 public class PlantillaSesion {
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer	id;
+    @Column
+    private Integer num_sesion;
 
-
-    private String descripcion;
+    @Column
+    private Integer orden;
+    @Column
+    private String variante;
 
 
     @JsonBackReference
