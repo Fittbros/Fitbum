@@ -4,42 +4,35 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}">
 <head>
-    <title>serie</title>
+    <title>mesociclo</title>
 </head>
 <body>
 <div layout:fragment="content">
     <div class="pagetitle">
-        <h1>serie</h1>
+        <h1>Plantillas rutinas: Series</h1>
     </div>
-    <div>
-        serie
-        <table class="table table-bordered">
-            <thead>
+    <div th:each="serie : ${serie}">
+        <h2>Serie</h2>
+        <table class="table">
+            <thead class="table-secondary">
             <tr>
                 <th>ID</th>
                 <th>carga</th>
-                <th>mod INT</th>
-                <th>mod vis</th>
                 <th>repes</th>
-                <th>n plant EJF</th>
             </tr>
             </thead>
-            <tbody>
-            <tr th:each="entidad : ${serie}">
-                <td th:text="${entidad.id}"></td>
-                <td th:text="${entidad.carga}"></td>
-                <td th:text="${entidad.modifInterna}"></td>
-                <td th:text="${entidad.modifVis}"></td>
-                <td th:text="${entidad.repes}"></td>
-                <td th:text="${entidad.plantillaEjercicioFormulado.id}"></td>
+            <tbody class="table-secondary">
+            <td th:text="${serie.id}"></td>
+            <td th:text="${serie.carga}"></td>
+            <td th:text="${serie.repes}"></td>
+            <td>
+                <a  th:href="@{/plantillas/serie/{id}(id=${serie.id})}" >
+                    IR </a>
+            </td>
             </tr>
             </tbody>
         </table>
     </div>
-<!--  CONTENIDO AQUI -->
-
-
-
 </div>
 </body>
 </html>

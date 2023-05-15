@@ -72,32 +72,32 @@ values (9999,9999,'base','/',0,'fas fa-tachometer-alt', null,0,0),
        (10,70,'Tutoriales','/tutoriales',1,'fas fa-window-maximize',9999,0,0),
        (11,80,'Ajustes de Página','/ajustes',1,'fas fa-wrench',9999,0,0);
 delete from plantilla_mesociclo;
-INSERT INTO plantilla_mesociclo (descanso_acces, descanso_bas, descripcion, fecha_fin, fecha_inicio, fr_entre_semana, id_mesociclos, long_microciclo, num_microciclos, id_usuario)
+INSERT INTO plantilla_mesociclo (orden,descanso_acces, descanso_bas, descripcion, fecha_fin, fecha_inicio, fr_entre_semana, id_mesociclos, long_microciclo, num_microciclos, id_usuario)
 VALUES
-    ('Descanso Acces 1', 'Descanso Bas 1', 'Musculacion', '2023-01-01', '2023-01-15', 5, 1, 7, 4, 1),
-    ('Descanso Acces 2', 'Descanso Bas 2', 'Descripción 2', '2023-02-01', '2023-02-15', 6, 1, 8, 4, 1),
-    ('Descanso Acces 3', 'Descanso Bas 3', 'Descripción 3', '2023-03-01', '2023-03-15', 7, 2, 9, 4, 2),
-    ('Descanso Acces 4', 'Descanso Bas 4', 'Descripción 4', '2023-04-01', '2023-04-15', 8, 2, 10, 4, 2),
-    ('Descanso Acces 5', 'Descanso Bas 5', 'Descripción 5', '2023-05-01', '2023-05-15', 9, 3, 11, 4, 3);
+    (1,'Descanso Acces 1', 'Descanso Bas 1', 'Musculacion', '2023-01-01', '2023-01-15', 5, 1, 7, 4, 1),
+    (2,'Descanso Acces 2', 'Descanso Bas 2', 'Descripción 2', '2023-02-01', '2023-02-15', 6, 1, 8, 4, 1),
+    (3,'Descanso Acces 3', 'Descanso Bas 3', 'Descripción 3', '2023-03-01', '2023-03-15', 7, 2, 9, 4, 2),
+    (4,'Descanso Acces 4', 'Descanso Bas 4', 'Descripción 4', '2023-04-01', '2023-04-15', 8, 2, 10, 4, 2),
+    (5,'Descanso Acces 5', 'Descanso Bas 5', 'Descripción 5', '2023-05-01', '2023-05-15', 9, 3, 11, 4, 3);
 DELETE FROM plantilla_microciclo;
 
-INSERT INTO plantilla_microciclo (intensidad_estandar, volumen_estandar, id_plantilla_mesociclo)
+INSERT INTO plantilla_microciclo (orden,intensidad_estandar, volumen_estandar, id_plantilla_mesociclo)
 VALUES
-    (1.5, 10.0, 1),
-    (1.8, 12.0, 1),
-    (2.0, 8.5, 1),
-    (1.7, 9.0, 1),
-    (1.9, 11.5, 3);
+    (1,1.5, 10.0, 1),
+    (2,1.8, 12.0, 1),
+    (3,2.0, 8.5, 1),
+    (4,1.7, 9.0, 1),
+    (1,1.9, 11.5, 3);
 
 DELETE FROM plantilla_sesion;
 
-INSERT INTO plantilla_sesion (descripcion, id_plantilla_microciclo)
+INSERT INTO plantilla_sesion (orden,num_sesion,variante, id_plantilla_microciclo)
 VALUES
-    ('Descripción 1', 1),
-    ('Descripción 2', 1),
-    ('Descripción 3', 2),
-    ('Descripción 4', 2),
-    ('Descripción 5', 3);
+    (1,1,'Torso 1', 1),
+    (2,2,'Pierna 1', 1),
+    (1,1,'Torso 1', 2),
+    (2,2,'Torso 2', 2),
+    (1,1,'Pierna 1', 3);
 
 DELETE FROM plantilla_ejercicio_formulado;
 

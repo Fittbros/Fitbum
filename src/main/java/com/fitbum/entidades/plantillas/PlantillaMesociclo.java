@@ -2,7 +2,6 @@ package com.fitbum.entidades.plantillas;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fitbum.entidades.programa.Mesociclo;
 import com.fitbum.entidades.usuarios.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,9 +11,8 @@ import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -38,13 +36,15 @@ public class PlantillaMesociclo {
 
  @JsonManagedReference
 @OneToMany(mappedBy = "plantillaMesociclo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-private Set<PlantillaMicrociclo> plantillaMicrociclo;
+@OrderBy(value = "orden asc ")
+private List<PlantillaMicrociclo> plantillasMicrociclo;
 
 
     @Column
     private Integer idMesociclos;
 
-
+    @Column
+    private Integer orden;
     @Column
     private Integer numMicrociclos;
 

@@ -24,4 +24,8 @@ public class MesoService {
     public Optional<PlantillaMesociclo> findById(Integer id){
         return plantMesoRepositorio.findById(id);
     }
+
+    public PlantMesoRepositorio getPlantMesoRepositorio() {
+        return plantMesoRepositorio;
+    }
 }

@@ -13,15 +13,19 @@ import java.util.Optional;
 
 public class SesionService {
 
-    PlantSesionRepositorio ejerciciosRepositorio;
+    PlantSesionRepositorio plantSesionRepositorio;
     protected SesionService(PlantSesionRepositorio ejerciciosRepositorio){
-        this.ejerciciosRepositorio = ejerciciosRepositorio;}
+        this.plantSesionRepositorio = ejerciciosRepositorio;}
 
 
     public List<PlantillaSesion> findAll() {
-        return ejerciciosRepositorio.findAll();
+        return plantSesionRepositorio.findAll();
     }
     public Optional<PlantillaSesion> findById(Integer id){
-        return ejerciciosRepositorio.findById(id);
+        return plantSesionRepositorio.findById(id);
+    }
+
+    public PlantSesionRepositorio getPlantSesionRepositorio() {
+        return plantSesionRepositorio;
     }
 }
