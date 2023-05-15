@@ -23,8 +23,8 @@
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#conocenos">Conócenos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+                <li class="nav-item"><a class="nav-link" href="#mision">Nuestra Misión</a></li>
                 <li class="nav-item"><a class="nav-link" href="#faq">Preguntas Frecuentes</a></li>
                 <li class="nav-item"><a th:href="@{/usuarios/login}">
                     <button class="btn" type="button"
@@ -36,8 +36,8 @@
     </div>
 </nav>
 <main class="page landing-page">
-    <section class="portfolio-block block-intro">
-        <a id="conocenos"></a>
+    <section class="portfolio-block block-intro" style="height:80%">
+
         <div class="container">
             <img src="../assetsPublico/img/avatars/logofitbumblanco.png" alt="FitBum Logo" class="img-fluid" style="width:40%;">
             <div class="about-me">
@@ -66,7 +66,7 @@
         </div>
     </section>
 
-    <section class="portfolio-block testimonios">
+    <section id="testimonios" class="portfolio-block testimonios mb-sm-2">
         <div class="container">
             <div class="heading">
                 <h2>Testimonios</h2>
@@ -79,85 +79,104 @@
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Manolito Gómez</h3>
-                            <p class="card-text">Gracias a FitBum ahora puedo correr detrás del bus sin romperme las rodillas</p>
+                            <p class="card-text">Gracias a FitBum ya no uso el coche, porque llego antes corriendo (o rodando).</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card special-skill-item border-0">
                         <div class="col-md-6 offset-md-3 text-center">
-                            <img class="img-fluid border rounded-circle img-profile" th:src="@{/assetsPublico/img/fotos/test2.png}" alt="Josefina Montes"  style="min-height: 200px;">
+                            <img class="img-fluid border rounded-circle img-profile" th:src="@{/assetsPublico/img/fotos/test2.png}" alt="Josefina Montes"  style="height: 200px;">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Josefina Montes</h3>
-                            <p class="card-text">Antes no podía ni hacer dos flexiones. Ahora, con 80 años recién cumplidos, tiro peso muerto con 180 kg a una mano</p>
+                            <p class="card-text">Antes no podía ni hacer dos flexiones. Ahora, con 80 años recién cumplidos, cargo la barra con 200 kg y ¡PUMM!</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card special-skill-item border-0">
                         <div class="col-md-6 offset-md-3 text-center">
-                            <img class="img-fluid border rounded-circle img-profile" th:src="@{/assetsPublico/img/fotos/maikelyaxon.png}" alt="Mickael Jackson"  style="max-height: 200px;">
+                            <img class="img-fluid border rounded-circle img-profile" th:src="@{/assetsPublico/img/fotos/serresiete.png}" alt="Mickael Jackson"  style="max-height: 200px;">
                         </div>
 
                         <div class="card-body">
-                            <h3 class="card-title">Michael Jackson</h3>
-                            <p class="card-text">'Cause this is thriller, thriller night!
-                                And no one's gonna save you from the beast about to strike
-                                You know it's thriller, thriller night
-                                You're fighting for your life inside a killer, thriller tonight, yeah! Ooh-Oooh</p>
+                            <h3 class="card-title">Cristiano Ronaldo</h3>
+                            <p class="card-text">¡¡¡¡SIIIIUUUUUUUUUUUUUU!!!!</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="portfolio-block call-to-action border-bottom">
+    <section class="portfolio-block call-to-action mt-sm-3 border-bottom">
         <div class="container">
             <div class="d-flex justify-content-center align-items-center content">
                 <h3>¿Te gusta lo que ves?</h3>
                 <!--button class="btn btn-outline-primary btn-lg" type="button"--><a
                     class="btn btn-outline-primary"
                     role="button" th:href="@{/usuarios/login}">
-                ¡UNETE!
+                ¡ÚNETE!
             </a><!--/button-->
             </div>
         </div>
     </section>
 </main>
-<section class="portfolio-block website gradient" style="padding: 0;margin-top: 0;padding-top: 10px;padding-bottom: 10px;background: linear-gradient(168deg, #035450 1%, #09beb5 100%), linear-gradient(168deg, #035450 1%, #09beb5 100%);">
+<section id="mision" class="portfolio-block website gradient" style="padding: 0;margin-top: 2%;padding-top: 10px;padding-bottom: 10px;background: linear-gradient(168deg, #035450 1%, #09beb5 100%), linear-gradient(168deg, #035450 1%, #09beb5 100%);">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md-12 col-lg-5 offset-lg-1 text">
-                <h3>Nuestra misión</h3>
-                <p>¿Estás cansado de información confusa en Internet sobre entrenamiento y fitness?
-                    ¿Frustrado por contratar servicios que no cumplen tus expectativas ni ofrecen apenas resultados?
-                    En Fitbum te entendemos y por eso hemos creado una solución a medida para atletas exigentes como tú.
-                    Adiós a la incertidumbre, a sentirte solo en tu proceso de cambio, a rutinas ineficaces... y da la bienvenida a un
-                    servicio de calidad respaldado por entrenadores profesionales, entregados y ambiciosos por transformarte en tu mejor versión.
-                    <br>
-                    Somos un equipo de expertos en la ciencia del ejercicio dispuestos a brindarte el apoyo y la guía necesarios
-                    para alcanzar tus metas. Tenemos 4 grandes compromisos:
-                    <br>
-                    1- Ofrecerte las rutinas personalizadas idóneas para conseguir los mejores resultados. Tanto si eres un friki del gimnasio como si dispones de menos tiempo para entrenar, nosotros
-                    adaptamos cada detalle de la planificación para moldear tu cuerpo, perder grasa y avanzar a la máxima velocidad.
-                    <br>
-                    2- Queremos que aprendas y asimiles los principios del fitness. Un atleta bien informado es más disciplinado, consciente y responsable. Por ello, te ofrecemos continuamente nuevo
-                    contenido sobre selección de ejercicios y sus técnicas idóneas, metodologías de programación del entrenamiento, fundamentos científicos, y más.
-                    <br>
-                    3- Por último, queremos hacerte un atleta más feliz. Diseñamos cada sesión como artesanos para adaptarla a tus gustos, tus objetivos propios, tu disponibilidad temporal y cualquier imprevisto que pueda surgir.
-                    Queremos que entrenar no sea un quebradero de cabeza ni un conflicto diario por no saber qué hacer. Perseguimos que disfrutes y que vibres con el proceso.
-                    <br>
-                    4- Finalmente, te ofrecemos un servicio de nivel élite, pero al mejor precio. Gracias a nuestra metodología y a nuestra gestión ágil, manejamos altos volúmenes de atletas manteniendo la atención y el cariño con cada uno de vosotros.
-                    <br>
+            <div class="col-md-12 col-lg-6 offset-lg-1 text" style="text-align: justify;margin-top: 5%; margin-bottom: 5%;">
+                <h1>Nuestra misión</h1>
+                <br>
+                <p>¿Cansado de encontrar información confusa sobre fitness?
+                    ¿Frustrado por contratar servicios que no cumplen tus expectativas
+                    En <strong>FitBum</strong> hemos creado la solución a medida para atletas exigentes como tú.</p>
 
-                    ¡Así que no pierdas más tiempo y energía en servicios que no te brindan resultados! Únete a nuestra comunidad de usuarios que nos avalan y da el paso a una nueva era de excelencia.</p>
+                <p>Somos un equipo de expertos en fitness, salud y rendimiento, deseosos de brindarte el apoyo, la guía y el mejor plan
+                    para alcanzar tus metas. Tenemos 3 grandes compromisos:</p>
+                <br>
+                <p><strong>1. Rutinas 100% personalizadas y optimizadas para ti.</strong> Nos adaptamos a tus necesidades y gustos para
+                        transformar tu experiencia deportiva.
+                    <br>
+                    <br>
+                    <strong>2. Contenido educativo</strong> para crear atletas bien informados, disciplinados y conscientes. Aprenderás
+                        sobre ejercicios y técnicas idóneas, programación de entrenamiento, mitos y mucho más.
+                    <br>
+                    <br>
+                    <strong>3. Servicio de nivel élite al mejor precio.</strong> Gracias a nuestra metodología ágil, ayudamos a centenares
+                        de atletas manteniendo la atención y el mimo con cada uno de vosotros.</p>
+                <br>
+                <p>¡No pierdas más tiempo y energía en servicios de baja calidad! Únete a nuestra comunidad de usuarios que nos avalan y da
+                    el paso a la nueva era del fitness.</p>
+
+                <!--                <p>¿Estás cansado de información confusa en Internet sobre entrenamiento y fitness?-->
+<!--                    ¿Frustrado por contratar servicios que no cumplen tus expectativas ni ofrecen apenas resultados?-->
+<!--                    En Fitbum te entendemos y por eso hemos creado una solución a medida para atletas exigentes como tú.-->
+<!--                    Adiós a la incertidumbre, a sentirte solo en tu proceso de cambio, a rutinas ineficaces... y da la bienvenida a un-->
+<!--                    servicio de calidad respaldado por entrenadores profesionales, entregados y ambiciosos por transformarte en tu mejor versión.-->
+<!--                    <br>-->
+<!--                    Somos un equipo de expertos en la ciencia del ejercicio dispuestos a brindarte el apoyo y la guía necesarios-->
+<!--                    para alcanzar tus metas. Tenemos 4 grandes compromisos:-->
+<!--                    <br>-->
+<!--                    1- Ofrecerte las rutinas personalizadas idóneas para conseguir los mejores resultados. Tanto si eres un friki del gimnasio como si dispones de menos tiempo para entrenar, nosotros-->
+<!--                    adaptamos cada detalle de la planificación para moldear tu cuerpo, perder grasa y avanzar a la máxima velocidad.-->
+<!--                    <br>-->
+<!--                    2- Queremos que aprendas y asimiles los principios del fitness. Un atleta bien informado es más disciplinado, consciente y responsable. Por ello, te ofrecemos continuamente nuevo-->
+<!--                    contenido sobre selección de ejercicios y sus técnicas idóneas, metodologías de programación del entrenamiento, fundamentos científicos, y más.-->
+<!--                    <br>-->
+<!--                    3- Por último, queremos hacerte un atleta más feliz. Diseñamos cada sesión como artesanos para adaptarla a tus gustos, tus objetivos propios, tu disponibilidad temporal y cualquier imprevisto que pueda surgir.-->
+<!--                    Queremos que entrenar no sea un quebradero de cabeza ni un conflicto diario por no saber qué hacer. Perseguimos que disfrutes y que vibres con el proceso.-->
+<!--                    <br>-->
+<!--                    4- Finalmente, te ofrecemos un servicio de nivel élite, pero al mejor precio. Gracias a nuestra metodología y a nuestra gestión ágil, manejamos altos volúmenes de atletas manteniendo la atención y el cariño con cada uno de vosotros.-->
+<!--                    <br>-->
+
+<!--                    ¡Así que no pierdas más tiempo y energía en servicios que no te brindan resultados! Únete a nuestra comunidad de usuarios que nos avalan y da el paso a una nueva era de excelencia.</p>-->
             </div>
             <div class="col-md-12 col-lg-5">
                 <div class="portfolio-laptop-mockup">
                     <div class="screen">
                         <div class="screen-content"
-                             style="background-image: url(/assetsPublico/img/tech/image6.png);"></div>
+                             style="background-image: url(/assetsPublico/img/avatars/logofbnegropc.png);"></div>
                     </div>
                     <div class="keyboard"></div>
                 </div>
@@ -166,7 +185,7 @@
     </div>
 </section>
 <section class="py-5 bg-light" id="faq">
-    <h1 class="text-center text-success" style="padding-top: 15px;padding-bottom: 15px;color: #1b6ce5!important;">
+    <h1 class="text-center text-success" style="padding-top: 15px;padding-bottom: 15px;color: #08b498!important;">
         Preguntas Frecuentes</h1>
     <div class="container">
         <div class="row">
@@ -175,31 +194,34 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#content-accordion-1">¿Qué es FitBum y qué servicios ofrece?
+                                    data-bs-target="#content-accordion-1">¿Qué servicios ofrece FitBum?
                             </button>
                         </h2>
                         <div id="content-accordion-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                            <p class="accordion-body"> FitBum es una plataforma especializada en el control de entrenamientos. Ofrecemos programas de entrenamiento personalizados diseñados para ayudarte a alcanzar tus metas de acondicionamiento físico. Nuestros servicios incluyen planes de ejercicio, seguimiento de progreso, asesoramiento nutricional y apoyo constante.</p>
+                            <p class="accordion-body"> FitBum es una plataforma de asesoramiento fitness online. Con tu suscripción, te adjudicamos uno de nuestros entrenadores según tu perfil de atleta.
+                                Tu entrenador te acompañará día a día para cumplir todas tus metas.
+                                Nuestros servicios incluyen programas de entrenamiento con nuestra genial metodología FitBum, seguimiento de progreso, valoración, planificación nutricional.
+                                Además, tendrás tutoriales y vídeos explicativos para aprender en profundidad sobre ejercicio, alimentación y estilo de vida.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#content-accordion-2">¿Cómo funciona FitBum?
+                                    data-bs-target="#content-accordion-2">¿Cómo empiezo?
                             </button>
                         </h2>
                         <div id="content-accordion-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                            <p class="accordion-body"> Una vez que te registres en FitBum, deberás completar un cuestionario detallado sobre tu nivel de condición física, objetivos y preferencias de entrenamiento. Con esta información, nuestros expertos crearán un programa de entrenamiento personalizado adaptado a tus necesidades. Tendrás acceso a tu plan de entrenamiento a través de nuestra plataforma en línea, donde podrás ver ejercicios, realizar seguimiento de tu progreso y recibir recomendaciones adicionales.</p>
+                            <p class="accordion-body"> Una vez que te registres en FitBum, deberás completar un cuestionario detallado sobre tu nivel de condición física, objetivos y preferencias de entrenamiento. Con esta información, te asignaremos al entrenador que mejor se adapte a ti. Te atenderá para escuchar tus necesidades, negociar tu nueva planificación y empezar cuanto antes.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#content-accordion-3">¿Necesito tener experiencia previa en el ejercicio para utilizar FitBum?
+                                    data-bs-target="#content-accordion-3">¿Necesito experiencia deportiva para usar FitBum?
                             </button>
                         </h2>
                         <div id="content-accordion-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                            <p class="accordion-body"> No, no es necesario tener experiencia previa en el ejercicio para utilizar FitBum. Nuestros programas de entrenamiento están diseñados para adaptarse a diferentes niveles de condición física, desde principiantes hasta atletas experimentados. Al completar el cuestionario inicial, nos aseguraremos de considerar tu nivel de experiencia y adaptar el programa a tus capacidades individuales.
+                            <p class="accordion-body"> No, no es necesario tener experiencia previa como atleta. Nuestros programas de entrenamiento están diseñados para adaptarse a diferentes niveles de condición física, desde principiantes hasta atletas experimentados. Al completar el cuestionario inicial, nos aseguraremos de considerar tu nivel de experiencia y adaptar el programa a tus capacidades individuales.
                             </p>
                         </div>
                     </div>
@@ -210,30 +232,30 @@
                             </button>
                         </h2>
                         <div id="content-accordion-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                            <p class="accordion-body"> FitBum te ofrece diversas herramientas para realizar un seguimiento de tu progreso. Puedes registrar tus entrenamientos, monitorear tu rendimiento, llevar un diario de alimentos y hacer un seguimiento de tu peso y medidas. Además, podrás visualizar gráficos y estadísticas que te ayudarán a evaluar tus avances y ajustar tu programa de entrenamiento según sea necesario.
+                            <p class="accordion-body"> FitBum te ofrece diversas herramientas para realizar un seguimiento de tu progreso. Puedes registrar tus entrenamientos y tus medidas corporales, la cumplimentación de tu dieta, así como monitorear tu rendimiento y evolución al detalle, con gráficos y estadísticas súper molonas.
                             </p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#content-accordion-5">¿Recibiré asesoramiento nutricional con FitBum?
+                                    data-bs-target="#content-accordion-5">¿Recibiré asesoramiento nutricional y de otros hábitos con FitBum?
                             </button>
                         </h2>
                         <div id="content-accordion-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                            <p class="accordion-body"> Sí, en FitBum entendemos que la nutrición juega un papel crucial en el éxito de tus entrenamientos. Por ello, nuestros programas también incluyen asesoramiento nutricional. Te proporcionaremos recomendaciones generales y sugerencias personalizadas para ayudarte a mantener una alimentación saludable y equilibrada que complemente tu rutina de ejercicios.
+                            <p class="accordion-body"> Sí, en FitBum defendemos el fitness desde un enfoque integral. Por ello, empleamos todas las herramientas posibles para triunfar. La composición de nuestra dieta, los hábitos alimentarios y el descanso son fundamentales para potenciar nuestra evolución física. Tu entrenador se encargará de darte las mejores pautas individualizadas en alimentación y estilo de vida.
                             </p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#content-accordion-6">¿Puedo comunicarme con un entrenador en caso de tener dudas?
+                                    data-bs-target="#content-accordion-6">¿Cómo podré comunicarme con mi entrenador?
                             </button>
                         </h2>
                         <div id="content-accordion-6" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                             <p class="accordion-body">
-                                Sí, en FitBum entendemos que la nutrición juega un papel crucial en el éxito de tus entrenamientos. Por ello, nuestros programas también incluyen asesoramiento nutricional. Te proporcionaremos recomendaciones generales y sugerencias personalizadas para ayudarte a mantener una alimentación saludable y equilibrada que complemente tu rutina de ejercicios.
+                                Tendrás a tu disposición un chat con tu asesor para preguntarle cuando lo necesites, ya sea por texto o voz. Él o ella te responderá en la mayor brevedad posible. Además, tienes la opción de enviarle vídeos de tus entrenamientos para que pueda corregir tu técnica y convertirte en un atleta top en tiempo récord.
 
                             </p>
                         </div>
@@ -242,43 +264,12 @@
                         <h2 class="accordion-header">
                             <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#content-accordion-7">
-                                ¿Cuáles son los métodos de pago aceptados?
+                                ¿Cómo funciona el sistema de pago?
                             </button>
                         </h2>
                         <div id="content-accordion-7" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                             <p class="accordion-body">
-                                Sí, en FitBum entendemos que la nutrición juega un papel crucial en el éxito de tus entrenamientos. Por ello, nuestros programas también incluyen asesoramiento nutricional. Te proporcionaremos recomendaciones generales y sugerencias personalizadas para ayudarte a mantener una alimentación saludable y equilibrada que complemente tu rutina de ejercicios.
-
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#content-accordion-8">
-                                ¿Recibiré asesoramiento nutricional con FitBum?
-
-                            </button>
-                        </h2>
-                        <div id="content-accordion-8" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                            <p class="accordion-body">
-                                Sí, en FitBum entendemos que la nutrición juega un papel crucial en el éxito de tus entrenamientos. Por ello, nuestros programas también incluyen asesoramiento nutricional. Te proporcionaremos recomendaciones generales y sugerencias personalizadas para ayudarte a mantener una alimentación saludable y equilibrada que complemente tu rutina de ejercicios.
-                                flexibilidad de cancelar tu suscripción cuando lo desees. Simplemente ponte en contacto con nuestro equipo de soporte o visita la sección de configuración de tu cuenta para cancelar tu suscripción. Ten en cuenta que, dependiendo de los términos de tu suscripción, es posible que exista un período de aviso previo para la cancelación.
-
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#content-accordion-9">
-                                ¿Ofrecen garantía de resultados?
-                            </button>
-                        </h2>
-                        <div id="content-accordion-9" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                            <p class="accordion-body">
-                                Sí, en FitBum entendemos que la nutrición juega un papel crucial en el éxito de tus entrenamientos. Por ello, nuestros programas también incluyen asesoramiento nutricional. Te proporcionaremos recomendaciones generales y sugerencias personalizadas para ayudarte a mantener una alimentación saludable y equilibrada que complemente tu rutina de ejercicios.
-
+                               Es un sistema de suscripción. Tú escoges tu plan según la duración del seguimiento (mensual, trimestral, semestral o anual) y el perfil de entrenador (amateur o pro). La suscripción se renueva automáticamente, así que te avisaremos cuando se acerque la fecha de vencimiento. En caso de disconformidad con el entrenador asignado, te ofreceremos otro entrenador y una prolongación de la suscripción como compensación.
                             </p>
                         </div>
                     </div>
@@ -286,12 +277,12 @@
                         <h2 class="accordion-header">
                             <button class="btn accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#content-accordion-10">
-                                ¿Qué medidas de privacidad y seguridad tienen implementadas?
+                                ¿Fitbum mantiene la privacidad y seguridad de mis datos?
                             </button>
                         </h2>
                         <div id="content-accordion-10" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                             <p class="accordion-body">
-                                Sí, en FitBum entendemos que la nutrición juega un papel crucial en el éxito de tus entrenamientos. Por ello, nuestros programas también incluyen asesoramiento nutricional. Te proporcionaremos recomendaciones generales y sugerencias personalizadas para ayudarte a mantener una alimentación saludable y equilibrada que complemente tu rutina de ejercicios.
+                                Efectivamente. Todos tus datos serán cifrados y estarán disponibles sólo para ti y tu preparador. Apreciamos mucho la confidencialidad y la confianza entre atleta y preparador.
 
                             </p>
                         </div>
@@ -303,7 +294,7 @@
 </section>
 <footer class="page-footer">
     <div class="container">
-        <div class="links"><a href="#">About me</a><a href="#">Contact me</a><a href="#">Projects</a></div>
+        <div class="links"><a href="#">Sobre nosotros</a><a href="#">Contáctanos</a><a href="#">Otros proyectos</a></div>
         <div class="social-icons"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i
                 class="icon ion-social-instagram-outline"></i></a><a href="#"><i
                 class="icon ion-social-twitter"></i></a></div>
