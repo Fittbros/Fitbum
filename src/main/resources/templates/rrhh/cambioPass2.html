@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+<head>
+  <title>cambio pass</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="pagetitle">
+    <h1>cambio pass</h1>
+  </div>
+
+  <!--  este es el form de nuevo user -->
+<!--  <form class="user" role="form" th:object="${datosUsuario}" th:action="@{/usuarios/registro}" method="post">-->
+<!--    <div class="row mb-3">-->
+<!--      <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName" th:field="${datosUsuario.nombre}" placeholder="Nombre" name="first_name"></div>-->
+<!--      <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleLastName1" placeholder="Apellidos2" th:field="${datosUsuario.apellido1}" name="last_name"></div>-->
+<!--      <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleLastName2" placeholder="Apellidos2" th:field="${datosUsuario.apellido2}" name="last_name"></div>-->
+<!--    </div>-->
+<!--    <div class="mb-3"><input class="form-control form-control-user" type="text" id="exampleInputUsername"  th:field="${datosUsuario.username}" placeholder="Username" name="username"></div>-->
+<!--    <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" th:field="${datosUsuario.email}" placeholder="Email" name="email"></div>-->
+<!--    <div class="row mb-3">-->
+<!--      <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="examplePasswordInput" th:field="${datosUsuario.password}" placeholder="Contraseña" name="password"></div>-->
+<!--    </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Register Account</button>-->
+<!--    <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Register with Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Register with Facebook</a>-->
+<!--    <hr>-->
+<!--  </form>-->
+
+<!--  aqui va el otro-->
+  <div class="card-body">
+    <form th:action="@{/prueva/save}" th:object="${logeduser}" th:method="post">
+      <div>
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{active}">
+        <input type="hidden" th:field="*{altura}">
+        <input type="hidden" th:field="*{apellido2}">
+        <input type="hidden" th:field="*{apellido1}">
+        <input type="hidden" th:field="*{role}">
+        <input type="hidden" th:field="*{fechaNacim}">
+        <input type="hidden" th:field="*{email}">
+        <input type="hidden" th:field="*{peso}">
+        <input type="hidden" th:field="*{sexo}">
+        <input type="hidden" th:field="*{avatar}">
+
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mb-3"><label class="form-label" for="username">
+            <strong>Nombre de usuario</strong></label><input
+                  class="form-control" type="text" id="username" th:field="*{username}"
+                  placeholder="user.name" name="username"></div>
+        </div>
+        <div class="col">
+          <div class="mb-3"><label class="form-label" for="pass"><strong>Contraseña
+          </strong></label><input class="form-control" type="text" th:field="*{password}"
+                                  id="pass" placeholder="Password10"
+                                  name="pass"></div>
+        </div>
+        <div class="col">
+          <div class="mb-3"><label class="form-label" for="nombre"><strong>Nombre
+          </strong></label><input class="form-control" type="text" th:field="*{nombre}"
+                                  id="nombre" placeholder="Nombre"
+                                  name="nomre"></div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
+    </form>
+  </div>
+
+</div>
+</body>
+</html>

@@ -99,43 +99,59 @@ public class UsuarioController //extends AbstractController<Usuario>
             return "formularios/nuevoUsuario";
         }
     }
-    @PostMapping("guardarperfil")
-    public String guardarPerfil( @ModelAttribute(name ="datosUsuario") UsuarioDtoPsw usuarioDtoPsw) throws Exception {
-        //Comprobamos el patron
-        //estoy intentando implementar este metodo, que me fallabba, y es ll oque le he dicho a diego antes
 
+//    @GetMapping("/editpass/{id}")
+//    public String editPass(@PathVariable("id") Integer id,
+//                           Model model, Authentication authentication){
+//        model.addAttribute("usuario", service);
+//        model.addAttribute("dataObject", menuServicio.findAll());
+//        String username = authentication.getName();
+//        System.out.println(username);
+//        Optional<Usuario> usuario = service.getRepo().findById(id);
+//        if(usuario.isPresent()){
+//            System.out.println(usuario.get());
+//            model.addAttribute("logeduser",usuario.get());}
+//        else{
+//            return "error";
+//        }
+//
+//        return "rrhh/cambioPass";
+//    }
+@PostMapping("savepass")
+public String savePass(Usuario usuario, Model model) {
+    model.addAttribute("dataObject", menuServicio.findAll());
+    model.addAttribute("usuario", service);
+    service.getRepo().save(usuario);
 
-        System.out.println("Guardando usuario antes ");
-        System.out.println("Usuario :" + usuarioDtoPsw.getUsername() + ", password : " + usuarioDtoPsw.getPassword() );
-        if (usuarioDtoPsw.getPassword()!=null){
-            Usuario usuario = service.getMapper().mapToUserPsw(usuarioDtoPsw);
-            System.out.println("Guardando usuario");
-            System.out.println("Usuario :" + usuario.getNombre() + ", password : " + usuario.getPassword() );
-            //Codifico la password
-            String encodedPasswod = userService.getEncodedPassword(usuario);
-            usuarioDtoPsw.setPassword(encodedPasswod);
-            System.out.println("la pssw codif es "+usuarioDtoPsw.getPassword());
-            //El usuario se guarda como no autorizado
-            //Guardo la password
-            Optional<Role> role= roleService.buscar(3);
-
-            UsuarioDto usuario1 = this.service.guardar(usuarioDtoPsw);
-            //return "usuarios/detallesusuario";
-            return "redirect:/rrhh/perfil";
-        }
-        else
-        {
-            return "error";
-        }
-    }
-
+    return "redirect:/usuarios";
+}
 
     @GetMapping("olvidecontrasena")
     public String formularioOlvideContrasena(){
+
         return "formularios/olvidecontrasena";}
 
     @GetMapping("/perfil/{id}")
     public String perfil(@PathVariable("id") Integer id,
+                         Model model, Authentication authentication
+    ){
+        model.addAttribute("usuario", service);
+        model.addAttribute("dataObject", menuServicio.findAll());
+        String username = authentication.getName();
+        System.out.println(username);
+        Optional<Usuario> usuario = service.getRepo().findById(id);
+        if(usuario.isPresent()){
+            System.out.println(usuario.get());
+            model.addAttribute("logeduser",usuario.get());}
+
+        else{
+            return "error";
+        }
+        List<FileInfo> files = fileSystemStorageService.loadAll();
+        model.addAttribute("files", files);
+        return "rrhh/perfil";}
+    @GetMapping("/editpass/{id}")
+    public String cambiopass(@PathVariable("id") Integer id,
                          Model model, Authentication authentication
     ){
         model.addAttribute("usuario", service);
@@ -151,10 +167,7 @@ public class UsuarioController //extends AbstractController<Usuario>
         }
         List<FileInfo> files = fileSystemStorageService.loadAll();
         model.addAttribute("files", files);
-
-
-
-        return "rrhh/perfil";}
+        return "rrhh/cambioPass";}
     @PostMapping("usuarios/save")
     public String savePerfil(Usuario usuario, Model model) {
         model.addAttribute("dataObject", menuServicio.findAll());
@@ -221,3 +234,32 @@ public class UsuarioController //extends AbstractController<Usuario>
 ////        model.addAttribute("datosUsuario", new Usuario() usuario);
 ////        service.crearUsuario(usuario);
 ////        return "/formularios/registrar";}
+//    @PostMapping("guardarperfil")
+//    public String guardarPerfil( @ModelAttribute(name ="datosUsuario") UsuarioDtoPsw usuarioDtoPsw) throws Exception {
+//        //Comprobamos el patron
+//        //estoy intentando implementar este metodo, que me fallabba, y es ll oque le he dicho a diego antes
+//
+//
+//        System.out.println("Guardando usuario antes ");
+//        System.out.println("Usuario :" + usuarioDtoPsw.getUsername() + ", password : " + usuarioDtoPsw.getPassword() );
+//        if (usuarioDtoPsw.getPassword()!=null){
+//            Usuario usuario = service.getMapper().mapToUserPsw(usuarioDtoPsw);
+//            System.out.println("Guardando usuario");
+//            System.out.println("Usuario :" + usuario.getNombre() + ", password : " + usuario.getPassword() );
+//            //Codifico la password
+//            String encodedPasswod = userService.getEncodedPassword(usuario);
+//            usuarioDtoPsw.setPassword(encodedPasswod);
+//            System.out.println("la pssw codif es "+usuarioDtoPsw.getPassword());
+//            //El usuario se guarda como no autorizado
+//            //Guardo la password
+//            Optional<Role> role= roleService.buscar(3);
+//
+//            UsuarioDto usuario1 = this.service.guardar(usuarioDtoPsw);
+//            //return "usuarios/detallesusuario";
+//            return "redirect:/rrhh/perfil";
+//        }
+//        else
+//        {
+//            return "error";
+//        }
+//    }
