@@ -9,8 +9,18 @@
 <body>
 
 <div layout:fragment="content">
-    <div><a  th:href="@{/ejercicios}" >
-        ejercicios </a></div>
+    <div><a  th:href="@{/files}" >
+        files </a></div>
+    <div><a  th:href="@{/prueba}" >
+        files </a></div>
+    <span th:text="${#authentication.principal.username}">
+    </span> </br>
+    <span th:text="${#authentication.principal.class.name}">
+        </span></br>
+    <span th:text="${#authentication.name}">
+        </span>
+    <div><a  th:href="@{/usuarios/perfil/{id}(id=${usuario.id})}" th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}">
+        prueba/id </a></div>
     <!-- End Page Title -->
     <!--div><a  th:href="@{/menu}" >
         menu</a></div>
@@ -47,6 +57,13 @@
         usuarios </a></div>
     <div><a  th:href="@{/atletas}" >
         atletas </a></div>
+    <div><a  th:href="@{/prueba}" >
+        prueba </a></div>
+
+    <div><a  th:href="@{/prueba/{id}(id=${usuario.id})}" th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}">
+        prueba/id </a></div>
+
+
 </div>
 </body>
 </html>

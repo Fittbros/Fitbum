@@ -24,44 +24,30 @@ public class SecurityConfig {
     @Autowired
     private UserDetailsService userDetailsService;
     @Autowired
-    //private BCryptPasswordEncoder encoder;
-    private PasswordEncoder encoder;
+    private BCryptPasswordEncoder encoder;
+//    private PasswordEncoder encoder;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests( authorize -> authorize
-                .requestMatchers("/assets/**").permitAll()
-                .requestMatchers("/templates/**").permitAll()
-                .requestMatchers("/index","/ayuda").permitAll()
-                .requestMatchers("/ajustes").permitAll()
-                .requestMatchers("/menu/**").permitAll()
-                .requestMatchers("/usuarios/registro").permitAll()
-                .requestMatchers("/usuarios/olvidecontrasena").permitAll()
-                .requestMatchers("/forms/olvidecontrasena").permitAll()
-                .requestMatchers("/tutoriales").permitAll()
-                .requestMatchers("/error").permitAll()
-                .requestMatchers("/assetsPublico/**").permitAll()
-                .requestMatchers("/forms/**").permitAll()
-                .requestMatchers("/registrar/**").permitAll()
-                .requestMatchers("/registrar2/**").permitAll()
-                //Permitimos todas las visitas a la pagina principal
-                .requestMatchers("","/").permitAll()
-                //Permitimos todas las visitas a la pagina principal
-                .requestMatchers("/registro").permitAll()
-                .requestMatchers("/registrarusuario").permitAll()
-                //Permitimos todas las visitas a /public
-                .requestMatchers("/home").authenticated()
-                //Solo permitimos a usuarios registrados visitar "/private"
-                .requestMatchers("/private").authenticated()
-                .requestMatchers("/perfil").authenticated()
-                .requestMatchers("/usuarios").authenticated()
-                .requestMatchers("/usuarios/**").authenticated()
-                .requestMatchers("/plantillas/**").authenticated()
-                .requestMatchers("/atletas").authenticated()
-                .requestMatchers("/entrenadores/**","/entrenar/**","/misrutinas/**","/programa/**").authenticated()
-                .requestMatchers("/ejercicios/**").authenticated()
-                .requestMatchers("/chat/**").authenticated()
-                .requestMatchers("/logros").authenticated()
+                .requestMatchers("/assets/**","/templates/**","/index","/ayuda",
+                        "/ajustes","/usuarios/registro","/usuarios/olvidecontrasena",
+                        "/forms/olvidecontrasena","/error","/assetsPublico/**",
+                        "/forms/**","/registrar/**","/registrar2/**","","/",
+                        "/registro","/registrarusuario"
+
+                        ).permitAll()
+
+                .requestMatchers("/home","/menu/**","/tutoriales","/private",
+                        "/perfil","/usuarios/**","/plantillas/**","/atletas/**",
+                        "/entrenadores/**","/entrenar/**","/misrutinas/**","/programa/**",
+                        "/logros","/files/**","/uploadToFileSystem/**","/uploadToDatabase/**",
+                        "/uploadUserFileToDatabaseStoreInFileSystem/**","/uploadUserFileToDatabase/**",
+                        "/uploadUserFileToFileSystem/**","/databasefiles/**","/upload/**","/database/**",
+                        "/ejercicios/**","/chat/**","/prueba/**"
+
+                        ).authenticated()
+
                 //Permitimos únicamente las visitas de usuarios registrados a  /private
                 // Todas las request no filtradas hasta ahora, se rechazarán
                 .anyRequest().denyAll()

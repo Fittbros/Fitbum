@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}" xmlns="http://www.w3.org/1999/html">
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="container-fluid">
+        <h3 class="text-dark mb-4">Ajustes de Seguridad</h3>
+        <div class="row mb-3">
+            <div class="col-lg-4">
+
+            <div class="col-lg-8">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <p class="text-primary m-0 fw-bold">Ajustes de Seguridad</p>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/usuarios/savepass}" th:object="${logeduser}" th:method="post">
+                                    <div>
+                                        <input type="hidden" th:field="*{id}">
+                                        <input type="hidden" th:field="*{active}">
+                                        <input type="hidden" th:field="*{altura}">
+                                        <input type="hidden" th:field="*{apellido1}">
+                                        <input type="hidden" th:field="*{apellido2}">
+                                        <input type="hidden" th:field="*{avatar}">
+                                        <input type="hidden" th:field="*{email}">
+                                        <input type="hidden" th:field="*{fechaNacim}">
+                                        <input type="hidden" th:field="*{nombre}">
+                                        <input type="hidden" th:field="*{peso}">
+                                        <input type="hidden" th:field="*{sexo}">
+                                        <input type="hidden" th:field="*{username}">
+                                        <input type="hidden" th:field="*{role}">
+                                    </div>
+
+                                    <div class="row">
+
+
+                                    </div>
+
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="password">
+                                                    <strong>Nueva contraseña</strong>
+                                                </label>
+                                                <input
+                                                        class="form-control" type="text"
+                                                        id="password" placeholder="Password" th:autocomplete="off" autocomplete="off" th:value="*{password}"
+                                                        name="password">
+                                            </div>
+                                        </div>
+
+                                    <div class="mb-3">
+                                        <button class="btn btn-primary btn-sm" type="submit">Guardar Contraseña</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>

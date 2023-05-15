@@ -25,8 +25,8 @@ public class UsuarioSecurityImpl implements IUsuarioServicio, UserDetailsService
     private UsuarioRepositorio usuarioRepositorio;
 
     @Autowired
-//    private BCryptPasswordEncoder passwordEncoder1;
-    private PasswordEncoder passwordEncoder1;
+    private BCryptPasswordEncoder passwordEncoder1;
+//    private PasswordEncoder passwordEncoder1;
 
 
 
@@ -59,11 +59,11 @@ public class UsuarioSecurityImpl implements IUsuarioServicio, UserDetailsService
 //}
 
 
-//@Autowired
-//public BCryptPasswordEncoder bCryptPasswordEncoder() {
-//    return new BCryptPasswordEncoder();
-//}
-//
+@Autowired
+public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    return new BCryptPasswordEncoder();
+}
+
 //    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 //
 //        auth
