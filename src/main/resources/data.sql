@@ -1,4 +1,5 @@
 insert into role values (1, 'ADMIN'), (2,'ENTRENADOR' ), (3,'ATLETA' );
+delete from usuario;
 insert into usuario (id,altura,apellido1,apellido2,email,fecha_nacim,
                      nombre,password,peso,sexo,active, idrole, username, avatar)
 values (1, 1.65,'Pere','Manzana','admin@admin','1990-01-01','pepe','admin', 80,  1 ,true,1,'admin','/assets/img/avatars/avatar1.png'),
