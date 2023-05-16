@@ -29,9 +29,9 @@ public class PlantillaMicrociclo {
     @Column
     private Integer orden;
     @Column
-    private Float volumenEstandar;
+    private String volumenEstandar;
     @Column
-    private Float intensidadEstandar;
+    private String intensidadEstandar;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
