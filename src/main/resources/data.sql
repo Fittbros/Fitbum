@@ -83,20 +83,51 @@ values
 delete from plantilla_mesociclo;
 INSERT INTO plantilla_mesociclo (orden,descanso_acces, descanso_bas, descripcion, fecha_fin, fecha_inicio, fr_entre_semana, id_mesociclos, long_microciclo, num_microciclos, id_usuario)
 VALUES
-    (1,'Descanso Acces 1', 'Descanso Bas 1', 'Musculacion', '2023-01-01', '2023-01-15', 5, 1, 7, 4, 1),
-    (2,'Descanso Acces 2', 'Descanso Bas 2', 'Descripción 2', '2023-02-01', '2023-02-15', 6, 1, 8, 4, 1),
-    (3,'Descanso Acces 3', 'Descanso Bas 3', 'Descripción 3', '2023-03-01', '2023-03-15', 7, 2, 9, 4, 2),
-    (4,'Descanso Acces 4', 'Descanso Bas 4', 'Descripción 4', '2023-04-01', '2023-04-15', 8, 2, 10, 4, 2),
-    (5,'Descanso Acces 5', 'Descanso Bas 5', 'Descripción 5', '2023-05-01', '2023-05-15', 9, 3, 11, 4, 3);
+    (1,'2 min','4 min', 'Introducción', '2023-01-01', '2023-01-15', 4, 1, 4, 5, 1),
+    (2,'2 min','4 min', 'Enfoque técnico', '2023-02-01', '2023-02-15', 4, 1, 4, 4, 1),
+    (3,'2 min', '4 min', 'Intensificación I', '2023-03-01', '2023-03-15', 4, 2, 4, 4, 2),
+    (4,'2 min', '4 min', 'Intensificación II', '2023-04-01', '2023-04-15', 5, 2, 5, 4, 2),
+    (5,'2 min', '4 min', 'Intensificación III', '2023-02-01', '2023-02-15', 5, 1, 5, 4, 1),
+    (6,'2 min', '4 min', 'Power: Fase Desarrollo', '2023-02-01', '2023-02-15', 4, 1, 4, 4, 1),
+    (7,'2 min', '4 min', 'Power: Peaking', '2023-02-01', '2023-02-15', 4, 1, 4, 3, 1),
+    (8,'1,5 min','4 min', 'Hipertrofia Descarga', '2023-05-01', '2023-05-15', 3, 4, 3, 4, 2);
 DELETE FROM plantilla_microciclo;
 
 INSERT INTO plantilla_microciclo (orden,intensidad_estandar, volumen_estandar, id_plantilla_mesociclo)
 VALUES
-    (1,1.5, 10.0, 1),
-    (2,1.8, 12.0, 1),
-    (3,2.0, 8.5, 1),
-    (4,1.7, 9.0, 1),
-    (1,1.9, 11.5, 3);
+    (1,'5,5','3' , 1),
+        (2,'6', '3', 1),
+        (3,'6', '3', 1),
+        (4,'6,25', '3', 1),
+        (5,'6,5', '3', 1),
+    (1,'5,5','3' , 2),
+        (2,'6', '3', 2),
+        (3,'6,25', '3', 2),
+        (4,'6,5', '3', 2),
+    (1,'5,5','3' , 3),
+        (2,'6', '3', 3),
+        (3,'6,25', '3', 3),
+        (4,'6,5', '3', 3),
+    (1,'5,5','3' , 4),
+        (2,'6', '3', 4),
+        (3,'6,25', '3', 4),
+        (4,'6,5', '3', 4),
+    (1,'5,5','3' , 5),
+        (2,'6', '3', 5),
+        (3,'6,25', '3', 5),
+        (4,'6,5', '3', 5),
+   (1,'5,5','3' , 6),
+        (2,'6', '3', 6),
+        (3,'6,25', '3', 6),
+        (4,'6,5', '3', 6),
+   (1,'6','3' , 7),
+        (2,'6,5', '3', 7),
+        (3,'7', '3', 7),
+   (1,'5,5','3' , 8),
+        (2,'6', '3', 8),
+        (3,'6,25', '3', 8),
+        (4,'6,5', '3', 8)
+    ;
 
 DELETE FROM plantilla_sesion;
 

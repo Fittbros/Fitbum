@@ -11,49 +11,50 @@
     <div class="pagetitle">
         <h1>Todas las plantillas</h1>
     </div>
-    <div class="accordion" id="accordionExample">
+    <div class="accordion" id="accordionExample1">
     <div class="accordion-item" th:each="mesociclo : ${listaplmeso}">
         <h2 class="accordion-header" th:id="${'MesocicloHeading'+mesociclo.getId()}">
-            <button th:text="${'Mesociclo '+mesociclo.getId()}" class="accordion-button" type="button" data-bs-toggle="collapse" th:data-bs-target="${'#MesocicloCollapse'+mesociclo.getId()}" aria-expanded="true" th:aria-controls="${'MesocicloCollapse'+mesociclo.getId()}">
+            <button th:text="${'Mesociclo '+mesociclo.orden+' || '+mesociclo.descripcion}" class="accordion-button" type="button" data-bs-toggle="collapse" th:data-bs-target="${'#MesocicloCollapse'+mesociclo.getId()}" aria-expanded="true" th:aria-controls="${'MesocicloCollapse'+mesociclo.getId()}">
 
             </button>
         </h2>
-    <div th:id="${'MesocicloCollapse'+mesociclo.getId()}" class="accordion-collapse collapse show" th:aria-labelledby="${'MesocicloHeading'+mesociclo.getId()}" data-bs-parent="#accordionExample">
+    <div th:id="${'MesocicloCollapse'+mesociclo.getId()}" class="accordion-collapse collapse" th:aria-labelledby="${'MesocicloHeading'+mesociclo.getId()}" data-bs-parent="#accordionExample1">
         <div class="accordion-body">
         <h2>Mesociclo</h2>
         <table class="table">
-            <thead class="table-primary">
+            <thead class="table-info">
             <tr>
-                <th>ID</th>
+<!--                <th>ID</th>-->
                 <th>Entrenador</th>
-                <th>Descripción</th>
+<!--                <th>Descripción</th>-->
                 <th>Núm.Micros</th>
                 <th>Long.Micro</th>
             </tr>
             </thead>
-            <tbody class="table-primary">
+            <tbody class="table-light">
             <tr>
-                <td th:text="${mesociclo.id}"></td>
+<!--                <td th:text="${mesociclo.id}"></td>-->
                 <td th:text="${mesociclo.usuario.getNombre()+' '+mesociclo.usuario.getApellido1()+' '+mesociclo.usuario.getApellido2()}"></td>
-                <td th:text="${mesociclo.descripcion}"></td>
+<!--                <td th:text="${mesociclo.descripcion}"></td>-->
                 <td th:text="${mesociclo.getNumMicrociclos()}"></td>
                 <td th:text="${mesociclo.getLongMicrociclo()}"></td>
                 <td>
                     <a class="btn btn-info" th:href="@{/plantillas/meso/{id}(id=${mesociclo.id})}" >
-                        Edit Meso </a>
-                    <a class="btn btn-dark" th:href="@{/plantillas/micro}" >
-                        Entrar </a>
+                        Editar </a>
+<!--                    <a class="btn btn-dark" th:href="@{/plantillas/micro}" >-->
+<!--                        Entrar </a>-->
                 </td>
             </tr>
             </tbody>
         </table>
+            <div class="accordion" id="accordionExample2">
             <div class="accordion-item"  th:each="microciclo : ${mesociclo.plantillasMicrociclo}">
                 <h2 class="accordion-header" th:id="${'MicrocicloHeading'+microciclo.getId()}">
-                    <button th:text="${'Microciclo '+microciclo.getId()}" class="accordion-button" type="button" data-bs-toggle="collapse" th:data-bs-target="${'#MicrocicloCollapse'+microciclo.getId()}" aria-expanded="true" th:aria-controls="${'MicrocicloCollapse'+microciclo.getId()}">
+                    <button th:text="${'Microciclo '+microciclo.getId()+' | Vol.'+microciclo.volumenEstandar+'/Int.'+microciclo.intensidadEstandar}" class="accordion-button" type="button" data-bs-toggle="collapse" th:data-bs-target="${'#MicrocicloCollapse'+microciclo.getId()}" aria-expanded="true" th:aria-controls="${'MicrocicloCollapse'+microciclo.getId()}">
 
                     </button>
                 </h2>
-                <div th:id="${'MicrocicloCollapse'+microciclo.getId()}" class="accordion-collapse collapse show" th:aria-labelledby="${'MicrocicloHeading'+microciclo.getId()}" data-bs-parent="#accordionExample">
+                <div th:id="${'MicrocicloCollapse'+microciclo.getId()}" class="accordion-collapse collapse" th:aria-labelledby="${'MicrocicloHeading'+microciclo.getId()}" data-bs-parent="#accordionExample2">
                     <div class="accordion-body">
                         
 
@@ -61,19 +62,19 @@
             <table class="table">
                 <thead class="table-secondary">
                 <tr>
-                    <th>ID</th>
-                    <th>volumenEstandar</th>
-                    <th>intensidadEstandar</th>
+<!--                    <th>ID</th>-->
+<!--                    <th>volumenEstandar</th>-->
+<!--                    <th>intensidadEstandar</th>-->
                 </tr>
                 </thead>
                 <tbody class="table-secondary">
                 <tr>
-                <td th:text="${microciclo.id}"></td>
-                <td th:text="${microciclo.volumenEstandar}"></td>
-                <td th:text="${microciclo.intensidadEstandar}"></td>
+<!--                <td th:text="${microciclo.id}"></td>-->
+<!--                <td th:text="${microciclo.volumenEstandar}"></td>-->
+<!--                <td th:text="${microciclo.intensidadEstandar}"></td>-->
                 <td>
                     <a class="btn btn-info" th:href="@{/plantillas/micro/{id}(id=${microciclo.id})}" >
-                        Entrar </a>
+                        Editar </a>
                 </td>
                 </tr>
                 </tbody>
@@ -83,19 +84,19 @@
                 <table class="table">
                     <thead class="table-success">
                     <tr>
-                        <th>ID</th>
+
                         <th>Sesión Nº</th>
                         <th>Variante</th>
                     </tr>
                     </thead>
                     <tbody class="table-success">
                     <tr>
-                    <td th:text="${sesion.id}"></td>
+<!--                    <td th:text="${sesion.id}"></td>-->
                     <td th:text="${sesion.num_sesion}"></td>
                     <td th:text="${sesion.variante}"></td>
                     <td>
                         <a class="btn btn-info" th:href="@{/plantillas/sesion/{id}(id=${sesion.id})}" >
-                            IR </a>
+                            Editar </a>
                     </td>
                     </tr>
                     </tbody>
@@ -153,6 +154,7 @@
             </div>
         </div>
     </div></div>
+            </div>
         </div>
     </div>
     </div>
