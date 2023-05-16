@@ -65,20 +65,20 @@ public class ControllerApp //extends AbstractController<Usuario>
 
 
 
-    @GetMapping("/programa")
-    public String indexentreno(Model model, Authentication authentication
-    ) {
-        String username = authentication.getName();
-        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
-        if(usuario.isPresent()){
-            model.addAttribute("logeduser",usuario.get());}
-        else{
-            return "error";
-        }
-        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
-        model.addAttribute("usuario", usuarioServicio);
-
-        return "/programa/index";}
+//    @GetMapping("/programa")
+//    public String indexentreno(Model model, Authentication authentication
+//    ) {
+//        String username = authentication.getName();
+//        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+//        if(usuario.isPresent()){
+//            model.addAttribute("logeduser",usuario.get());}
+//        else{
+//            return "error";
+//        }
+//        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
+//        model.addAttribute("usuario", usuarioServicio);
+//
+//        return "/programa/index";}
 
     @GetMapping("/misrutinas")
     public String indexrutinas(Model model, Authentication authentication

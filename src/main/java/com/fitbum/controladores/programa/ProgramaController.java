@@ -1,13 +1,14 @@
 
 
 
-package com.fitbum.controladores.plantillas;
+package com.fitbum.controladores.programa;
 
 import com.fitbum.entidades.plantillas.PlantillaMesociclo;
 import com.fitbum.entidades.plantillas.PlantillaMicrociclo;
 import com.fitbum.entidades.plantillas.PlantillaSesion;
+import com.fitbum.entidades.programa.Mesociclo;
 import com.fitbum.entidades.usuarios.Usuario;
-import com.fitbum.repositorios.plantillas.PlantMesoRepositorio;
+import com.fitbum.repositorios.programa.MesocicloRepositorio;
 import com.fitbum.servicios.MenuServicio;
 import com.fitbum.servicios.plantillas.*;
 import com.fitbum.servicios.usuarios.UsuarioServicio;
@@ -26,14 +27,14 @@ import java.util.Optional;
 
 @Controller
 @Log4j2
-@RequestMapping("/plantillas")
-public class PlantillaController {
+@RequestMapping("/programa")
+public class ProgramaController {
     @Autowired
     private MenuServicio menuServicio;
     @Autowired
     private UsuarioServicio usuarioServicio;
     @Autowired
-    private PlantMesoRepositorio plantMesoRepositorio;
+    private MesocicloRepositorio mesocicloRepositorio;
     @Autowired
     private MesoService mesoService;
     @Autowired
@@ -61,7 +62,7 @@ public class PlantillaController {
 
 //        model.addAttribute("fragmentName", "fragment-customer-list");
 
-        return "/plantillas/index";
+        return "/programa/index";
     }
     //Bloque con controladores para mostrar datos por niveles
     @GetMapping(value = {"/meso"})
@@ -76,12 +77,13 @@ public class PlantillaController {
             return "error";
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
-        PlantillaMesociclo plantillaMesociclo = new PlantillaMesociclo();
+        PlantillaMesociclo plantillaMesociclo=new PlantillaMesociclo();
+        Mesociclo mesociclo = new Mesociclo(plantillaMesociclo);
+        mesociclo=mesocicloRepositorio.save(mesociclo);
         //plantillaMesociclo.getPlantillaMicrociclo().iterator().next().getPlantillaSesion().iterator().next().getPlantillaEjercicioFormulado().iterator().next().getPlantillaSerie().iterator().next().;
-        model.addAttribute("listaplmeso", plantMesoRepositorio.findAllByOrderByOrdenDesc());
-
+        model.addAttribute("listaprogrameso", mesocicloRepositorio.findAllByOrderByOrdenDesc());
         model.addAttribute("usuario", usuarioServicio);
-        return "/plantillas/mesociclo";
+        return "/programa/mesociclo";
     }
     @GetMapping(value = {"/micro"})
     public String plantMicro( Model model, Authentication authentication
@@ -97,7 +99,7 @@ public class PlantillaController {
         model.addAttribute("micro", microService.findAll());
 
         model.addAttribute("usuario", usuarioServicio);
-        return "/plantillas/microciclo";
+        return "/programa/microciclo";
     }
     @GetMapping(value = {"/sesion"})
     public String plantsesion(
@@ -114,7 +116,7 @@ public class PlantillaController {
         model.addAttribute("sesion", sesionService.findAll());
 
         model.addAttribute("usuario", usuarioServicio);
-        return "/plantillas/sesion";
+        return "/programa/sesion";
     }
     @GetMapping(value = {"/serie"})
     public String plantserie(
@@ -131,7 +133,7 @@ public class PlantillaController {
         model.addAttribute("serie", serieService.findAll());
 
         model.addAttribute("usuario", usuarioServicio);
-        return "/plantillas/serie";
+        return "/programa/serie";
     }
     @GetMapping(value = {"/ejercicio"})
     public String plantejercicio(
@@ -148,7 +150,7 @@ public class PlantillaController {
         model.addAttribute("ej", ejFService.findAll());
 
         model.addAttribute("usuario", usuarioServicio);
-        return "/plantillas/ejercicio";
+        return "/programa/ejercicio";
     }
     //Controladores de edición
     @GetMapping("/meso/{id}")
@@ -173,7 +175,7 @@ public class PlantillaController {
             return "redirect:/error";
         }
 
-        return "/plantillas/mesoId";
+        return "/programa/mesoId";
 
     }
     @PostMapping("/meso/{id}")
@@ -190,7 +192,7 @@ public class PlantillaController {
             mesociclo.setDescansoAcces(mesoentrada.getDescansoAcces());
             mesociclo.setDescripcion(mesoentrada.getDescripcion());
             this.mesoService.getPlantMesoRepositorio().save(mesociclo);
-            return String.format("redirect:/plantillas/meso/%s", mesociclo.getId());
+            return String.format("redirect:/programa/meso/%s", mesociclo.getId());
         }
         else{
             return "redirect:/error";
@@ -218,7 +220,7 @@ public class PlantillaController {
             return "redirect:/error";
         }
 
-        return "plantillas/microId";
+        return "programa/microId";
     }
     @PostMapping(value = {"/micro/{id}"})
     public String guardarMicroId(@PathVariable("id") Integer id, PlantillaMicrociclo microcicloentrada, Model model, Authentication authentication
@@ -239,7 +241,7 @@ public class PlantillaController {
             microciclo.setVolumenEstandar(microcicloentrada.getVolumenEstandar());
 
             this.microService.getPlantMicroRepositorio().save(microciclo);
-            return String.format("redirect:/plantillas/micro/%s", microciclo.getId());
+            return String.format("redirect:/programa/micro/%s", microciclo.getId());
         }
         else{
             return "error";
@@ -268,7 +270,7 @@ public class PlantillaController {
             return "error";
         }
 
-        return "plantillas/sesionId";
+        return "programa/sesionId";
     }
     @PostMapping(value = {"/sesion/{id}"})
     public String guardarSesionId(@PathVariable("id") Integer id, PlantillaSesion sesionentrada) {
@@ -280,12 +282,17 @@ public class PlantillaController {
             sesion.setNum_sesion(sesionentrada.getNum_sesion());
 
             this.sesionService.getPlantSesionRepositorio().save(sesion);
-            return String.format("redirect:/plantillas/sesion/%s", sesion.getId());
+            return String.format("redirect:/programa/sesion/%s", sesion.getId());
         }
         else{
             return "error";
         }
     }
+
+//    @PostMapping(value=("/copiarPlantillaARutina/{id}")
+//    public Mesociclo crearRutinaDesdePlantilla (PathVariable ("id")
+
+
 
 
 }

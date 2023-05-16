@@ -2,8 +2,9 @@
 package com.fitbum.entidades.programa;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fitbum.entidades.usuarios.Suscripcion;
-import com.fitbum.entidades.usuarios.Usuario;
+import com.fitbum.entidades.plantillas.PlantillaMesociclo;
+import com.fitbum.entidades.plantillas.PlantillaMicrociclo;
+import com.fitbum.entidades.plantillas.PlantillaSesion;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,8 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
-import java.sql.Date;
-import java.util.Set;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,25 +24,34 @@ import java.util.Set;
 public class Microciclo {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
-    private Float volumenEstandar ;
+    private String volumenEstandar;
     @Column
-    private Float intensidadEstandar ;
-   @Column
+    private String intensidadEstandar;
+    @Column
     private Integer orden;
 
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn (name="Mesociclo",nullable=false)
+    @JoinColumn(name = "Mesociclo", nullable = false)
     private Mesociclo mesociclo;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "microciclo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Sesion> sesion;
+    private List<Sesion> sesiones;
 
+    public Microciclo(PlantillaMicrociclo plantillaMicrociclo) {
+        this.volumenEstandar = plantillaMicrociclo.getVolumenEstandar();
+        this.intensidadEstandar = plantillaMicrociclo.getIntensidadEstandar();
+        this.orden = plantillaMicrociclo.getOrden();
+        for (PlantillaSesion plantillaSesion : plantillaMicrociclo.getPlantillaSesion()) {
 
+            Sesion sesion = new Sesion(plantillaSesion);
+            this.getSesiones().add(sesion);
+        }
+    }
 }

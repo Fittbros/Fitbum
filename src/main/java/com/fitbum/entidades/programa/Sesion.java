@@ -1,6 +1,8 @@
 package com.fitbum.entidades.programa;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fitbum.entidades.plantillas.PlantillaMicrociclo;
+import com.fitbum.entidades.plantillas.PlantillaSesion;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -20,23 +23,31 @@ import java.util.Set;
 public class Sesion {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
 
     @Column
-    private String nombreVariante;
+    private Integer num_sesion;
+
     @Column
-    private String descripcion;
+    private Integer orden;
+    @Column
+    private String variante;
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn (name="idMicrociclo",nullable=false)
+    @JoinColumn(name = "idMicrociclo", nullable = false)
     private Microciclo microciclo;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "sesion", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<EjercicioForm> ejercicioForm;
+    private List<EjercicioForm> ejerciciosForm;
 
+    public Sesion(PlantillaSesion plantillaSesion) {
+        this.variante = plantillaSesion.getVariante();
+        this.num_sesion = plantillaSesion.getNum_sesion();
+        this.orden = plantillaSesion.getOrden();
 
+    }
 }
