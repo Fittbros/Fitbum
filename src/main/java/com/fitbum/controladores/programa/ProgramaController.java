@@ -8,9 +8,11 @@ import com.fitbum.entidades.plantillas.PlantillaMicrociclo;
 import com.fitbum.entidades.plantillas.PlantillaSesion;
 import com.fitbum.entidades.programa.Mesociclo;
 import com.fitbum.entidades.usuarios.Usuario;
+import com.fitbum.filemanagement.models.FileInfo;
 import com.fitbum.repositorios.programa.MesocicloRepositorio;
 import com.fitbum.servicios.MenuServicio;
 import com.fitbum.servicios.plantillas.*;
+import com.fitbum.servicios.programas.MesocicloServicio;
 import com.fitbum.servicios.usuarios.UsuarioServicio;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -45,6 +48,9 @@ public class ProgramaController {
     private SerieService serieService;
     @Autowired
     private EjFService ejFService;
+    @Autowired
+    private MesocicloServicio mesocicloServicio;
+
     @GetMapping(value = {"/",""})
     public String showMenu(
             Model model, Authentication authentication
@@ -288,9 +294,42 @@ public class ProgramaController {
             return "error";
         }
     }
+    @GetMapping(value = {"/crearrutina/{id}"})
+    public String showCrearRutina(@PathVariable("id") Integer id,
+                                             ModelMap modelMap,
+                                             Model model, Authentication authentication){
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
+        modelMap.addAttribute("usuario", usuarioServicio);
+        modelMap.addAttribute("id", id);
 
-//    @PostMapping(value=("/copiarPlantillaARutina/{id}")
-//    public Mesociclo crearRutinaDesdePlantilla (PathVariable ("id")
+        List<PlantillaMesociclo> pmesos = mesoService.findAll();
+//        Optional<Mesociclo> meso = mesocicloServicio.findById(id);
+        Mesociclo meso=new Mesociclo();
+        model.addAttribute("pmesos", pmesos);
+        model.addAttribute("meso", meso);
+//        new Mesociclo(pmesos)=
+
+        return "programa/crearRutina";
+    }
+
+    @PostMapping("/crearRutina")
+    public String crearnuevo(Mesociclo mesociclo, Model model) {
+    model.addAttribute("dataObject", menuServicio.findAll());
+    model.addAttribute("usuario", usuarioServicio);
+
+    mesocicloServicio.getRepo().save(mesociclo);
+        return String.format("redirect:/programa/crearrutina%s", mesociclo.getId());
+
+
+    }
+
 
 
 
