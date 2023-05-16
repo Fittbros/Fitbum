@@ -7,6 +7,7 @@ import com.fitbum.entidades.plantillas.PlantillaMesociclo;
 import com.fitbum.entidades.plantillas.PlantillaMicrociclo;
 import com.fitbum.entidades.plantillas.PlantillaSesion;
 import com.fitbum.entidades.programa.Mesociclo;
+import com.fitbum.entidades.usuarios.Usuario;
 import com.fitbum.repositorios.plantillas.PlantMesoRepositorio;
 import com.fitbum.servicios.MenuServicio;
 import com.fitbum.servicios.plantillas.*;
@@ -14,6 +15,7 @@ import com.fitbum.servicios.usuarios.UsuarioServicio;
 import jakarta.persistence.Column;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -47,10 +49,16 @@ public class PlantillaController {
     private EjFService ejFService;
     @GetMapping(value = {"/",""})
     public String showMenu(
-            Model model
+            Model model, Authentication authentication
     ) {
-
-        model.addAttribute("dataObject", menuServicio.findAll());
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("usuario", usuarioServicio);
 
 
@@ -61,55 +69,102 @@ public class PlantillaController {
     //Bloque con controladores para mostrar datos por niveles
     @GetMapping(value = {"/meso"})
     public String plantMeso(
-            Model model
+            Model model, Authentication authentication
     ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         PlantillaMesociclo plantillaMesociclo = new PlantillaMesociclo();
         //plantillaMesociclo.getPlantillaMicrociclo().iterator().next().getPlantillaSesion().iterator().next().getPlantillaEjercicioFormulado().iterator().next().getPlantillaSerie().iterator().next().;
         model.addAttribute("listaplmeso", plantMesoRepositorio.findAllByOrderByOrdenDesc());
-        model.addAttribute("dataObject", menuServicio.findAll());
+
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/mesociclo";
     }
     @GetMapping(value = {"/micro"})
-    public String plantMicro( Model model ) {
+    public String plantMicro( Model model, Authentication authentication
+    ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("micro", microService.findAll());
-        model.addAttribute("dataObject", menuServicio.findAll());
+
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/microciclo";
     }
     @GetMapping(value = {"/sesion"})
     public String plantsesion(
-            Model model
+            Model model, Authentication authentication
     ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("sesion", sesionService.findAll());
-        model.addAttribute("dataObject", menuServicio.findAll());
+
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/sesion";
     }
     @GetMapping(value = {"/serie"})
     public String plantserie(
-            Model model
+            Model model, Authentication authentication
     ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("serie", serieService.findAll());
 
-        model.addAttribute("dataObject", menuServicio.findAll());
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/serie";
     }
     @GetMapping(value = {"/ejercicio"})
     public String plantejercicio(
-            Model model
+            Model model, Authentication authentication
     ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("ej", ejFService.findAll());
 
-        model.addAttribute("dataObject", menuServicio.findAll());
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/ejercicio";
     }
     //Controladores de edición
     @GetMapping("/meso/{id}")
-    public String showMesoId(@PathVariable("id") Integer id, ModelMap model) {
-        model.addAttribute("dataObject", menuServicio.findAll());
+    public String showMesoId(@PathVariable("id") Integer id, Model model, Authentication authentication
+    ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("usuario", usuarioServicio);
         model.addAttribute("id", id);
 
@@ -145,14 +200,22 @@ public class PlantillaController {
         }
     }
     @GetMapping(value = {"/micro/{id}"})
-    public String showMicroId(@PathVariable("id") Integer id, ModelMap model) {
-        model.addAttribute("dataObject", menuServicio.findAll());
-        model.addAttribute("usuario", usuarioServicio);
-        model.addAttribute("id", id);
+    public String showMicroId(@PathVariable("id") Integer id, ModelMap modelMap, Model model, Authentication authentication
+    ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
+        modelMap.addAttribute("usuario", usuarioServicio);
+        modelMap.addAttribute("id", id);
 
         Optional<PlantillaMicrociclo> micro= microService.findById(id);
         if(micro.isPresent()){
-            model.addAttribute("micro", micro);
+            modelMap.addAttribute("micro", micro);
         }
         else{
             return "redirect:/error";
@@ -161,7 +224,16 @@ public class PlantillaController {
         return "plantillas/microId";
     }
     @PostMapping(value = {"/micro/{id}"})
-    public String guardarMicroId(@PathVariable("id") Integer id, PlantillaMicrociclo microcicloentrada) {
+    public String guardarMicroId(@PathVariable("id") Integer id, PlantillaMicrociclo microcicloentrada, Model model, Authentication authentication
+    ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         Optional<PlantillaMicrociclo> microciclocontrol = microService.findById(microcicloentrada.getId());
         //¿Debería comprobar si hay datos?
         if (microciclocontrol.isPresent()){
@@ -178,14 +250,22 @@ public class PlantillaController {
 
     }
     @GetMapping(value = {"/sesion/{id}"})
-    public String showSesionId(@PathVariable("id") Integer id, ModelMap model) {
-        model.addAttribute("dataObject", menuServicio.findAll());
-        model.addAttribute("usuario", usuarioServicio);
-        model.addAttribute("id", id);
+    public String showSesionId(@PathVariable("id") Integer id, ModelMap modelMap, Model model, Authentication authentication
+    ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
+        modelMap.addAttribute("usuario", usuarioServicio);
+        modelMap.addAttribute("id", id);
 
         Optional<PlantillaSesion> sesion= sesionService.findById(id);
         if(sesion.isPresent()){
-            model.addAttribute("sesion", sesion);
+            modelMap.addAttribute("sesion", sesion);
         }
         else{
             return "error";

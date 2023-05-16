@@ -64,13 +64,22 @@ values (9999,9999,'base','/',0,'fas fa-tachometer-alt', null,0,0),
        (2, 20, 'Entrenar', '/programa',1,'fas fas fa-dumbbell',9999,0,0),
        (3, 30, 'Mis rutinas', '/misrutinas',1,'fas fa-table',9999,0,0),
        (4, 40, 'Chats', '/chat',1,'far fa-comment-alt',9999,1,0),
-       (5, 35, 'Entrenador', '/chat/entrenador',1,'far fa-comment-alt',4,0,1),
-       (6, 48, 'Atletas', '/chat/atletas',1,'far fa-comment-alt',4,0,1),
-       (7,50,'Entrenadores','/entrenadores',1,'fas fa-users',9999,0,0),
+       (5, 41, 'Entrenador', '/chat/entrenador',1,'far fa-comment-alt',4,0,1),
+       (6, 42, 'Atletas', '/chat/atletas',1,'far fa-comment-alt',4,0,1),
+       (7,51,'Entrenadores','/entrenadores',1,'fas fa-users',9999,0,0),
        (8,55,'Atletas','/atletas',1,'fas fa-users',9999,0,0),
        (9,60,'Logros','/logros',1,'fas fa-trophy',9999,0,0),
        (10,70,'Tutoriales','/tutoriales',1,'fas fa-window-maximize',9999,0,0),
-       (11,80,'Ajustes de Página','/ajustes',1,'fas fa-wrench',9999,0,0);
+       (11,80,'Ajustes de Página','/ajustes',1,'fas fa-wrench',9999,0,0),
+       (12,32,'Plantillas','/plantillas',1,'fas fa-table',9999,0,0),
+       (13,50,'Usuarios','/usuarios',1,'fas fa-users',9999,0,0),
+       (14,59,'Menus','/menu',1,'fas fa-wrench',9999,0,0);
+delete from menu_roles;
+insert into menu_roles(menu_id,roles_id)
+values
+    (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),
+    (1,2),(2,2),(3,2),(4,2),(5,2),(6,2),(7,2),(8,2),(9,2),(10,2),(11,2),(12,2),(13,2),(14,2),
+    (1,3),(2,3),(3,3),(4,3),(5,3),(7,3),(9,3),(10,3),(11,3);
 delete from plantilla_mesociclo;
 INSERT INTO plantilla_mesociclo (orden,descanso_acces, descanso_bas, descripcion, fecha_fin, fecha_inicio, fr_entre_semana, id_mesociclos, long_microciclo, num_microciclos, id_usuario)
 VALUES

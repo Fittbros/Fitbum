@@ -1,5 +1,6 @@
 package com.fitbum.controladores.websockets;
 
+import com.fitbum.entidades.usuarios.Usuario;
 import com.fitbum.entidades.websockets.Notificacion;
 import com.fitbum.repositorios.NotificacionRepositorio;
 import com.fitbum.servicios.MenuServicio;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +38,16 @@ public class NotificacionController {
     @GetMapping("/numeroNotificaciones")
     @ResponseBody
 //    @PreAuthorize("isAuthenticated()")
-    public String contarNotificacionesPendientes(Principal principal) {
+    public String contarNotificacionesPendientes(Principal principal,Model model, Authentication authentication
+    ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         List<Notificacion> listaNotificaciones =
                 notificacionRepositorio.findByUserToAndEstado(
                         principal.getName(),
@@ -51,9 +62,17 @@ public class NotificacionController {
                                         @RequestParam("page") Optional<Integer> page,
                                         @RequestParam("size") Optional<Integer> size,
                                         @RequestParam("queryFrom") Optional<String> queryFrom,
-                                        @RequestParam("queryTo") Optional<String> queryTo
-    )
-    {
+                                        @RequestParam("queryTo") Optional<String> queryTo,
+                                         Authentication authentication
+    ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(10);
         String searchFrom = queryFrom.orElse("");
@@ -65,7 +84,7 @@ public class NotificacionController {
                         searchTo,
                         PageRequest.of(currentPage - 1, pageSize)
                 );
-        model.addAttribute("dataObject", menuServicio.findAll());
+
         model.addAttribute("usuario", usuarioServicio);
         model.addAttribute("queryFrom", searchFrom);
         model.addAttribute("queryTo", searchTo);
@@ -84,7 +103,16 @@ public class NotificacionController {
 
 
     @GetMapping("/leerNotificaciones")
-    public String leerNotificacionesPendientes(Principal principal, Model model) {
+    public String leerNotificacionesPendientes(Principal principal, Model model, Authentication authentication
+    ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         List<Notificacion> listaNotificaciones =
                 notificacionRepositorio.findByUserToAndEstado(
                         principal.getName(),
@@ -100,7 +128,16 @@ public class NotificacionController {
 
 
     @GetMapping("/leerNotificacion/{id}")
-    public String leerNotificacionesPendientes(@PathVariable("id") String id, Principal principal, Model model) {
+    public String leerNotificacionesPendientes(@PathVariable("id") String id, Principal principal, Model model, Authentication authentication
+    ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         Optional<Notificacion> notificacion = notificacionRepositorio.findById(id);
 
         if (notificacion.isPresent()) {

@@ -15,6 +15,7 @@ import com.fitbum.servicios.usuarios.IUsuarioServicio;
 import com.fitbum.servicios.usuarios.RoleService;
 import com.fitbum.servicios.usuarios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -135,11 +136,11 @@ public String savePass(Usuario usuario, Model model) {
         return "formularios/olvidecontrasena";}
 
     @GetMapping("/perfil/{id}")
+//    @PreAuthorize("authentication.principal.username==usuario.username")
     public String perfil(@PathVariable("id") Integer id,
                          Model model, Authentication authentication
     ){
         model.addAttribute("usuario", service);
-        model.addAttribute("dataObject", menuServicio.findAll());
         String username = authentication.getName();
         System.out.println(username);
         Optional<Usuario> usuario = service.getRepo().findById(id);
@@ -150,6 +151,7 @@ public String savePass(Usuario usuario, Model model) {
         else{
             return "error";
         }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         List<FileInfo> files = fileSystemStorageService.loadAll();
         model.addAttribute("files", files);
         return "rrhh/perfil";}
@@ -158,7 +160,6 @@ public String savePass(Usuario usuario, Model model) {
                          Model model, Authentication authentication
     ){
         model.addAttribute("usuario", service);
-        model.addAttribute("dataObject", menuServicio.findAll());
         String username = authentication.getName();
         System.out.println(username);
         Optional<Usuario> usuario = service.getRepo().findById(id);
@@ -169,6 +170,8 @@ public String savePass(Usuario usuario, Model model) {
             return "error";
         }
         List<FileInfo> files = fileSystemStorageService.loadAll();
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
+
         model.addAttribute("files", files);
         return "rrhh/cambioPass";}
     @PostMapping("usuarios/save")

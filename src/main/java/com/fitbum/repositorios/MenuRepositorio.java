@@ -18,6 +18,7 @@ public interface MenuRepositorio extends JpaRepository<Menu,Integer> {
     List<Menu> findDistinctByRolesIn(Collection<Role> roles);
 
     List<Menu> findDistinctByRolesInAndActivoTrue(Collection<Role> roles);
+    List<Menu> findDistinctByRolesInAndActivoTrueOrderByOrden(Collection<Role> roles);
 
 
 
