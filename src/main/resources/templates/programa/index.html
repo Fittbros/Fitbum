@@ -2,15 +2,45 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}">
+<head>
+    <title>plantillas</title>
 
+</head>
 <body>
 
 <div layout:fragment="content">
 
     <div class="pagetitle">
-        <h1>Inicio Entreamientos</h1>
+        <h1>plantillas</h1>
     </div><!-- End Page Title -->
+    <!--div><a  th:href="@{/menu}" >
+        menu</a></div>
+    <div><a  th:href="@{/menu/2}" >
+        menu2 </a></div>
+    <div><a  th:href="@{/menu/3}" >
+        menu3 </a></div>
 
+    <div><a  href='/login' >
+        login</a></div>
+    <div><a  href='/crearUsuario' >
+        crear usuario</a></div>
+    <div><a  href='/nuevoUsuario' >
+        nuevo usuario</a></div>
+    <div><a  href='/tutoriales' >
+        tutoriales</a></div-->
+    <div><a  th:href="@{/ejercicios}" >
+        ejercicios </a></div>
+    <div><a  th:href="@{/programa/meso}" >
+        plant meso </a></div>
+    <div><a  th:href="@{/programa/micro}" >
+        plant micro </a></div>
+
+    <div><a  th:href="@{/programa/sesion}" >
+        plant sesion </a></div>
+    <div><a  th:href="@{/programa/ejercicio}" >
+        plant ejerc </a></div>
+    <div><a  th:href="@{/programa/serie}" >
+        plant serie </a></div>
 </div>
 
 </body>
