@@ -2,10 +2,10 @@ insert into role values (1, 'ADMIN'), (2,'ENTRENADOR' ), (3,'ATLETA' );
 delete from usuario;
 insert into usuario (id,altura,apellido1,apellido2,email,fecha_nacim,
                      nombre,password,peso,sexo,active, idrole, username, avatar)
-values (1, 165,'admin','admin','admin@admin','1990-01-01','admin','$2a$10$Dzy3yCynw2wtS8nHTCh7Bug7gyLlekoKT3WkY11zUTVd.6ZKd6O5W', 80,  1 ,true,1,'admin','/assets/img/avatars/avatar1.png'),
-       (2, 180,'Jorqueran','Perez','entrenador@entrenador','1990-01-07','juan','$2a$10$.saUfYzrQPKSDqrikuH24Ob93pHGc2yEdZsN0N13WVwSBX/bPAUAm', 120,  1 , true,2,'entrenador','/assets/img/avatars/avatar2.jpeg'),
-       (3, 173,'Martosa','Perez','atleta@1','1990-11-01','maria','$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 75,  0, true,3,'atleta1','/assets/img/avatars/avatar3.jpeg'),
-       (4, 173,'Maresca','Perez','atleta@2','1995-01-01','marco','$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 55,  1, true,3,'atleta2','/assets/img/avatars/avatar4.jpeg'),
+values (1, 165,'admin','admin','admin@admin','1990-01-01','Estuardo','$2a$10$Dzy3yCynw2wtS8nHTCh7Bug7gyLlekoKT3WkY11zUTVd.6ZKd6O5W', 80,  1 ,true,1,'admin','/assets/img/avatars/avatar1.png'),
+       (2, 180,'Jorqueran','Perez','entrenador@entrenador','1990-01-07','Juan','$2a$10$.saUfYzrQPKSDqrikuH24Ob93pHGc2yEdZsN0N13WVwSBX/bPAUAm', 120,  1 , true,2,'entrenador','/assets/img/avatars/avatar3.jpeg'),
+       (3, 173,'Martosa','Perez','atleta@1','1990-11-01','Maria','$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 75,  0, true,3,'atleta1','/assets/img/avatars/avatar2.jpeg'),
+       (4, 173,'Maresca','Perez','atleta@2','1995-01-01','Marco','$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 55,  1, true,3,'atleta2','/assets/img/avatars/avatar4.jpeg'),
        (5, 168, 'López', 'Sánchez', 'lopez@example.com', '1993-09-12', 'Ana', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 65, 2, true, 3, 'anal', '/assets/img/avatars/avatar5.jpeg'),
        (6, 175, 'Rodríguez', 'Martínez', 'rodriguez@example.com', '1988-06-25', 'Carlos', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 75, 1, true, 3, 'carlosr', '/assets/img/avatars/avatar13.jpg'),
        (7, 172, 'Fernández', 'González', 'fernandez@example.com', '1991-04-18', 'Laura', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 55, 2, true, 3, 'lauraf', '/assets/img/avatars/avatar6.jpg'),

@@ -9,68 +9,114 @@
 <body>
 
 <div layout:fragment="content">
-<!--    <span th:text="${#authentication.principal}"></span>-->
-    <div><a  th:href="@{/files}" >
-        files </a></div>
-    <div><a  th:href="@{/prueba}" >
-        files </a></div>
-    <span th:text="${#authentication.principal.username}">
-    </span> </br>
-    <span th:text="${#authentication.principal.class.name}">
-        </span></br>
-    <span th:text="${#authentication.name}">
-        </span>
-    <div><a  th:href="@{/usuarios/perfil/{id}(id=${usuario.id})}" th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}">
-        prueba/id </a></div>
-    <!-- End Page Title -->
-    <!--div><a  th:href="@{/menu}" >
-        menu</a></div>
-    <div><a  th:href="@{/menu/2}" >
-        menu2 </a></div>
-    <div><a  th:href="@{/menu/3}" >
-        menu3 </a></div>
-    <div><a  th:href="@{/chat/chatprueba3}" >
-        chatprueba3 </a></div>
-    <div><a  th:href="@{/chat/chatprueba}" >
-        chatprueba </a></div>
-
-<div class="pagetitle">
-        <h1>Panel de Inicio</h1>
+    <div class="pagetitle">
+        <h1>
+            <span th:if="${logeduser.sexo}==1" th:text="Bienvenido "></span>
+            <span th:if="${logeduser.sexo}==0" th:text="Bienvenida "></span>
+            <span th:text="${logeduser.nombre}"></span>
+        </h1>
     </div>
-    <div><a  href='/login' >
-        login</a></div>
-    <div><a  href='/crearUsuario' >
-        crear usuario</a></div>
-    <div><a  href='/nuevoUsuario' >
-        nuevo usuario</a></div>
-    <div><a  href='/tutoriales' >
-        tutoriales</a></div>
 
-    <div><a  th:href="@{/plantillas/meso}" >
-        plant meso </a></div>
-    <div><a  th:href="@{/plantillas/micro}" >
-        plant micro </a></div>
-    <div><a  th:href="@{/plantillas/sesion}" >
-        plant sesion </a></div>
-    <div><a  th:href="@{/plantillas/ejercicio}" >
-        plant ejerc </a></div>
-    <div><a  th:href="@{/plantillas/serie}" >
-        plant serie </a></div>
 
-    <div><a  th:href="@{/usuarios/lista}" >
-        usuarios lista </a></div-->
-    <div><a  th:href="@{/usuarios}" >
-        usuarios </a></div>
-    <div><a  th:href="@{/atletas}" >
-        atletas </a></div>
-    <div><a  th:href="@{/prueba}" >
-        prueba </a></div>
 
-    <div><a  th:href="@{/prueba/{id}(id=${usuario.id})}" th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}">
-        prueba/id </a></div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="text-primary fw-bold m-0">Tus estadísticas</h6>
+        </div>
+        <div class="card-body">
+            <h4 class="small fw-bold">Fuerza<span class="float-end">20%</span></h4>
+            <div class="progress progress-sm mb-3">
+                <div class="progress-bar bg-danger" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
+                     style="width: 20%;"><span class="visually-hidden">20%</span></div>
+            </div>
+            <h4 class="small fw-bold">Resistencia<span class="float-end">40%</span></h4>
+            <div class="progress progress-sm mb-3">
+                <div class="progress-bar bg-warning" aria-valuenow="40" aria-valuemin="0"
+                     aria-valuemax="100" style="width: 40%;"><span class="visually-hidden">40%</span></div>
+            </div>
+            <h4 class="small fw-bold">Cardio<span class="float-end">60%</span></h4>
+            <div class="progress progress-sm mb-3">
+                <div class="progress-bar bg-primary" aria-valuenow="60" aria-valuemin="0"
+                     aria-valuemax="100" style="width: 60%;"><span class="visually-hidden">60%</span></div>
+            </div>
+            <h4 class="small fw-bold">Peso ideal<span class="float-end">80%</span></h4>
+            <div class="progress progress-sm mb-3">
+                <div class="progress-bar bg-info" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                     style="width: 80%;"><span class="visually-hidden">80%</span></div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="row mb-3 ">
+                    <div class="col">
+                        <div class="card text-white bg-primary ">
+                            <div class="card-body">
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <p class="m-0">Peformance</p>
+                                        <p class="m-0"><strong>65.2%</strong></p>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                </div>
+                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last
+                                    month</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-white bg-success shadow">
+                            <div class="card-body">
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <p class="m-0">Peformance</p>
+                                        <p class="m-0"><strong>65.2%</strong></p>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                </div>
+                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last
+                                    month</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Detalles de contacto</p>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3"><label class="form-label"
+                                         for="address"><strong>Address</strong></label><input
+                        class="form-control" type="text" id="address" placeholder="Sunset Blvd, 38"
+                        name="address"></div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label><input
+                                class="form-control" type="text" id="city" placeholder="Los Angeles"
+                                name="city"></div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label"
+                                                 for="country"><strong>Country</strong></label><input
+                                class="form-control" type="text" id="country" placeholder="USA"
+                                name="country"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
 
 </div>
-
 </body>
 </html>
