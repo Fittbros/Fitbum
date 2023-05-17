@@ -17,7 +17,38 @@
         </h1>
     </div>
 
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <a class="btn btn-info btn-lg"
+                           role="button" href="#">ENTRENAR</a>
+                    </div>
+                    <div class="mb-3">
+                        <a class="btn btn-info btn-lg"
+                           role="button" href="#">RUTINAS</a>
+                    </div>
+                </div>
+                <div class="col">
 
+                    <div class="mb-3">
+                        <a class="btn btn-info btn-lg"
+                           role="button" href="#">AJUSTES</a>
+                    </div>
+                    <div class="mb-3">
+                        <a class="btn btn-info btn-lg"
+                           role="button" th:href="@{/usuarios/perfil/{id}(id=${usuario.id})}" th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}">PERFIL</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+
+            </div>
+
+
+        </div>
+    </div>
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -52,13 +83,12 @@
                             <div class="card-body">
                                 <div class="row mb-2">
                                     <div class="col">
-                                        <p class="m-0">Peformance</p>
-                                        <p class="m-0"><strong>65.2%</strong></p>
+                                        <p class="m-0">Esfuerzo</p>
+                                        <p class="m-0"><strong>78.2%</strong></p>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
                                 </div>
-                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last
-                                    month</p>
+                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;7% más que el último mes</p>
                             </div>
                         </div>
                     </div>
@@ -67,13 +97,12 @@
                             <div class="card-body">
                                 <div class="row mb-2">
                                     <div class="col">
-                                        <p class="m-0">Peformance</p>
-                                        <p class="m-0"><strong>65.2%</strong></p>
+                                        <p class="m-0">Rendimiento</p>
+                                        <p class="m-0"><strong>65.7%</strong></p>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
                                 </div>
-                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last
-                                    month</p>
+                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% más que el último mes</p>
                             </div>
                         </div>
                     </div>
@@ -86,35 +115,7 @@
         </div>
     </div>
 
-    <div class="card shadow">
-        <div class="card-header py-3">
-            <p class="text-primary m-0 fw-bold">Detalles de contacto</p>
-        </div>
-        <div class="card-body">
-            <form>
-                <div class="mb-3"><label class="form-label"
-                                         for="address"><strong>Address</strong></label><input
-                        class="form-control" type="text" id="address" placeholder="Sunset Blvd, 38"
-                        name="address"></div>
-                <div class="row">
-                    <div class="col">
-                        <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label><input
-                                class="form-control" type="text" id="city" placeholder="Los Angeles"
-                                name="city"></div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-3"><label class="form-label"
-                                                 for="country"><strong>Country</strong></label><input
-                                class="form-control" type="text" id="country" placeholder="USA"
-                                name="country"></div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button>
-                </div>
-            </form>
-        </div>
-    </div>
+
 
 
 </div>
