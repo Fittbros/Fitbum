@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fitbum.entidades.plantillas.PlantillaMesociclo;
 import com.fitbum.entidades.plantillas.PlantillaMicrociclo;
+import com.fitbum.entidades.plantillas.PlantillaSesion;
 import com.fitbum.entidades.usuarios.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -75,13 +76,17 @@ public class Mesociclo {
         this.longMicrociclo=plantillaMesociclo.getLongMicrociclo();
         this.numMicrociclos=plantillaMesociclo.getNumMicrociclos();
         List<PlantillaMicrociclo>plantillaMicrocicloList=plantillaMesociclo.getPlantillasMicrociclo();
-       if (plantillaMicrocicloList==null)plantillaMicrocicloList=new ArrayList<>();
+        List<Microciclo> microciclos= new ArrayList<Microciclo>();
         for (PlantillaMicrociclo plantillaMicrociclo : plantillaMicrocicloList){
 
           Microciclo microciclo=new Microciclo(plantillaMicrociclo);
-          this.getMicrociclos().add(microciclo);
-
+          microciclo.setMesociclo(this);
+          microciclos.add(microciclo);
+          this.microciclos = microciclos;
         }
+
+
+
+    }
     }
 
-}

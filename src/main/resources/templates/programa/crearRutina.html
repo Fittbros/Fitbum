@@ -8,16 +8,13 @@
 </head>
 <body>
   crearrutina
-  <ul>
-    <li th:each="pmeso:${pmesos}" th:text="${pmeso.descripcion}"></li>
-  </ul>
-<span th:text="${meso}"></span>
-<form th:object="${meso}" th:action="@{/programa/crearrutina}" method="post">
+
+<form  th:action="@{/programa/crearrutina}" th:method="post">
 <!--    <input type="number" th:field="*{id}" th:value="${id}">-->
 <!--    <input type="number" th:field="*{id_usuario}" th:value="${id}">-->
-    <label for="descripcion">Descripcion:</label>
-    <select name="descripcion" id="descripcion">
-        <option th:each="pmeso: ${pmesos}" th:text="${pmeso.descripcion}" th:value="${pmeso.descripcion}"></option>
+    <label for="pmesoelegido">Descripcion:</label>
+    <select name="pmesoelegido" id="pmesoelegido" >
+        <option th:each="pmeso: ${pmesos}" th:text="${pmeso.descripcion}" th:value="${pmeso.id}"></option>
     </select>
     <button type="submit" class="btn btn-primary">Crear</button>
 </form>

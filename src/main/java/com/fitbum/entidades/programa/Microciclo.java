@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -48,10 +49,14 @@ public class Microciclo {
         this.volumenEstandar = plantillaMicrociclo.getVolumenEstandar();
         this.intensidadEstandar = plantillaMicrociclo.getIntensidadEstandar();
         this.orden = plantillaMicrociclo.getOrden();
+        List<Sesion> sesiones= new ArrayList<Sesion>();
         for (PlantillaSesion plantillaSesion : plantillaMicrociclo.getPlantillaSesion()) {
 
             Sesion sesion = new Sesion(plantillaSesion);
-            this.getSesiones().add(sesion);
+            sesiones.add(sesion);
+        }
+
+            this.setSesiones(sesiones);
         }
     }
-}
+

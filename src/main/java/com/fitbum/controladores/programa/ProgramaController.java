@@ -20,10 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -310,22 +307,33 @@ public class ProgramaController {
         modelMap.addAttribute("id", id);
 
         List<PlantillaMesociclo> pmesos = mesoService.findAll();
+
 //        Optional<Mesociclo> meso = mesocicloServicio.findById(id);
-        Mesociclo meso=new Mesociclo();
+//        if(meso.isPresent()){
+//            meso= Optional.of(new Mesociclo());
+//
+//        }
+//        else{
+//            meso= Optional.of(new Mesociclo());
+//        }
+//        Mesociclo meso=new Mesociclo();
         model.addAttribute("pmesos", pmesos);
-        model.addAttribute("meso", meso);
 //        new Mesociclo(pmesos)=
 
         return "programa/crearRutina";
     }
 
-    @PostMapping("/crearRutina")
-    public String crearnuevo(Mesociclo mesociclo, Model model) {
+    @PostMapping("/crearrutina")
+
+    public String crearnuevo(@RequestParam(name ="pmesoelegido") Integer id , Model model) {
     model.addAttribute("dataObject", menuServicio.findAll());
     model.addAttribute("usuario", usuarioServicio);
+    PlantillaMesociclo plantillaMesociclo = mesoService.findById(id).get();
+
+    Mesociclo mesociclo= new Mesociclo(plantillaMesociclo);
 
     mesocicloServicio.getRepo().save(mesociclo);
-        return String.format("redirect:/programa/crearrutina%s", mesociclo.getId());
+        return String.format("redirect:/programa/crearrutina/%s", mesociclo.getId());
 
 
     }
