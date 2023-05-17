@@ -36,7 +36,6 @@ public class Microciclo {
     private Integer orden;
 
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "Mesociclo", nullable = false)
     private Mesociclo mesociclo;

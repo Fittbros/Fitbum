@@ -61,8 +61,8 @@ public class Mesociclo {
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "mesociclo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "mesociclo", cascade = CascadeType.ALL)
     private List<Microciclo> microciclos;
 
     public Mesociclo(PlantillaMesociclo plantillaMesociclo){
@@ -78,7 +78,6 @@ public class Mesociclo {
         List<PlantillaMicrociclo>plantillaMicrocicloList=plantillaMesociclo.getPlantillasMicrociclo();
         List<Microciclo> microciclos= new ArrayList<Microciclo>();
         for (PlantillaMicrociclo plantillaMicrociclo : plantillaMicrocicloList){
-
           Microciclo microciclo=new Microciclo(plantillaMicrociclo);
           microciclo.setMesociclo(this);
           microciclos.add(microciclo);
