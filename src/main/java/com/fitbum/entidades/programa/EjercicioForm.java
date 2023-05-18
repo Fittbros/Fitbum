@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -47,7 +48,7 @@ public class EjercicioForm {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "ejercicioForm",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Serie> serie;
+    private List<Serie> series;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)

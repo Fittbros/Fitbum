@@ -1,6 +1,8 @@
 package com.fitbum.entidades.programa;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fitbum.entidades.plantillas.PlantillaMicrociclo;
+import com.fitbum.entidades.plantillas.PlantillaSerie;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,25 +21,38 @@ import java.util.Set;
 @Table(name="Serie")
 public class Serie {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
 
     @Column
+    private Integer orden;
+    @Column
     private Float carga;
     @Column
+
     private Integer repes;
     @Column
-    private String modif_tecnicos;
+
+    private Integer modifVis;
     @Column
-    private String modif_programacion;
+
+    private Integer modifInterna;
     @Column
     private Boolean completado;
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn (name="idEjercicioForm",nullable=false)
+    @JoinColumn(name = "idEjercicioForm", nullable = false)
     private EjercicioForm ejercicioForm;
 
+    public Serie(PlantillaSerie plantillaSerie) {
 
+        this.carga = plantillaSerie.getCarga();
+        this.orden = plantillaSerie.getOrden();
+        this.repes = plantillaSerie.getRepes();
+        this.modifInterna = plantillaSerie.getModifInterna();
+        this.modifVis = plantillaSerie.getModifVis();
+
+    }
 }

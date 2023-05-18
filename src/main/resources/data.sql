@@ -126,18 +126,37 @@ VALUES
    (1,'5,5','3' , 8),
         (2,'6', '3', 8),
         (3,'6,25', '3', 8),
-        (4,'6,5', '3', 8)
-    ;
+        (4,'6,5', '3', 8);
 
 DELETE FROM plantilla_sesion;
 
 INSERT INTO plantilla_sesion (orden,num_sesion,variante, id_plantilla_microciclo)
 VALUES
     (1,1,'Torso 1', 1),
-    (2,2,'Pierna 1', 1),
-    (1,1,'Torso 1', 2),
-    (2,2,'Torso 2', 2),
-    (1,1,'Pierna 1', 3);
+        (2,2,'Pierna 1', 1),
+        (3,3,'Accesorios', 1),
+        (4,4,'Torso 2', 1),
+        (5,5,'Pierna 2', 1),
+    (1,6,'Torso 1', 2),
+        (2,7,'Pierna 1', 2),
+        (3,8,'Accesorios', 2),
+        (4,9,'Torso 2', 2),
+        (5,10,'Pierna 2', 2),
+    (1,11,'Torso 1', 3),
+        (2,12,'Pierna 1', 3),
+        (3,13,'Accesorios', 3),
+        (4,14,'Torso 2', 3),
+        (5,15,'Pierna 2', 3),
+    (1,16,'Torso 1', 4),
+        (2,17,'Pierna 1', 4),
+        (3,18,'Accesorios', 4),
+        (4,19,'Torso 2', 4),
+        (5,20,'Pierna 2', 4),
+    (1,21,'Torso 1', 5),
+        (2,22,'Pierna 1', 5),
+        (3,23,'Accesorios', 5),
+        (4,24,'Torso 2', 5),
+        (5,25,'Pierna 2', 5);
 
 DELETE FROM plantilla_ejercicio_formulado;
 

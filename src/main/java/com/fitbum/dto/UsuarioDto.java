@@ -4,7 +4,6 @@ import com.fitbum.entidades.Mensaje;
 import com.fitbum.entidades.NotificacionVieja;
 import com.fitbum.entidades.estadisticas.Estadisticas;
 import com.fitbum.entidades.plantillas.PlantillaMesociclo;
-import com.fitbum.entidades.programa.Mesociclo;
 import com.fitbum.entidades.usuarios.Relaciones;
 import com.fitbum.entidades.usuarios.Role;
 import com.fitbum.entidades.usuarios.Suscripcion;
@@ -37,7 +36,7 @@ public class UsuarioDto {
     private LocalDate fechaNacim;
 
     private Integer admin;
-    private Set<Mesociclo> mesociclo;
+    private Set<com.fitbum.entidades.programa.Mesociclo> mesociclo;
     private Set<Suscripcion> suscripcion;
     private List<Estadisticas> estadisticas;
     private Role role;

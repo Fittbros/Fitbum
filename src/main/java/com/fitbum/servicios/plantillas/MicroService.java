@@ -1,8 +1,6 @@
 package com.fitbum.servicios.plantillas;
 
-import com.fitbum.entidades.plantillas.PlantillaMesociclo;
 import com.fitbum.entidades.plantillas.PlantillaMicrociclo;
-import com.fitbum.repositorios.plantillas.PlantMesoRepositorio;
 import com.fitbum.repositorios.plantillas.PlantMicroRepositorio;
 import org.springframework.stereotype.Service;
 

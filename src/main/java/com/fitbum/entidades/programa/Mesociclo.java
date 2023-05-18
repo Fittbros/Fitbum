@@ -3,6 +3,9 @@ package com.fitbum.entidades.programa;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fitbum.entidades.plantillas.PlantillaMesociclo;
+import com.fitbum.entidades.plantillas.PlantillaMicrociclo;
+import com.fitbum.entidades.plantillas.PlantillaSesion;
 import com.fitbum.entidades.usuarios.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,9 +15,9 @@ import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,6 +34,8 @@ public class Mesociclo {
     private Integer id;
 
 
+    @Column
+    private Integer orden;
     @Column
     private Integer numMicrociclos ;
     @Column
@@ -56,9 +61,31 @@ public class Mesociclo {
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "mesociclo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Microciclo> microciclo;
+
+    @OneToMany(mappedBy = "mesociclo", cascade = CascadeType.ALL)
+    private List<Microciclo> microciclos;
+
+    public Mesociclo(PlantillaMesociclo plantillaMesociclo){
+        this.descripcion=plantillaMesociclo.getDescripcion();
+        this.orden=plantillaMesociclo.getOrden();
+        this.descansoAcces=plantillaMesociclo.getDescansoAcces();
+        this.descansoBas=plantillaMesociclo.getDescansoBas();
+        this.fechaFin=plantillaMesociclo.getFechaFin();
+        this.fechaInicio=plantillaMesociclo.getFechaInicio();
+        this.frEntreSemana=plantillaMesociclo.getFrEntreSemana();
+        this.longMicrociclo=plantillaMesociclo.getLongMicrociclo();
+        this.numMicrociclos=plantillaMesociclo.getNumMicrociclos();
+        List<PlantillaMicrociclo>plantillaMicrocicloList=plantillaMesociclo.getPlantillasMicrociclo();
+        List<Microciclo> microciclos= new ArrayList<Microciclo>();
+        for (PlantillaMicrociclo plantillaMicrociclo : plantillaMicrocicloList){
+          Microciclo microciclo=new Microciclo(plantillaMicrociclo);
+          microciclo.setMesociclo(this);
+          microciclos.add(microciclo);
+          this.microciclos = microciclos;
+        }
 
 
-}
+
+    }
+    }
+

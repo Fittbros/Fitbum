@@ -22,16 +22,16 @@ public class PlantillaSerie {
     private Integer id;
 
     @Column
+    private Integer orden;
+    @Column
     private Float carga;
     @Column
-
     private Integer	repes;
     @Column
-
     private Integer	modifVis;
     @Column
-
     private Integer	modifInterna;
+
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)

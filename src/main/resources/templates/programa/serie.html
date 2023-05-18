@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+<head>
+    <title>Serie</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="pagetitle">
+        <h1>Plantillas rutinas: Series</h1>
+    </div>
+    <div th:each="serie : ${serie}">
+        <h2>Serie</h2>
+        <table class="table">
+            <thead class="table-secondary">
+            <tr>
+                <th>ID</th>
+                <th>carga</th>
+                <th>repes</th>
+            </tr>
+            </thead>
+            <tbody class="table-secondary">
+            <td th:text="${serie.id}"></td>
+            <td th:text="${serie.carga}"></td>
+            <td th:text="${serie.repes}"></td>
+            <td>
+                <a  th:href="@{/plantillas/serie/{id}(id=${serie.id})}" >
+                    IR </a>
+            </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

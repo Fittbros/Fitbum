@@ -5,7 +5,6 @@ import com.fitbum.entidades.Mensaje;
 import com.fitbum.entidades.NotificacionVieja;
 import com.fitbum.entidades.estadisticas.Estadisticas;
 import com.fitbum.entidades.plantillas.PlantillaMesociclo;
-import com.fitbum.entidades.programa.Mesociclo;
 
 import com.fitbum.filemanagement.entidades.FileDB;
 import jakarta.persistence.*;
@@ -45,7 +44,7 @@ public class Usuario {
     private boolean active;
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Mesociclo> mesociclo;
+    private Set<com.fitbum.entidades.programa.Mesociclo> mesociclo;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -70,7 +69,7 @@ public class Usuario {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<PlantillaMesociclo> plantMesociclo;
+    private List<PlantillaMesociclo> plantMesociclo;
 
 
 
