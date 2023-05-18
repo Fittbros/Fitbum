@@ -43,5 +43,7 @@ public class PlantillaEjercicioFormulado {
     private String descripcion;
     @Column
     private String modific_periodizacion;
+    @Column
+    private Integer orden;
 
 }

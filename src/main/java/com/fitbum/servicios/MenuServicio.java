@@ -57,11 +57,19 @@ public class MenuServicio extends AbstractBusinessService<Menu, Integer, MenuDTO
         menuRepositorio.deleteById(id);
     }
     public List<MenuDTO> getMenuForRole(Collection<Role> roles) {
-        List<Menu> menus = this.getRepo().findDistinctByRolesInAndActivoTrue(roles);
+        List<Menu> menus = this.getRepo().findDistinctByRolesInAndActivoTrueOrderByOrden(roles);
         return this.getMapper().toDto(menus);
     }
     public List<MenuDTO> getMenuForEmail(String email) {
         Usuario usuario = this.usuarioRepositorio.findUsuarioByEmailAndActiveTrue(email);
+        return getMenuForRole(Collections.singleton(usuario.getRole()));
+    }
+//    public List<MenuDTO> getMenuForUsername(String username) {
+//        Usuario usuario = this.usuarioRepositorio.findUsuarioByUsernameAndActiveTrue(username);
+//        return getMenuForRole(Collections.singleton(usuario.getRole()));
+//    }
+    public List<MenuDTO> getMenuForUsername(String username) {
+        Usuario usuario = this.usuarioRepositorio.findUsuarioByUsernameAndActiveTrue(username);
         return getMenuForRole(Collections.singleton(usuario.getRole()));
     }
 }

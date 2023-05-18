@@ -25,4 +25,8 @@ public class EjFService {
     public Optional<PlantillaEjercicioFormulado> findById(Integer id){
         return ejerciciosRepositorio.findById(id);
     }
+
+    public PlantEjerFormRepositorio getEjerciciosRepositorio() {
+        return ejerciciosRepositorio;
+    }
 }

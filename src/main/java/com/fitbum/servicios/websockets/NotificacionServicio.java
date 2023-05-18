@@ -1,8 +1,8 @@
-package com.fitbum.servicios;
+package com.fitbum.servicios.websockets;
 
 import org.springframework.stereotype.Service;
 
-@Service
+
 
 
 public class NotificacionServicio {

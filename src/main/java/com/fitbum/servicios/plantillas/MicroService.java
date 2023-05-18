@@ -1,8 +1,6 @@
 package com.fitbum.servicios.plantillas;
 
-import com.fitbum.entidades.plantillas.PlantillaMesociclo;
 import com.fitbum.entidades.plantillas.PlantillaMicrociclo;
-import com.fitbum.repositorios.plantillas.PlantMesoRepositorio;
 import com.fitbum.repositorios.plantillas.PlantMicroRepositorio;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +11,19 @@ import java.util.Optional;
 
 public class MicroService {
 
-    PlantMicroRepositorio ejerciciosRepositorio;
+    PlantMicroRepositorio plantMicroRepositorio;
     protected MicroService(PlantMicroRepositorio ejerciciosRepositorio){
-        this.ejerciciosRepositorio = ejerciciosRepositorio;}
+        this.plantMicroRepositorio = ejerciciosRepositorio;}
 
 
     public List<PlantillaMicrociclo> findAll() {
-        return ejerciciosRepositorio.findAll();
+        return plantMicroRepositorio.findAll();
     }
     public Optional<PlantillaMicrociclo> findById(Integer id){
-        return ejerciciosRepositorio.findById(id);
+        return plantMicroRepositorio.findById(id);
+    }
+
+    public PlantMicroRepositorio getPlantMicroRepositorio() {
+        return plantMicroRepositorio;
     }
 }

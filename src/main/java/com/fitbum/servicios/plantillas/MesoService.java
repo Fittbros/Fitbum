@@ -1,16 +1,14 @@
 package com.fitbum.servicios.plantillas;
 
+
 import com.fitbum.entidades.plantillas.PlantillaMesociclo;
-import com.fitbum.entidades.tutoriales.Ejercicios;
 import com.fitbum.repositorios.plantillas.PlantMesoRepositorio;
-import com.fitbum.repositorios.programa.EjerciciosRepositorio;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-
 public class MesoService {
 
     PlantMesoRepositorio plantMesoRepositorio;
@@ -23,5 +21,9 @@ public class MesoService {
     }
     public Optional<PlantillaMesociclo> findById(Integer id){
         return plantMesoRepositorio.findById(id);
+    }
+
+    public PlantMesoRepositorio getPlantMesoRepositorio() {
+        return plantMesoRepositorio;
     }
 }

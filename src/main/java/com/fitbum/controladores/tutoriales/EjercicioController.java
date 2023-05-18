@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -50,8 +51,16 @@ public class EjercicioController {
     public String showindex(
             @RequestParam("page") Optional<Integer> page,
             @RequestParam("size") Optional<Integer> size,
-            ModelMap interfazConPantalla, Model  model){
-        model.addAttribute("dataObject", menuServicio.findAll());
+            ModelMap interfazConPantalla, Model model, Authentication authentication
+    ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("usuario", usuarioServicio);
 
         Integer pagina = 0;
@@ -93,8 +102,16 @@ public class EjercicioController {
 //    }
 
     @GetMapping("/{id}")
-    public String showEjEdit(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("dataObject", menuServicio.findAll());
+    public String showEjEdit(@PathVariable("id") Integer id, Model model, Authentication authentication
+    ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("usuario", usuarioServicio);
 
         Optional<Ejercicios> ej = ejerciciosServicio.findById(id);
@@ -111,8 +128,16 @@ public class EjercicioController {
 
     }
     @GetMapping("/nuevo")
-    public String showEjNew(Model model) {
-        model.addAttribute("dataObject", menuServicio.findAll());
+    public String showEjNew(Model model, Authentication authentication
+    ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("usuario", usuarioServicio);
         Ejercicios ejercicionuevo = new Ejercicios();
         Integer id =ejerciciosRepositorio.findAll().size()+1;

@@ -1,32 +1,33 @@
 insert into role values (1, 'ADMIN'), (2,'ENTRENADOR' ), (3,'ATLETA' );
+delete from usuario;
 insert into usuario (id,altura,apellido1,apellido2,email,fecha_nacim,
                      nombre,password,peso,sexo,active, idrole, username, avatar)
-values (1, 1.65,'admin','admin','admin@admin','1990-01-01','admin','admin', 80,  1 ,true,1,'admin','/assets/img/avatars/avatar1.png'),
-       (2, 1.8,'Jorqueran','Perez','entrenador@entrenador','1990-01-07','juan','entrenador', 120,  1 , true,2,'entrenador','/assets/img/avatars/avatar2.jpeg'),
-       (3, 1.73,'Martosa','Perez','atleta@1','1990-11-01','maria','pass', 75,  0, true,3,'atleta1','/assets/img/avatars/avatar3.jpeg'),
-       (4, 1.73,'Maresca','Perez','atleta@2','1995-01-01','marco','pass2', 55,  1, true,3,'atleta2','/assets/img/avatars/avatar4.jpeg'),
-       (5, 1.68, 'López', 'Sánchez', 'lopez@example.com', '1993-09-12', 'Ana', 'password123', 65, 2, true, 3, 'anal', '/assets/img/avatars/avatar5.jpeg'),
-       (6, 1.75, 'Rodríguez', 'Martínez', 'rodriguez@example.com', '1988-06-25', 'Carlos', 'securepass', 75, 1, true, 3, 'carlosr', '/assets/img/avatars/avatar13.jpg'),
-       (7, 1.72, 'Fernández', 'González', 'fernandez@example.com', '1991-04-18', 'Laura', 'pass1234', 55, 2, true, 3, 'lauraf', '/assets/img/avatars/avatar6.jpg'),
-       (8, 1.80, 'Torres', 'Ramírez', 'torres@example.com', '1987-02-09', 'Roberto', '12345pass', 90, 1, true, 3, 'robertot', '/assets/img/avatars/avatar7.jpg'),
-       (9, 1.62, 'Vargas', 'Hernández', 'vargas@example.com', '1994-11-27', 'Sofía', 'sofia123', 58, 2, true, 3, 'sofiav', '/assets/img/avatars/avatar8.jpg'),
-       (10, 1.79, 'Pérez', 'Gómez', 'perez@example.com', '1986-08-14', 'Javier', 'password1', 70, 1, true, 3, 'javierp', '/assets/img/avatars/avatar9.jpg'),
-       (11, 1.70, 'Gutiérrez', 'Santos', 'gutierrez@example.com', '1990-03-07', 'Elena', 'qwerty123', 63, 2, true, 3, 'elenag', '/assets/img/avatars/avatar10.jpg'),
-       (12, 1.66, 'Martín', 'Ortega', 'martin@example.com', '1989-10-30', 'Pedro', 'pass123', 75, 1, true, 3, 'pedrom', '/assets/img/avatars/avatar11.jpg'),
-       (13, 1.73, 'González', 'Castillo', 'gonzalez@example.com', '1992-07-03', 'Carmen', 'abc123', 62, 2, true, 3, 'carmeng', '/assets/img/avatars/avatar12.jpg'),
-       (14, 1.68, 'Silva', 'Vega', 'silva@example.com', '1987-04-26', 'Andrés', 'pass321', 80, 1, true, 3, 'andress', '/assets/img/avatars/avatar13.jpg'),
-       (15, 1.75, 'Hernández', 'Navarro', 'hernandez@example.com', '1993-11-19', 'Marta', 'mypass', 65, 2, true, 3, 'martahn', '/assets/img/avatars/avatar14.jpg'),
-       (16, 1.70, 'López', 'García', 'lopez@example.com', '1995-02-12', 'David', 'david123', 70, 1, true, 3, 'davidl', '/assets/img/avatars/avatar15.jpg'),
-       (17, 1.68, 'González', 'Fernández', 'gonzalez@example.com', '1994-06-27', 'Sara', 'sara456', 60, 2, true, 3, 'saras', '/assets/img/avatars/avatar6.jpg'),
-       (18, 1.75, 'Martínez', 'Torres', 'martinez@example.com', '1991-08-18', 'Jorge', 'pass123', 75, 1, true, 3, 'jorgem', '/assets/img/avatars/avatar7.jpg'),
-       (19, 1.72, 'Ramírez', 'Vargas', 'ramirez@example.com', '1988-10-09', 'María', 'mypass123', 55, 2, true, 3, 'mariar', '/assets/img/avatars/avatar8.jpg'),
-       (20, 1.79, 'Hernández', 'Pérez', 'hernandez@example.com', '1986-12-27', 'Carlos', 'password1', 80, 1, true, 3, 'carlosh', '/assets/img/avatars/avatar9.jpg'),
-       (21, 1.70, 'Gómez', 'Gutiérrez', 'gomez@example.com', '1990-04-07', 'Laura', 'qwerty123', 63, 2, true, 3, 'laurag', '/assets/img/avatars/avatar10.jpg'),
-       (22, 1.66, 'Ortega', 'Martín', 'ortega@example.com', '1989-11-30', 'Pedro', 'pass123', 75, 1, true, 3, 'pedroo', '/assets/img/avatars/avatar12.jpg'),
-       (23, 1.73, 'Castillo', 'González', 'castillo@example.com', '1992-08-03', 'Carmen', 'abc123', 62, 2, true, 3, 'carmenc', '/assets/img/avatars/avatar2.jpeg'),
-       (24, 1.68, 'Vega', 'Silva', 'vega@example.com', '1987-05-26', 'Andrés', 'pass321', 80, 1, true, 3, 'andresv', '/assets/img/avatars/avatar3.jpeg'),
-       (25, 1.75, 'Navarro', 'Hernández', 'navarro@example.com', '1993-12-19', 'Marta', 'mypass', 65, 2, true, 3, 'martan', '/assets/img/avatars/avatar4.jpeg'),
-       (26, 1.70, 'García', 'López', 'garcia@example.com', '1995-03-12', 'David', 'david123', 70, 1, true, 3, 'davidg', '/assets/img/avatars/avatar5.jpeg');
+values (1, 165,'admin','admin','admin@admin','1990-01-01','Estuardo','$2a$10$Dzy3yCynw2wtS8nHTCh7Bug7gyLlekoKT3WkY11zUTVd.6ZKd6O5W', 80,  1 ,true,1,'admin','/assets/img/avatars/avatar1.png'),
+       (2, 180,'Jorqueran','Perez','entrenador@entrenador','1990-01-07','Juan','$2a$10$.saUfYzrQPKSDqrikuH24Ob93pHGc2yEdZsN0N13WVwSBX/bPAUAm', 120,  1 , true,2,'entrenador','/assets/img/avatars/avatar3.jpeg'),
+       (3, 173,'Martosa','Perez','atleta@1','1990-11-01','Maria','$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 75,  0, true,3,'atleta1','/assets/img/avatars/avatar2.jpeg'),
+       (4, 173,'Maresca','Perez','atleta@2','1995-01-01','Marco','$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 55,  1, true,3,'atleta2','/assets/img/avatars/avatar4.jpeg'),
+       (5, 168, 'López', 'Sánchez', 'lopez@example.com', '1993-09-12', 'Ana', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 65, 2, true, 3, 'anal', '/assets/img/avatars/avatar5.jpeg'),
+       (6, 175, 'Rodríguez', 'Martínez', 'rodriguez@example.com', '1988-06-25', 'Carlos', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 75, 1, true, 3, 'carlosr', '/assets/img/avatars/avatar13.jpg'),
+       (7, 172, 'Fernández', 'González', 'fernandez@example.com', '1991-04-18', 'Laura', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 55, 2, true, 3, 'lauraf', '/assets/img/avatars/avatar6.jpg'),
+       (8, 180, 'Torres', 'Ramírez', 'torres@example.com', '1987-02-09', 'Roberto', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 90, 1, true, 3, 'robertot', '/assets/img/avatars/avatar7.jpg'),
+       (9, 162, 'Vargas', 'Hernández', 'vargas@example.com', '1994-11-27', 'Sofía', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 58, 2, true, 3, 'sofiav', '/assets/img/avatars/avatar8.jpg'),
+       (10, 179, 'Pérez', 'Gómez', 'perez@example.com', '1986-08-14', 'Javier', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 70, 1, true, 3, 'javierp', '/assets/img/avatars/avatar9.jpg'),
+       (11, 170, 'Gutiérrez', 'Santos', 'gutierrez@example.com', '1990-03-07', 'Elena', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 63, 2, true, 3, 'elenag', '/assets/img/avatars/avatar10.jpg'),
+       (12, 166, 'Martín', 'Ortega', 'martin@example.com', '1989-10-30', 'Pedro', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 75, 1, true, 3, 'pedrom', '/assets/img/avatars/avatar11.jpg'),
+       (13, 173, 'González', 'Castillo', 'gonzalez@example.com', '1992-07-03', 'Carmen', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 62, 2, true, 3, 'carmeng', '/assets/img/avatars/avatar12.jpg'),
+       (14, 168, 'Silva', 'Vega', 'silva@example.com', '1987-04-26', 'Andrés', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 80, 1, true, 3, 'andress', '/assets/img/avatars/avatar13.jpg'),
+       (15, 175, 'Hernández', 'Navarro', 'hernandez@example.com', '1993-11-19', 'Marta', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 65, 2, true, 3, 'martahn', '/assets/img/avatars/avatar14.jpg'),
+       (16, 170, 'López', 'García', 'lopez@example.com', '1995-02-12', 'David', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 70, 1, true, 3, 'davidl', '/assets/img/avatars/avatar15.jpg'),
+       (17, 168, 'González', 'Fernández', 'gonzalez@example.com', '1994-06-27', 'Sara', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 60, 2, true, 3, 'saras', '/assets/img/avatars/avatar6.jpg'),
+       (18, 175, 'Martínez', 'Torres', 'martinez@example.com', '1991-08-18', 'Jorge', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 75, 1, true, 3, 'jorgem', '/assets/img/avatars/avatar7.jpg'),
+       (19, 172, 'Ramírez', 'Vargas', 'ramirez@example.com', '1988-10-09', 'María', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 55, 2, true, 3, 'mariar', '/assets/img/avatars/avatar8.jpg'),
+       (20, 179, 'Hernández', 'Pérez', 'hernandez@example.com', '1986-12-27', 'Carlos', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 80, 1, true, 3, 'carlosh', '/assets/img/avatars/avatar9.jpg'),
+       (21, 170, 'Gómez', 'Gutiérrez', 'gomez@example.com', '1990-04-07', 'Laura', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 63, 2, true, 3, 'laurag', '/assets/img/avatars/avatar10.jpg'),
+       (22, 166, 'Ortega', 'Martín', 'ortega@example.com', '1989-11-30', 'Pedro', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 75, 1, true, 3, 'pedroo', '/assets/img/avatars/avatar12.jpg'),
+       (23, 173, 'Castillo', 'González', 'castillo@example.com', '1992-08-03', 'Carmen', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 62, 2, true, 3, 'carmenc', '/assets/img/avatars/avatar2.jpeg'),
+       (24, 168, 'Vega', 'Silva', 'vega@example.com', '1987-05-26', 'Andrés', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 80, 1, true, 3, 'andresv', '/assets/img/avatars/avatar3.jpeg'),
+       (25, 175, 'Navarro', 'Hernández', 'navarro@example.com', '1993-12-19', 'Marta', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 65, 2, true, 3, 'martan', '/assets/img/avatars/avatar4.jpeg'),
+       (26, 170, 'García', 'López', 'garcia@example.com', '1995-03-12', 'David', '$2a$10$ptqIq6r28m9vTpin86WyIO.xh10ozOm9mKKc2GdslQFIId/gqZf2O', 70, 1, true, 3, 'davidg', '/assets/img/avatars/avatar5.jpeg');
 
 insert into suscripcion values (1,'aa','1990-01-01','1990-01-01',50,1),(2,'bb','1990-01-01','1990-01-01',60,1),(3,'cc','1990-01-01','1990-01-01',45,2);
 
@@ -63,40 +64,99 @@ values (9999,9999,'base','/',0,'fas fa-tachometer-alt', null,0,0),
        (2, 20, 'Entrenar', '/programa',1,'fas fas fa-dumbbell',9999,0,0),
        (3, 30, 'Mis rutinas', '/misrutinas',1,'fas fa-table',9999,0,0),
        (4, 40, 'Chats', '/chat',1,'far fa-comment-alt',9999,1,0),
-       (5, 35, 'Entrenador', '/chat/entrenador',1,'far fa-comment-alt',4,0,1),
-       (6, 48, 'Atletas', '/chat/atletas',1,'far fa-comment-alt',4,0,1),
-       (7,50,'Entrenadores','/entrenadores',1,'fas fa-users',9999,0,0),
+       (5, 41, 'Entrenador', '/chat/entrenador',1,'far fa-comment-alt',4,0,1),
+       (6, 42, 'Atletas', '/chat/atletas',1,'far fa-comment-alt',4,0,1),
+       (7,51,'Entrenadores','/entrenadores',1,'fas fa-users',9999,0,0),
        (8,55,'Atletas','/atletas',1,'fas fa-users',9999,0,0),
        (9,60,'Logros','/logros',1,'fas fa-trophy',9999,0,0),
        (10,70,'Tutoriales','/tutoriales',1,'fas fa-window-maximize',9999,0,0),
-       (11,80,'Ajustes de Página','/ajustes',1,'fas fa-wrench',9999,0,0);
+       (11,80,'Ajustes de Página','/ajustes',1,'fas fa-wrench',9999,0,0),
+       (12,32,'Plantillas','/plantillas',1,'fas fa-table',9999,0,0),
+       (13,50,'Usuarios','/usuarios',1,'fas fa-users',9999,0,0),
+       (14,59,'Menus','/menu',1,'fas fa-wrench',9999,0,0);
+delete from menu_roles;
+insert into menu_roles(menu_id,roles_id)
+values
+    (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),
+    (1,2),(2,2),(3,2),(4,2),(5,2),(6,2),(7,2),(8,2),(9,2),(10,2),(11,2),(12,2),(13,2),(14,2),
+    (1,3),(2,3),(3,3),(4,3),(5,3),(7,3),(9,3),(10,3),(11,3);
 delete from plantilla_mesociclo;
-INSERT INTO plantilla_mesociclo (descanso_acces, descanso_bas, descripcion, fecha_fin, fecha_inicio, fr_entre_semana, id_mesociclos, long_microciclo, num_microciclos, id_usuario)
+INSERT INTO plantilla_mesociclo (orden,descanso_acces, descanso_bas, descripcion, fecha_fin, fecha_inicio, fr_entre_semana, id_mesociclos, long_microciclo, num_microciclos, id_usuario)
 VALUES
-    ('Descanso Acces 1', 'Descanso Bas 1', 'Musculacion', '2023-01-01', '2023-01-15', 5, 1, 7, 4, 1),
-    ('Descanso Acces 2', 'Descanso Bas 2', 'Descripción 2', '2023-02-01', '2023-02-15', 6, 1, 8, 4, 1),
-    ('Descanso Acces 3', 'Descanso Bas 3', 'Descripción 3', '2023-03-01', '2023-03-15', 7, 2, 9, 4, 2),
-    ('Descanso Acces 4', 'Descanso Bas 4', 'Descripción 4', '2023-04-01', '2023-04-15', 8, 2, 10, 4, 2),
-    ('Descanso Acces 5', 'Descanso Bas 5', 'Descripción 5', '2023-05-01', '2023-05-15', 9, 3, 11, 4, 3);
+    (1,'2 min','4 min', 'Introducción', '2023-01-01', '2023-01-15', 4, 1, 4, 5, 1),
+    (2,'2 min','4 min', 'Enfoque técnico', '2023-02-01', '2023-02-15', 4, 1, 4, 4, 1),
+    (3,'2 min', '4 min', 'Intensificación I', '2023-03-01', '2023-03-15', 4, 2, 4, 4, 2),
+    (4,'2 min', '4 min', 'Intensificación II', '2023-04-01', '2023-04-15', 5, 2, 5, 4, 2),
+    (5,'2 min', '4 min', 'Intensificación III', '2023-02-01', '2023-02-15', 5, 1, 5, 4, 1),
+    (6,'2 min', '4 min', 'Power: Fase Desarrollo', '2023-02-01', '2023-02-15', 4, 1, 4, 4, 1),
+    (7,'2 min', '4 min', 'Power: Peaking', '2023-02-01', '2023-02-15', 4, 1, 4, 3, 1),
+    (8,'1,5 min','4 min', 'Hipertrofia Descarga', '2023-05-01', '2023-05-15', 3, 4, 3, 4, 2);
 DELETE FROM plantilla_microciclo;
 
-INSERT INTO plantilla_microciclo (intensidad_estandar, volumen_estandar, id_plantilla_mesociclo)
+INSERT INTO plantilla_microciclo (orden,intensidad_estandar, volumen_estandar, id_plantilla_mesociclo)
 VALUES
-    (1.5, 10.0, 1),
-    (1.8, 12.0, 1),
-    (2.0, 8.5, 1),
-    (1.7, 9.0, 1),
-    (1.9, 11.5, 3);
+    (1,'5,5','3' , 1),
+        (2,'6', '3', 1),
+        (3,'6', '3', 1),
+        (4,'6,25', '3', 1),
+        (5,'6,5', '3', 1),
+    (1,'5,5','3' , 2),
+        (2,'6', '3', 2),
+        (3,'6,25', '3', 2),
+        (4,'6,5', '3', 2),
+    (1,'5,5','3' , 3),
+        (2,'6', '3', 3),
+        (3,'6,25', '3', 3),
+        (4,'6,5', '3', 3),
+    (1,'5,5','3' , 4),
+        (2,'6', '3', 4),
+        (3,'6,25', '3', 4),
+        (4,'6,5', '3', 4),
+    (1,'5,5','3' , 5),
+        (2,'6', '3', 5),
+        (3,'6,25', '3', 5),
+        (4,'6,5', '3', 5),
+   (1,'5,5','3' , 6),
+        (2,'6', '3', 6),
+        (3,'6,25', '3', 6),
+        (4,'6,5', '3', 6),
+   (1,'6','3' , 7),
+        (2,'6,5', '3', 7),
+        (3,'7', '3', 7),
+   (1,'5,5','3' , 8),
+        (2,'6', '3', 8),
+        (3,'6,25', '3', 8),
+        (4,'6,5', '3', 8);
 
 DELETE FROM plantilla_sesion;
 
-INSERT INTO plantilla_sesion (descripcion, id_plantilla_microciclo)
+INSERT INTO plantilla_sesion (orden,num_sesion,variante, id_plantilla_microciclo)
 VALUES
-    ('Descripción 1', 1),
-    ('Descripción 2', 1),
-    ('Descripción 3', 2),
-    ('Descripción 4', 2),
-    ('Descripción 5', 3);
+    (1,1,'Torso 1', 1),
+        (2,2,'Pierna 1', 1),
+        (3,3,'Accesorios', 1),
+        (4,4,'Torso 2', 1),
+        (5,5,'Pierna 2', 1),
+    (1,6,'Torso 1', 2),
+        (2,7,'Pierna 1', 2),
+        (3,8,'Accesorios', 2),
+        (4,9,'Torso 2', 2),
+        (5,10,'Pierna 2', 2),
+    (1,11,'Torso 1', 3),
+        (2,12,'Pierna 1', 3),
+        (3,13,'Accesorios', 3),
+        (4,14,'Torso 2', 3),
+        (5,15,'Pierna 2', 3),
+    (1,16,'Torso 1', 4),
+        (2,17,'Pierna 1', 4),
+        (3,18,'Accesorios', 4),
+        (4,19,'Torso 2', 4),
+        (5,20,'Pierna 2', 4),
+    (1,21,'Torso 1', 5),
+        (2,22,'Pierna 1', 5),
+        (3,23,'Accesorios', 5),
+        (4,24,'Torso 2', 5),
+        (5,25,'Pierna 2', 5);
 
 DELETE FROM plantilla_ejercicio_formulado;
 

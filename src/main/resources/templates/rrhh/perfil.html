@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{_layout}">
+      layout:decorate="~{_layout}" xmlns="http://www.w3.org/1999/html">
 
 <body>
 
 <div layout:fragment="content">
 
     <div class="container-fluid">
-        <h3 class="text-dark mb-4">Profile</h3>
+        <h3 class="text-dark mb-4">Perfil</h3>
         <div class="row mb-3">
             <div class="col-lg-4">
                 <div class="card mb-3">
@@ -128,6 +128,7 @@
                                         <input type="hidden" th:field="*{role}">
                                         <input type="hidden" th:field="*{altura}">
                                         <input type="hidden" th:field="*{fechaNacim}">
+                                        <input type="hidden" th:field="*{password}">
                                         <input type="hidden" th:field="*{peso}">
                                         <input type="hidden" th:field="*{sexo}">
                                         <input type="hidden" th:field="*{avatar}">
@@ -175,19 +176,31 @@
                                                     name="first_name"></div>
                                         </div>
                                         <div class="col">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="password">
-                                                    <strong>Contraseña</strong>
-                                                </label>
-                                                <input
-                                                        class="form-control" type="text"
-                                                        id="password" placeholder="Doe" th:field="*{password}"
-                                                        name="last_name">
-                                            </div>
+                                        <div class="mb-3">
+
+                                             <br>
+
+                                        <a type="button" class="btn btn-primary"
+                                           th:href="@{/usuarios/editpass/{id}(id=${usuario.id})}"
+                                           th:if="${usuario.username}==${#authentication.principal.username}"
+                                           th:each="usuario : ${usuario.listartodos()}" >
+                                            Cambiar contraseña</a>
                                         </div>
+                                        </div>
+<!--                                        <div class="col">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label" for="password">-->
+<!--                                                    <strong>Contraseña</strong>-->
+<!--                                                </label>-->
+<!--                                                <input-->
+<!--                                                        class="form-control" type="text"-->
+<!--                                                        id="password" placeholder="Doe" th:field="*{password}"-->
+<!--                                                        name="last_name">-->
+<!--                                            </div>-->
+<!--                                        </div>-->
                                     </div>
                                     <div class="mb-3">
-                                        <button class="btn btn-primary btn-sm" type="submit">Save Settings</button>
+                                        <button class="btn btn-primary btn-sm" type="submit">Guardar datos</button>
                                     </div>
                                 </form>
                             </div>
@@ -199,24 +212,24 @@
                             <div class="card-body">
                                 <form>
                                     <div class="mb-3"><label class="form-label"
-                                                             for="address"><strong>Address</strong></label><input
-                                            class="form-control" type="text" id="address" placeholder="Sunset Blvd, 38"
+                                                             for="address"><strong>Dirección</strong></label><input
+                                            class="form-control" type="text" id="address" placeholder="Desengaño, 21"
                                             name="address"></div>
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label><input
-                                                    class="form-control" type="text" id="city" placeholder="Los Angeles"
+                                                    class="form-control" type="text" id="city" placeholder="Alcobendas"
                                                     name="city"></div>
                                         </div>
                                         <div class="col">
                                             <div class="mb-3"><label class="form-label"
                                                                      for="country"><strong>Country</strong></label><input
-                                                    class="form-control" type="text" id="country" placeholder="USA"
+                                                    class="form-control" type="text" id="country" placeholder="¡¡¡¡ESPAÑA!!!!"
                                                     name="country"></div>
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button>
+                                        <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
                                     </div>
                                 </form>
                             </div>
@@ -278,21 +291,21 @@
         </div>
         <div class="card shadow mb-5">
             <div class="card-header py-3">
-                <p class="text-primary m-0 fw-bold">Forum Settings</p>
+                <p class="text-primary m-0 fw-bold">Contacto</p>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
                         <form>
                             <div class="mb-3"><label class="form-label"
-                                                     for="signature"><strong>Firma</strong><br></label><textarea
+                                                     for="signature"><strong>Mensaje</strong><br></label><textarea
                                     class="form-control" id="signature" rows="4" name="signature"></textarea></div>
-                            <div class="mb-3">
-                                <div class="form-check form-switch"><input class="form-check-input" type="checkbox"
-                                                                           id="formCheck-1"><label
-                                        class="form-check-label" for="formCheck-1"><strong>Notify me about new
-                                    replies</strong></label></div>
-                            </div>
+<!--                            <div class="mb-3">-->
+<!--                                <div class="form-check form-switch"><input class="form-check-input" type="checkbox"-->
+<!--                                                                           id="formCheck-1"><label-->
+<!--                                        class="form-check-label" for="formCheck-1"><strong>Notify me about new-->
+<!--                                    replies</strong></label></div>-->
+<!--                            </div>-->
                             <div class="mb-3">
                                 <button class="btn btn-primary btn-sm" type="submit">Guardar ajustes</button>
                             </div>

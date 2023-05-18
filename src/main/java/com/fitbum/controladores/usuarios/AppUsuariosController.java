@@ -16,6 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -75,8 +76,16 @@ public class AppUsuariosController //extends AbstractController <UsuarioDto>
     @GetMapping("/usuarios")
     public String vistaUsuarios(@RequestParam("page") Optional<Integer> page,
                                 @RequestParam("size") Optional<Integer> size,
-                                    ModelMap interfazConPantalla,Model  model){
-        model.addAttribute("dataObject", menuServicio.findAll());
+                                    ModelMap interfazConPantalla,Model model, Authentication authentication
+    ) {
+        String username = authentication.getName();
+        Optional<Usuario> usuario = Optional.ofNullable(service.getRepo().findUsuarioByUsername(username));
+        if(usuario.isPresent()){
+            model.addAttribute("logeduser",usuario.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("usuario", service);
 
         Integer pagina = 0;
@@ -97,8 +106,16 @@ public class AppUsuariosController //extends AbstractController <UsuarioDto>
      @GetMapping("/usuarios/buscar")
      public String buscarUsuarios(@RequestParam("query") String query,@RequestParam("page") Optional<Integer> page,
                                   @RequestParam("size") Optional<Integer> size,
-                                  ModelMap interfazConPantalla,Model  model){
-         model.addAttribute("dataObject", menuServicio.findAll());
+                                  ModelMap interfazConPantalla,Model model, Authentication authentication
+     ) {
+         String username = authentication.getName();
+         Optional<Usuario> usuario = Optional.ofNullable(service.getRepo().findUsuarioByUsername(username));
+         if(usuario.isPresent()){
+             model.addAttribute("logeduser",usuario.get());}
+         else{
+             return "error";
+         }
+         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
          model.addAttribute("usuario", service);
 
          Integer pagina = 0;
@@ -146,8 +163,16 @@ public class AppUsuariosController //extends AbstractController <UsuarioDto>
      @GetMapping("/atletas")
      public String vistaAtletas(@RequestParam("page") Optional<Integer> page,
                                  @RequestParam("size") Optional<Integer> size,
-                                 ModelMap interfazConPantalla,Model  model){
-         model.addAttribute("dataObject", menuServicio.findAll());
+                                 ModelMap interfazConPantalla,Model model, Authentication authentication
+     ) {
+         String username = authentication.getName();
+         Optional<Usuario> usuario = Optional.ofNullable(service.getRepo().findUsuarioByUsername(username));
+         if(usuario.isPresent()){
+             model.addAttribute("logeduser",usuario.get());}
+         else{
+             return "error";
+         }
+         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
          model.addAttribute("usuario", service);
 
          Integer pagina = 0;

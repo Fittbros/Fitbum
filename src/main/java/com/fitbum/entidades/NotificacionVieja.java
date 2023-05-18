@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "Notificacion")
-public class Notificacion {
+public class NotificacionVieja {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

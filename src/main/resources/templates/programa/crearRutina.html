@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>crear</title>
+</head>
+<body>
+  crearrutina
+
+<form  th:action="@{/programa/crearrutina}" th:method="post">
+<!--    <input type="number" th:field="*{id}" th:value="${id}">-->
+<!--    <input type="number" th:field="*{id_usuario}" th:value="${id}">-->
+    <label for="pmesoelegido">Descripcion:</label>
+    <select name="pmesoelegido" id="pmesoelegido" >
+        <option th:each="pmeso: ${pmesos}" th:text="${pmeso.descripcion}" th:value="${pmeso.id}"></option>
+    </select>
+    <button type="submit" class="btn btn-primary">Crear</button>
+</form>
+</body>
+</html>

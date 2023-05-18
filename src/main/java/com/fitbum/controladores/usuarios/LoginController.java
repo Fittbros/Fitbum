@@ -21,8 +21,8 @@ public class LoginController {
     //Controlador de Login
     private final UsuarioServicio service;
     @Autowired
-//    private BCryptPasswordEncoder passwordEncoder;
-    private PasswordEncoder passwordEncoder;
+    private BCryptPasswordEncoder passwordEncoder;
+//    private PasswordEncoder passwordEncoder;
     public LoginController(UsuarioServicio service) {
         this.service = service;
     }
