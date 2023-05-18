@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}">
 <head>
-    <title>plantillas</title>
+    <title>Plantillas</title>
 
 </head>
 <body>
@@ -11,7 +11,7 @@
 <div layout:fragment="content">
 
     <div class="pagetitle">
-        <h1>plantillas</h1>
+        <h1>Plantillas</h1>
     </div><!-- End Page Title -->
     <!--div><a  th:href="@{/menu}" >
         menu</a></div>
@@ -28,19 +28,16 @@
         nuevo usuario</a></div>
     <div><a  href='/tutoriales' >
         tutoriales</a></div-->
-    <div><a  th:href="@{/ejercicios}" >
-        ejercicios </a></div>
-    <div><a  th:href="@{/plantillas/meso}" >
-        plant meso </a></div>
-    <div><a  th:href="@{/plantillas/micro}" >
-        plant micro </a></div>
+    <div class="mb-3">
+        <a class="btn btn-info btn-lg"
+           role="button" href="#">CREAR</a>
+    </div>
+    <div class="mb-3">
+        <a class="btn btn-info btn-lg"
+           role="button" th:href="@{/plantillas/meso}">MODIFICAR</a>
+    </div>
 
-    <div><a  th:href="@{/plantillas/sesion}" >
-        plant sesion </a></div>
-    <div><a  th:href="@{/plantillas/ejercicio}" >
-        plant ejerc </a></div>
-    <div><a  th:href="@{/plantillas/serie}" >
-        plant serie </a></div>
+
 </div>
 
 </body>

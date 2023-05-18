@@ -88,12 +88,18 @@ public class FileController {
      */
     @GetMapping("/files")
     public  String listAllUploadedFiles(Model model,Authentication authentication) throws IOException {
+        String username = authentication.getName();
+        Optional<Usuario> usuariomenu = Optional.ofNullable(usuarioServicio.getRepo().findUsuarioByUsername(username));
+        if(usuariomenu.isPresent()){
+            model.addAttribute("logeduser",usuariomenu.get());}
+        else{
+            return "error";
+        }
+        model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("usuario", usuarioServicio);
-        model.addAttribute("dataObject", menuServicio.findAll());
 
 
         //Obtenemos el nombre de usuario del objeto de autenticacion
-        String username = authentication.getName();
         // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
         Usuario usuario = usuarioServicio.getRepo().findUsuarioByUsername(username);
 
