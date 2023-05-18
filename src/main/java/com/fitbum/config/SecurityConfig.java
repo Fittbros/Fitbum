@@ -34,7 +34,7 @@ public class SecurityConfig {
                         "/ajustes","/usuarios/registro","/usuarios/olvidecontrasena",
                         "/forms/olvidecontrasena","/error","/assetsPublico/**",
                         "/forms/**","/registrar/**","/registrar2/**","","/",
-                        "/registro","/registrarusuario"
+                        "/registro","/registrarusuario","/webjars/**"
 
                         ).permitAll()
 
@@ -44,7 +44,8 @@ public class SecurityConfig {
                         "/logros","/files/**","/uploadToFileSystem/**","/uploadToDatabase/**",
                         "/uploadUserFileToDatabaseStoreInFileSystem/**","/uploadUserFileToDatabase/**",
                         "/uploadUserFileToFileSystem/**","/databasefiles/**","/upload/**","/database/**",
-                        "/ejercicios/**","/chat/**","/prueba/**"
+                        "/ejercicios/**","/chat/**","/prueba/**","/private","/notificaciones/**",
+                        "/leerNotificacion/**","/leerNotificaciones/**"
 
                         ).authenticated()
 
