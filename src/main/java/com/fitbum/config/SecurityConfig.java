@@ -25,7 +25,6 @@ public class SecurityConfig {
     private UserDetailsService userDetailsService;
     @Autowired
     private BCryptPasswordEncoder encoder;
-//    private PasswordEncoder encoder;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -35,7 +34,6 @@ public class SecurityConfig {
                         "/forms/olvidecontrasena","/error","/assetsPublico/**",
                         "/forms/**","/registrar/**","/registrar2/**","","/",
                         "/registro","/registrarusuario","/webjars/**"
-
                         ).permitAll()
 
                 .requestMatchers("/home","/menu/**","/tutoriales","/private",
@@ -46,7 +44,6 @@ public class SecurityConfig {
                         "/uploadUserFileToFileSystem/**","/databasefiles/**","/upload/**","/database/**",
                         "/ejercicios/**","/chat/**","/prueba/**","/private","/notificaciones/**",
                         "/leerNotificacion/**","/leerNotificaciones/**"
-
                         ).authenticated()
 
                 //Permitimos únicamente las visitas de usuarios registrados a  /private

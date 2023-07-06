@@ -39,9 +39,4 @@ public class Ejercicios {
    @OneToMany(mappedBy = "ejercicios", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
    private Set<EjercicioForm> ejercicioForm;
 
-
-
-
-
-
 }

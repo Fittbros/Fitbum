@@ -27,15 +27,12 @@ public class Microciclo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     @Column
     private String volumenEstandar;
     @Column
     private String intensidadEstandar;
     @Column
     private Integer orden;
-
-
     @ManyToOne
     @JoinColumn(name = "Mesociclo", nullable = false)
     private Mesociclo mesociclo;

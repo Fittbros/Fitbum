@@ -39,28 +39,21 @@ public abstract class AbstractBusinessServiceSoloEnt<E, ID,  REPO extends JpaRep
         Set<E> eSet = new HashSet<E>(this.repo.findAll());
         return  eSet;
     }
-    //Guardar
     public E guardar(E entidad) throws Exception {
-        //Guardo el la base de datos
         E entidadGuardada =  repo.save(entidad);
-        //Traducir la entidad a DTO para devolver el DTO
         return entidadGuardada;
     }
     public void  guardar(List<E> ents ) throws Exception {
         Iterator<E> it = ents.iterator();
 
-        // mientras al iterador queda proximo juego
         while(it.hasNext()){
-            //Obtenemos la password de a entidad
-            //Datos del usuario
+
             E e = it.next();
             repo.save(e);
         }
     }
-    //eliminar un registro
     public void eliminarPorId(ID id){
         this.repo.deleteById(id);
     }
-    //Obtener el repo
     public REPO getRepo(){return  repo;}
 }

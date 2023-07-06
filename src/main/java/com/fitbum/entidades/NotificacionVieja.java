@@ -33,10 +33,4 @@ public class NotificacionVieja {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
-
-
-
-
-
-
 }

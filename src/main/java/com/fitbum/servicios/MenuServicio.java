@@ -37,12 +37,6 @@ public class MenuServicio extends AbstractBusinessService<Menu, Integer, MenuDTO
     }
 
 
-//    @Autowired
-//
-//    protected MenuServicio(MenuRepositorio menuRepositorio, MenuServiceMapper mapper) {
-//        super(menuRepositorio, mapper);
-//    }
-
 
     public List<Menu> findAll() {
         return menuRepositorio.findAll();
@@ -64,10 +58,7 @@ public class MenuServicio extends AbstractBusinessService<Menu, Integer, MenuDTO
         Usuario usuario = this.usuarioRepositorio.findUsuarioByEmailAndActiveTrue(email);
         return getMenuForRole(Collections.singleton(usuario.getRole()));
     }
-//    public List<MenuDTO> getMenuForUsername(String username) {
-//        Usuario usuario = this.usuarioRepositorio.findUsuarioByUsernameAndActiveTrue(username);
-//        return getMenuForRole(Collections.singleton(usuario.getRole()));
-//    }
+
     public List<MenuDTO> getMenuForUsername(String username) {
         Usuario usuario = this.usuarioRepositorio.findUsuarioByUsernameAndActiveTrue(username);
         return getMenuForRole(Collections.singleton(usuario.getRole()));

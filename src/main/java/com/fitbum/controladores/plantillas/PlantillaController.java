@@ -57,13 +57,8 @@ public class PlantillaController {
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("usuario", usuarioServicio);
-
-
-//        model.addAttribute("fragmentName", "fragment-customer-list");
-
         return "/plantillas/index";
     }
-    //Bloque con controladores para mostrar datos por niveles
     @GetMapping(value = {"/meso"})
     public String plantMeso(
             Model model, Authentication authentication
@@ -95,7 +90,6 @@ public class PlantillaController {
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("micro", microService.findAll());
-
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/microciclo";
     }
@@ -129,7 +123,6 @@ public class PlantillaController {
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("serie", serieService.findAll());
-
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/serie";
     }
@@ -150,7 +143,6 @@ public class PlantillaController {
         model.addAttribute("usuario", usuarioServicio);
         return "/plantillas/ejercicio";
     }
-    //Controladores de edición
     @GetMapping("/meso/{id}")
     public String showMesoId(@PathVariable("id") Integer id, Model model, Authentication authentication
     ) {
@@ -164,7 +156,6 @@ public class PlantillaController {
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("usuario", usuarioServicio);
         model.addAttribute("id", id);
-
         Optional<PlantillaMesociclo> meso= mesoService.findById(id);
         if(meso.isPresent()){
             model.addAttribute("meso", meso);
@@ -172,15 +163,11 @@ public class PlantillaController {
         else{
             return "redirect:/error";
         }
-
         return "/plantillas/mesoId";
-
     }
     @PostMapping("/meso/{id}")
     public String guardarMesoId(@PathVariable("id") Integer id, PlantillaMesociclo mesoentrada) {
-
         Optional<PlantillaMesociclo> mesociclocontrol = mesoService.findById(mesoentrada.getId());
-        //¿Debería comprobar si hay datos?
         if (mesociclocontrol.isPresent()){
             PlantillaMesociclo mesociclo = mesociclocontrol.get();
             mesociclo.setNumMicrociclos(mesoentrada.getNumMicrociclos());
@@ -209,7 +196,6 @@ public class PlantillaController {
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         modelMap.addAttribute("usuario", usuarioServicio);
         modelMap.addAttribute("id", id);
-
         Optional<PlantillaMicrociclo> micro= microService.findById(id);
         if(micro.isPresent()){
             modelMap.addAttribute("micro", micro);
@@ -217,7 +203,6 @@ public class PlantillaController {
         else{
             return "redirect:/error";
         }
-
         return "plantillas/microId";
     }
     @PostMapping(value = {"/micro/{id}"})
@@ -232,7 +217,6 @@ public class PlantillaController {
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         Optional<PlantillaMicrociclo> microciclocontrol = microService.findById(microcicloentrada.getId());
-        //¿Debería comprobar si hay datos?
         if (microciclocontrol.isPresent()){
             PlantillaMicrociclo microciclo = microciclocontrol.get();
             microciclo.setIntensidadEstandar(microcicloentrada.getIntensidadEstandar());
@@ -244,7 +228,6 @@ public class PlantillaController {
         else{
             return "error";
         }
-
     }
     @GetMapping(value = {"/sesion/{id}"})
     public String showSesionId(@PathVariable("id") Integer id, ModelMap modelMap, Model model, Authentication authentication
@@ -267,18 +250,15 @@ public class PlantillaController {
         else{
             return "error";
         }
-
         return "plantillas/sesionId";
     }
     @PostMapping(value = {"/sesion/{id}"})
     public String guardarSesionId(@PathVariable("id") Integer id, PlantillaSesion sesionentrada) {
         Optional<PlantillaSesion> sesioncontrol = sesionService.findById(sesionentrada.getId());
-        //¿Debería comprobar si hay datos?
         if (sesioncontrol.isPresent()){
             PlantillaSesion sesion = sesioncontrol.get();
             sesion.setVariante(sesionentrada.getVariante());
             sesion.setNum_sesion(sesionentrada.getNum_sesion());
-
             this.sesionService.getPlantSesionRepositorio().save(sesion);
             return String.format("redirect:/plantillas/sesion/%s", sesion.getId());
         }
@@ -286,6 +266,4 @@ public class PlantillaController {
             return "error";
         }
     }
-
-
 }

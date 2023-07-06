@@ -25,11 +25,8 @@ public class Sesion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-
     @Column
     private Integer num_sesion;
-
     @Column
     private Integer orden;
     @Column

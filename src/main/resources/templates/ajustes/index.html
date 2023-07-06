@@ -26,43 +26,7 @@
         </span>
     <div><a  th:href="@{/usuarios/perfil/{id}(id=${usuario.id})}" th:if="${usuario.username}==${#authentication.principal.username}" th:each="usuario : ${usuario.listartodos()}">
         prueba/id </a></div>
-    <!-- End Page Title -->
-    <!--div><a  th:href="@{/menu}" >
-        menu</a></div>
-    <div><a  th:href="@{/menu/2}" >
-        menu2 </a></div>
-    <div><a  th:href="@{/menu/3}" >
-        menu3 </a></div>
-    <div><a  th:href="@{/chat/chatprueba3}" >
-        chatprueba3 </a></div>
-    <div><a  th:href="@{/chat/chatprueba}" >
-        chatprueba </a></div>
 
-<div class="pagetitle">
-        <h1>Panel de Inicio</h1>
-    </div>
-    <div><a  href='/login' >
-        login</a></div>
-    <div><a  href='/crearUsuario' >
-        crear usuario</a></div>
-    <div><a  href='/nuevoUsuario' >
-        nuevo usuario</a></div>
-    <div><a  href='/tutoriales' >
-        tutoriales</a></div>
-
-    <div><a  th:href="@{/plantillas/meso}" >
-        plant meso </a></div>
-    <div><a  th:href="@{/plantillas/micro}" >
-        plant micro </a></div>
-    <div><a  th:href="@{/plantillas/sesion}" >
-        plant sesion </a></div>
-    <div><a  th:href="@{/plantillas/ejercicio}" >
-        plant ejerc </a></div>
-    <div><a  th:href="@{/plantillas/serie}" >
-        plant serie </a></div>
-
-    <div><a  th:href="@{/usuarios/lista}" >
-        usuarios lista </a></div-->
     <div><a  th:href="@{/usuarios}" >
         usuarios </a></div>
     <div><a  th:href="@{/atletas}" >

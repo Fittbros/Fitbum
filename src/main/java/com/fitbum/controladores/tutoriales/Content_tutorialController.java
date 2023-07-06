@@ -12,7 +12,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/tutorial")
 public class Content_tutorialController {
 
-
-
-
 }

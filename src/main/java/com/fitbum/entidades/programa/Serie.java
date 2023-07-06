@@ -23,8 +23,6 @@ public class Serie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-
     @Column
     private Integer orden;
     @Column

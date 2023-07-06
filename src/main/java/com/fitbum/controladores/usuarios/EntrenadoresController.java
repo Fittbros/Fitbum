@@ -32,9 +32,7 @@ public class EntrenadoresController {
             return "error";
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
-
         model.addAttribute("usuario", usuarioServicio);
-
         return "entrenadores/index";
     }
 }

@@ -10,5 +10,4 @@ import java.util.List;
 public interface PlantMesoRepositorio extends JpaRepository<PlantillaMesociclo,Integer> {
 
     List<PlantillaMesociclo> findAllByOrderByOrdenDesc();
-//    List<PlantillaMesociclo> findByUsuario(Usuario usuario);
 }

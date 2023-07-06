@@ -51,10 +51,8 @@ public UsuarioRepositorio usuarioRepositorio;
 
 
     public CustomUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-// Buscar el usuario por su email utilizando el UserRepository
         Usuario user = usuarioRepositorio.findUsuarioByUsernameAndActiveTrue(username);
 
-// Si el usuario es encontrado, crear una instancia de UserDetails utilizando los datos del usuario
         if (user != null) {
             CustomUserDetails customUserDetails = new CustomUserDetails(
                     user.getEmail(),
@@ -65,7 +63,6 @@ public UsuarioRepositorio usuarioRepositorio;
             return customUserDetails;
 
         }else{
-// Si el usuario no es encontrado, lanzar una excepción UsernameNotFoundException
             throw new UsernameNotFoundException("Invalid username or password.");
         }
     }

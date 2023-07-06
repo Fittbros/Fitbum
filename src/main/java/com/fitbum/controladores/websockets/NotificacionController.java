@@ -34,7 +34,6 @@ public class NotificacionController {
     private UsuarioServicio usuarioServicio;
     @Autowired
     NotificacionRepositorio notificacionRepositorio;
-
     @GetMapping("/numeroNotificaciones")
     @ResponseBody
 //    @PreAuthorize("isAuthenticated()")
@@ -55,7 +54,6 @@ public class NotificacionController {
                 );
         return String.valueOf(listaNotificaciones.size());
     }
-
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/notificaciones")
     public String mostrarNotificaciones(Principal principal, Model model,
@@ -79,19 +77,15 @@ public class NotificacionController {
         String searchTo = queryTo.orElse("");
         Page<Notificacion> pagina =
                 notificacionRepositorio.findByUserFromContainingIgnoreCaseAndUserToContainingIgnoreCaseOrderByFechaDesc(
-
                         searchFrom,
                         searchTo,
                         PageRequest.of(currentPage - 1, pageSize)
                 );
-
         model.addAttribute("usuario", usuarioServicio);
         model.addAttribute("queryFrom", searchFrom);
         model.addAttribute("queryTo", searchTo);
         model.addAttribute("pagina", pagina);
         int totalPages = pagina.getTotalPages();
-
-        //Este código se puede sustituir por el de abajo comentado. Hacen lo mismo
         if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
                     .boxed()
@@ -125,8 +119,6 @@ public class NotificacionController {
         model.addAttribute("listaNotificaciones", listaNotificaciones);
         return "/notificaciones/index";
     }
-
-
     @GetMapping("/leerNotificacion/{id}")
     public String leerNotificacionesPendientes(@PathVariable("id") String id, Principal principal, Model model, Authentication authentication
     ) {

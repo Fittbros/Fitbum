@@ -10,9 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-/**
- * The type Private message.
- */
+
 public class PrivateMessage {
 
     private String notificationID;

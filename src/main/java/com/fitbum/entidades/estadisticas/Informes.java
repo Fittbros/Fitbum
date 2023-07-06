@@ -21,7 +21,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="Informes")
 public class Informes {
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer	id;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

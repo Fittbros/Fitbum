@@ -31,8 +31,6 @@ public class PlantillaSerie {
     private Integer	modifVis;
     @Column
     private Integer	modifInterna;
-
-
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPlantillaEjercicioFormulado")

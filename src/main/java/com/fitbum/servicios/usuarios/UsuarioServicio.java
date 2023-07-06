@@ -82,21 +82,6 @@ public class UsuarioServicio extends AbstractBusinessService<Usuario,Integer,Usu
         getRepo().save(usuario) ;
     }
 
-//    public Usuario guardarUsuarioDTO(UserDto userDto) {
-//        // Crear un nuevo objeto Usuario
-//        Usuario usuario = new Usuario();
-//
-//        // Configurar los campos del objeto Usuario
-//        usuario.setNombre(userDto.getFirstName() + userDto.getLastName());
-//        usuario.setEmail(userDto.getEmail());
-//        usuario.setUsername(userDto.getUsername());
-//
-//        // Codificar la contraseña del usuario utilizando el algoritmo de hash BCrypt
-//        usuario.setPassword(passwordEncoder.encode(userDto.getPassword()));
-//
-//        // Guardar el objeto Usuario en la base de datos y devolverlo
-//        return usuarioRepository.save(usuario);
-//    }
 }
 
 

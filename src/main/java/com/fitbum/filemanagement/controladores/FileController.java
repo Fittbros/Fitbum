@@ -423,40 +423,6 @@ public class FileController {
 
         return "prueba";
     }
-//    @GetMapping("/prueba/{id}")
-//    public String pruebaId(@PathVariable("id") Integer id,
-//                           Model model,Authentication authentication
-//
-//    ) {
-//        model.addAttribute("usuario", usuarioServicio);
-//        model.addAttribute("dataObject", menuServicio.findAll());
-//
-//        UsuarioDtoPsw usuarioDtoPsw = new UsuarioDtoPsw();
-//        Optional<Usuario> user = usuarioServicio.getRepo().findById(id);
-//
-//        if(user.isPresent()){
-//            usuarioDtoPsw= usuarioMapper.mapToUserDtoPsw(user.get());
-//            //interfazConPantalla
-//                    model.addAttribute("datosUsuario",usuarioDtoPsw);
-//        }
-//        else{
-//            return "error";
-//        }
-//
-//        String username = authentication.getName();
-//        Usuario usuario = usuarioServicio.getRepo().findUsuarioByUsername(username);
-//
-//        List<FileInfo> files = fileSystemStorageService.loadAll();
-//        List<FileInfo> dbFiles = dbFileStorageService.getAllFileInfos();
-//        List<FileInfo> userFiles = fileSystemStorageService.loadAllFromUser(usuario.getId());
-//        List<FileInfo> dbUserFiles = dbFileStorageService.getUserFileInfos(usuario);
-//
-//        model.addAttribute("files", files);
-//        model.addAttribute("DBfiles", dbFiles);
-//        model.addAttribute("userFiles", userFiles);
-//        model.addAttribute("dbUserFiles", dbUserFiles);
-
-//        return "prueba";}
 
 
 }

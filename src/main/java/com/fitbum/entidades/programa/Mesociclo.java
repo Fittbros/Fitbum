@@ -83,9 +83,6 @@ public class Mesociclo {
           microciclos.add(microciclo);
           this.microciclos = microciclos;
         }
-
-
-
     }
     }
 

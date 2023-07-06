@@ -31,9 +31,7 @@ public class PlantillaMesociclo {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario")
-    private Usuario usuario;//entrenador (usuario con idRol = 2)
-
-
+    private Usuario usuario;
  @JsonManagedReference
 @OneToMany(mappedBy = "plantillaMesociclo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 @OrderBy(value = "orden asc ")

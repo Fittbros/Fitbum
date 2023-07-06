@@ -14,10 +14,7 @@ public class AppConfig {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return NoOpPasswordEncoder.getInstance();
-//    }
+
     @Bean
     public SpringDataDialect springDataDialect() {
         return new SpringDataDialect();

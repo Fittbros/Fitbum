@@ -26,7 +26,6 @@ public class UsuarioSecurityImpl implements IUsuarioServicio, UserDetailsService
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder1;
-//    private PasswordEncoder passwordEncoder1;
 
 
 
@@ -38,38 +37,11 @@ public class UsuarioSecurityImpl implements IUsuarioServicio, UserDetailsService
         return encodedPassword;
     }
 
-
-
-
-
-
-
-//    @Override
-//    public UserDetails loadUserByUsername(String username)
-//                                      throws UsernameNotFoundException {
-//        Usuario  usuario= usuarioRepositorio.findUsuarioByUsernameAndActiveTrue(username);
-//
-//    if (usuario == null)
-//       throw new UsernameNotFoundException("Bad credentials");
-//
-//    return new Usuario(
-//        usuario.getUsername(),
-//        Usuario.getPassword(), // shall to be the already BCrypt-encrypted password
-//        getAuthorities());
-//}
-
-
 @Autowired
 public BCryptPasswordEncoder bCryptPasswordEncoder() {
     return new BCryptPasswordEncoder();
 }
 
-//    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//
-//        auth
-//                .userDetailsService(Usuario)
-//                .passwordEncoder();
-//    }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("loadUserByUsername username : " + username);

@@ -37,7 +37,6 @@ public class MensajeController {
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("usuario", usuarioServicio);
-
         return "/chat/index";}
 
     @GetMapping(value = {"/entrenador"})

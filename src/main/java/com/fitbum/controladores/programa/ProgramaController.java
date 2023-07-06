@@ -61,13 +61,8 @@ public class ProgramaController {
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("usuario", usuarioServicio);
-
-
-//        model.addAttribute("fragmentName", "fragment-customer-list");
-
         return "/programa/index";
     }
-    //Bloque con controladores para mostrar datos por niveles
     @GetMapping(value = {"/meso"})
     public String plantMeso(
             Model model, Authentication authentication
@@ -83,7 +78,6 @@ public class ProgramaController {
         PlantillaMesociclo plantillaMesociclo=new PlantillaMesociclo();
         Mesociclo mesociclo = new Mesociclo(plantillaMesociclo);
         mesociclo=mesocicloRepositorio.save(mesociclo);
-        //plantillaMesociclo.getPlantillaMicrociclo().iterator().next().getPlantillaSesion().iterator().next().getPlantillaEjercicioFormulado().iterator().next().getPlantillaSerie().iterator().next().;
         model.addAttribute("listaprogrameso", mesocicloRepositorio.findAllByOrderByOrdenDesc());
         model.addAttribute("usuario", usuarioServicio);
         return "/programa/mesociclo";
@@ -100,7 +94,6 @@ public class ProgramaController {
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("micro", microService.findAll());
-
         model.addAttribute("usuario", usuarioServicio);
         return "/programa/microciclo";
     }
@@ -117,7 +110,6 @@ public class ProgramaController {
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("sesion", sesionService.findAll());
-
         model.addAttribute("usuario", usuarioServicio);
         return "/programa/sesion";
     }
@@ -134,7 +126,6 @@ public class ProgramaController {
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("serie", serieService.findAll());
-
         model.addAttribute("usuario", usuarioServicio);
         return "/programa/serie";
     }
@@ -151,7 +142,6 @@ public class ProgramaController {
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         model.addAttribute("ej", ejFService.findAll());
-
         model.addAttribute("usuario", usuarioServicio);
         return "/programa/ejercicio";
     }
@@ -177,9 +167,7 @@ public class ProgramaController {
         else{
             return "redirect:/error";
         }
-
         return "/programa/mesoId";
-
     }
     @PostMapping("/meso/{id}")
     public String guardarMesoId(@PathVariable("id") Integer id, PlantillaMesociclo mesoentrada) {
@@ -222,7 +210,6 @@ public class ProgramaController {
         else{
             return "redirect:/error";
         }
-
         return "programa/microId";
     }
     @PostMapping(value = {"/micro/{id}"})
@@ -237,7 +224,6 @@ public class ProgramaController {
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
         Optional<PlantillaMicrociclo> microciclocontrol = microService.findById(microcicloentrada.getId());
-        //¿Debería comprobar si hay datos?
         if (microciclocontrol.isPresent()){
             PlantillaMicrociclo microciclo = microciclocontrol.get();
             microciclo.setIntensidadEstandar(microcicloentrada.getIntensidadEstandar());
@@ -283,7 +269,6 @@ public class ProgramaController {
             PlantillaSesion sesion = sesioncontrol.get();
             sesion.setVariante(sesionentrada.getVariante());
             sesion.setNum_sesion(sesionentrada.getNum_sesion());
-
             this.sesionService.getPlantSesionRepositorio().save(sesion);
             return String.format("redirect:/programa/sesion/%s", sesion.getId());
         }
@@ -307,19 +292,7 @@ public class ProgramaController {
         modelMap.addAttribute("id", id);
 
         List<PlantillaMesociclo> pmesos = mesoService.findAll();
-
-//        Optional<Mesociclo> meso = mesocicloServicio.findById(id);
-//        if(meso.isPresent()){
-//            meso= Optional.of(new Mesociclo());
-//
-//        }
-//        else{
-//            meso= Optional.of(new Mesociclo());
-//        }
-//        Mesociclo meso=new Mesociclo();
         model.addAttribute("pmesos", pmesos);
-//        new Mesociclo(pmesos)=
-
         return "programa/crearRutina";
     }
 
@@ -329,9 +302,7 @@ public class ProgramaController {
     model.addAttribute("dataObject", menuServicio.findAll());
     model.addAttribute("usuario", usuarioServicio);
     PlantillaMesociclo plantillaMesociclo = mesoService.findById(id).get();
-
     Mesociclo mesociclo= new Mesociclo(plantillaMesociclo);
-
     mesocicloServicio.getRepo().save(mesociclo);
         return String.format("redirect:/programa/crearrutina/%s", mesociclo.getId());
 

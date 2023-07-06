@@ -22,17 +22,13 @@ public class PlantillaEjercicioFormulado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPlantillaSesion")
     private PlantillaSesion plantillaSesion;
-
-
     @JsonManagedReference
     @OneToMany(mappedBy = "plantillaEjercicioFormulado", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<PlantillaSerie> plantillaSerie;
-
     @Column
     private Integer idEjercicio;
     @Column

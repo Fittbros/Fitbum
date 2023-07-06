@@ -18,15 +18,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 
 public class LoginController {
-    //Controlador de Login
     private final UsuarioServicio service;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-//    private PasswordEncoder passwordEncoder;
     public LoginController(UsuarioServicio service) {
         this.service = service;
     }
-
     @GetMapping("/usuarios/login")
     public String vistaLogin(){
         return "formularios/login";
@@ -37,7 +34,6 @@ public class LoginController {
         System.out.println("usr :" + usr);
         String password = loginDto.getPassword();
         System.out.println("pass :" + password);
-        //¿es correcta la password?
         if (service.getRepo().repValidarPassword(usr, passwordEncoder.encode(password) ) > 0)
         {
             return "home";
@@ -45,8 +41,6 @@ public class LoginController {
             return "formularios/login";
         }
     }
-
-
     @GetMapping("/usuarios/login-error")
     public String login(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);

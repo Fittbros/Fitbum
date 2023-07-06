@@ -34,9 +34,7 @@ public class MenuController //extends  AbstractController<UsuarioDto>
     private MenuServicio menuServicio;
     @Autowired
     private UsuarioServicio usuarioServicio;
-//    protected MenuController (MenuServicio menuService) {
-//        super(menuService);
-//    }
+
     @GetMapping(value = {"/",""})
     public String showMenu(
             Model model, Authentication authentication
@@ -49,13 +47,7 @@ public class MenuController //extends  AbstractController<UsuarioDto>
             return "error";
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
-
         model.addAttribute("usuario", usuarioServicio);
-
-
-
-//        model.addAttribute("fragmentName", "fragment-customer-list");
-
         return "/menu/index";
     }
 @GetMapping("/2")
@@ -86,10 +78,6 @@ public String menu2(Model model, Authentication authentication
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
 
         model.addAttribute("usuario", usuarioServicio);
-//        model.addAttribute("prueba", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-
-
-//        model.addAttribute("fragmentName", "fragment-customer-list");
         return "/menu/3";
     }
     @GetMapping(value = {"/indere"})
@@ -105,9 +93,6 @@ public String menu2(Model model, Authentication authentication
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
 
         model.addAttribute("usuario", usuarioServicio);
-
-//        model.addAttribute("fragmentName", "fragment-customer-list");
-
         return "menu/indere";
     }
     @GetMapping("/reorg")
@@ -121,10 +106,6 @@ public String menu2(Model model, Authentication authentication
             return "error";
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
-
-
-//        model.addAttribute("menu", menuServicio.findAll());
-//        model.addAttribute("usuario", usuarioServicio);
         return "/menu/reorg";
     }
     @GetMapping("/edit/{id}")
@@ -138,21 +119,15 @@ public String menu2(Model model, Authentication authentication
             return "error";
         }
         model.addAttribute("dataObject", menuServicio.getMenuForUsername(username));
-
         model.addAttribute("usuario", usuarioServicio);
-
         Optional<Menu> menu = menuServicio.findById(id);
         if(menu.isPresent()){
             model.addAttribute("menu", menu.get());
         }
         else{
-            // Si el cliente no existe, redirigir a una página de error o mostrar un mensaje de error
-
             return "error";
         }
-
         return "menu/menu-form";
-
     }
     @PostMapping("/save")
     public String saveMenu(Menu menu, Model model) {

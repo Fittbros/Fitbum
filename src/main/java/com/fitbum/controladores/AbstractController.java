@@ -24,9 +24,7 @@ public abstract class AbstractController<OBJ> {
     protected AbstractController(MenuServicio menuService) {
         this.menuService = menuService;
     }
-    //Literal para los numeros de pagina
     protected final String pageNumbersAttributeKey = "pageNumbers";
-    //Metodo para obtener los numeros de pagina
     protected List<Integer> dameNumPaginas(Page<OBJ>  obj){
         List<Integer> pageNumbers = new ArrayList<>();
         int totalPages = obj.getTotalPages();

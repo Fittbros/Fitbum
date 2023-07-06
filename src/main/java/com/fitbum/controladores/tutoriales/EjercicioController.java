@@ -91,16 +91,6 @@ public class EjercicioController {
     public Page<Ejercicios> buscarTodos(Pageable pageable){
         return  ejerciciosRepositorio.findAll(pageable);
     }
-//
-//    Model model
-//    ) {
-//        model.addAttribute("ejercicios", ejerciciosRepositorio.findAll());
-//
-//        model.addAttribute("usuario", usuarioServicio);
-//        model.addAttribute("dataObject", menuServicio.findAll());
-//        return "ejercicios/index";
-//    }
-
     @GetMapping("/{id}")
     public String showEjEdit(@PathVariable("id") Integer id, Model model, Authentication authentication
     ) {
@@ -119,8 +109,6 @@ public class EjercicioController {
             model.addAttribute("ej", ej.get());
         }
         else{
-
-            // Si el cliente no existe, redirigir a una página de error o mostrar un mensaje de error
             return "error";
         }
 

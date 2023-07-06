@@ -23,8 +23,5 @@ public class EjercicioFormController {
     public List<EjercicioForm> listar(){
         return service.listartodos();
     }
-
-
-
 }
 
