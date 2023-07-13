@@ -23,39 +23,22 @@ config:
     secretKey: 655368566B5970337336763979244226452948404D635166546A576E5A713474
 
 logging:
-
   level:
-
     org:
-
       springframework: INFO
-
       apache: ERROR
-
       mongodb: INFO
-
       hibernate:
-
         Version: ERROR
-
         stat: ERROR
-
         SQL: DEBUG
-
         cache: ERROR
-
         tool: ERROR
-
     com:
-
       eoi: INFO
-
       zaxxer: INFO
-
     root: INFO
-
   server:
     error:
       whitelabel:
-
         enabled = true
